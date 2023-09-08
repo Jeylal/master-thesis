@@ -1,0 +1,36 @@
+project:
+  type: book
+
+book:
+  title: "Social Blocs, Political Cleavages and Institutional Change in Switzerland"
+  subtitle: "A Neorealist Approach"
+  author: "Celâl Güney"
+  date: ""
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+title-block-banner: true
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      dark: darkly
+      light: flatly
+  pdf:
+    documentclass: scrreprt
+    classoption: nottoc
+    toc: true
+    toc-depth: 3
+    lof: true
+    lot: true
+  docx:
+    reference-doc: custom-reference.docx
+
+
+editor: visual
+
