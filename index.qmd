@@ -1,9 +1,7 @@
-# Preface {.unnumbered}
+# Abstract {.unnumbered}
 
-This is a Quarto book.
+This is my master thesis
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+Switzerland is known for its political, economic and social stability. However, this country still underwent gradual and steady institutional change in the last decades. 
 
-```{r}
-1 + 1
-```
+

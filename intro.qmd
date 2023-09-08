@@ -1,9 +1,14 @@
 # Introduction
 
-This is a book created from markdown and executable code.
-
-See @knuth84 for additional discussion of literate programming.
+This is my master thesis!
 
 ```{r}
-1 + 1
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+library(haven)
+library(quarto)
+library(sjlabelled)
+
 ```
