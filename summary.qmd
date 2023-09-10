@@ -1,11 +1,12 @@
 # Summary
 
-In summary, this book has no content whatsoever.
+
 
 ```{r}
 #| echo: false
 #| warning: false
 #| message: false
+rm(list = ls())
 library(tidyverse)
 library(haven)
 library(quarto)
@@ -15,9 +16,17 @@ library(FactoMineR)
 library(factoextra)
 library(ade4)
 selects1995 <- read_sav("data/64_Selects1995_PES_Data_v1.2.sav")
+selects <- read_sav("C:/Users/celal/OneDrive/Bureau/master-thesis/data/495_Selects_CumulativeFile_Data_1971-2019_v2.3.0.sav")
 ```
 
 
+```{r}
+selects1975 <- 
+  selects %>% 
+  filter(year == 1975)
+
+selects1975 %>% count(ip6)
+```
 
 
 ```{r}
