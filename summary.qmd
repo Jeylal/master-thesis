@@ -15,60 +15,103 @@ library(corrplot)
 library(FactoMineR)
 library(factoextra)
 library(ade4)
+library(questionr)
+library(foreign)
+library(MASS)
+library("effects")
+library(ordinal)
 selects1995 <- read_sav("data/64_Selects1995_PES_Data_v1.2.sav")
-selects <- read_sav("C:/Users/celal/OneDrive/Bureau/master-thesis/data/495_Selects_CumulativeFile_Data_1971-2019_v2.3.0.sav")
+selects <- read_sav("data/495_Selects_CumulativeFile_Data_1971-2019_v2.3.0.sav")
 ```
 
 
 ```{r}
-selects1975 <- 
+selects1999 <- 
   selects %>% 
-  filter(year == 1975)
+  filter(year == 1999)
 
-selects1975 %>% count(ip6)
+freq(selects1999$vdn1b)
+
+```
+
+```{r}
+selects1999 <- 
+  selects1999 %>% 
+  mutate(
+    state_vs_market = case_when(
+      ip5 == 0 ~ 1,
+      ip5 == 0.25 ~ 2,
+      ip5 == 0.5 ~ 3,
+      ip5 == 0.75 ~ 4,
+      ip5 == 1 ~ 5,
+      is.na(ip5) ~ NA
+    ),
+    join_eu = case_when(
+      ip6 == 0 ~ 1,
+      ip6 %>% between(0.3, 0.4) ~ 2,
+      ip6 %>% between(0.6, 0.7) ~ 3,
+      ip6 == 1 ~ 4
+    )
+  )
+
+selects1999$state_vs_market <- set_labels(selects1999$state_vs_market, labels = c("for state intervention", "rather for state intervention", "neither nor", "rather for free market", "for free market"))
+
+selects1999$join_eu <- set_labels(selects1999$join_eu, labels = c("don't join", "rather don't join", "rather join", "join"))
+
+selects1999 <- 
+selects1999 %>% 
+  rename(lower_t_hi = "ip2",
+         uneq_chance_for = "ip9",
+         quest_trad = "ip10",
+         for_soc_exp = "ip13",
+         env_vs_growth = "ip14",
+         again_nucl = "ip15")
+
 ```
 
 
 ```{r}
-#| echo: false
-#| warning: false
+freq(selects1999$lr1)
 
+cortest <- 
+  selects1999 %>% 
+  select(state_vs_market, join_eu, lower_t_hi, for_soc_exp, eq_chance_for, env_vs_growth, quest_trad, again_nucl, income_hh, educ, lr1) %>% 
+  cor(method = "spearman", use = "complete.obs") %>% 
+  cor.mtest()
 
-selects1995 %>%
-  filter(canton == 8) %>% 
-  select(matches("val[1-9]"), q179, q103) %>% 
-  cor(method = "spearman", use = "pairwise.complete.obs") %>% 
-  corrplot.mixed(order = 'hclust')
+selects1999 %>% 
+  select(state_vs_market, join_eu, lower_t_hi, for_soc_exp, eq_chance_for, env_vs_growth, quest_trad, again_nucl, income_hh, educ, lr1) %>% 
+  cor(method = "spearman", use = "complete.obs") %>% 
+  corrplot.mixed(order = "hclust", p.mat = cortest$p)
+
 
 ```
 
 
 ```{r}
-datamca <- 
-  selects1995 %>% 
-  select(matches("val[1-9]"), classh) %>% 
+acm <- 
+selects1999 %>% 
+  select(state_vs_market, join_eu, lower_t_hi, for_soc_exp, eq_chance_for, env_vs_growth, quest_trad, again_nucl, sex, income_hh, educ, religion, sg1, class8) %>% 
   as_character() %>% 
   as_factor() %>% 
-  drop_na()
+  dudi.acm(scannf = FALSE, nf = 5)
 ```
-
 
 ```{r}
-mca <- MCA(datamca)
-fviz_cos2(mca, choice = "var", axes = 2)
-fviz_mca_var(mca, col.var = "contrib",
-             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"), 
-             repel = TRUE, # avoid text overlapping (slow)
-             ggtheme = theme_minimal()
-             )
+fviz_screeplot(acm, choice = "eigenvalue")
+fviz_screeplot(acm)
+s.corcircle(acm$co, 1, 2, clabel = 0.7)
+fviz_mca_var(acm, repel = TRUE)
+fviz_contrib(acm, choice = "var", axes = 1)
+s.label(acm$co, clabel = 0.7)
 ```
 
+```{r}
+summary(ordreg <- polr(data = selects1999, as_factor(join_eu) ~ income_hh + educ + factor(sex), Hess = TRUE))
 
-
-
-
-
-
-
-
+#Plotting the effects 
+library("effects")
+library(ordinal)
+summary(ordreg2 <- clm(data = selects1999, as_factor(join_eu) ~ income_hh + educ + factor(sex), Hess = TRUE))
+```
 
