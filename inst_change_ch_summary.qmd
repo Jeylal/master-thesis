@@ -1,0 +1,40 @@
+---
+title: "Institutional Change in Switzerland"
+format: html
+editor: visual
+---
+
+## A short summary of Switzerland's institutional change since the first constitution (1848)
+
+
+- Fall of the Swiss Old Regime in 1798. The Swiss Confederation, created in the 14th century after a revolt against the Habsburg empire, is defeated by Swiss and French revolutionaries. An important process of power centralization and state modernization takes place. However, the centralization process is limited after the Napoleon's Act of Mediation signed in 1803, which assures the federalist component of the Swiss state.
+
+- In the first half of the 19th century, the conflict between Radicals, liberals in favor of a stronger and centralized Swiss state and the Conservative, Catholics and Federalists against the centralization of the Swiss state, is predominant. This conflict triggered the civil war (1848) which led to the first Swiss constitution. The latter is mostly elaborated by the victorious Radicals who were in a hegemonic situation. However, the constitution still represents a compromise between the conservative-catholics and the radicals/liberals protestants and the conflict between these two groups over the degree of power to give to Swiss state.
+
+- 1866: a first revision of the constitution is voted. The reforms aimed to strengthen the centralization of the Swiss state. Only one reform will be accepted: the one allowing freedom of establishment for Jews.
+
+- 1874: a new constituted is accepted and allows for referendum right.
+
+- 1877: first intervention of the Swiss state on labor legislation. The *law on the fabrics* is voted and accepted by the double majority. This law aimed at improving working conditions of fabrics' workers. For instance, the law limits working hours to 11 hours a day and prohibits labor for children under the age of 14. It also imposes sanitary and protection measures for workers^[1].
+
+- 1888: creation of the Swiss socialist party (ssp) while the Radicals were trying to disguise themselves as liberals with a socialist/progressist side to distinguish themselves with the conservatives. The Radicals were thus overwhelmed on their left.
+
+
+[1]: see https://www.parlament.ch/fr/services/suche-blog/fabrik 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

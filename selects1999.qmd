@@ -1,4 +1,9 @@
-# Summary
+---
+title: "Selects 1999 analysis"
+format: html
+editor: visual
+---
+
 
 
 
@@ -30,7 +35,7 @@ selects1999 <-
   selects %>% 
   filter(year == 1999)
 
-freq(selects1999$vdn1b)
+freq(selects1999$income_hh)
 
 ```
 
@@ -75,12 +80,12 @@ freq(selects1999$lr1)
 
 cortest <- 
   selects1999 %>% 
-  select(state_vs_market, join_eu, lower_t_hi, for_soc_exp, eq_chance_for, env_vs_growth, quest_trad, again_nucl, income_hh, educ, lr1) %>% 
+  dplyr::select(state_vs_market, join_eu, lower_t_hi, for_soc_exp, uneq_chance_for, env_vs_growth, quest_trad, again_nucl, income_hh, educ, lr1) %>% 
   cor(method = "spearman", use = "complete.obs") %>% 
   cor.mtest()
 
 selects1999 %>% 
-  select(state_vs_market, join_eu, lower_t_hi, for_soc_exp, eq_chance_for, env_vs_growth, quest_trad, again_nucl, income_hh, educ, lr1) %>% 
+  dplyr::select(state_vs_market, join_eu, lower_t_hi, for_soc_exp, uneq_chance_for, env_vs_growth, quest_trad, again_nucl, income_hh, educ, lr1) %>% 
   cor(method = "spearman", use = "complete.obs") %>% 
   corrplot.mixed(order = "hclust", p.mat = cortest$p)
 
@@ -91,7 +96,7 @@ selects1999 %>%
 ```{r}
 acm <- 
 selects1999 %>% 
-  select(state_vs_market, join_eu, lower_t_hi, for_soc_exp, eq_chance_for, env_vs_growth, quest_trad, again_nucl, sex, income_hh, educ, religion, sg1, class8) %>% 
+  dplyr::select(state_vs_market, join_eu, lower_t_hi, for_soc_exp, uneq_chance_for, env_vs_growth, quest_trad, again_nucl, sex, income_hh, educ, religion, sg1, class8) %>% 
   as_character() %>% 
   as_factor() %>% 
   dudi.acm(scannf = FALSE, nf = 5)
@@ -107,11 +112,7 @@ s.label(acm$co, clabel = 0.7)
 ```
 
 ```{r}
-summary(ordreg <- polr(data = selects1999, as_factor(join_eu) ~ income_hh + educ + factor(sex), Hess = TRUE))
-
-#Plotting the effects 
-library("effects")
-library(ordinal)
-summary(ordreg2 <- clm(data = selects1999, as_factor(join_eu) ~ income_hh + educ + factor(sex), Hess = TRUE))
+summary(ordreg1 <- clm(data = selects1999, as_factor(join_eu) ~ income_hh + educ + state_vs_market + as_character(sex) + as_character(sc7c), Hess = TRUE))
 ```
+
 

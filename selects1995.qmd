@@ -1,0 +1,78 @@
+# Summary
+
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+rm(list = ls())
+library(tidyverse)
+library(haven)
+library(quarto)
+library(sjlabelled)
+library(corrplot)
+library(FactoMineR)
+library(factoextra)
+library(ade4)
+library(questionr)
+library(foreign)
+library(MASS)
+library("effects")
+library(ordinal)
+selects1995 <- read_sav("data/64_Selects1995_PES_Data_v1.2.sav")
+```
+
+
+```{r}
+
+
+```
+
+
+```{r}
+freq(selects1999$lr1)
+
+cortest <- 
+  selects1995 %>% 
+  dplyr::select(matches("val[1-9]")) %>% 
+  cor(method = "spearman", use = "complete.obs") %>% 
+  cor.mtest()
+
+selects1995 %>% 
+  dplyr::select(matches("val[1-9]")) %>% 
+  cor(method = "spearman", use = "complete.obs") %>% 
+  corrplot.mixed(order = "hclust")
+
+
+freq(selects1995$income)
+
+```
+
+```{r}
+acm <- 
+selects1999 %>% 
+  select(state_vs_market, join_eu, lower_t_hi, for_soc_exp, eq_chance_for, env_vs_growth, quest_trad, again_nucl, sex, income_hh, educ, religion, sg1, class8) %>% 
+  as_character() %>% 
+  as_factor() %>% 
+  dudi.acm(scannf = FALSE, nf = 5)
+```
+
+```{r}
+fviz_screeplot(acm, choice = "eigenvalue")
+fviz_screeplot(acm)
+s.corcircle(acm$co, 1, 2, clabel = 0.7)
+fviz_mca_var(acm, repel = TRUE)
+fviz_contrib(acm, choice = "var", axes = 1)
+s.label(acm$co, clabel = 0.7)
+```
+
+```{r}
+summary(ordreg <- polr(data = selects1999, as_factor(join_eu) ~ income_hh + educ + factor(sex), Hess = TRUE))
+
+#Plotting the effects 
+library("effects")
+library(ordinal)
+summary(ordreg2 <- clm(data = selects1999, as_factor(join_eu) ~ income_hh + educ + factor(sex), Hess = TRUE))
+```
+
