@@ -86,6 +86,8 @@ selects1995 <-
                         if_else(is.na(lr_recoded), NA, 0))
   )
 
+selects1995$age_cat <- cut(selects1995$age, c(18, 30, 45, 65, 99), right = FALSE, include.lowest = TRUE)
+
 ```
 
 
@@ -104,5 +106,9 @@ selects1995 %>%
 ```
 
 
+```{r}
+setwd("F:/master-thesis/data")
+write_sav(selects1995, "selects1995_recoded.sav")
+```
 
 
