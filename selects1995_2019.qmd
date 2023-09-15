@@ -1,0 +1,284 @@
+# Summary
+
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+library(haven)
+library(quarto)
+library(sjlabelled)
+library(corrplot)
+library(FactoMineR)
+library(factoextra)
+library(ade4)
+library(questionr)
+library(foreign)
+library(MASS)
+library("effects")
+library(ordinal)
+library(DIGCLASS)
+
+```
+
+
+```{r}
+rm(list = ls())
+selects1995 <- read_sav("data/64_Selects1995_PES_Data_v1.2.sav")
+selects1995cum <- read_sav("data/495_Selects_CumulativeFile_Data_1971-2019_v2.3.0.sav") %>% 
+  filter(year == 1995)
+```
+
+
+```{r}
+## adding variables from cumulative dataset to original dataset
+
+selects1995 <- 
+  selects1995 %>% 
+  mutate(
+    income = selects1995cum$income,
+    income_hh = selects1995cum$income_hh,
+    educ = selects1995cum$educ
+  ) %>% 
+  rename(
+    inc = "q179",
+    education = "q103",
+    lr = "q35",
+    occupation = "q104",
+    confession = "q98",
+    religiosity = "q99",
+    for_ag_army = "q69",
+    for_ag_socspend = "q71",
+    for_ag_eu = "q73",
+    for_ag_foreign = "q75",
+    for_ag_trad = "q77",
+    for_ag_sec = "q79",
+    for_ag_growth_over_env = "q81",
+    for_ag_lthi = "q83",
+    for_ag_nucl = "q85"
+  ) %>% 
+  mutate(
+    education = if_else(education == 9, NA, education),
+    private = if_else(q107 == 1, 1, 0),
+    public = if_else(q107 == 2, 1, 0),
+    retired_or_rent = if_else(occupation %in% c(6, 7), 1, 0),
+    gender = case_when(
+      sex == 1 ~ 0,
+      sex == 2 ~ 1
+    ),
+    lab_union = if_else(q100 == 1, 1, 0),
+    lr_recoded = case_when(
+      lr %in% c(0,1,2) ~ "left",
+      lr %in% c(3,4) ~ "center_left",
+      lr == 5 ~ "center",
+      lr %in% c(6,7) ~ "center_right",
+      lr %in% c(8, 9, 10) ~ "right"
+    ),
+    left = if_else(lr_recoded == "left", 1,
+                      if_else(is.na(lr_recoded), NA, 0)),
+    center_left = if_else(lr_recoded == "center_left", 1,
+                      if_else(is.na(lr_recoded), NA, 0)),
+    center = if_else(lr_recoded == "center", 1,
+                      if_else(is.na(lr_recoded), NA, 0)),
+    center_right = if_else(lr_recoded == "center_right", 1,
+                      if_else(is.na(lr_recoded), NA, 0)),
+    right = if_else(lr_recoded == "right", 1,
+                        if_else(is.na(lr_recoded), NA, 0))
+  )
+
+selects1995$age_cat <- cut(selects1995$age, c(18, 30, 45, 65, 99), right = FALSE, include.lowest = TRUE)
+
+```
+
+
+```{r}
+cortest <- 
+  selects1995 %>% 
+  dplyr::select(matches("val[1-9]")) %>% 
+  cor(method = "spearman", use = "complete.obs") %>% 
+  cor.mtest()
+
+selects1995 %>% 
+  dplyr::select(matches("val[1-9]")) %>% 
+  cor(method = "spearman", use = "complete.obs") %>% 
+  corrplot.mixed(order = "hclust")
+
+```
+
+
+```{r}
+setwd("F:/master-thesis/data")
+write_sav(selects1995, "selects1995_recoded.sav")
+```
+
+## 2019 selects data recoding
+
+
+```{r}
+rm(list = ls())
+selects2019 <- read_sav("data/1184_Selects2019_Panel_Data_v4.0.sav")
+selects2019cum <- read_sav("data/495_Selects_CumulativeFile_Data_1971-2019_v2.3.0.sav") %>% 
+  filter(year == 2019)
+```
+
+```{r}
+selects2019_recoded <- 
+  selects2019 %>%
+    rename(
+        fa_bilagr_eu = "W1_f15340a",
+        fa_immigration = "W1_f15340b",
+        fa_childcare = "W1_f15340c",
+        fa_env_prot = "W1_f15340d",
+        fa_econ_comp = "W1_f15340e",
+        fa_socspend = "W1_f15420",
+        fa_eu_memb = "W1_f15430",
+        fa_state_int = "W1_f15435",
+        fa_opp_foreign = "W1_f15440",
+        fa_env_vs_growth = "W1_f15470",
+        fa_taxes_hi = "W1_f15480",
+        fa_trad_vs_modern = "W1_f15485",
+        fa_67retirement = "W1_f15811",
+        fa_franchise = "W1_f15813",
+        fa_inst_eu = "W1_f15640",
+        fa_cohesion_bil = "W1_f15642",
+        income = "W1_f28910",
+        educ = "W1_f21310",
+        church_att = "W1_f20900",
+        lr = "W1_f15200",
+        language = "W1_spr",
+        vote_int2019 = "W1_f1085_90main6",
+        party_close = "W1_f14010main6",
+        sector = "W1_f21700"
+        
+    ) %>% 
+mutate(
+  retired = if_else(W1_f21400 == 5, 1, 
+                    if_else(is.na(W1_f21400), NA, 0)),
+  lr_recoded = case_when(
+    lr %in% c(0, 1, 2) ~ "left",
+    lr %in% c(3, 4) ~ "center_left",
+    lr %in% c(5) ~ "center",
+    lr %in% c(6, 7) ~ "center_right",
+    lr %in% c(8, 9, 10) ~ "right"
+  ),
+  left = if_else(lr_recoded == "left", 1, 
+                 if_else(is.na(lr_recoded), NA, 0)),
+  center_left = if_else(lr_recoded == "center_left", 1, 
+                 if_else(is.na(lr_recoded), NA, 0)),
+  center = if_else(lr_recoded == "center", 1, 
+                 if_else(is.na(lr_recoded), NA, 0)),
+  center_right = if_else(lr_recoded == "center_right", 1, 
+                 if_else(is.na(lr_recoded), NA, 0)),
+  right = if_else(lr_recoded == "right", 1, 
+                 if_else(is.na(lr_recoded), NA, 0)),
+  religion = case_when(
+    W1_f20750 == 2 ~ "no_religion",
+    W1_f20750 != 2 ~ as_character(W1_f20760)
+  ),
+  relig_att = case_when(
+    W1_f20750 == 2 ~ 0,
+    W1_f20750 != 2 ~ selects2019$W1_f20900
+  )
+)
+
+
+```
+
+## correlation issue positions variables
+```{r}
+selects2019_recoded %>% 
+  dplyr::select(matches("fa_.*"), "income", "educ") %>% 
+  cor(method = "spearman", use = "complete.obs") %>% 
+  corrplot.mixed(order = "hclust")
+```
+
+## recode issue position variables into 3 categories
+
+```{r}
+
+selects2019_recoded <- 
+selects2019_recoded %>% 
+  mutate(
+    rec_fa_67retirement = case_when(
+      fa_67retirement %in% c(1, 2) ~ "in_favor",
+      fa_67retirement %in% c(3) ~ "neither_nor",
+      fa_67retirement %in% c(4, 5) ~ "against"
+    ),
+    rec_fa_childcare = case_when(
+      fa_childcare %in% c(1, 2) ~ "in_favor",
+      fa_childcare %in% c(3) ~ "neither_nor",
+      fa_childcare %in% c(4, 5) ~ "against"
+    ),
+    rec_fa_econ_comp = case_when(
+      fa_econ_comp %in% c(1, 2) ~ "in_favor",
+      fa_econ_comp %in% c(3) ~ "neither_nor",
+      fa_econ_comp %in% c(4, 5) ~ "against"
+    ),
+    rec_fa_env_prot = case_when(
+      fa_env_prot %in% c(1, 2) ~ "in_favor",
+      fa_env_prot %in% c(3) ~ "neither_nor",
+      fa_env_prot %in% c(4, 5) ~ "against"
+    ),
+    rec_fa_eu_memb = case_when(
+      fa_eu_memb %in% c(1, 2) ~ "for_eu_integration",
+      fa_eu_memb %in% c(3) ~ "neither_nor",
+      fa_eu_memb %in% c(4, 5) ~ "against_eu_integration"
+    ),
+    rec_fa_immigration = case_when(
+      fa_immigration %in% c(1, 2) ~ "in_favor",
+      fa_immigration %in% c(3) ~ "neither_nor",
+      fa_immigration %in% c(4, 5) ~ "against"
+    ),
+    rec_fa_state_int = case_when(
+      fa_state_int %in% c(1, 2) ~ "more_state_intervention",
+      fa_state_int %in% c(3) ~ "neither_nor",
+      fa_state_int %in% c(4, 5) ~ "more_free_martket_comp"
+    ),
+    rec_fa_socspend = case_when(
+      fa_socspend %in% c(1, 2) ~ "for_reduction",
+      fa_socspend %in% c(3) ~ "neither_nor",
+      fa_socspend %in% c(4, 5) ~ "for_increase"
+    ),
+    rec_fa_taxes_hi = case_when(
+      fa_taxes_hi %in% c(1, 2) ~ "for_increase",
+      fa_taxes_hi %in% c(3) ~ "neither_nor",
+      fa_taxes_hi %in% c(4, 5) ~ "for_reduction"
+    )
+    
+  ) %>% 
+  drop_na(matches("rec_fa_.*"))
+```
+
+```{r}
+selects2019_recoded2 <- 
+selects2019_recoded %>% 
+  dplyr::select(matches("rec_fa_.*")) %>% 
+  as_numeric(keep.labels = TRUE)
+```
+
+
+```{r}
+freq(selects2019$W1_f15430)
+freq(selects2019_recoded2$rec_fa_econ_comp)
+freq(selects2019_recoded2$rec_fa_econ_comp)
+selects2019_recoded2 %>% 
+  count(as_character(rec_fa_econ_comp))
+```
+
+```{r}
+setwd("F:/master-thesis/data")
+write_sav(selects2019_recoded, "selects2019_recodedlca.sav")
+```
+
+
+
+
+
+
+
+
+
+
+
