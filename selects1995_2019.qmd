@@ -143,6 +143,7 @@ selects2019_recoded <-
         fa_franchise = "W1_f15813",
         fa_inst_eu = "W1_f15640",
         fa_cohesion_bil = "W1_f15642",
+        fa_eu_bil_agr = "W1_f15340a",
         income = "W1_f28910",
         educ = "W1_f21310",
         church_att = "W1_f20900",
@@ -189,7 +190,7 @@ mutate(
 ## correlation issue positions variables
 ```{r}
 selects2019_recoded %>% 
-  dplyr::select(matches("fa_.*"), "income", "educ") %>% 
+  dplyr::select(matches("fa_.*"), "income", "educ", "for_ag_bilagr") %>% 
   cor(method = "spearman", use = "complete.obs") %>% 
   corrplot.mixed(order = "hclust")
 ```
@@ -245,10 +246,22 @@ selects2019_recoded %>%
       fa_taxes_hi %in% c(1, 2) ~ "for_increase",
       fa_taxes_hi %in% c(3) ~ "neither_nor",
       fa_taxes_hi %in% c(4, 5) ~ "for_reduction"
+    ),
+    rec_fa_eu_bil_agr = case_when(
+      fa_eu_bil_agr %in% c(1, 2) ~ "in_favor",
+      fa_eu_bil_agr %in% c(3) ~ "neither_nor",
+      fa_eu_bil_agr %in% c(4, 5) ~ "against"
+    ),
+    rec_fa_env_vs_growth = case_when(
+      fa_env_vs_growth %in% c(1, 2) ~ "env_protec",
+      fa_env_vs_growth %in% c(3) ~ "neither_nor",
+      fa_env_vs_growth %in% c(4, 5) ~ "econ_growth"
     )
     
   ) %>% 
   drop_na(matches("rec_fa_.*"))
+
+
 ```
 
 ```{r}
@@ -260,11 +273,9 @@ selects2019_recoded %>%
 
 
 ```{r}
-freq(selects2019$W1_f15430)
-freq(selects2019_recoded2$rec_fa_econ_comp)
-freq(selects2019_recoded2$rec_fa_econ_comp)
-selects2019_recoded2 %>% 
-  count(as_character(rec_fa_econ_comp))
+freq(selects2019_recoded$fa_eu_bil_agr)
+freq(selects2019_recoded$rec_fa_eu_bil_agr)
+
 ```
 
 ```{r}
