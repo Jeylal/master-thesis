@@ -1,0 +1,265 @@
+---
+title: "Income and Voting at the Communal Level in Switerland: 2011-2019"
+author: "Celâl Güney"
+format: html
+editor: visual
+---
+
+```{r}
+setwd("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ofs_communal_voting")
+setwd("F:/master-thesis/data/ofs_communal_voting")
+
+```
+
+```{r}
+library(readr)
+library(tidyverse)
+plr_share_2011 <- read_delim("plr_share_2011.csv", delim = ";", escape_double = FALSE, trim_ws = TRUE)
+plr_share_2011$plr_share <- as.numeric(plr_share_2011$plr_share)
+```
+
+```{r}
+plr_share_2011$plr_share <- as.numeric(plr_share_2011$plr_share)
+```
+
+```{r}
+income_com_2011 <- read_delim("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ofs_communal_voting/income_com_2011.csv", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+
+income_com_2011 <- read_delim("income_com_2011.csv", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+
+income_2011 <- 
+  income_com_2011 %>% 
+  dplyr::select(GEO_ID, GEO_NAME ,VARIABLE, VALUE) %>% 
+  pivot_wider(names_from = "VARIABLE",
+              values_from = "VALUE") %>% 
+  rename(
+    net_income_mio = "Revenu net, en mio. de francs",
+    net_income_per_hab = "Revenu net par habitant/-e, en francs"
+  )
+
+```
+
+```{r}
+data_2011 <- 
+  income_2011 %>% 
+  left_join(plr_share_2011, by = c("GEO_NAME" = "Regionsname"))
+```
+
+```{r}
+data_2011 <- 
+data_2011 %>% 
+  mutate(perc = ntile(net_income_per_hab, 100),
+         decile = ntile(net_income_per_hab, 10))
+
+data_2011 %>% 
+  group_by(perc) %>% 
+  summarise(avg_share_plr = mean(plr_share, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  ggplot(aes(x = perc, y = avg_share_plr))+
+  geom_point()+
+  geom_line()
+
+
+```
+
+```{r}
+pdc_2011 <- read_delim("pdc_2011.csv", delim = ";", 
+    escape_double = FALSE, trim_ws = TRUE)
+```
+
+```{r}
+data_2011 <- 
+pdc_2011 %>% 
+  dplyr::select(GEO_ID, GEO_NAME, VALUE) %>% 
+  rename(share_pdc = "VALUE") %>% 
+  right_join(data_2011, by = "GEO_NAME")
+
+
+data_2011 %>% 
+  group_by(decile) %>% 
+  summarise(avg_share_pdc = mean(share_pdc, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  ggplot(aes(x = decile, y = avg_share_pdc))+
+  geom_point()+
+  geom_line()
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| include: false
+#| eval: false
+data_2011 <- 
+  pss_2011 %>% 
+  select(GEO_NAME, VALUE) %>% 
+  rename(pss_share = "VALUE") %>% 
+  left_join(data_2011, by = "GEO_NAME") 
+
+data_2011 <- 
+  udc_share %>% 
+  select(GEO_NAME, VALUE) %>% 
+  rename(udc_share = "VALUE") %>% 
+  left_join(data_2011, by = "GEO_NAME") 
+
+data_2011 <- 
+  pev_share %>% 
+  select(GEO_NAME, VALUE) %>% 
+  rename(pev_share = "VALUE") %>% 
+  left_join(data_2011, by = "GEO_NAME") 
+
+data_2011 <- 
+  pvl_share %>% 
+  select(GEO_NAME, VALUE) %>% 
+  rename(pvl_share = "VALUE") %>% 
+  left_join(data_2011, by = "GEO_NAME")
+
+data_2011 <- 
+  pbd_share %>% 
+  select(GEO_NAME, VALUE) %>% 
+  rename(pbd_share = "VALUE") %>% 
+  left_join(data_2011, by = "GEO_NAME")
+
+data_2011_long <- 
+  data_2011 %>% 
+  pivot_longer(cols = matches("[a-z]*_share|share_*"),
+               names_to = "party_share", values_to = "share")
+
+write.csv(data_2011, "data_voting2011.csv")
+write.csv(data_2011_long, "data_voting2011_long.csv")
+```
+
+```{r}
+data_2011 %>% 
+  group_by(perc) %>% 
+  summarise(avg_share_plr = mean(plr_share, na.rm = TRUE)) %>% 
+  ggplot()+
+  aes(x = perc, y = avg_share_plr)+
+  geom_line()+
+  geom_point()+
+  theme_minimal()
+
+data_2011 %>% 
+  group_by(perc) %>% 
+  summarise(avg_share_pss = mean(pss_share.x, na.rm = TRUE)) %>% 
+  ggplot()+
+  aes(x = perc, y = avg_share_pss)+
+  geom_line()+
+  geom_point()+
+  theme_minimal()
+
+data_2011 %>% 
+  group_by(perc) %>% 
+  summarise(avg_share_udc = mean(udc_share, na.rm = TRUE)) %>% 
+  ggplot()+
+  aes(x = perc, y = avg_share_udc)+
+  geom_line()+
+  geom_point()+
+  theme_minimal()
+
+data_2011 %>% 
+  group_by(perc) %>% 
+  summarise(avg_share_greens = mean(vert_share, na.rm = TRUE)) %>% 
+  ggplot()+
+  aes(x = perc, y = avg_share_greens)+
+  geom_line()+
+  geom_point()+
+  theme_minimal()
+
+data_2011 %>% 
+  group_by(perc) %>% 
+  summarise(avg_share_pst = mean(pst_sol_share, na.rm = TRUE)) %>% 
+  ggplot()+
+  aes(x = perc, y = avg_share_pst)+
+  geom_line()+
+  geom_point()+
+  theme_minimal()
+
+data_2011 %>% 
+  group_by(perc) %>% 
+  summarise(avg_share_pbd = mean(pbd_share, na.rm = TRUE)) %>% 
+  ggplot()+
+  aes(x = perc, y = avg_share_pbd)+
+  geom_line()+
+  geom_point()+
+  theme_minimal()
+```
+
+```{r}
+data_2011_long %>% 
+  group_by(decile, party_share) %>% 
+  summarise(avg_share = mean(share, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  ggplot()+
+  aes(x = decile, y = avg_share, color = party_share)+
+  geom_line()
+```
+
+```{r}
+income_2015 <- 
+  net_dispo_inc_comm_2015 %>% 
+  dplyr::select(GEO_ID, GEO_NAME ,VARIABLE, VALUE) %>% 
+  pivot_wider(names_from = "VARIABLE",
+              values_from = "VALUE") %>% 
+  rename(
+    net_income_mio = "Revenu net, en mio. de francs",
+    net_income_per_hab = "Revenu net par habitant/-e, en francs"
+  )
+```
+
+```{r}
+data_2015 <- 
+  share_pes_2015 %>% 
+  select(GEO_NAME, VALUE) %>% 
+  rename(pes = "VALUE") %>% 
+  left_join(data_2015, by = "GEO_NAME")
+
+data_2015 <- 
+  data_2015 %>% 
+  mutate(
+    decile = ntile(net_income_per_hab, 10),
+    percentile = ntile(net_income_per_hab, 100)
+  )
+
+write.csv(data_2015_long, "data_2015_long.csv")
+
+data_2015_long <- 
+  data_2015 %>% 
+  pivot_longer(cols = pes:plr,
+               names_to = "party", values_to = "share")
+```
+
+
+
+
+
+
+```{r}
+data_2015_long %>% 
+  filter(party %in% c("plr", "udc", "pss")) %>% 
+  group_by(percentile, party) %>% 
+  summarise(avg_share = mean(share, na.rm = TRUE)) %>% 
+  ggplot()+
+  aes(x = percentile, y = avg_share, color = party, shape = party)+
+  geom_line()+
+  geom_point()+
+  theme_minimal()
+
+data_2015_long %>% 
+  filter(party %in% c("pvl")) %>% 
+  group_by(percentile, party) %>% 
+  summarise(avg_share = mean(share, na.rm = TRUE)) %>% 
+  ggplot()+
+  aes(x = percentile, y = avg_share, color = party, shape = party)+
+  geom_line()+
+  geom_point()+
+  theme_minimal()
+```
+
+
+
+
+
+
