@@ -1,7 +1,5 @@
 # Abstract {.unnumbered}
 
-This is my master thesis
-
-Switzerland is known for its political, economic and social stability. However, this country still underwent gradual and steady institutional change in the last decades. 
+What are the relationships between political cleavages, the formation of social blocs and socio-economic characteristics such as income and education? The present master theses conducts a first analysis of the links between socio-economic factors, the formation of socio-political groups and social blocs, and of political cleavages. After assessing country's political stability in the last decades, a long-run analysis of the socio-economic determinants of voting outcomes for the main Swiss social blocs are conducted. Finally, two latent class analysis are conducted to identify socio-political groups and to what extent the latter conflate with socio-economic groups. This master thesis is the first work to conduct such an analysis for Switzerland, and the aim of this work is to provide a first step into a overall analysis of the political economy of institutional change in Switzerland, using the neorealist approach.
 
 

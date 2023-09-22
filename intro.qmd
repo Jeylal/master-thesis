@@ -1,6 +1,5 @@
 # Introduction
 
-This is my master thesis!
 
 ```{r}
 #| echo: false
@@ -12,3 +11,14 @@ library(quarto)
 library(sjlabelled)
 
 ```
+
+## The growing importance of political cleavages, social conflict and institutional change
+
+Part of the recent political economy literature developed a tremendous analysis of the long-run transformations of political cleavages in almost all democratic countries around the globe. Following the now well-known success of inequality studies in economics and social sciences since the work of, naturally, @piketty_capital_2014 but also of @milanovic_global_2016 and others, economists are recently shifting their attention towards social conflict and political cleavages within capitalist economies.
+
+One possible explanation of this sudden interest could be the following paradox: increasing inequality and neoliberal reforms which took place in the last decades did not pave the way mechanically for growing support for redistribution or left-wing parties. The same paradox could also be stressed for climate change since green parties were not relatively so successful despite the growing emergencies associated with environmental issues.
+
+This sudden interest thus gave birth to an ambitious project mostly conducted by economists under the supervision of Piketty. @gethin_political_2021 give a wide and broad analysis of political preferences as functions of socio-economic factors such as income, education, wealth, gender, religion and so on. This kind of project shows that economists are tackling with a subject that political scientists have been studying for decades, at least from *Lipset and Rokkan*. The main findings of @gethin_political_2021 can be summarized as follows: after the post-war period, political cleavages were structured around a single left-right axis structured around class conflict over economic issues. The support for the left was based on average on low income and education voters whereas the support for the right was correlated positively with income and education.
+
+
+

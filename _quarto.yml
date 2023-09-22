@@ -10,7 +10,6 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - summary.qmd
     - references.qmd
 
 title-block-banner: true
@@ -25,6 +24,7 @@ format:
   pdf:
     documentclass: scrreprt
     classoption: nottoc
+    link-citations: TRUE
     toc: true
     toc-depth: 3
     lof: true
