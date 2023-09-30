@@ -1,0 +1,173 @@
+---
+title: "Voto Analysis"
+author: "Celâl Güney"
+format: html
+editor: visual
+---
+
+```{r set up packages}
+#| echo: false
+#| warning: false
+#| message: false
+rm(list = ls())
+library(haven)
+library(sjlabelled)
+library(tidyverse)
+library(viridis)
+library(stargazer)
+library(gtsummary)
+library(gt)
+library(ggrepel)
+library(cowplot)
+library(ggpubr)
+library(lme4)
+library(prediction)
+library(marginaleffects)
+library(ggeffects)
+library(ordinal)
+library(broom)
+library(knitr)
+library(arm)
+library(naniar)
+library(performance)
+library(see)
+library(questionr)
+library(DescTools)
+theme_set(theme_bw())
+```
+
+
+```{r load dataset}
+#| echo: false
+#| warning: false
+#| message: false
+voto <- read_sav("F:/master-thesis/data/1231_VOTO_CumulativeDataset_Data_scrutin_v1.0.0.sav")
+
+```
+
+```{r}
+voto %>% 
+  group_by(year) %>% 
+  count(is.na(reportingcanton)) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  ungroup() 
+
+
+freq(voto$religion)
+freq(voto$reportingcanton
+     )
+```
+
+
+```{r party dummies}
+#| echo: false
+#| warning: false
+#| message: false
+
+voto$svp <- if_else(voto$party == 1, 1,
+                   if_else(voto$party %in% c(98, 99), NA, 0))
+
+voto$sp <- if_else(voto$party == 2, 1,
+                   if_else(voto$party %in% c(98, 99), NA, 0))
+
+voto$fdp <- if_else(voto$party == 3, 1,
+                   if_else(voto$party %in% c(98, 99), NA, 0))
+
+voto$cvp <- if_else(voto$party == 4, 1,
+                   if_else(voto$party %in% c(98, 99), NA, 0))
+
+voto$greens <- if_else(voto$party == 5, 1,
+                   if_else(voto$party %in% c(98, 99), NA, 0))
+
+voto$greensL <- if_else(voto$party == 6, 1,
+                   if_else(voto$party %in% c(98, 99), NA, 0))
+
+voto$no_affiliation <-  if_else(voto$party == 96, 1,
+                   if_else(voto$party %in% c(98, 99), NA, 0))
+
+
+
+```
+
+
+```{r recoding for NAs}
+voto <- voto %>% 
+  mutate(
+    inc = if_else(income %in% c(98, 99), NA, income),
+    inc2 = inc - median(inc, na.rm = TRUE),
+    education = if_else(educ %in% c(98, 99), NA, educ),
+    religion = case_when(
+      confess == 9 ~ NA,
+      confess_d == 2 ~ "no_religion",
+      confess_d == 1 ~ as_character(confess)
+    ),
+    self_employed = if_else(acti == 1, 1,
+                            if_else(acti %in% c(98,99), NA, 0)),
+    employee = if_else(acti == 3, 1,
+                            if_else(acti %in% c(98,99), NA, 0)),
+    retired = if_else(acti == 7, 1,
+                            if_else(acti %in% c(98,99), NA, 0)),
+    age = year - birthyear,
+    public = if_else(s17_sector == 2, 1,
+                     if_else(is.na(s17_sector), NA, 0)),
+    jobposition = if_else(s17_jobposition %in% c(98, 99), NA, s17_jobposition),
+    canton = factor(as_character(reportingcanton)),
+    year_f = factor(year),
+  ) %>% 
+  group_by(year) %>% 
+  mutate(
+    scale_inc = RobScale(inc),
+    scale_educ = RobScale(education),
+    scale_age = scale(age)
+  ) %>% 
+  ungroup()
+
+voto$age_cat <- cut(voto$age, c(18, 25, 45, 65, 99), right = FALSE, include.lowest = TRUE)
+
+
+voto2017_20 <- voto %>% filter(year %in% c(2017:2020))
+```
+
+
+```{r reg socialist party}
+reg_sp <- glmer(data = voto2017_20[voto2017_20$year == 2017,],
+                sp ~ -1 + scale_inc + scale_educ + scale_age + public + retired + (1 | canton),
+                family = binomial(link = "probit"))
+
+summary(reg_sp)
+```
+
+
+
+```{r}
+summary(reg_sp <- glm(data = voto,
+                     sp ~ inc2 + education + age + year_f,
+                     family = binomial(link = "probit")))
+
+summary(reg_svp <- glm(data = voto,
+                     svp ~ inc2 + education + age + year_f,
+                     family = binomial(link = "probit")))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
