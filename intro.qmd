@@ -11,6 +11,8 @@ library(sjlabelled)
 
 ```
 
+## The Swiss model under pressure
+
 Switzerland represents an interesting case study for the analysis of institutional change. Despite some widespread *clichés*, such as the supposed slowness and rigidity of the Swiss political system, the country experienced important institutional, economic, as well as political change in the last decades. The Swiss model of capitalism is also difficult to classify in the varieties of capitalism (VoC) framework. @hall_varieties_2001 typically ranked Switzerland among the coordinated market economies (CMEs). Despite the structural weakness of the Swiss federal state, the low density of labor union and the predominance of business interests, Switzerland's economy developed various non-market and non-competitive coordination mechanisms throughout the 20th century. One can think of, for instance, the cartelization of major Swiss industries which was actively supported by the state through public subsidies in the interwar period [see @boillat_controler_2011 for the case of the Swiss watch industry] or the creation and expansion of the Swiss welfare state after the Second World war, even though the latter remains small compared to other welfare state regimes [@obinger_federalism_1998]. Swiss corporate governance also displayed strong differences from a market-based, shareholder-oriented system which typically prevails in Anglo-Saxon countries. Until the mid-1980s, Swiss corporate governance was characterized by self-regulation by private actors with minimal legal framework, protection and "selective protectionism" (*Vinkulierung*) in favor of Swiss shareholders and blockholders and strong cooperation between business actors, associations and networks [@mach_transformations_2007].
 
 According to Katzenstein [-@katzenstein_small_1985], small European states like Switzerland were likely to develop such coordinated and corporatist institutions. In fact, small domestic markets, international competitive pressure and the structural weakness of small states make the latter likely to develop some forms of "democratic corporatism". But among democratic corporatism systems, Katzenstein still stressed that Switzerland could be classified as a "liberal variant" due to weak labor unions and the dominance of employer's associations.
@@ -19,19 +21,116 @@ Therefore, Swiss capitalism represents a peculiar case with both liberal and non
 
 However, since the global neoliberal turn of the late 20th, the SHM is under pressure and is gradually mutating into a neoliberal type of capitalism [@trampusch_switzerland_2011]. The so-called "structural reforms" advocated by international organizations such as the OECD, but also promoted internally by various Swiss actors, led to subsequent waves of neoliberal reforms in almost all institutional areas. The reforms went from competitive policies such as the *Swiss Cartel Act* ("Carta") of 1995, which aimed at limiting or even suppressing cartels and to strengthen competition, to privatizations like the partial privatization of the PTT (*Poste, téléphone et télégraphe*) in the late 1980s. Regarding corporate governance, the *Stock Corporation law* of 1991 and the *Federal Act on Stock Exchange and Securities Trading* (SESTA) of 1995, among other reforms, marked the beginning of the convergence of the so-called traditional *"Forteresse des Alpes"* ("Alps Fortress") Swiss financial and corporate governance system towards the liberal Anglo-Saxon model [@david_forteresse_2015].
 
-The neoliberal transformation of the Swiss socio-economic model is nonetheless far from complete and has met some resistance, according to some observers. For instance, the waves of privatization encountered some resistance in the energy sector since the *law on the electricity market* was rejected through popular vote in 2002. The future of the Swiss energy sector, which remains largely public, is subject to heated debates given the deterioration of international context since the Covid crisis and the war in Ukraine[^1].
+The neoliberal transformation of the Swiss socio-economic model is nonetheless far from complete and has met some resistance, according to some observers. For instance, the waves of privatization encountered some resistance in the energy sector since the *law on the electricity market* was rejected through popular vote in 2002. The future of the Swiss energy sector, which remains largely public, is subject to heated debates given the deterioration of international context since the Covid crisis and the war in Ukraine[^intro-1].
+
+[^intro-1]: See for example the "seven good reasons" to privatize the electricity sector by *Avenir Suisse* [@grunenfelder_7_2022].
 
 On the one hand, the Swiss advocates of neoliberalism are still unsatisfied with the progress of the reforms and are keen on underlying the remaining rigidities of the Swiss Hybrid Model. In that respect, Gerhard Schwarz, director of the neoliberal think thank *Avenir Suisse* between 2011 and 2015, and co-author of the so-called "white books", which were the first manifesto promoting a neoliberal transformation of the Swiss model in the 1990s [@leutwiler_politique_1991; @hauser_ayons_1996], declared in 2015:
 
 > "It is absurd to believe that we live in a liberal society. The Swiss politico-economic system is mixed, as evidenced by the share of the state, compulsory levy, of 40%. The production of norms and reglementations grows exponentially. I am always surprised by the amount of people who still believe that we are in a neoliberal world. This is a *fake news*. The size of the state grows and the autonomony of the individual declines." [@noauthor_gerhard_2019, my translation]
 
-On the other hand, the OECD still underlines the "barriers to free trade and competition in the domestic market" and the overdue of the pension reforms [@oecd_oecd_2022, p.12]. 
+On the other hand, the OECD still underlines the "barriers to free trade and competition in the domestic market" and the overdue of the pension reforms [@oecd_oecd_2022, p.12].
 
 Since the break-up of the post-war keynesian "historical compromise" between the Swiss Socialist Party (SSP) and the traditional right parties during the so-called "decade of all dangers" of the 90s [@boschetti_conquete_2007], the neoliberal transformation of the HSM was also followed by important political change. The Swiss political scene is still marked by the rise of the Swiss People Party (SVP), one of the most successful far-right populist parties in Europe. The electoral success of the SVP is associated with the destabilization of the traditional right bloc, which entered a phase of "cacophonic" crisis [@meuwly_liberte_2008] which still persists in the early 2020s.
 
-The extent to which the Swiss model will complete its mutation towards a neoliberal model represents thus a fundamental economic, political and institutional issue for the years to come. A thorough and non-normative analysis of the path taken by the Swiss model since the crisis of the 1990s is thus duly needed and is behind the motivation of the present paper. What kind of social base made this neoliberal transformation of the Swiss socio-economic model possible in the last decades? Is this social base stable enough to complete this transformation? The aim of this essay is to conduct an analysis which would constitute a first step into a broader and comprehensive investigation of the political economy of institutional change in Switzerland. Far from the normative approach of mainstream economics, for which structural reforms simply constitute the sole and evident path towards its ideal model of perfect competition purged from rigidities, the methods and theory employed here are extensively based on the political economy approach of institutional change developed by Amable and Palombarini [-@amable_leconomie_2005; -@amable_neorealist_2008]. 
+The extent to which the Swiss model will complete its mutation towards a neoliberal model represents thus a fundamental economic, political and institutional issue for the years to come. A thorough and non-normative analysis of the path taken by the Swiss model since the crisis of the 1990s is thus duly needed and is behind the motivation of the present paper. What kind of social base made this neoliberal transformation of the Swiss socio-economic model possible in the last decades? Is this social base stable enough to complete this transformation? The aim of this essay is to conduct an analysis which would constitute a first step into a broader and comprehensive investigation of the political economy of institutional change in Switzerland. Far from the normative approach of mainstream economics, for which structural reforms simply constitute the sole and evident path towards its ideal model of perfect competition purged from rigidities, the methods and theory employed here are extensively based on the political economy approach of institutional change, neorealism, developed by Amable and Palombarini [-@amable_leconomie_2005; -@amable_neorealist_2008]. Until now, neorealism has been first and foremost applied to Italy and France. The present contribution seeks to expand the scope to the Swiss case by focusing on the links between political cleavages, the formation and evolution of social blocs, and socio-economic factors such as income and education. In fact, since a whole analysis of the Swiss case from a neorealist approach by far outflanks the scope of a master thesis, the latter will be limited to (1) identifying the periods of political stability and crises of the Swiss model; (2) conduct an empirical analysis of the links between socio-economic factors and voting outcomes and (3) perform an identification of the main Swiss social blocs and their evolution since the 1970s.
 
-After assessing the political and economic stability of the Swiss socio-economic model in the last decades, an empirical analysis of the structure and evolution of the Swiss social blocs since the 90s will be conducted in two parts. On the one hand, a long-run analysis of voting outcomes depending on socio-economic characteristics is conducted. The objective is to identify the social structure of the support for each main Swiss party and how the latter evolved from the 1980s to the 2020s. This part offers the opportunity to test findings of the literature about the links between socio-demographic characteristics, voting outcomes and political cleavages.
+## Political stability and crises in Switzerland
+
+The first step towards a neorealist analysis of Switzerland is to assess the country's socio-political stability. Relatively to Italy and France, which underwent deep periods of political crisis in the last decades, Switzerland's political stability is rather remarkable. This stability should, at first sight, not constitute a surprise: Switzerland ranks consistently top among the best performing economies in a wide variety of socio-economic indicators: GDP per capita, Human Living Index (HDI), or even the Economic Complexity Index (ECI)[^intro-2]. If one considers confidence in government as a good indicator of political stability, and if one looks at the data provided by the OECD on that matter, Switzerland indeed stands out as one of the most stable countries in the OECD.
 
 
-[^1]: See for example the "seven good reasons" to privatize the electricity sector by *Avenir Suisse* [@grunenfelder_7_2022].
+```{r oecd trust}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-cap: "Share of people who report having confidence in the national government. Data source: OECD"
+#| label: fig-trust1
+
+# OECD (2023), "Trust in government" (indicator), https://doi.org/10.1787/1de9675e-en (accessed on 08 October 2023)
+# https://www.oecd-ilibrary.org/governance/trust-in-government/indicator/english_1de9675e-en 
+
+oecd_trust_gov <- read_csv("F:/master-thesis/data/oecd_trust_gov.csv")
+
+
+oecd_trust_gov %>% 
+  filter(LOCATION %in% c("CHE", "FRA", "DEU", "ITA", "SWE", "GBR", "USA")) %>% 
+  ggplot()+
+  aes(x = TIME, y = Value, color = LOCATION, shape = LOCATION)+
+  geom_line()+
+  geom_point()+
+  theme_bw()+
+  scale_x_continuous(breaks = 2006:2022)+
+  scale_color_brewer(palette = "Set1")+
+  labs(title = "Political Stability across OECD countries",
+       subtitle = "Trust in National Government: 2006-2022",
+       y = "%", x = "",
+       caption = "")+
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 60, vjust = 1, hjust = 1))
+
+```
+
+@fig-trust1 shows political stability as measured by the share of respondents who declared having trust in national government in a sample of OECD countries from 2006 to 2022. Switzerland shows the highest level of trust among the countries shown in the figure. Swiss trust in government shows an upward trend since 2009 and the share of Swiss respondents declaring trust in government is consistently equal or above 80% since 2016. This stands in sharp contrast with Italy, France or the US, which show low level of trust. The latter can be interpreted as a reflection of the persistent political crisis in which France and Italy are plunged. The origins of the Italian crisis goes back to 1992, when the the dominant social bloc (DBS) constituted by an alliance between small and large firms, the public sector and classes dependent on transfers (the employees of the large industries being excluded from the DBS) broke-up [@palombarini_rupture_2001]. In France, the crisis corresponds to the instability of the traditional left and right blocs until their final collapse and the rise of a *bourgeois bloc* in the 2017 elections.
+
+
+
+
+
+```{r import voxit}
+#| warning: false
+#| message: false
+#| echo: false
+voxit <- read_sav("data/voxit.sav")
+
+```
+
+```{r voxit table trust}
+#| warning: false
+#| message: false
+#| echo: false
+voxit %>% 
+  group_by(annee) %>% 
+  count(a22) %>% 
+  drop_na() %>% 
+  mutate(prop = n/sum(n),
+         n_sample = sum(n)) %>% 
+  ungroup() %>% 
+  filter(a22 == 1) %>% 
+  mutate(se = sqrt(prop*(1-prop)/n),
+         lower = prop - qnorm(.975)*se,
+         upper = prop + qnorm(.975)*se) -> trust_gov
+
+```
+
+```{r voxit plot trust}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-cap: "95% error bars. Data source: Voxit"
+#| label: fig-trust2
+
+trust_gov %>% 
+  ggplot()+
+  aes(x = factor(annee), y = prop, label = scales::percent(round(prop, 4)))+ 
+  geom_col(fill = "darkred", alpha = 0.8)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1), expand = c(0, 0))+
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3, position = position_dodge(width = .9))+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 50, vjust = 1, hjust=1),
+        text = element_text(size = 11))+
+  xlab("")+
+  ylab("")+
+  labs(title = "Confidence in Government",
+       subtitle = "Switzerland, 1981-2016")
+```
+
+
+
+
+
+
+
+
+[^intro-2]: In 2018, Switzerland ranks third in terms of GDP per capita corrected for purchasing power parity among OECD countries [@oecd_oecd_2019, p.14]. Switzerland had also the highest HDI in 2021 [@nations_human_2022, p.272] and the second highest ECI in 2021 [@noauthor_country_nodate].
+
