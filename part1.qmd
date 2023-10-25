@@ -22,6 +22,30 @@ library(quarto)
 library(sjlabelled)
 library(readr)
 library(readxl)
+library(haven)
+library(viridis)
+library(stargazer)
+library(gtsummary)
+library(gt)
+library(brms)
+library(ggrepel)
+library(cowplot)
+library(ggpubr)
+library(lme4)
+library(prediction)
+library(marginaleffects)
+library(ggeffects)
+library(ordinal)
+library(broom)
+library(knitr)
+library(readr)
+library(gtExtras)
+library(broom.mixed)
+library(performance)
+library(GGally)
+library(questionr)
+library(car)
+library(effects)
 
 ```
 
@@ -60,9 +84,9 @@ oecd_trust_gov %>%
 
 The origins of the Italian crisis goes back to 1992 after the break-up of the dominant social bloc (DBS). The latter, constituted by an alliance between small and large firms, the public sector, and classes dependent on transfers and rent (the employees of the large industries being excluded from the DBS) was made possible and sustained by the growth of the public debt which temporarily satisfied the heterogeneous demand of the DBS, but collapsed due to internal contradictions and public debt reduction policy. Various strategies conducted by Italian politicians tried to consolidate a new DBS, but with mixed results [@palombarini_rupture_2001; @amable_leconomie_2012].
 
-In France, the crisis started with the instability of the traditional left and right blocs, which were subject to internal contradictions. European integration divided the left bloc in half, while right-wing political strategies were unable to satisfy both its popular and bourgeois elements. The crisis was partially resolved with the successful strategy of Macron to gather both the bourgeois groups of the left and right blocs in a new DBS, the *bourgeois bloc*, which is nonetheless unstable and fragile because of its restricted size [@amable_illusion_2018].
+In France, the crisis started with the instability of the traditional left and right blocs, which used to govern alternately since the post-war period. European integration divided the left bloc in half, while right-wing political strategies were unable to satisfy both its popular and bourgeois elements. The crisis was partially resolved with the successful strategy of Macron to gather both the bourgeois groups of the left and right blocs in a new DBS, the *bourgeois bloc*, which is nonetheless unstable and fragile because of its restricted size [@amable_illusion_2018].
 
-However, other data sources show a more contrasted history of Switzerland's political stability. The *VOX* studies, which conducted post-ballot surveys after each referendum voting session, were harmonized in a cumulative dataset which offer long-run data from 1981 to 2016. A similar figure as @fig-trust1 can thus be made to have a precise focus on Switzerland:
+However, other data sources show a more contrasted picture of Switzerland's political stability. The *VOX* studies, which conducted post-ballot surveys after each referendum voting session, were harmonized in a cumulative dataset which offer long-run data from 1981 to 2016. A similar figure as @fig-trust1 can thus be made to have a precise focus on Switzerland:
 
 
 
@@ -121,15 +145,13 @@ However, the crisis of the 90s was not only political, but also economic. The st
 
 Does the political and economic crisis of the 1990s constitute the sole period of instability in Switzerland? @fig-trust2 suggests that the early 2000s also represent a period of confidence crisis, as shown by the decline in trust from 2001 to 2005. The global 2001 recession which affected Switzerland surely played a role, but also various political and business events such as the bankruptcy of Swisswair (2001). The results of the 2003 federal election also profoundly disturbed the Swiss political scene: the SVP became the first party of Switzerland and gained another seat in the federal council at the expense of the Christian Democratic People's Party of Switzerland (PDC). Nonetheless, the upward trend in trust since 2005, which seems to be only slightly affected by the 2007 crisis and the following eurozone crisis, suggests that there is no notable confidence crisis since the 90s and early 2010s.
  
-In view of the results shown in @fig-trust2, can the confidence crises of the 90s and early 2000s be interpreted as *political crises* in the sense given by the neorealist approach? A loss in confidence is not always a sign in political crisis if there is no break-up of the dominant or traditional social blocs. To answer this question, we need to explore the evolution of the Swiss social blocs since the post-war period.
+In view of the results shown in @fig-trust2, can the confidence crises of the 90s and early 2000s be interpreted as *political crises* in the sense given by the neorealist approach? A loss in confidence is not always a sign in political crisis if there is no break-up of the dominant social bloc. To answer this question, we need to explore the evolution of the Swiss social blocs since the post-war period.
 
 Since the break-up of the post-war Keynesian "historical compromise" between the Swiss Socialist Party (SSP) and the traditional right parties during the so-called "decade of all dangers" of the 90s [@boschetti_conquete_2007], the neoliberal transformation of the HSM was also followed by important political change, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People Party (SVP), one of the most successful far-right populist parties in Europe. The electoral success of the SVP is often associated with the destabilization of the traditional right bloc, which entered a phase of "cacophonic" crisis [@meuwly_liberte_2008] which still persists in the early 2020s. 
 
-In fact, all the Swiss traditional main parties, the Swiss Socialist Party (SSP) The Liberals (PLR) and the PDC, are in decline since the post-war period. On the right, the crisis can be seen through the increase in party merges and party re-configurations. In 2008, the Bourgeois Democratic Party (PBD) was created after a scission from the SVP. One year later, the Radical-Democratic party merged with the liberals to create the FDP. The PBD, whose creation disturbed the composition of the reputed unchangeable federal council, then merged with the PDC to create *Le Centre* in 2021. The latter's relative success could lead to major political change in the 2023 federal elections since the polls predict that this party could surpass the PLR in vote share and thus take another seat in the federal council, at the expense of a historical seat loss for the PLR, which created the Swiss political system and used to dominate Swiss politics throughout the 19th and 20th century[^3]. On the left, the SSP, which used to be the first Swiss party in terms of party strength and dominated the left during the post-war period, must now face the effects of its long-run decline trend and rising abstention in popular classes, and the competition with the Greens (see @fig-partystrength).
+In fact, all the Swiss traditional main parties, the Swiss Socialist Party (SSP) The Liberals (PLR) and the PDC, are in decline since the post-war period (see @fig-partystrength). On the right, the crisis can be seen through the increase in party merges and re-configurations. In 2008, the Bourgeois Democratic Party (PBD) was created after a scission from the SVP. One year later, the Radical-Democratic party merged with the liberals to create the FDP. The PBD, whose creation disturbed the composition of a reputed unchangeable federal council, then merged with the PDC to create *Le Centre* in 2021. The latter's relative success could lead to major political change in the 2023 federal elections since the polls predict that this party could surpass the PLR in vote share and thus take another seat in the federal council, at the expense of a historical seat loss for the PLR, which created the Swiss political system and used to dominate Swiss politics throughout the 19th and 20th century[^3]. 
 
-
-
-
+On the left, the SSP, which used to be the first Swiss party in terms of party strength and dominated the left during the post-war period, must now face the effects of a long-run decline trend in terms of party strength (see @fig-partystrength). 
 
 ```{r}
 #| warning: false
@@ -153,6 +175,7 @@ party_share_long %>%
   filter(party %in% c("PLR..PRD..3.", "PDC", "PS", "UDC", "PES")) %>% 
   ggplot()+
   aes(x = year, y = Party_strength, color = party, shape = party)+
+  scale_x_continuous()+
   geom_line()+
   geom_point()+
   theme_bw()+
@@ -161,6 +184,31 @@ party_share_long %>%
 ```
 
 
+
+
+
+
 [^intro-2]: In 2018, Switzerland ranks third in terms of GDP per capita corrected for purchasing power parity among OECD countries [@oecd_oecd_2019, p.14]. Switzerland had also the highest HDI in 2021 [@nations_human_2022, p.272] and the second highest ECI in 2021 [@noauthor_country_nodate].
 
 [^3]: See @noauthor_elections_2023
+
+
+
+
+## Voting outcome and socio-economic characteristics: an empirical analysis
+
+What is the social basis of the left, right and radical right blocs in Switzerland in the last decades? How are the support for the main Swiss social blocs influenced by socio-economic characteristics? The objective of this chapter is to explore the composition of the main Swiss social blocs.
+
+The previous chapter asked whether the periods of political instability measured through confidence in the Swiss government in the 1990s and early 2005 can be interpreted as a political crisis. By exploring the support for the main Swiss parties since 1981, this question can be partially answered, as well as the main research question of the present paper. Furthermore, Switzerland is an interesting case study for the analysis of the links between political divides, voting outcomes and socio-economic characteristics.
+
+Moreover, a recent trend in political economy developed a tremendous analysis of the long run transformations of political cleavages and voting outcomes in almost all democratic countries around the world. The popularity of inequality studies, after the contributions of renown economists such as Atkinson [-@atkinson_inequality_2015], Milanovic [-@milanovic_global_2016] and of course Piketty [@piketty_capital_2014], economists recently became interested in the problematic of social conflict and political cleavages. One possible explanation of this sudden interest is the inequality paradox: increasing inequality and neoliberal reforms did not pave the way for growing support for redistribution, taxation of top income and wealth owners, or for left parties. The same paradox could be applied to a "climate change paradox", that is, the fact that the growing emergency or environmental issues were not followed by increasing support for green parties. For instance, the Swiss green parties were the biggest losers in the 2023 federal elections.
+
+Those paradox thus gave way to a fresh and recent literature linking political cleavages and voting outcomes as function of a set of socio-economic factors, mainly income and education level. Trying to explore this inequality paradox, @piketty_brahmin_2018 underlines the fact that, rather than bringing back class-based divide back to its post-war salience, the global rise in inequality since the 1970s was followed by the emergence of a new cleavage and a multi-elite party system. During the post-war period, the electoral support for the left parties in the US, UK and France was mainly constituted by popular classes with low income and education levels whereas right-wing parties were supported by high income and education voters. The popular element of the support for the left blocs then transformed in the 1970-80s: left parties became the bloc of the highly educated while the right kept the support of the wealthiest. Underlying the rise of a new cleavage in the 70s and 80s, Piketty tackles a topic which is well-known in political science: the emergence of a cleavage centered around cultural values which cuts across the traditional class conflict. This "cultural cleavage" has as many names as it has analysts among political scientists: "materialist vs postmaterialist" for Inglehart [-@inglehart_silent_1971; -@inglehart_value_1987; -@inglehart_culture_1990]; the globalization divide pitting winners against the losers of globalization [@kriesi_globalization_2006; @kriesi_west_2008; @teney_winners_2014]; the "transnational cleavage" for @hooghe_cleavage_2018 or even the "universalism–particularism" cleavage for @zollinger_cleavage_2022. 
+
+Piketty baptized his own variant of the cultural cleavage the "nativists-internationalists" divide [@piketty_brahmin_2018; @piketty_capital_2019]. The combination of this new cultural cleavage with the traditional class-based conflict gives four possible social blocs: an internationalist-egalitarian bloc which is on the left both culturally and economically; an internationalist-inegalitarian bloc on the left culturally but economically on the right; a nativist-inegalitarian bloc on the right culturally and economically; and a nativist-egalitarian bloc which is culturally conservative but economically on the left. 
+
+
+
+
+
+
