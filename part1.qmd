@@ -113,9 +113,130 @@ The empirical agenda of the present study is to test the validity and relevance 
     The support for right parties increase with both income and education levels. Popular groups support either the nativist far-right bloc or abstention.
     
 
-### Data, empirical metholodogy 
+### Data and empirical strategy 
 
-One of the contributions of the present research is to draw extensive use the post-ballots Swiss surveys. In Switzerland, two types of political surveys are conducted: post-electoral and post-referendum surveys. The Swiss Elections Studies (SELECTS) conducts national surveys after each election of the national council while the VOX studies (now VOTO) conducts collects data after each referendum. 
+One of the contributions of the present research is to draw extensive use the post-referendum Swiss surveys. In Switzerland, two types of political surveys are conducted: post-electoral and post-referendum surveys. The Swiss Elections Studies (SELECTS) conducts national surveys after each election of the national council while the VOX studies (now VOTO) conducts collects data after each referendum. More specifically the VOX studies offer a cumulative dataset, *VoxIt* which allows to conduct an empirical analysis of the links between the vote for the main Swiss parties with socio-economic characteristics. *VoxIt* compiles all post-referendum surveys from 1981 to 2016 and offers many variables of interests.
+
+The two main dependent variables are binary variables for each party support computed from the variable "p02" which collected respondents' partisan identification, and self-right self positioning ranging from 0 (far-left) to 10 (far-right). Other Likert-scale variables are also taken as dependent variables to analyze policy preferences: opinion on state intervention ("val11") and redistribution ("val5").
+
+The two main explanatory variables are income and education levels. The latter's variable is centered around zero to make the intercept meaningful and is treated as continuous for simplicity. The income variable needed more recoding since the scale of the variable changed in 1991: "nivmena" is a four scale variables on the respondent's standard of living, while "revenu" is a more standard income variable in five categories. In order to have significant and robust results, years are grouped into categories of two.
+
+
+```{r import voxit}
+#| echo: false
+#| message: false
+#| warning: false
+
+vox <- read_sav("data/voxit.sav")
+```
+
+```{r missing value check}
+#| echo: false
+#| message: false
+#| warning: false
+vox %>% 
+  group_by(annee) %>% 
+  count(posprof) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  filter(is.na(posprof) == TRUE) %>% 
+  ungroup()
+
+```
+
+```{r create income and educ variable}
+#| warning: false
+#| message: false
+#| echo: false
+
+# Two ways to create the income variable
+vox <- vox %>% 
+  mutate(income = if_else(revenu == 1 & is.na(nivmena), 4,
+                          if_else(revenu == 2 & is.na(nivmena), 3,
+                                  if_else(revenu %in% c(3,4) & is.na(nivmena), 2,
+                                          if_else(revenu == 5 & is.na(nivmena), 1,
+                                                  if_else(is.na(revenu) & annee <= 1993, nivmena, NA))))))
+
+         
+vox$income <- ifelse(vox$income == 4, -1,
+                    ifelse(vox$income == 3, 0,
+                        ifelse(vox$income == 2, 1,
+                          ifelse(vox$income == 1, 2, NA)))) # centering around zero, this will make the intercept more interpretable 
+
+
+# for education, rescale the values so that the lowest level is equal to zero
+vox <- vox %>% 
+  mutate(education = case_when(
+    educ == 1 ~ 0,
+    educ == 2 ~ 1,
+    educ == 3 ~ 2,
+    educ == 4 ~ 3,
+    educ == 5 ~ 4,
+    educ == 6 ~ 5,
+    is.na(educ) ~ NA
+  ))
+
+```
+
+```{r party dummies and other recoding}
+#| warning: false
+#| message: false
+#| echo: false
+
+vox$pss <- ifelse(vox$p02 == 12, 1,
+                  ifelse(is.na(vox$p02), NA, 0))
+
+vox$udc <- ifelse(vox$p02 == 13, 1,
+                  ifelse(is.na(vox$p02), NA, 0))
+
+vox$plr <- ifelse(vox$p02 == 20, 1, ### le parti radical democratique fusionne avec le parti liberal en 2009
+                  ifelse(vox$p02 == 4, 1,
+                  ifelse(is.na(vox$p02), NA, 0)))
+
+vox$green <- ifelse(vox$p02 == 6, 1,
+                  ifelse(is.na(vox$p02), NA, 0))
+
+vox$pdc_pcs <- if_else(vox$p02 %in% c(0, 1, 2), 1,
+                       if_else(is.na(vox$p02), NA, 0))
+
+
+vox$gender <- factor(vox$sexe, levels = c(1, 2), labels = c("male", "female"))
+vox$annee_f <- factor(vox$annee)
+
+vox$married <- ifelse(vox$etatciv == 2, 1,
+                      ifelse(is.na(vox$etatciv), NA, 0))
+
+vox$regionL <- as_character(vox$regiling)
+vox$religion <- relevel(factor(as_character(vox$confess)), ref = "Catholique romain")
+
+## recoding age in 4 categories
+
+vox$age_cat <- cut(vox$age, c(13, 25, 45, 65, 99), right = FALSE, include.lowest = TRUE)
+
+vox$annee_cat <- cut(vox$annee, seq(from = 1981, to = 2016, by = 2), right = FALSE, include.lowest = TRUE)
+vox$annee_f <- factor(vox$annee)
+
+vox$canton_f <- as_character(vox$canton)
+
+
+```
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| include: false
+summary(glmer_pss <- glmer(data = vox,
+                           formula = pss ~ income + educ + age_cat + (income + educ | annee_cat/canton_f),
+                           family = binomial(link = "probit")))
+```
+
+
+
+
+
+
+
 
 
 
