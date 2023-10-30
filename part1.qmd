@@ -8,6 +8,9 @@ Since the break-up of the post-war Keynesian "historical compromise" between the
 #| echo: false
 #| warning: false
 #| message: false
+
+library(JuliaCall)
+library(JuliaConnectoR)
 library(tidyverse)
 library(haven)
 library(quarto)
@@ -38,7 +41,8 @@ library(GGally)
 library(questionr)
 library(car)
 library(effects)
-
+library(sjPlot)
+library(margins)
 ```
 
 ```{r}
@@ -210,9 +214,9 @@ vox$religion <- relevel(factor(as_character(vox$confess)), ref = "Catholique rom
 
 ## recoding age in 4 categories
 
-vox$age_cat <- cut(vox$age, c(13, 25, 45, 65, 99), right = FALSE, include.lowest = TRUE)
+vox$age_cat <- cut(vox$age, c(13, 30, 45, 65, 99), right = FALSE, include.lowest = TRUE)
 
-vox$annee_cat <- cut(vox$annee, seq(from = 1981, to = 2016, by = 2), right = FALSE, include.lowest = TRUE)
+vox$annee_cat <- cut(vox$annee, seq(from = 1981, to = 2016, by = 1), right = FALSE, include.lowest = TRUE)
 vox$annee_f <- factor(vox$annee)
 
 vox$canton_f <- as_character(vox$canton)
@@ -226,10 +230,75 @@ vox$canton_f <- as_character(vox$canton)
 #| message: false
 #| warning: false
 #| include: false
+
 summary(glmer_pss <- glmer(data = vox,
-                           formula = pss ~ income + educ + age_cat + (income + educ | annee_cat/canton_f),
+                           formula = pss ~ (1| canton_f/annee_cat),
                            family = binomial(link = "probit")))
+
+summary(glmer_pss <- glmer(data = vox, formula = pss ~ income + educ + age_cat + gender + (income + educ + gender | canton_f/annee_cat), family = binomial(link = "probit"),
+                           nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE)))
+
+
+
+
+pred_inc_pss <- 
+glmer_pss %>% 
+  avg_slopes(variables = "income", by = "annee_cat")
+
+pred_educ_pss <- 
+glmer_pss %>% 
+  avg_slopes(variables = "educ", by = "annee_cat") 
+
+pred_age_pss <- 
+glmer_pss %>% 
+  avg_slopes(variables = "age_cat", by = "annee_cat")
+
+glmer_pss %>% 
+  avg_predictions(variables = c("annee_cat"), allow.new.levels = TRUE)
+
+pred <- rbind(pred_educ_pss, pred_inc_pss)
+
+pred %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = term)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+pred_inc_pss %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+pred_educ_pss %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+
 ```
+
+
+
+```{r julia code}
+#| echo: false
+#| message: false
+#| warning: false
+#| include: false
+
+
+julia.dir <- julia_setup(JULIA_HOME = "C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin")
+julia.dir$library("MixedModels")
+julia.dir$assign("vox", vox)
+julia.dir$assign("form", formula(pss ~ income + educ + age_cat + gender + (income + educ + age_cat + gender | canton_f/annee_cat)))
+results <- julia.dir$eval("res = fit(LinearMixedModel, form, vox)", need_return = c("Julia"))
+julia.dir$eval("res")
+```
+
+
+
+
 
 
 
