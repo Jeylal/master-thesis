@@ -43,6 +43,7 @@ library(car)
 library(effects)
 library(sjPlot)
 library(margins)
+library(cAIC4)
 ```
 
 ```{r}
@@ -123,7 +124,15 @@ One of the contributions of the present research is to draw extensive use the po
 
 The two main dependent variables are binary variables for each party support computed from the variable "p02" which collected respondents' partisan identification, and self-right self positioning ranging from 0 (far-left) to 10 (far-right). Other Likert-scale variables are also taken as dependent variables to analyze policy preferences: opinion on state intervention ("val11") and redistribution ("val5").
 
-The two main explanatory variables are income and education levels. The latter's variable is centered around zero to make the intercept meaningful and is treated as continuous for simplicity. The income variable needed more recoding since the scale of the variable changed in 1991: "nivmena" is a four scale variables on the respondent's standard of living, while "revenu" is a more standard income variable in five categories. In order to have significant and robust results, years are grouped into categories of two.
+The two main explanatory variables are income and education levels. The latter is centered around zero to make the intercept meaningful and is treated as continuous for simplicity. The income variable needed more recoding since the scale of the variable changed in 1991: "nivmena" is a four scale variables on the respondent's standard of living, while "revenu" is a more standard income variable in five categories. In order to have significant and robust results, years are grouped into categories of two. The cumulative dataset offers few variables which a few missing value rates across the years and can be added as control variables: age (recoded into categories), gender and house ownership.
+
+#### The model
+
+To explore the links between party support and income and education levels, multilevel binary probit regressions are run for each Swiss main parties (PRD-PLR, PS, UDC, PDC, Greens). In our case study, multilevel/hierarchical models offer several advantages and relevant properties. On the one hand, they allow to take regions (here Swiss cantons) and time as levels in which observations are nested. Taking cantons as a level is especially relevant for Switzerland, in which every day political life, institutions and part system are highly decentralized, federalist and organized at the cantonal level. Each canton has its own specific institutions and can show very different patterns of party support and party system. For instance, some parties exist solely at the cantonal level, like the *Mouvement Citoyen Genevois* (*Genevan Citizen Movement*, MCG) or the *Lega Ticinesi*. On the other hand, taking into account the multilevel structure of the data allow better inference and, parameters and standard errors estimations [@julian_consequence_2001; @steenberger_modeling_2002].
+
+In the context of party support, multilevel models's can offer strong and interesting results. @gelman
+
+
 
 
 ```{r import voxit}
@@ -140,9 +149,9 @@ vox <- read_sav("data/voxit.sav")
 #| warning: false
 vox %>% 
   group_by(annee) %>% 
-  count(posprof) %>% 
+  count(cult) %>% 
   mutate(prop = n/sum(n)) %>% 
-  filter(is.na(posprof) == TRUE) %>% 
+  filter(is.na(cult) == TRUE) %>% 
   ungroup()
 
 ```
@@ -204,8 +213,6 @@ vox$pdc_pcs <- if_else(vox$p02 %in% c(0, 1, 2), 1,
 
 
 vox$gender <- factor(vox$sexe, levels = c(1, 2), labels = c("male", "female"))
-vox$annee_f <- factor(vox$annee)
-
 vox$married <- ifelse(vox$etatciv == 2, 1,
                       ifelse(is.na(vox$etatciv), NA, 0))
 
@@ -219,26 +226,52 @@ vox$age_cat <- cut(vox$age, c(13, 30, 45, 65, 99), right = FALSE, include.lowest
 vox$annee_cat <- cut(vox$annee, seq(from = 1981, to = 2016, by = 1), right = FALSE, include.lowest = TRUE)
 vox$annee_f <- factor(vox$annee)
 
-vox$canton_f <- as_character(vox$canton)
+vox$canton <- as_character(vox$canton)
 
+
+vox$house_ownership <- if_else(vox$statloge == 1, 1, 0)
+
+### classes sociales dummies selon le secteur du répondant (posprof) ou du chef du menage (s31) sauf pour public
+vox <- 
+  vox %>% 
+  mutate(
+    farmer = if_else(posprof == 1 | s31 == 4, 1, 0), 
+    self_employed = if_else(posprof == 2 | s31 == 1, 1, 0),
+    ouvrier = if_else(posprof == 7 | s31 == 5, 1, 0),
+    public = if_else(posprof == 6, 1, 0),
+    atheist = if_else(confess == 4, 1, 0),
+    protestant = if_else(confess == 1, 1, 0),
+    catholic = if_else(confess %in% c(2, 5), 1, 0)
+    
+  )
 
 ```
 
 
-```{r}
+```{r glmer ps}
 #| echo: false
 #| message: false
 #| warning: false
 #| include: false
 
-summary(glmer_pss <- glmer(data = vox,
-                           formula = pss ~ (1| canton_f/annee_cat),
+
+summary(glmer_pss0 <- glmer(data = vox,
+                           formula = pss ~ (1| canton) + (1| annee_cat),
                            family = binomial(link = "probit")))
 
-summary(glmer_pss <- glmer(data = vox, formula = pss ~ income + educ + age_cat + gender + (income + educ + gender | canton_f/annee_cat), family = binomial(link = "probit"),
+plot_predictions(glmer_pss0, condition = list("canton", annee_cat = c("[1981,1982)", "[2015,2016]")))
+
+summary(glmer_pss_fixed <- glmer(data = vox, formula = pss ~ income*educ + gender + age_cat + house_ownership + ( 1| canton) + (1 | annee_cat), family = binomial(link = "probit"),
                            nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE)))
 
 
+summary(glmer_pss <- glmer(data = vox, formula = pss ~ income + education + gender + age_cat + house_ownership + (income + educ | canton) + (income + educ | annee_cat), family = binomial(link = "probit"),
+                           nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE)))
+
+summary(glmer_pss_fixed)
+
+
+modelselection <- stepcAIC(glmer_pss, data = vox, direction = "backward", groupCandidates = c("canton", "annee_cat"))
 
 
 pred_inc_pss <- 
@@ -258,26 +291,159 @@ glmer_pss %>%
 
 pred <- rbind(pred_educ_pss, pred_inc_pss)
 
-pred %>% 
-  ggplot()+
-  aes(x = annee_cat, y = estimate, color = term)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
-
-pred_inc_pss %>% 
-  ggplot()+
-  aes(x = annee_cat, y = estimate)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
-
-pred_educ_pss %>% 
-  ggplot()+
-  aes(x = annee_cat, y = estimate)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
 
 
 ```
+
+
+```{r glmer plr}
+#| echo: false
+#| message: false
+#| warning: false
+#| include: false
+
+glmer_plr <- glmer(data = vox,
+                   formula = plr ~ income*education + gender + age_cat + house_ownership + (income + education | canton) + (income + education | annee_cat),
+                   family = binomial(link = "logit"),
+                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
+
+summary(glmer_plr)
+
+plot_predictions(glmer_plr, condition = list("canton", annee_cat = c("[1981,1982)", "[2015,2016]")))
+
+slopes_income_plr <- 
+  glmer_plr %>% 
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
+
+slopes_education_plr <- 
+  glmer_plr %>% 
+  avg_slopes(variables = c("education"), by = c("annee_cat"))
+
+slopes_plr <- rbind(slopes_education_plr, slopes_income_plr)
+
+
+slopes_plr %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = term, shape = term)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+plr_com_income <- 
+glmer_plr %>% 
+  avg_comparisons(variables = list(income = c(-1, 2)), by = "annee_cat")
+
+ps_com_income <- 
+glmer_pss %>% 
+  avg_comparisons(variables = list(income = c(-1, 2)), by = "annee_cat")
+
+plr_com_income %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = term, shape = term)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+  
+```
+
+```{r glmer udc}
+#| echo: false
+#| message: false
+#| warning: false
+#| include: false
+
+
+glmer_udc <- glmer(data = vox,
+                   formula = udc ~ income + education + gender + age_cat + house_ownership + (income + education | canton) + (income + education | annee_cat),
+                   family = binomial(link = "logit"),
+                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
+
+slopes_income_udc <- 
+  glmer_udc %>% 
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
+
+slopes_education_udc <- 
+  glmer_udc %>% 
+  avg_slopes(variables = c("education"), by = c("annee_cat"))
+
+slopes_udc <- rbind(slopes_education_udc, slopes_income_udc)
+
+comp_income_udc <- 
+  glmer_udc %>% 
+  avg_comparisons(variables = list(income = c(-1, 2)), by = "annee_cat")
+
+comp_educ_udc <- 
+  glmer_udc %>% 
+  avg_comparisons(variables = list(education = c(0, 5)), by = "annee_cat")
+
+comp_udc <- rbind(comp_income_udc, comp_educ_udc)
+
+slopes_udc %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = term, shape = term)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  geom_hline(yintercept = 0)+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 60, vjust = 1, hjust=1))+
+  scale_y_continuous(labels = scales::percent_format())
+
+comp_udc %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = term, shape = term)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  geom_hline(yintercept = 0)+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 60, vjust = 1, hjust=1))+
+  scale_y_continuous(labels = scales::percent_format())
+
+glmer_udc %>% 
+  plot_predictions(condition = list("income", "education", "canton"),
+                   newdata = datagrid(annee_cat = c("[1994,1995)")))+
+  facet_wrap(~canton+annee_cat)
+
+glmer_udc %>% 
+  plot_predictions(condition = list("income", "education", canton = "ZH"), type = "response")
+
+glmer_udc %>% 
+  plot_model(terms = c("income", "education", "canton [ZH]"), type = "pred")
+
+slopes_udc <- 
+glmer_udc %>% 
+  slopes(variables = "income") %>% 
+  filter(annee_cat == "[1981,1982)") %>% 
+  group_by(canton) %>% 
+  summarise() %>% 
+  ungroup()
+
+newdata <- 
+modelr::data_grid(.model = glmer_udc, data = vox,
+                  annee_cat = annee_cat, 
+                  income = income,
+                  education = education,
+                  gender = "male", 
+                  age_cat = "[30,45)",
+                  house_ownership = 0,
+                  canton = canton)
+predtest <- 
+glmer_udc %>% 
+  avg_predictions(variables = c("income", "annee_cat"), newdata = newdata)
+
+view(predtest)
+
+predtest %>% 
+  ggplot()+
+  aes(x = income, y = estimate)+
+  geom_line()+
+  facet_wrap(~annee_cat)
+
+glmer_udc %>% 
+  plot_predictions(condition  = c("income", "education", "canton"), type = "response", newparams = "gender")
+
+plot_predictions(glmer_udc, condition = c("income", "education", "gender"), by = "canton")
+
+```
+
+
 
 
 
