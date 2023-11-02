@@ -1,5 +1,112 @@
 # Social blocs, socio-economic factors and voting outcomes in Switzerland
 
+```{r run glmer models}
+#| warning: false
+#| message: false
+#| echo: false
+#| include: false
+
+glmer_udc <- glmer(data = vox,
+                   formula = udc ~ income + educationf + gender + age_cat + house_ownership + (income + educationf | canton) + (income + educationf | annee_cat),
+                   family = binomial(link = "probit"),
+                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
+
+
+
+glmer_pss <- glmer(data = vox, formula = pss ~ income + educationf + gender + age_cat + house_ownership + (income + educationf | canton) + (income + educationf | annee_cat), family = binomial(link = "probit"),
+                           nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
+
+
+glmer_plr <- glmer(data = vox,
+                   formula = plr ~ income + educationf + gender + age_cat + house_ownership + (income + educationf | canton) + (income + educationf | annee_cat),
+                   family = binomial(link = "probit"),
+                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
+
+glmer_pdc_pcs <- glmer(data = vox,
+                   formula = pdc_pcs ~ income + educationf + gender + age_cat + house_ownership + (income + educationf | canton) + (income + educationf | annee_cat),
+                   family = binomial(link = "probit"),
+                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
+
+glmer_pdc_green <- glmer(data = vox,
+                   formula = green ~ income + educationf + gender + age_cat + house_ownership + (income + educationf | canton) + (income + educationf | annee_cat),
+                   family = binomial(link = "probit"),
+                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
+
+
+
+
+
+glmer_pdc <- glmer(data = vox,
+                   formula = pdc_pcs ~ incomef + educationf + gender + age_cat + house_ownership + (1 | canton/annee_cat), family = binomial(link = "probit"))
+```
+
+
+```{r functions}
+#| echo: false
+#| warning: false
+#| echo: false
+jmer <- function(formula, data, REML=TRUE){
+    # to simplify maintainence here (in the hopes of turning this into a real
+    # package), I'm depending on JellyMe4, which copies the dataframe back with
+    # the model this is of course what you want if you're primarily working in
+    # Julia and just using RCall for the the R ecosystem of extras for
+    # MixedModels, but it does create an unnecessary copy if you're starting
+    # with your data in R.
+    #
+    # Also, this means we suffer/benefit from the same level of compatibility in
+    # the formula as in JellyMe4, i.e. currently no support for the ||
+
+    jf <- deparse(formula,width = 500)
+    jreml = ifelse(REML, "true", "false")
+
+    julia_assign("jmerdat",data)
+    julia_command(sprintf("jmermod = fit!(LinearMixedModel(@formula(%s),jmerdat),REML=%s);",jf,jreml))
+
+    julia_eval("robject(:lmerMod, Tuple([jmermod,jmerdat]));",need_return="R")
+}
+
+ame <- function(model, group, term1, term2){
+  
+  pred_model_term1 <- 
+  {{model}} %>% 
+    avg_slopes(variables = {{term1}}, b = {{group}})
+  
+  pred_model_term2 <- 
+  {{model}} %>% 
+    avg_slopes(variables = {{term2}}, b = {{group}})  
+  
+  data <- rbind(pred_model_term1, pred_model_term2)
+  
+}
+
+comp <- function(model, term1, term2, group){
+  
+  comp1 <- 
+  {{model}} %>% 
+    avg_comparisons(variables = {{term1}}, by = {{group}})
+  
+  comp2 <- 
+    {{model}} %>% 
+    avg_comparisons(variables = {{term2}}, by = {{group}})
+  
+  data <- rbind(comp1, comp2)
+  
+}
+
+ame_plot <- function(data){
+  
+  {{data}} %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = term, shape = term)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  theme_bw()+
+  geom_hline(yintercept = 0)+
+  scale_y_continuous(labels = scales::percent())
+}
+```
+
+
 ## The Swiss bourgeois and left blocs: historical perspective
 
 Since the break-up of the post-war Keynesian "historical compromise" between the Swiss Socialist Party and the traditional right parties during the so-called "decade of all dangers" of the 90s [@boschetti_conquete_2007], the neoliberal transformation of the Swiss Hybrid Model was also followed by important political change, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People Party (SVP), one of the most successful far-right populist parties in Europe. The electoral success of the SVP is often associated with the destabilization of the traditional "bourgeois bloc", which entered a phase of "cacophonic" crisis [@meuwly_liberte_2008] which still persists in the early 2020s. 
@@ -9,6 +116,8 @@ Since the break-up of the post-war Keynesian "historical compromise" between the
 #| warning: false
 #| message: false
 
+library(irr)
+library(easystats)
 library(JuliaCall)
 library(JuliaConnectoR)
 library(tidyverse)
@@ -44,6 +153,8 @@ library(effects)
 library(sjPlot)
 library(margins)
 library(cAIC4)
+library(ordinal)
+library(pacman)
 ```
 
 ```{r}
@@ -147,13 +258,14 @@ vox <- read_sav("data/voxit.sav")
 #| echo: false
 #| message: false
 #| warning: false
+#| include: false
 vox %>% 
   group_by(annee) %>% 
-  count(cult) %>% 
+  count(p04) %>% 
   mutate(prop = n/sum(n)) %>% 
-  filter(is.na(cult) == TRUE) %>% 
+  filter(is.na(p04) == TRUE) %>% 
   ungroup()
-
+freq(vox$val5)
 ```
 
 ```{r create income and educ variable}
@@ -186,8 +298,25 @@ vox <- vox %>%
     educ == 5 ~ 4,
     educ == 6 ~ 5,
     is.na(educ) ~ NA
+  ),
+  educationf = case_when(
+    educ == 1 ~ "comp_school",
+    educ == 2 ~ "voc_training",
+    educ == 3 ~ "maturity",
+    educ == 4 ~ "higher_voctraining",
+    educ == 5 ~ "HES",
+    educ == 6 ~ "University",
+    is.na(educ) ~ NA
+  ),
+  incomef = case_when(
+    income == -1 ~ "low",
+    income == 0 ~ "middle_low",
+    income == 1 ~ "middle_high",
+    income == 2 ~ "high"
   ))
 
+vox$educationf <- relevel(factor(vox$educationf), ref = "voc_training")
+vox$incomef <- relevel(factor(vox$incomef), ref = "low")
 ```
 
 ```{r party dummies and other recoding}
@@ -231,6 +360,8 @@ vox$canton <- as_character(vox$canton)
 
 vox$house_ownership <- if_else(vox$statloge == 1, 1, 0)
 
+vox$educationf <- factor(as.character(vox$education))
+
 ### classes sociales dummies selon le secteur du répondant (posprof) ou du chef du menage (s31) sauf pour public
 vox <- 
   vox %>% 
@@ -248,200 +379,108 @@ vox <-
 ```
 
 
-```{r glmer ps}
-#| echo: false
-#| message: false
+```{r run party glmer}
 #| warning: false
-#| include: false
+#| message: false
+#| echo: false
 
-
-summary(glmer_pss0 <- glmer(data = vox,
-                           formula = pss ~ (1| canton) + (1| annee_cat),
-                           family = binomial(link = "probit")))
-
-plot_predictions(glmer_pss0, condition = list("canton", annee_cat = c("[1981,1982)", "[2015,2016]")))
-
-summary(glmer_pss_fixed <- glmer(data = vox, formula = pss ~ income*educ + gender + age_cat + house_ownership + ( 1| canton) + (1 | annee_cat), family = binomial(link = "probit"),
-                           nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE)))
-
-
-summary(glmer_pss <- glmer(data = vox, formula = pss ~ income + education + gender + age_cat + house_ownership + (income + educ | canton) + (income + educ | annee_cat), family = binomial(link = "probit"),
-                           nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE)))
-
-summary(glmer_pss_fixed)
-
-
-modelselection <- stepcAIC(glmer_pss, data = vox, direction = "backward", groupCandidates = c("canton", "annee_cat"))
-
-
-pred_inc_pss <- 
-glmer_pss %>% 
-  avg_slopes(variables = "income", by = "annee_cat")
-
-pred_educ_pss <- 
-glmer_pss %>% 
-  avg_slopes(variables = "educ", by = "annee_cat") 
-
-pred_age_pss <- 
-glmer_pss %>% 
-  avg_slopes(variables = "age_cat", by = "annee_cat")
-
-glmer_pss %>% 
-  avg_predictions(variables = c("annee_cat"), allow.new.levels = TRUE)
-
-pred <- rbind(pred_educ_pss, pred_inc_pss)
-
-
+load("saved_models/glmer_ps.rda")
+load("saved_models/glmer_udc.rda")
+load("saved_models/glmer_plr.rda")
+load("saved_models/glmer_greens.rda")
+load("saved_models/glmer_pdc_pcs.rda")
 
 ```
 
 
-```{r glmer plr}
+```{r ame parties}
 #| echo: false
 #| message: false
 #| warning: false
 #| include: false
 
-glmer_plr <- glmer(data = vox,
-                   formula = plr ~ income*education + gender + age_cat + house_ownership + (income + education | canton) + (income + education | annee_cat),
-                   family = binomial(link = "logit"),
-                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
+comp_udc <- 
+  glmer_udc %>% 
+  comparisons(variables = list(educationf = c("comp_school", "University"), income = c(-1,2)),
+              by = c("annee_cat", "canton"))
 
-summary(glmer_plr)
+comp_ps <- 
+  glmer_pss %>% 
+  comparisons(variables = list(educationf = c("comp_school", "University"), income = c(-1,2)),
+              by = c("annee_cat", "canton"))
 
-plot_predictions(glmer_plr, condition = list("canton", annee_cat = c("[1981,1982)", "[2015,2016]")))
 
-slopes_income_plr <- 
+comp_plr <- 
   glmer_plr %>% 
-  avg_slopes(variables = c("income"), by = c("annee_cat"))
+  comparisons(variables = list(educationf = c("comp_school", "University"), income = c(-1,2)),
+              by = c("annee_cat", "canton"))
 
-slopes_education_plr <- 
-  glmer_plr %>% 
-  avg_slopes(variables = c("education"), by = c("annee_cat"))
-
-slopes_plr <- rbind(slopes_education_plr, slopes_income_plr)
-
-
-slopes_plr %>% 
-  ggplot()+
-  aes(x = annee_cat, y = estimate, color = term, shape = term)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
-
-plr_com_income <- 
-glmer_plr %>% 
-  avg_comparisons(variables = list(income = c(-1, 2)), by = "annee_cat")
-
-ps_com_income <- 
-glmer_pss %>% 
-  avg_comparisons(variables = list(income = c(-1, 2)), by = "annee_cat")
-
-plr_com_income %>% 
-  ggplot()+
-  aes(x = annee_cat, y = estimate, color = term, shape = term)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
-  
-```
-
-```{r glmer udc}
-#| echo: false
-#| message: false
-#| warning: false
-#| include: false
-
-
-glmer_udc <- glmer(data = vox,
-                   formula = udc ~ income + education + gender + age_cat + house_ownership + (income + education | canton) + (income + education | annee_cat),
-                   family = binomial(link = "logit"),
-                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
-
-slopes_income_udc <- 
-  glmer_udc %>% 
-  avg_slopes(variables = c("income"), by = c("annee_cat"))
-
-slopes_education_udc <- 
-  glmer_udc %>% 
-  avg_slopes(variables = c("education"), by = c("annee_cat"))
-
-slopes_udc <- rbind(slopes_education_udc, slopes_income_udc)
-
-comp_income_udc <- 
-  glmer_udc %>% 
-  avg_comparisons(variables = list(income = c(-1, 2)), by = "annee_cat")
-
-comp_educ_udc <- 
-  glmer_udc %>% 
-  avg_comparisons(variables = list(education = c(0, 5)), by = "annee_cat")
-
-comp_udc <- rbind(comp_income_udc, comp_educ_udc)
-
-slopes_udc %>% 
-  ggplot()+
-  aes(x = annee_cat, y = estimate, color = term, shape = term)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  geom_hline(yintercept = 0)+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 60, vjust = 1, hjust=1))+
-  scale_y_continuous(labels = scales::percent_format())
+comp_pdc <- 
+  glmer_pdc_pcs %>% 
+  comparisons(variables = list(educationf = c("comp_school", "University"), income = c(-1,2)),
+              by = c("annee_cat", "canton"))
 
 comp_udc %>% 
   ggplot()+
-  aes(x = annee_cat, y = estimate, color = term, shape = term)+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
   geom_point()+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  geom_hline(yintercept = 0)+
   theme_bw()+
-  theme(axis.text.x = element_text(angle = 60, vjust = 1, hjust=1))+
-  scale_y_continuous(labels = scales::percent_format())
+  geom_hline(yintercept = 0)+
+  facet_wrap(~canton)+
+  scale_y_continuous(labels = scales::percent)+
+  labs(title = "Difference in predicted probabilites",
+       x = "", y = "")+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+        legend.position = "bottom")
 
-glmer_udc %>% 
-  plot_predictions(condition = list("income", "education", "canton"),
-                   newdata = datagrid(annee_cat = c("[1994,1995)")))+
-  facet_wrap(~canton+annee_cat)
-
-glmer_udc %>% 
-  plot_predictions(condition = list("income", "education", canton = "ZH"), type = "response")
-
-glmer_udc %>% 
-  plot_model(terms = c("income", "education", "canton [ZH]"), type = "pred")
-
-slopes_udc <- 
-glmer_udc %>% 
-  slopes(variables = "income") %>% 
-  filter(annee_cat == "[1981,1982)") %>% 
-  group_by(canton) %>% 
-  summarise() %>% 
-  ungroup()
-
-newdata <- 
-modelr::data_grid(.model = glmer_udc, data = vox,
-                  annee_cat = annee_cat, 
-                  income = income,
-                  education = education,
-                  gender = "male", 
-                  age_cat = "[30,45)",
-                  house_ownership = 0,
-                  canton = canton)
-predtest <- 
-glmer_udc %>% 
-  avg_predictions(variables = c("income", "annee_cat"), newdata = newdata)
-
-view(predtest)
-
-predtest %>% 
+comp_ps %>% 
   ggplot()+
-  aes(x = income, y = estimate)+
-  geom_line()+
-  facet_wrap(~annee_cat)
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  theme_bw()+
+  geom_hline(yintercept = 0)+
+  facet_wrap(~canton)+
+  scale_y_continuous(labels = scales::percent)+
+  labs(title = "Difference in predicted probabilites",
+       x = "", y = "")+
+  theme(axis.text.x = element_blank())
 
-glmer_udc %>% 
-  plot_predictions(condition  = c("income", "education", "canton"), type = "response", newparams = "gender")
+comp_plr %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  theme_bw()+
+  geom_hline(yintercept = 0)+
+  facet_wrap(~canton)+
+  scale_y_continuous(labels = scales::percent)+
+  labs(title = "Difference in predicted probabilites",
+       x = "", y = "")+
+  theme(axis.text.x = element_blank())
 
-plot_predictions(glmer_udc, condition = c("income", "education", "gender"), by = "canton")
-
+comp_pdc %>% 
+  filter(canton %in% c("GE", "ZH", "BE")) %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  theme_bw()+
+  geom_hline(yintercept = 0)+
+  facet_wrap(~canton)+
+  scale_y_continuous(labels = scales::percent)+
+  labs(title = "Difference in predicted probabilites",
+       x = "", y = "")+
+  theme(axis.text.x = element_blank())
+summary(glmer_pss)
 ```
+
+
+
+
+
+
 
 
 
@@ -452,18 +491,60 @@ plot_predictions(glmer_udc, condition = c("income", "education", "gender"), by =
 #| message: false
 #| warning: false
 #| include: false
-
-
+julia_library("MixedModels")
+julia_library("RCall")
+julia_library("JellyMe4")
+dyn.load("C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin/libopenlibm.DLL")
+julia.dir <- julia_setup(JULIA_HOME = "C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin")
 julia.dir <- julia_setup(JULIA_HOME = "C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin")
 julia.dir$library("MixedModels")
 julia.dir$assign("vox", vox)
-julia.dir$assign("form", formula(pss ~ income + educ + age_cat + gender + (income + educ + age_cat + gender | canton_f/annee_cat)))
+julia.dir$assign("form", formula(pss ~ incomef + educationf + age_cat + gender + (incomef + educationf | canton/annee_cat)))
 results <- julia.dir$eval("res = fit(LinearMixedModel, form, vox)", need_return = c("Julia"))
-julia.dir$eval("res")
+res <- julia.dir$eval("res")
+julia_setup()
+beta.random = t(julia_eval("ranef(res)")[1])
+
+julia_assign("vox", vox)
+
+blblb <- julia_command("@time fm1 = fit!(LinearMixedModel(@formula(pss ~ incomef + educationf + age_cat + gender + (incomef + educationf | canton/annee_cat)), vox))")
+
+library(optimx)
+fit = glmer(pss ~ incomef + educationf + age_cat + gender + (incomef + educationf | canton/annee_cat), data = vox,
+            control = lme4::glmerControl(optimizer = "optimx", calc.derivs = FALSE, optCtrl = list(method = "nlminb", starttests = FALSE, kkt = FALSE)), family = binomial(link = "probit"))
+summary(fit)
 ```
 
 
 
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| include: false
+
+
+glmer_udc <- glmer(data = vox,
+                   formula = plr ~ income + educationf + gender + age_cat + house_ownership + (1 | annee_cat/canton),
+                   family = binomial(link = "probit"),
+                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
+
+sjPlot::tab_model(glmer_udc)
+
+summary(glmer_udc <- glm(data = vox,
+                 udc ~ income + educationf + gender + age_cat + annee_cat,
+                 family = binomial(link = "probit")))
+
+summary(glmer_udc)
+tab_model(glmerahoui)
+
+glmerahoui <- glmer(data = vox,
+                   formula = plr ~ 1 + (1 | annee_cat) + (1|canton),
+                   family = binomial(link = "probit"))
+
+tab_model(fm1)
+ICC.NB(glmer_plr)
+```
 
 
 
