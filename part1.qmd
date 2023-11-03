@@ -117,7 +117,6 @@ Since the break-up of the post-war Keynesian "historical compromise" between the
 #| message: false
 
 library(irr)
-library(easystats)
 library(JuliaCall)
 library(JuliaConnectoR)
 library(tidyverse)
@@ -145,7 +144,6 @@ library(knitr)
 library(readr)
 library(gtExtras)
 library(broom.mixed)
-library(performance)
 library(GGally)
 library(questionr)
 library(car)
@@ -155,6 +153,7 @@ library(margins)
 library(cAIC4)
 library(ordinal)
 library(pacman)
+library(easystats)
 ```
 
 ```{r}
@@ -207,7 +206,7 @@ What is the social basis of the Swiss left, center-right and radical-right in th
 
 Moreover, a recent trend in political economy developed a tremendous analysis of the long run transformations of political cleavages, social blocs, and voting outcomes in almost all democratic countries around the world. The popularity of inequality studies, after the contributions of renown economists such as Atkinson [-@atkinson_inequality_2015], Milanovic [-@milanovic_global_2016] and of course Piketty [@piketty_capital_2014], economists recently became interested in the problematic of social conflict and political cleavages. One possible explanation of this sudden interest is the inequality paradox: increasing inequality and neoliberal reforms did not pave the way for growing support for redistribution, taxation of top income and wealth owners, or for left parties. The same paradox could be applied to a "climate change paradox", that is, the fact that the growing emergency or environmental issues were not followed by increasing support for green parties. For instance, the Swiss green parties were the biggest losers in the 2023 federal elections.
 
-Those paradox thus gave way to a fresh and recent literature linking political cleavages and voting outcomes as function of a set of socio-economic factors, mainly income and education level. Trying to explore this inequality paradox, @piketty_brahmin_2018 underlines the fact that, rather than bringing back class-based divide back to its post-war salience, the global rise in inequality since the 1970s was followed by the emergence of a new cleavage and a multi-elite party system. During the post-war period, the electoral support for the left parties in The US, UK and France was mainly constituted by popular classes with low income and education levels whereas right-wing parties were supported by high income and education voters. The popular element of the support for the left blocs then transformed in the 1970-80s: left parties became the bloc of the highly educated while the right kept the support of the wealthiest. Piketty called the former bloc the "brahmin left" and the latter the "merchant right" [@piketty_brahmin_2018; @piketty_capital_2019]. A further project, which gave birth to the World Political Cleavage and Inequality Database (WPID), showed that these transformations affected almost all Western democracies [@gethin_political_2021].
+Those paradox thus gave way to a recent literature linking political cleavages and voting outcomes as function of a set of socio-economic factors, mainly income and education level. Trying to explore this inequality paradox, @piketty_brahmin_2018 underlines the fact that, rather than bringing back class-based divide back to its post-war salience, the global rise in inequality since the 1970s was followed by the emergence of a new cleavage and a multi-elite party system. During the post-war period, the electoral support for the left parties in The US, UK and France was mainly constituted by popular classes with low income and education levels whereas right-wing parties were supported by high income and education voters. The popular element of the support for the left blocs then transformed in the 1970-80s: left parties became the bloc of the highly educated, thus becoming the "brahmin right", whereas the right kept the support of the wealthy ("merchant right") [@piketty_brahmin_2018; @piketty_capital_2019]. A further project, which gave birth to the World Political Cleavage and Inequality Database (WPID), showed that these transformations affected almost all Western democracies [@gethin_political_2021].
 
 Underlying the rise of a new cleavage in the 70s and 80s, Piketty and the WPID tackle a topic which is well-known in political science: the emergence of a cleavage centered around cultural values, that Piketty calls the "nativists-internationalists" divide, which cuts across the traditional class conflict and is the result of the increase in average education level and of globalization. The combination of this new cultural cleavage with the traditional class-based conflict draws a bi-dimensional political space in which four social blocs are possible: an internationalist-egalitarian bloc which is on the left both culturally and economically; an internationalist-inegalitarian bloc on the left culturally but economically on the right; a nativist-inegalitarian bloc on the right culturally and economically; and a nativist-egalitarian bloc which is culturally conservative but economically on the left [@piketty_brahmin_2018; @piketty_capital_2019]. This "cultural cleavage" has been given as many labels as it has analysts among political scientists: "materialist-postmaterialist" divide for Inglehart [-@inglehart_silent_1971; -@inglehart_value_1987; -@inglehart_culture_1990]; the "libertarian-authoritarian" cleavage [@kitschelt_transformation_1994; @flanagan_new_2003];
 winners vs losers of globalization [@kriesi_globalization_2006; @kriesi_west_2008; @teney_winners_2014]; the "transnational cleavage" [@hooghe_cleavage_2018] or the "universalism–particularism" cleavage [@bornschier_cleavage_2010; @zollinger_cleavage_2022]. 
@@ -231,19 +230,114 @@ The empirical agenda of the present study is to test the validity and relevance 
 
 ### Data and empirical strategy 
 
-One of the contributions of the present research is to draw extensive use the post-referendum Swiss surveys. In Switzerland, two types of political surveys are conducted: post-electoral and post-referendum surveys. The Swiss Elections Studies (SELECTS) conducts national surveys after each election of the national council while the VOX studies (now VOTO) conducts collects data after each referendum. More specifically the VOX studies offer a cumulative dataset, *VoxIt* which allows to conduct an empirical analysis of the links between the vote for the main Swiss parties with socio-economic characteristics. *VoxIt* compiles all post-referendum surveys from 1981 to 2016 and offers many variables of interests.
+To test the hypotheses above, two types of data are especially relevant. The *Swiss Election Studies (SELECTS) cumulative dataset* is a harmonized dataset merging every Swiss post-election (federal assembly elections, which take place every four years) surveys from 1971 to 2019 [@tresch_swiss_2022]. Since SELECTS data are already drastically analyzed by the literature (for instance by @durrer_de_la_sota_party_2021), I contribute to the existing research by analyzing another data source, the *VoxIt* cumulative dataset which harmonize every post-vote surveys from 1981 to 2016 [@brunner_enquetes_2017].
 
-The two main dependent variables are binary variables for each party support computed from the variable "p02" which collected respondents' partisan identification, and self-right self positioning ranging from 0 (far-left) to 10 (far-right). Other Likert-scale variables are also taken as dependent variables to analyze policy preferences: opinion on state intervention ("val11") and redistribution ("val5").
+The main dependent variables are binary variables for party support. 
 
 The two main explanatory variables are income and education levels. The latter is centered around zero to make the intercept meaningful and is treated as continuous for simplicity. The income variable needed more recoding since the scale of the variable changed in 1991: "nivmena" is a four scale variables on the respondent's standard of living, while "revenu" is a more standard income variable in five categories. In order to have significant and robust results, years are grouped into categories of two. The cumulative dataset offers few variables which a few missing value rates across the years and can be added as control variables: age (recoded into categories), gender and house ownership.
 
 #### The model
 
-To explore the links between party support and income and education levels, multilevel binary probit regressions are run for each Swiss main parties (PRD-PLR, PS, UDC, PDC, Greens). In our case study, multilevel/hierarchical models offer several advantages and relevant properties. On the one hand, they allow to take regions (here Swiss cantons) and time as levels in which observations are nested. Taking cantons as a level is especially relevant for Switzerland, in which every day political life, institutions and part system are highly decentralized, federalist and organized at the cantonal level. Each canton has its own specific institutions and can show very different patterns of party support and party system. For instance, some parties exist solely at the cantonal level, like the *Mouvement Citoyen Genevois* (*Genevan Citizen Movement*, MCG) or the *Lega Ticinesi*. On the other hand, taking into account the multilevel structure of the data allow better inference and, parameters and standard errors estimations [@julian_consequence_2001; @steenberger_modeling_2002].
+The main methodological challenge of these two repeated cross-sectional datasets (RPC) is the clustering structure of the data. On the one hand, the observations (Swiss citizen) are clustered into cantons, which are an important level in Switzerland. On the other hand, the time structure and trend of the data are highly relevant for our research question. 
 
-In the context of party support, multilevel models's can offer strong and interesting results. @gelman
+To face this challenge, multilevel binary probit regressions are run for each Swiss main parties (PRD-PLR, PS, UDC, PDC, Greens). In our case study, multilevel/hierarchical models offer several advantages and relevant properties. On the one hand, they allow to take regions (here Swiss cantons) and time as levels in which observations are nested. Taking cantons as a level is especially relevant for Switzerland, in which every day political life, institutions and part system are highly decentralized, federalist and organized at the cantonal level.
+Each canton has its own specific institutions and can show very different patterns of party support and party system. For instance, some parties exist solely at the cantonal level, like the *Mouvement Citoyen Genevois* (*Genevan Citizen Movement*, MCG) or the *Lega Ticinesi*. On the other hand, taking into account the multilevel structure of the data allow better inference and, parameters and standard errors estimations [@julian_consequence_2001; @steenberger_modeling_2002].
+
+To analyze the time trend, two approaches are considered. In a classic study which explored the links between income and party support in the US, @gelman_rich_2007 used repeated multilevel modelling for US post-election surveys to uncover the "rich states, blue states" paradox, the fact that, at the state level, richer states support the democrats while, at the national (individual) level, richer voters still support the Republican. By Using this "secret weapon", @gelman_rich_2007 showed that this paradox is the result of varying strength of association between income and party support across states: in poor states, the link between income and support for republican is higher than in rich states. Another possible approach is to consider time as level per se: instead of running separate regressions for each year, time can be modeled directly as a level [@gelman_data_2006].
 
 
+
+
+```{r import selects cumulative}
+#| echo: false
+#| warning: false
+#| message: false
+selects <- read_sav("data/495_Selects_CumulativeFile_Data_1971-2019_v2.3.0.sav")
+
+selects %>% 
+  group_by(year) %>% 
+  count(pid2b) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  filter(pid2b == 4) %>% 
+  ungroup()
+freq(selects$educ)
+```
+
+
+```{r selects recoding}
+#| echo: false
+#| warning: false
+#| message: false
+
+selects <- 
+  selects %>% 
+  mutate(
+    pss = if_else(pid2b == 3, 1,
+                  if_else(is.na(pid2b), NA, 0)),
+    plr = if_else(pid2b %in% c(1, 5), 1,
+                  if_else(is.na(pid2b), NA, 0)),
+    pdc = if_else(pid2b == 2, 1,
+                  if_else(is.na(pid2b), NA, 0)),
+    udc = if_else(pid2b == 4, 1,
+                  if_else(is.na(pid2b), NA, 0)),
+    abstention = if_else(pid2b == 0, 1, 
+                         if_else(is.na(pid2b), NA, 0)),
+    education = case_when(
+      educ %in% c(1, 2, 3) ~ "low_education", #primary school to basic vocational training
+      educ %in% c(4, 5, 6) ~ "middle_education",#vocational, high and diploma school
+      educ %in% c(7, 8) ~ "higher_voc_training",
+      educ %in% c(9) ~ "university"
+    ),
+    income_centered = income - 3,
+    age_cat = cut(age, c(18, 30, 45, 65, 99), include.lowest = TRUE, right = FALSE),
+    canton = as.factor(as_character(sg2)),
+    annee = as.factor(year),
+    religionf = as.factor(as_character(religion)),
+    gender = as.factor(as_character(sex))
+  )
+freq(selects$income)
+freq(selects$income_centered)
+```
+
+```{r selects regressions}
+#| echo: false
+#| include: false
+
+
+selects_filt <- 
+  selects %>% 
+  filter(year %in% c(1975, 1979, 1995, 1999, 2003, 2007, 2011, 2015, 2019))
+
+glmer_pss_selects <- 
+  selects %>% 
+  filter(year %in% c(1975, 1979, 1995, 1999, 2003, 2007, 2011, 2015, 2019)) %>% 
+  split(.$year) %>% 
+  map(~ glmer(pss ~ 1 + income_centered + education + gender + age_cat + religionf + (1 | canton),
+              data = .x, family = binomial(link = "probit")))
+
+
+ame <- 
+glmer_pss_selects %>% 
+  map(~comparisons(.x ,variables = list(education = c("low_education", "university")))) %>% 
+  map_df(~summarise(.x, ame = mean(estimate),
+            high = mean(conf.high),
+            low = mean(conf.low))) %>% 
+           mutate(year = c(1975, 1979, 1995, 1999, 2003, 2007, 2011, 2015, 2019),
+                  variable = "education")
+
+glmer_pss_selects2 <- glmer(pss ~ 1 + income_centered + education + gender + age_cat + religionf + lr1 + (1 | canton/year), family = binomial(link = "probit"), data = selects_filt,
+                             control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+
+glmer_pss_selects2 %>% 
+  comparisons(variables = list(education = c("low_education", "university")), by = "canton")
+
+glmer_pss_selects2 %>% 
+  avg_slopes(variables = c("income_centered", "canton"), allow.new.levels = TRUE)
+
+tab_model(glmer_pss_selects2)
+
+```
 
 
 ```{r import voxit}
