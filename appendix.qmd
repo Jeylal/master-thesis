@@ -1,0 +1,267 @@
+# Appendix
+
+```{r set up}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(irr)
+library(JuliaCall)
+library(JuliaConnectoR)
+library(tidyverse)
+library(haven)
+library(quarto)
+library(sjlabelled)
+library(readr)
+library(readxl)
+library(haven)
+library(viridis)
+library(stargazer)
+library(gtsummary)
+library(gt)
+library(brms)
+library(ggrepel)
+library(cowplot)
+library(ggpubr)
+library(lme4)
+library(prediction)
+library(marginaleffects)
+library(ggeffects)
+library(ordinal)
+library(broom)
+library(knitr)
+library(readr)
+library(gtExtras)
+library(broom.mixed)
+library(GGally)
+library(questionr)
+library(car)
+library(effects)
+library(sjPlot)
+library(margins)
+library(cAIC4)
+library(ordinal)
+library(pacman)
+library(easystats)
+```
+
+
+```{r selects recoding}
+#| echo: false
+#| warning: false
+#| message: false
+
+selectscum <- read_sav("data/495_Selects_CumulativeFile_Data_1971-2019_v2.3.0.sav")
+
+selects <- 
+  selectscum %>% 
+  mutate(
+    pss = if_else(pid2b == 3, 1,
+                  if_else(is.na(pid2b), NA, 0)),
+    plr = if_else(pid2b %in% c(1, 5), 1,
+                  if_else(is.na(pid2b), NA, 0)),
+    pdc = if_else(pid2b == 2, 1,
+                  if_else(is.na(pid2b), NA, 0)),
+    udc = if_else(pid2b == 4, 1,
+                  if_else(is.na(pid2b), NA, 0)),
+    abstention = if_else(pid2b == 0, 1, 
+                         if_else(is.na(pid2b), NA, 0)),
+    education = case_when(
+      educ %in% c(1, 2, 3) ~ "low_education", #primary school to basic vocational training
+      educ %in% c(4, 5, 6) ~ "middle_education",#vocational, high and diploma school
+      educ %in% c(7, 8) ~ "higher_voc_training",
+      educ %in% c(9) ~ "university"
+    ),
+    income_centered = income - 3,
+    age_cat = cut(age, c(18, 30, 45, 65, 99), include.lowest = TRUE, right = FALSE),
+    canton = as.factor(as_character(sg2)),
+    annee = as.factor(year),
+    religionf = as.factor(as_character(religion)),
+    gender = as.factor(as_character(sex))
+  )
+freq(selects$income)
+freq(selects$income_centered)
+```
+
+```{r selects regression 1971}
+#| echo: false
+#| warning: false
+#| message: false
+#| include: false
+selects1971 <- 
+  selects %>% 
+  filter(year == 1971)
+
+selects1971$classKriesi <- as.factor(as_character(selects1971$sc7b))
+
+freq(selects1971$ip4)
+
+summary(schwarzen <- glm(data = selects1971, 
+                         ip4 ~ classKriesi + age_cat + factor(sg1),
+                         family = binomial(link = "probit")))
+
+selects1971 %>% 
+  group_by(classKriesi) %>% 
+  count(ip4) %>% 
+  drop_na() %>% 
+  mutate(prop = n/sum(n)) %>% 
+  filter(ip4 == 1) %>% 
+  mutate(compmean = prop - 0.405)
+
+
+selects1975 <- 
+  selects %>% filter(year == 1975)
+
+freq(selects1975$ip5)
+
+```
+
+
+```{r selects regressions}
+#| echo: false
+#| include: false
+
+
+selects_filt <- 
+  selects %>% 
+  filter(year %in% c(1975, 1979, 1995, 1999, 2003, 2007, 2011, 2015, 2019))
+
+glmer_pss_selects <- 
+  selects %>% 
+  filter(year %in% c(1975, 1979, 1995, 1999, 2003, 2007, 2011, 2015, 2019)) %>% 
+  split(.$year) %>% 
+  map(~ glmer(pss ~ 1 + income_centered + education + gender + age_cat + religionf + (1 | canton),
+              data = .x, family = binomial(link = "probit")))
+
+
+ame <- 
+glmer_pss_selects %>% 
+  map(~comparisons(.x ,variables = list(education = c("low_education", "university")))) %>% 
+  map_df(~summarise(.x, ame = mean(estimate),
+            high = mean(conf.high),
+            low = mean(conf.low))) %>% 
+           mutate(year = c(1975, 1979, 1995, 1999, 2003, 2007, 2011, 2015, 2019),
+                  variable = "education")
+
+glmer_pss_selects2 <- glmer(pss ~ 1 + income_centered + education + gender + age_cat + religionf + lr1 + (1 | canton) + (income_centered + education| year), family = binomial(link = "probit"), data = selects_filt,
+                             control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+tab_model(glmer_pss_selects2)
+glmer_pss_selects2 %>% 
+  comparisons(variables = list(education = c("low_education", "university")), by = "canton")
+
+glmer_pss_selects2 %>% 
+  avg_slopes(variables = c("income_centered", "canton"), allow.new.levels = TRUE)
+
+tab_model(glmer_pss_selects2)
+
+```
+
+
+
+```{r import selects cumulative}
+#| echo: false
+#| warning: false
+#| message: false
+selects <- read_sav("data/495_Selects_CumulativeFile_Data_1971-2019_v2.3.0.sav")
+selects1995 <- read_sav("data/selects1995_recoded.sav")
+freq(selects1995$val2)
+selects1995$age_cat <- as.factor(as_character(selects1995$age_cat))
+selects1995$income_hh <- as.factor(as_character(selects1995$income_hh))
+selects1995$educ <- as.factor(as_character(selects1995$educ))
+selects1995$language <- as.factor(as_character(selects1995$language))
+selects1995$val2 <- ordered(selects1995$val2)
+selects1995$class <- as.factor(as_character(selects1995$classh))
+
+selects1995$educ <- relevel(selects1995$educ, ref = "vocational education")
+selects1995$income_hh <- relevel(selects1995$income_hh, ref = "medium income")
+selects1995$val4 <- ordered(selects1995$val4)
+selects1995$val3 <- ordered(selects1995$val3)
+selects1995$val8 <- ordered(selects1995$val8)
+selects1995$symp_pdc <- ordered(selects1995$q42_1)
+selects1995$symp_prd <- ordered(selects1995$q42_3)
+selects1995$symp_greens <- ordered(selects1995$q42_4)
+selects1995$symp_poppdt <- ordered(selects1995$q42_5)
+selects1995$symp_udc <- ordered(selects1995$q42_6)
+selects1995$symp_ps <- ordered(selects1995$q42_7)
+selects1995$symp_pls <- ordered(selects1995$q42_8lps)
+
+
+library(ordinal)
+summary(socspend <- clm(data = selects1995,
+                           val2 ~ income_hh + educ + gender + age_cat + language,
+                           link = c("probit")))
+
+summary(chances_foreign <- clm(data = selects1995,
+                           val4 ~ income_hh + educ + gender + age_cat + language,
+                           link = c("probit")))
+
+summary(ue <- clm(data = selects1995,
+                           val3 ~ income_hh + educ + gender + age_cat + language,
+                           link = c("probit")))
+summary(taxesHihgInc <- clm(data = selects1995,
+                           val8 ~ income_hh + educ + gender + age_cat + language,
+                           link = c("probit")))
+
+
+symp_pdc <- clm(data = selects1995,
+                           symp_pdc ~ income_hh + educ + gender + age_cat + language,
+                           link = c("probit"))
+symp_prd <- clm(data = na.omit(selects1995[c("symp_prd", "income_hh", "educ", "gender", "age_cat", "language")]),
+                           symp_prd ~ income_hh + educ + gender + age_cat + language,
+                           link = c("probit"))
+symp_udc <- clm(data = selects1995,
+                           symp_udc ~ income_hh + educ + gender + age_cat + language,
+                           link = c("probit"))
+symp_ps <- clm(data = selects1995,
+                           symp_ps ~ income_hh + educ + gender + age_cat + language,
+                           link = c("probit"))
+
+symp_greens <- clm(data = selects1995,
+                           symp_greens ~ income_hh + educ + gender + age_cat + language,
+                           link = c("probit"))
+
+symp_pls <- clm(data = na.omit(selects1995[c("symp_pls", "income_hh", "educ", "gender", "age_cat", "language")]),
+                           symp_pls ~ income_hh + educ + gender + age_cat + language,
+                           link = c("probit"))
+
+tab_model(socspend, chances_foreign, ue, taxesHihgInc)
+tab_model(symp_pdc, symp_prd, symp_udc, symp_ps, symp_greens)
+
+step_prd <- step(symp_prd, direction = "backward")
+summary(step_prd)
+```
+
+```{r}
+freq(selects$ip13)
+```
+
+
+```{r}
+regsocspend <- clm(data = selects, ordered(ip13) ~ factor(income_hh) + education + gender + age_cat + annee + factor(income):annee)
+
+regsocspend_clmm <- clmm(data = selects[selects$annee %in% c(1995, 1999, 2007, 2011, 2015, 2019),], 
+                         ordered(ip13) ~ factor(income) + education + gender + age_cat + (1 | annee) + (1 | canton),
+                         link = "probit", Hess = TRUE, na.action = na.omit,
+                         control = clmm.control(method = "nlminb", grtol=1e-6))
+summary(regsocspend)
+summary(regsocspend_clmm)
+```
+
+
+
+
+
+
+```{r jglmm test}
+#| echo: false
+#| include: false
+
+library(jglmm)
+
+jglmm_setup()
+gm <- jglmm(pss ~ 1 + incomef + ( 1 | canton), data = vox, family = "binomial")
+```
+
+
+

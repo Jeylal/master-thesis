@@ -1,45 +1,5 @@
 # Social blocs, socio-economic factors and voting outcomes in Switzerland
 
-```{r run glmer models}
-#| warning: false
-#| message: false
-#| echo: false
-#| include: false
-
-glmer_udc <- glmer(data = vox,
-                   formula = udc ~ income + educationf + gender + age_cat + house_ownership + (income + educationf | canton) + (income + educationf | annee_cat),
-                   family = binomial(link = "probit"),
-                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
-
-
-
-glmer_pss <- glmer(data = vox, formula = pss ~ income + educationf + gender + age_cat + house_ownership + (income + educationf | canton) + (income + educationf | annee_cat), family = binomial(link = "probit"),
-                           nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
-
-
-glmer_plr <- glmer(data = vox,
-                   formula = plr ~ income + educationf + gender + age_cat + house_ownership + (income + educationf | canton) + (income + educationf | annee_cat),
-                   family = binomial(link = "probit"),
-                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
-
-glmer_pdc_pcs <- glmer(data = vox,
-                   formula = pdc_pcs ~ income + educationf + gender + age_cat + house_ownership + (income + educationf | canton) + (income + educationf | annee_cat),
-                   family = binomial(link = "probit"),
-                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
-
-glmer_pdc_green <- glmer(data = vox,
-                   formula = green ~ income + educationf + gender + age_cat + house_ownership + (income + educationf | canton) + (income + educationf | annee_cat),
-                   family = binomial(link = "probit"),
-                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
-
-
-
-
-
-glmer_pdc <- glmer(data = vox,
-                   formula = pdc_pcs ~ incomef + educationf + gender + age_cat + house_ownership + (1 | canton/annee_cat), family = binomial(link = "probit"))
-```
-
 
 ```{r functions}
 #| echo: false
@@ -196,9 +156,16 @@ Regarding the Catholic-Conservative bloc, the latter was from the start a cross-
 
 As industrialization, proletarianization and unionization intensified in the late 19th, the hegemony of the Radical mosaic gradually shattered. Part of the democrats and of the working class joined or even founded socialist organizations, as seen the creation of the Swiss socialist party in 1888 by a former Radical, Albert Steck. The creation of the latter and of the Radical-democratic party (PRD) in 1894 marked the beginning of the Radical shift towards liberal stances, which became clear-cut after the general strike of 1912, after which "a long-denied class conflict became evident" [@meuwly_les_2010, p.49]. Conversely, industrialization and class conflict broadened the social basis of the Catholic-Conservatives bloc towards the working class. The global development of a Catholic social doctrine, beginning with the encyclical *Rerum Novarum* (1981), was integrated by the Swiss Catholic-Conservatives, who then tried to attract parts of the working class [@altermatt_conservatism_1979].
 
-This polarization around class conflict between a left and right bloc became even more salient after the second general strike of 1918, which was the biggest strike and social protest in Swiss history. The latter was followed by the introduction of the proportional representation system: the Radicals lost their hegemony in the parliament and the Christian democrats and the socialists became important political actors in the National Council. The socialist party (PS) consolidated a left bloc while the Radical-Democrats (PRD), the Catholic-Conservatives (PDC) and the Agrarians formed a liberal-conservative coalition. This coalition between the PRD, PDC and Agrarians and its close links with business association such as the Vorort (1870) led many observers to name this coalition the "bourgeois bloc" [@mach_redefinition_2007].
+This polarization around class conflict between a left and right bloc became even more salient after the second general strike of 1918, which was the biggest strike and social protest in Swiss history. The latter was followed by the introduction of the proportional representation system: the Radicals lost their hegemony in the parliament and the Christian democrats and the socialists became important political actors in the National Council. The socialist party (PS) consolidated a left bloc while the Radical-Democrats (PRD), the Catholic-Conservatives (PDC) and the Agrarians formed a liberal-conservative coalition. This coalition between the PRD, PDC and Agrarians and its close links with business association such as the Vorort (1870) led many observers to name this coalition the "bourgeois bloc" [@mach_redefinition_2007]. 
 
-Until the post-war period, the evolution of the Swiss social blocs can thus be resumed as follows. From the middle to the late 19th century, the Radicals formed a strongly heterogeneous but dominant social bloc. This dominant social bloc was composed by the working class (mainly through the Grütli Union), and an urban elite composed by the most educated (journalists, lawyers, teachers) and the wealthy industrial bourgeoisie (entrepreneurs, bankers...). This DBS was united by their willingness to modernize the Confederation against the Catholic-Conservatives. A second period, from the late 19th to the second world war, marked the recomposition of the DBS and its transformation into a bourgeois bloc. Part of the working class and of the democrats (educated elite) joined the emerging socialist bloc while the Catholic-Conservatives attracted part of the working class while being progressively incorporated into the DBS, along with the Agrarian party which represented parts of the peasant and farmer classes. The coalition between the Radical-Democrats, Catholic-Conservatives and Agrarians against the left bloc took deeply roots into the Swiss socio-political system: it persisted during the post-war period and still shapes Swiss politics to some extent nowadays [@mazzoleni_voisinages_2013; @meuwly_les_2010; @meuwly_liberte_2008].
+Until the post-war period, the evolution of the Swiss social blocs can thus be resumed as follows. From the middle to the late 19th century, the Radicals formed a strongly heterogeneous but dominant social bloc. This dominant social bloc was composed by the working class (mainly through the Grütli Union), and an urban elite composed by the most educated (journalists, lawyers, teachers) and the wealthy industrial bourgeoisie (entrepreneurs, bankers...). This DBS was united by their willingness to modernize the Confederation against the Catholic-Conservatives. A second period, from the late 19th to the second world war, marked the recomposition of the DBS and its transformation into a bourgeois bloc. Part of the working class and of the democrats (educated elite) joined the emerging socialist bloc while the Catholic-Conservatives attracted part of the working class while being progressively incorporated into the DBS, along with the Agrarian party which represented parts of the peasant and farmer classes. The coalition between the Radical-Democrats, Catholic-Conservatives and Agrarians against the left bloc took deeply roots into the Swiss socio-political system: it persisted during the post-war period and still shapes Swiss politics to some extent nowadays [@mazzoleni_voisinages_2013; @meuwly_les_2010; @meuwly_liberte_2008]. 
+
+However, the extent to which this DBS can truly be described as bourgeois must be questioned. In the sense given by Swiss social scientists, the bourgeois bloc refers to an alliance of right-wing parties with close ties with business interests. For @amable_illusion_2017 the bourgeois bloc is an alliance of social groups whose characteristic feature is that they are the most advantaged in terms of, for instance, income and education. I argue that, in the Swiss context, the use of the term bourgeois bloc can be misleading, because this bloc gathers, of course, parts of the wealthiest Swiss social groups, but also parts of popular groups, mainly through the Christian Democrats. 
+
+
+
+
+
 
 ## Swiss social blocs and socio-economic factors: 1980-2016
 
@@ -215,7 +182,11 @@ Testing the relevance of the brahmin left vs merchant right divide, @amable_brah
 
 In this context of multi-elite party system and multidimensional political divides, Switzerland is an interesting case study. A widespread idea claims that the class-based cleavage always played relatively a minor role in Switzerland. On the one hand, class conflict was always cut across a wide variety of other divides: religious, linguistic or regional. As a result, Switzerland was a forerunner in the emergence of this "cultural" cleavage, but also in the precociousness and strength of the educational shift. @durrer_de_la_sota_party_2021 offer a detailed analysis of the links between socio-economic factors and the vote for the main Swiss social blocs. During the post-war period until the 1990s, the left bloc (mainly the PS) was supported by low income and education voters while right-wing parties showed different patterns of class support, which call into question the extent to which this bourgeois bloc can truly be characterized as "bourgeois". Of the three parties constituting the bourgeois bloc, only one of them, the PRD-PLR party, had clearly a bourgeois composition since it is consistently supported by the most wealthy and educated groups since the post-war period. The PDC and the UDC cannot really be described as "bourgeois" since, according to @durrer_de_la_sota_party_2021, the support for the two parties was negatively associated with income and education. While this negative association tends to decline for the PDC, it became even more strong for the UDC since the 90s. After this period, the left bloc became "brahmin" in the sense that it gathered strong support among the most educated classes, while its popular support moved either into abstention or to the UDC.
 
-The transformation of party systems into a mutli-elite and tripolar political space came with important change in the structural basis of party support. @oesch_electoral_2018 show that the rise of the radical-right and of the cultural cleavage transformed the patterns of class voting. The working class, or at least some of its constituencies such as production workers, are still attracted to the left due to their economic interests, but also by the far-right because of cultural issues, leaving socio-cultural professionals as the sole "stronghold" of the left. Small artisans and business owners are also divided between their support to the center-right and the far-right: their economic preferences make them closer to the center-right while their cultural preferences are closer to the far-right. 
+The transformation of party systems into a mutli-elite and tripolar political space came with important change in the structural basis of party support. @oesch_rennwald_class_2010 show that, in Switzerland, the cultural cleavage is still rooted in the class structure, but caused a re-alignment between class and party support. Before this shift took place, the Swiss Socialist party was a hybrid-class party gathering above-average support from socio-cultural professionals (teachers, academics, journalists...) and production workers, but also from technicians, clerks and service workers [@rennwald_social_2020]. This strong class heterogeneity of the Swiss left declined: an analysis of Swiss post-election surveys for 2003 and 2007 show that the Swiss left was deserted by production workers who directed their support for the Swiss People's party due to cultural issues [@oesch_rennwald_class_2010]. Using European Social Survey data for 2011 and 2015, @rennwald_social_2020 show that socio-cultural professionals remain the only "party preserve" of the Swiss left.
+
+@oesch_electoral_2018 show that the rise of the radical-right and of the cultural cleavage transformed the patterns of class voting. The working class, or at least some of its constituencies such as production workers, are still attracted to the left due to their economic interests, but also by the far-right because of cultural issues, leaving socio-cultural professionals as the sole "stronghold" of the left. Small artisans and business owners are also divided between their support to the center-right and the far-right: their economic preferences make them closer to the center-right while their cultural preferences are closer to the far-right. 
+
+Although the results presented by Oesch and Rennwald offer interesting and well documented understanding of the transformation of party support's class structure in Switzerland, their work is limited by some methodological and theoretical flaws. First, their definition of social class, based on @oesch
 
 The empirical agenda of the present study is to test the validity and relevance of the literature reviewed above. More specifically, how are socio-economic factor shaping the composition of each Swiss social blocs? The objective of the empirical analysis conducted here is to test the following hypotheses derived from the contributions of the WPID project [@piketty_brahmin_2018; @piketty_capital_2019; @durrer_de_la_sota_party_2021; @gethin_political_2021; @gethin_brahmin_2022]; @oesch_electoral_2018; and Amable and Darcillon [-@amable_brahmin_2022; -@amable_brahmin_2022-1]:
 
@@ -248,98 +219,6 @@ To analyze the time trend, two approaches are considered. In a classic study whi
 
 
 
-```{r import selects cumulative}
-#| echo: false
-#| warning: false
-#| message: false
-selects <- read_sav("data/495_Selects_CumulativeFile_Data_1971-2019_v2.3.0.sav")
-
-selects %>% 
-  group_by(year) %>% 
-  count(pid2b) %>% 
-  mutate(prop = n/sum(n)) %>% 
-  filter(pid2b == 4) %>% 
-  ungroup()
-freq(selects$educ)
-```
-
-
-```{r selects recoding}
-#| echo: false
-#| warning: false
-#| message: false
-
-selects <- 
-  selects %>% 
-  mutate(
-    pss = if_else(pid2b == 3, 1,
-                  if_else(is.na(pid2b), NA, 0)),
-    plr = if_else(pid2b %in% c(1, 5), 1,
-                  if_else(is.na(pid2b), NA, 0)),
-    pdc = if_else(pid2b == 2, 1,
-                  if_else(is.na(pid2b), NA, 0)),
-    udc = if_else(pid2b == 4, 1,
-                  if_else(is.na(pid2b), NA, 0)),
-    abstention = if_else(pid2b == 0, 1, 
-                         if_else(is.na(pid2b), NA, 0)),
-    education = case_when(
-      educ %in% c(1, 2, 3) ~ "low_education", #primary school to basic vocational training
-      educ %in% c(4, 5, 6) ~ "middle_education",#vocational, high and diploma school
-      educ %in% c(7, 8) ~ "higher_voc_training",
-      educ %in% c(9) ~ "university"
-    ),
-    income_centered = income - 3,
-    age_cat = cut(age, c(18, 30, 45, 65, 99), include.lowest = TRUE, right = FALSE),
-    canton = as.factor(as_character(sg2)),
-    annee = as.factor(year),
-    religionf = as.factor(as_character(religion)),
-    gender = as.factor(as_character(sex))
-  )
-freq(selects$income)
-freq(selects$income_centered)
-```
-
-```{r selects regressions}
-#| echo: false
-#| include: false
-
-
-selects_filt <- 
-  selects %>% 
-  filter(year %in% c(1975, 1979, 1995, 1999, 2003, 2007, 2011, 2015, 2019))
-
-glmer_pss_selects <- 
-  selects %>% 
-  filter(year %in% c(1975, 1979, 1995, 1999, 2003, 2007, 2011, 2015, 2019)) %>% 
-  split(.$year) %>% 
-  map(~ glmer(pss ~ 1 + income_centered + education + gender + age_cat + religionf + (1 | canton),
-              data = .x, family = binomial(link = "probit")))
-
-
-ame <- 
-glmer_pss_selects %>% 
-  map(~comparisons(.x ,variables = list(education = c("low_education", "university")))) %>% 
-  map_df(~summarise(.x, ame = mean(estimate),
-            high = mean(conf.high),
-            low = mean(conf.low))) %>% 
-           mutate(year = c(1975, 1979, 1995, 1999, 2003, 2007, 2011, 2015, 2019),
-                  variable = "education")
-
-glmer_pss_selects2 <- glmer(pss ~ 1 + income_centered + education + gender + age_cat + religionf + lr1 + (1 | canton/year), family = binomial(link = "probit"), data = selects_filt,
-                             control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
-
-
-glmer_pss_selects2 %>% 
-  comparisons(variables = list(education = c("low_education", "university")), by = "canton")
-
-glmer_pss_selects2 %>% 
-  avg_slopes(variables = c("income_centered", "canton"), allow.new.levels = TRUE)
-
-tab_model(glmer_pss_selects2)
-
-```
-
-
 ```{r import voxit}
 #| echo: false
 #| message: false
@@ -355,11 +234,12 @@ vox <- read_sav("data/voxit.sav")
 #| include: false
 vox %>% 
   group_by(annee) %>% 
-  count(p04) %>% 
+  count(no_party) %>% 
   mutate(prop = n/sum(n)) %>% 
-  filter(is.na(p04) == TRUE) %>% 
+  filter(no_party == 1) %>% 
   ungroup()
-freq(vox$val5)
+freq(vox$p02)
+freq(vox$no_party)
 ```
 
 ```{r create income and educ variable}
@@ -434,6 +314,9 @@ vox$green <- ifelse(vox$p02 == 6, 1,
 vox$pdc_pcs <- if_else(vox$p02 %in% c(0, 1, 2), 1,
                        if_else(is.na(vox$p02), NA, 0))
 
+vox$no_party <- if_else(vox$p02 %in% c(33), 1,
+                       if_else(is.na(vox$p02), 1, 0))
+
 
 vox$gender <- factor(vox$sexe, levels = c(1, 2), labels = c("male", "female"))
 vox$married <- ifelse(vox$etatciv == 2, 1,
@@ -454,8 +337,6 @@ vox$canton <- as_character(vox$canton)
 
 vox$house_ownership <- if_else(vox$statloge == 1, 1, 0)
 
-vox$educationf <- factor(as.character(vox$education))
-
 ### classes sociales dummies selon le secteur du répondant (posprof) ou du chef du menage (s31) sauf pour public
 vox <- 
   vox %>% 
@@ -472,18 +353,69 @@ vox <-
 
 ```
 
-
-```{r run party glmer}
+```{r import aggregate data}
 #| warning: false
 #| message: false
 #| echo: false
+#| include: false
+aggregate_data_ch <- read_excel("data/aggregate_data_ch.xlsx", sheet = 3)
 
-load("saved_models/glmer_ps.rda")
-load("saved_models/glmer_udc.rda")
-load("saved_models/glmer_plr.rda")
-load("saved_models/glmer_greens.rda")
-load("saved_models/glmer_pdc_pcs.rda")
+vox <- 
+  vox %>% 
+  left_join(aggregate_data_ch, by = c("annee" = "year"))
+```
 
+
+```{r run party glmer}
+#| echo: false
+
+
+glmer_ps <- glmer(data = vox, 
+                          pss ~ incomef + educationf + age_cat + gender + religion + house_ownership + (1 | annee_f) + (1 | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+glmer_ps2 <- glmer(data = vox, 
+                          pss ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap")) 
+
+glmer_udc3 <- glmer(data = vox, 
+                          udc ~ incomef + educationf + age_cat + gender + religion + house_ownership + scale(share_50perc_nationalincome) + scale(share_50perc_nationalincome) + (incomef + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+glmer_plr <- glmer(data = vox, 
+                          plr ~ incomef + educationf + age_cat + gender + religion + house_ownership + (1 | annee_f) + (1 | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+glmer_pdc <- glmer(data = vox, 
+                          pdc_pcs ~ incomef + educationf + age_cat + gender + religion + house_ownership + (1 | annee_f) + (1 | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+glmer_greens <- glmer(data = vox, 
+                          green ~ incomef + educationf + age_cat + gender + religion + house_ownership + (1 | annee_f) + (1 | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+glmer_noparty <- glmer(data = vox, 
+                          no_party ~ incomef + educationf + age_cat + gender + religion + house_ownership + (1 | annee_f) + (1 | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+tab_model(glmer_udc, glmer_udc2, glmer_udc3,
+          transform = NULL, show.aic = TRUE)
+ameps <- 
+glmer_ps %>% 
+  avg_slopes()
+r2_nakagawa(glmer_ps, tolerance = 1e-1000)
+
+library(VGAM)
+library(MASS)
+
+tab_model(glmer_ps, glmer_ps2)
+Anova(glmer_ps2)
 ```
 
 
@@ -493,44 +425,34 @@ load("saved_models/glmer_pdc_pcs.rda")
 #| warning: false
 #| include: false
 
-comp_udc <- 
-  glmer_udc %>% 
-  comparisons(variables = list(educationf = c("comp_school", "University"), income = c(-1,2)),
-              by = c("annee_cat", "canton"))
-
 comp_ps <- 
-  glmer_pss %>% 
-  comparisons(variables = list(educationf = c("comp_school", "University"), income = c(-1,2)),
-              by = c("annee_cat", "canton"))
+  glmer_ps %>% 
+  avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
+comp_udc2 <- 
+  glmer_udc2 %>% 
+  avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
 comp_plr <- 
   glmer_plr %>% 
-  comparisons(variables = list(educationf = c("comp_school", "University"), income = c(-1,2)),
-              by = c("annee_cat", "canton"))
+  avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
 comp_pdc <- 
-  glmer_pdc_pcs %>% 
-  comparisons(variables = list(educationf = c("comp_school", "University"), income = c(-1,2)),
-              by = c("annee_cat", "canton"))
+  glmer_pdc %>% 
+  avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
-comp_udc %>% 
-  ggplot()+
-  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  theme_bw()+
-  geom_hline(yintercept = 0)+
-  facet_wrap(~canton)+
-  scale_y_continuous(labels = scales::percent)+
-  labs(title = "Difference in predicted probabilites",
-       x = "", y = "")+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
-        legend.position = "bottom")
+comp_greens <- 
+  glmer_greens %>% 
+  avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
+comp_noparty <- 
+  glmer_noparty %>% 
+  avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
+
+plot_ps <- 
 comp_ps %>% 
   ggplot()+
-  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
   geom_point()+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
   theme_bw()+
@@ -538,12 +460,50 @@ comp_ps %>%
   facet_wrap(~canton)+
   scale_y_continuous(labels = scales::percent)+
   labs(title = "Difference in predicted probabilites",
-       x = "", y = "")+
-  theme(axis.text.x = element_blank())
+       x = "", y = "")
+
+plot_udc <- 
+comp_udc %>% 
+  ggplot()+
+  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  theme_bw()+
+  geom_hline(yintercept = 0)+
+  facet_wrap(~canton)+
+  scale_y_continuous(labels = scales::percent)+
+  labs(title = "Difference in predicted probabilites",
+       x = "", y = "")
+
+comp_udc2 %>% 
+  ggplot()+
+  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  theme_bw()+
+  geom_hline(yintercept = 0)+
+  facet_wrap(~canton)+
+  scale_y_continuous(labels = scales::percent)+
+  labs(title = "Difference in predicted probabilites",
+       x = "", y = "")
+
+comp_noparty %>% 
+  filter() %>% 
+  ggplot()+
+  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  theme_bw()+
+  geom_hline(yintercept = 0)+
+  facet_wrap(~canton)+
+  scale_y_continuous(labels = scales::percent)+
+  labs(title = "Difference in predicted probabilites",
+       x = "", y = "")
 
 comp_plr %>% 
+  filter() %>% 
   ggplot()+
-  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
   geom_point()+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
   theme_bw()+
@@ -551,13 +511,12 @@ comp_plr %>%
   facet_wrap(~canton)+
   scale_y_continuous(labels = scales::percent)+
   labs(title = "Difference in predicted probabilites",
-       x = "", y = "")+
-  theme(axis.text.x = element_blank())
+       x = "", y = "")
 
 comp_pdc %>% 
-  filter(canton %in% c("GE", "ZH", "BE")) %>% 
+  filter(canton == "BE") %>% 
   ggplot()+
-  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
   geom_point()+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
   theme_bw()+
@@ -565,9 +524,22 @@ comp_pdc %>%
   facet_wrap(~canton)+
   scale_y_continuous(labels = scales::percent)+
   labs(title = "Difference in predicted probabilites",
-       x = "", y = "")+
-  theme(axis.text.x = element_blank())
-summary(glmer_pss)
+       x = "", y = "")
+
+comp_greens %>% 
+  filter() %>% 
+  ggplot()+
+  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  theme_bw()+
+  geom_hline(yintercept = 0)+
+  facet_wrap(~canton)+
+  scale_y_continuous(labels = scales::percent)+
+  labs(title = "Difference in predicted probabilites",
+       x = "", y = "")
+
+
 ```
 
 
@@ -585,16 +557,18 @@ summary(glmer_pss)
 #| message: false
 #| warning: false
 #| include: false
-julia_library("MixedModels")
-julia_library("RCall")
-julia_library("JellyMe4")
 dyn.load("C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin/libopenlibm.DLL")
 julia.dir <- julia_setup(JULIA_HOME = "C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin")
 julia.dir <- julia_setup(JULIA_HOME = "C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin")
+
+julia_library("MixedModels")
+julia_library("RCall")
+julia_library("JellyMe4")
+
 julia.dir$library("MixedModels")
 julia.dir$assign("vox", vox)
-julia.dir$assign("form", formula(pss ~ incomef + educationf + age_cat + gender + (incomef + educationf | canton/annee_cat)))
-results <- julia.dir$eval("res = fit(LinearMixedModel, form, vox)", need_return = c("Julia"))
+julia.dir$assign("form", formula(pss ~ 1 + incomef + educationf + age_cat + gender + religion + ( incomef + educationf + age_cat + gender + religion | canton) + ( incomef + educationf + age_cat + gender + religion | annee_cat)))
+results <- julia.dir$eval("res = fit(MixedModel, form, vox, Bernoulli())", need_return = c("Julia"))
 res <- julia.dir$eval("res")
 julia_setup()
 beta.random = t(julia_eval("ranef(res)")[1])
@@ -611,34 +585,7 @@ summary(fit)
 
 
 
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| include: false
 
-
-glmer_udc <- glmer(data = vox,
-                   formula = plr ~ income + educationf + gender + age_cat + house_ownership + (1 | annee_cat/canton),
-                   family = binomial(link = "probit"),
-                   nAGQ = 0, control = glmerControl(optimizer = "nloptwrap", calc.derivs = FALSE))
-
-sjPlot::tab_model(glmer_udc)
-
-summary(glmer_udc <- glm(data = vox,
-                 udc ~ income + educationf + gender + age_cat + annee_cat,
-                 family = binomial(link = "probit")))
-
-summary(glmer_udc)
-tab_model(glmerahoui)
-
-glmerahoui <- glmer(data = vox,
-                   formula = plr ~ 1 + (1 | annee_cat) + (1|canton),
-                   family = binomial(link = "probit"))
-
-tab_model(fm1)
-ICC.NB(glmer_plr)
-```
 
 
 
