@@ -87,32 +87,25 @@ freq(selects$income_centered)
 #| echo: false
 #| warning: false
 #| message: false
-#| include: false
 selects1971 <- 
   selects %>% 
-  filter(year == 1971)
+  filter(year %in% c(1971))
 
 selects1971$classKriesi <- as.factor(as_character(selects1971$sc7b))
 
-freq(selects1971$ip4)
+freq(selects1971$sc2g_71)
 
-summary(schwarzen <- glm(data = selects1971, 
-                         ip4 ~ classKriesi + age_cat + factor(sg1),
+summary(pss <- glm(data = selects1971, 
+                         pss ~ classKriesi + age_cat + factor(sg1),
                          family = binomial(link = "probit")))
 
-selects1971 %>% 
-  group_by(classKriesi) %>% 
-  count(ip4) %>% 
-  drop_na() %>% 
+selects1970s %>% 
+  group_by(year) %>% 
+  count(is.na(sch7r)) %>% 
   mutate(prop = n/sum(n)) %>% 
-  filter(ip4 == 1) %>% 
-  mutate(compmean = prop - 0.405)
+  filter() %>% ungroup() 
 
 
-selects1975 <- 
-  selects %>% filter(year == 1975)
-
-freq(selects1975$ip5)
 
 ```
 
@@ -264,4 +257,34 @@ gm <- jglmm(pss ~ 1 + incomef + ( 1 | canton), data = vox, family = "binomial")
 ```
 
 
+```{r julia code}
+#| echo: false
+#| message: false
+#| warning: false
+#| include: false
+dyn.load("C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin/libopenlibm.DLL")
+julia.dir <- julia_setup(JULIA_HOME = "C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin")
+julia.dir <- julia_setup(JULIA_HOME = "C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin")
+
+julia_library("MixedModels")
+julia_library("RCall")
+julia_library("JellyMe4")
+
+julia.dir$library("MixedModels")
+julia.dir$assign("vox", vox)
+julia.dir$assign("form", formula(pss ~ 1 + incomef + educationf + age_cat + gender + religion + ( incomef + educationf + age_cat + gender + religion | canton) + ( incomef + educationf + age_cat + gender + religion | annee_cat)))
+results <- julia.dir$eval("res = fit(MixedModel, form, vox, Bernoulli())", need_return = c("Julia"))
+res <- julia.dir$eval("res")
+julia_setup()
+beta.random = t(julia_eval("ranef(res)")[1])
+
+julia_assign("vox", vox)
+
+blblb <- julia_command("@time fm1 = fit!(LinearMixedModel(@formula(pss ~ incomef + educationf + age_cat + gender + (incomef + educationf | canton/annee_cat)), vox))")
+
+library(optimx)
+fit = glmer(pss ~ incomef + educationf + age_cat + gender + (incomef + educationf | canton/annee_cat), data = vox,
+            control = lme4::glmerControl(optimizer = "optimx", calc.derivs = FALSE, optCtrl = list(method = "nlminb", starttests = FALSE, kkt = FALSE)), family = binomial(link = "probit"))
+summary(fit)
+```
 

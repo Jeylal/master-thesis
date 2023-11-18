@@ -69,7 +69,9 @@ ame_plot <- function(data){
 
 ## The Swiss bourgeois and left blocs: historical perspective
 
-Since the break-up of the post-war Keynesian "historical compromise" between the Swiss Socialist Party and the traditional right parties during the so-called "decade of all dangers" of the 90s [@boschetti_conquete_2007], the neoliberal transformation of the Swiss Hybrid Model was also followed by important political change, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People Party (SVP), one of the most successful far-right populist parties in Europe. The electoral success of the SVP is often associated with the destabilization of the traditional "bourgeois bloc", which entered a phase of "cacophonic" crisis [@meuwly_liberte_2008] which still persists in the early 2020s. 
+A striking feature of the history of Switzerland's social blocs is the persistence and resilience of a right-wing bloc since the creation of modern Switzerland in 1848, a bloc that the existing literature on the topic calls the bourgeois bloc. Tracing the history of Switzerland's social blocs is therefore essentially a matter of tracing that of the bourgeois bloc. However, we shall see that once this history has been briefly traced, the extent to which this bloc can truly be described as bourgeois must be questioned.
+
+Since the break-up of the post-war Keynesian "historical compromise" between the traditional Swiss left and right-wing parties during the so-called "decade of all dangers" of the 90s [@boschetti_conquete_2007], this so-called bourgeois bloc is undergoing important transformations, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People Party (UDC), one of the most successful far-right populist parties in Europe. The electoral success of the UDC is often associated with the destabilization of the traditional bourgeois bloc, which entered a phase of "cacophonic" crisis [@meuwly_liberte_2008] which still persists in the early 2020s. 
 
 ```{r set up}
 #| echo: false
@@ -148,19 +150,19 @@ party_share_long %>%
 
 In fact, all the Swiss traditional main parties, the Swiss Socialist Party (PS) The Radical-Liberals (PLR) and the PDC, are in decline since the post-war period (see @fig-partystrength). On the right, the crisis can be seen through the fall in vote shares (apart from the SVP); and the increase in party merges and re-configurations. In 2008, the Bourgeois Democratic Party (PBD) was created after a scission from the SVP. One year later, the Radicals, who created the Swiss modern state in 1848 and dominated Swiss politics until the first half of the 20th century, merged with the liberals to create the PLR. The PBD, whose creation disturbed the composition of a reputed unchangeable federal council, then merged with the PDC to create *Le Centre* (the Center) in 2021. The federal election of 2023 led to major historical change for the Swiss right. The PLR, very far from its former hegemonic domination of Swiss politics, is now in the fourth place in terms of low chamber parliamentary seats. The domination of this bourgeois bloc constituted by the PLR, PDC and UDC, is a major characteristic of Switzerland's socio-political history and it is hence necessary to analyze its origins and transformations since the 19th century.
 
-The combination of a religious and urban-rural divide between Protestants modernizers and Catholic federalists, which was historically the most structuring conflict in Switzerland, led to the Sonderbund civil war (1847) and the foundation of modern Switzerland in 1848. The federal institutions elaborated during and in the decades following the first Swiss constitution of 1848 can be interpreted as a social compromise between the losers of the Sonderbund civil war, the Catholic-Conservative coalition opposed to the centralization and modernization of the Swiss Confederation, and the victorious Radicals who were on average Protestants from urban areas [@sciarini_politique_2023]. However, these two blocs were highly heterogeneous and subject to internal contradictions.
+The combination of a religious and urban-rural divide between Radicals-Protestants modernizers and Catholic federalists, which was historically the most structuring conflict in Switzerland, led to the Sonderbund civil war (1847) and the foundation of modern Switzerland in 1848. The federal institutions elaborated during and in the decades following the first Swiss constitution of 1848 can be interpreted as a social compromise between the losers of the Sonderbund civil war, the Catholic-Conservative coalition opposed to the centralization and modernization of the Swiss Confederation, and the victorious Radicals who were on average Protestants from urban areas [@sciarini_politique_2023]. However, these two blocs were highly heterogeneous and subject to internal contradictions.
 
-From the outset of their movement, the Radicals were gathered by an unitary illusion: the pretention to transcend cleavages running through Swiss society and unite all its elements thanks to a higher goal: the modernization and centralization of the Swiss state. The "Radical kaleidoscope" was a mass-movement constituted by the working class through the Grütli Union and by an elite gathering entrepreneurs, bankers, journalists, lawyers and teachers, who were nonetheless divided over the role of the Swiss state. The democrats were partisans of a more centralized and interventionist state while the liberal or "manchesterian" Radicals, were more federalist and in favor of laissez-faire [@meuwly_les_2010]. 
+From the outset of their movement, the Radicals were gathered by an unitary illusion: the pretention to transcend cleavages running through Swiss society and unite all its elements thanks to an encompassing goal: the modernization and centralization of the Swiss state. The "Radical kaleidoscope" was a mass-movement constituted by the working class through the Grütli Union and by an elite gathering entrepreneurs, bankers, journalists, lawyers and teachers, who were nonetheless divided over the role of the Swiss state. The democrats were partisans of a more centralized and interventionist state while the liberal or "manchesterian" Radicals, were more federalist and in favor of laissez-faire [@meuwly_les_2010]. 
 
-Regarding the Catholic-Conservative bloc, the latter was from the start a cross-class coalition, constituted by, of course, the Catholic elite, but also by peasants, farmers, artisans and the commercial middle class from rural areas. These groups were united by Catholicism, but also by anti-modernism and federalism. This conservative coalition was the first to make extensive use of the constitutional and optional referendum (respectively 1848 and 1874) to block the modernization promulgated by the Radicals [@altermatt_conservatism_1979].
+Regarding the Catholic-Conservative bloc, the latter was from the start a cross-class coalition, constituted by, of course, the Catholic elite, but also by peasants, farmers, artisans and the commercial middle class from rural areas. These groups were united by Catholicism, but also by anti-modernism and federalism. This conservative coalition was the first to make extensive use of the constitutional and optional referendum (respectively 1848 and 1874) to block the modernization promulgated by the Radicals. While the Radicals were convinced that the idea of the Swiss nation would transcend divisions and social conflict, the Catholic-Conservative believed that religion, rather than the Swiss state, would endorse this role [@altermatt_conservatism_1979].
 
-As industrialization, proletarianization and unionization intensified in the late 19th, the hegemony of the Radical mosaic gradually shattered. Part of the democrats and of the working class joined or even founded socialist organizations, as seen the creation of the Swiss socialist party in 1888 by a former Radical, Albert Steck. The creation of the latter and of the Radical-democratic party (PRD) in 1894 marked the beginning of the Radical shift towards liberal stances, which became clear-cut after the general strike of 1912, after which "a long-denied class conflict became evident" [@meuwly_les_2010, p.49]. Conversely, industrialization and class conflict broadened the social basis of the Catholic-Conservatives bloc towards the working class. The global development of a Catholic social doctrine, beginning with the encyclical *Rerum Novarum* (1981), was integrated by the Swiss Catholic-Conservatives, who then tried to attract parts of the working class [@altermatt_conservatism_1979].
+As industrialization, proletarianization and unionization intensified in the late 19th, the hegemony of the Radical mosaic gradually shattered. Part of the democrats and of the working class joined or even founded socialist organizations, as seen the creation of the Swiss socialist party in 1888 by a former Radical, Albert Steck. The creation of the latter and of the Radical-democratic party (PRD) in 1894 marked the beginning of the Radical shift towards liberal stances, which became clear-cut after the general strike of 1912, after which "a long-denied class conflict became evident" [@meuwly_les_2010, p.49]. Conversely, industrialization and class conflict represented an opportunity for an extension of the social basis of the Catholic-Conservatives bloc towards the working class. The global development of a Catholic social doctrine, beginning with the encyclical *Rerum Novarum* (1881), was integrated by the Swiss Catholic-Conservatives, who then tried to attract parts of the working class [@altermatt_conservatism_1979].
 
-This polarization around class conflict between a left and right bloc became even more salient after the second general strike of 1918, which was the biggest strike and social protest in Swiss history. The latter was followed by the introduction of the proportional representation system: the Radicals lost their hegemony in the parliament and the Christian democrats and the socialists became important political actors in the National Council. The socialist party (PS) consolidated a left bloc while the Radical-Democrats (PRD), the Catholic-Conservatives (PDC) and the Agrarians formed a liberal-conservative coalition. This coalition between the PRD, PDC and Agrarians and its close links with business association such as the Vorort (1870) led many observers to name this coalition the "bourgeois bloc" [@mach_redefinition_2007]. 
+This polarization around class conflict between a left and right bloc became even more salient after the second general strike of 1918, which was the biggest strike and social protest in Swiss history. The latter was followed by the introduction of the proportional representation system: the Radicals lost their hegemony in the parliament and the Christian democrats and the socialists became important political actors in the National Council. The socialist party (PS) consolidated a left bloc while the Radical-Democrats (PRD), the Catholic-Conservatives (PDC) and the Agrarians formed an alliance against the left. This coalition between the PRD, PDC and Agrarians and its close links with business association such as the Vorort (1870) led many observers to name this coalition the "bourgeois bloc" [@mach_redefinition_2007]. 
 
-Until the post-war period, the evolution of the Swiss social blocs can thus be resumed as follows. From the middle to the late 19th century, the Radicals formed a strongly heterogeneous but dominant social bloc. This dominant social bloc was composed by the working class (mainly through the Grütli Union), and an urban elite composed by the most educated (journalists, lawyers, teachers) and the wealthy industrial bourgeoisie (entrepreneurs, bankers...). This DBS was united by their willingness to modernize the Confederation against the Catholic-Conservatives. A second period, from the late 19th to the second world war, marked the recomposition of the DBS and its transformation into a bourgeois bloc. Part of the working class and of the democrats (educated elite) joined the emerging socialist bloc while the Catholic-Conservatives attracted part of the working class while being progressively incorporated into the DBS, along with the Agrarian party which represented parts of the peasant and farmer classes. The coalition between the Radical-Democrats, Catholic-Conservatives and Agrarians against the left bloc took deeply roots into the Swiss socio-political system: it persisted during the post-war period and still shapes Swiss politics to some extent nowadays [@mazzoleni_voisinages_2013; @meuwly_les_2010; @meuwly_liberte_2008]. 
+Until the post-war period, the evolution of the Swiss social blocs can thus be resumed as follows. From the middle to the late 19th century, the Radicals formed a strongly heterogeneous but dominant social bloc. This dominant social bloc was composed by the working class (mainly through the Grütli Union), and an urban elite composed by the most educated (journalists, lawyers, teachers) and the wealthy industrial bourgeoisie (entrepreneurs, bankers...). This DBS was united by their willingness to modernize the Confederation against the Catholic-Conservatives. A second period, from the late 19th to the second world war, marked the recomposition of the DBS and its transformation into a bourgeois bloc. Part of the working class and of the democrats (educated elite) joined the emerging socialist-left bloc while the Catholic-Conservatives attracted part of the working class while being progressively incorporated into the DBS, along with the Agrarian party which represented the peasant and farmer classes. The coalition between the Radical-Democrats, Catholic-Conservatives and Agrarians against the left bloc took deeply roots into the Swiss socio-political system: it persisted during the post-war period and still shapes Swiss politics to some extent nowadays [@mazzoleni_voisinages_2013; @meuwly_les_2010; @meuwly_liberte_2008]. A striking feature of the Swiss DSB is its persistence and resilience since 1848: even though this bloc underwent important transformations, especially after the introduction of the proportional system in 1918, it was always mediated by right-wing parties, first the Radicals and then an extended coalition with the Catholic-Conservative and the Agrarians. Despite its incorporation in the parliament and government, the left bloc never truly became dominant in Switzerland.
 
-However, the extent to which this DBS can truly be described as bourgeois must be questioned. In the sense given by Swiss social scientists, the bourgeois bloc refers to an alliance of right-wing parties with close ties with business interests. For @amable_illusion_2017 the bourgeois bloc is an alliance of social groups whose characteristic feature is that they are the most advantaged in terms of, for instance, income and education. I argue that, in the Swiss context, the use of the term bourgeois bloc can be misleading, because this bloc gathers, of course, parts of the wealthiest Swiss social groups, but also parts of popular groups, mainly through the Christian Democrats. 
+However, the extent to which this DSB can truly be described as bourgeois must be questioned. In the definition given by Swiss social scientists, the bourgeois bloc refers to a political coalition between the Radical-Democrats, the Catholic-Conservatives and the Agrarians (now UDC) and its close ties with business interest associations such as the Vorort. This bloc is hence bourgeois only because it gathers right-wing parties and business interest associations, a definition which is rather limited and can be misleading since it does not take into account the social basis of the bloc. In the sense given by Amable and Palombarini, the bloc bourgeois observed in France corresponds to the aggregation of the wealthiest and most educated groups of the traditional left and right blocs. I argue that, from a neorealist perspective, the Radical bloc of the 19th century and the right-wing coalition of the 20th cannot be described as bourgeois and that other terms such as "liberal-conservative" or simply "right-wing" blocs are more suited. 
 
 
 
@@ -169,7 +171,7 @@ However, the extent to which this DBS can truly be described as bourgeois must b
 
 ## Swiss social blocs and socio-economic factors: 1980-2016
 
-What is the social basis of the Swiss left, center-right and radical-right in the last decades? How are the support for the main Swiss social blocs influenced by socio-economic characteristics? The objective of this chapter is to explore the composition of the main Swiss social blocs in terms of socio-economic characteristics and assess their evolution in the last decades. The previous chapter asked whether the periods of political instability measured through confidence in the Swiss government in the 1990s and early 2005 can be interpreted as a political crisis. By exploring the support for the main Swiss parties since 1981, this question can be partially answered, as well as the main research question of the present paper.
+What is the social basis of the Swiss left, center-right and radical-right in the last decades? How are the support for the main Swiss social blocs influenced by socio-economic characteristics? The objective of this chapter is to explore the composition of the main Swiss social blocs in terms of socio-economic characteristics and assess their evolution since the post-war period. The previous chapter asked whether the periods of political instability measured through confidence in the Swiss government in the 1990s and early 2005 can be interpreted as a political crisis. By exploring the support for the main Swiss parties since 1981, this question can be partially answered, as well as the main research question of the present paper.
 
 Moreover, a recent trend in political economy developed a tremendous analysis of the long run transformations of political cleavages, social blocs, and voting outcomes in almost all democratic countries around the world. The popularity of inequality studies, after the contributions of renown economists such as Atkinson [-@atkinson_inequality_2015], Milanovic [-@milanovic_global_2016] and of course Piketty [@piketty_capital_2014], economists recently became interested in the problematic of social conflict and political cleavages. One possible explanation of this sudden interest is the inequality paradox: increasing inequality and neoliberal reforms did not pave the way for growing support for redistribution, taxation of top income and wealth owners, or for left parties. The same paradox could be applied to a "climate change paradox", that is, the fact that the growing emergency or environmental issues were not followed by increasing support for green parties. For instance, the Swiss green parties were the biggest losers in the 2023 federal elections.
 
@@ -182,11 +184,13 @@ Testing the relevance of the brahmin left vs merchant right divide, @amable_brah
 
 In this context of multi-elite party system and multidimensional political divides, Switzerland is an interesting case study. A widespread idea claims that the class-based cleavage always played relatively a minor role in Switzerland. On the one hand, class conflict was always cut across a wide variety of other divides: religious, linguistic or regional. As a result, Switzerland was a forerunner in the emergence of this "cultural" cleavage, but also in the precociousness and strength of the educational shift. @durrer_de_la_sota_party_2021 offer a detailed analysis of the links between socio-economic factors and the vote for the main Swiss social blocs. During the post-war period until the 1990s, the left bloc (mainly the PS) was supported by low income and education voters while right-wing parties showed different patterns of class support, which call into question the extent to which this bourgeois bloc can truly be characterized as "bourgeois". Of the three parties constituting the bourgeois bloc, only one of them, the PRD-PLR party, had clearly a bourgeois composition since it is consistently supported by the most wealthy and educated groups since the post-war period. The PDC and the UDC cannot really be described as "bourgeois" since, according to @durrer_de_la_sota_party_2021, the support for the two parties was negatively associated with income and education. While this negative association tends to decline for the PDC, it became even more strong for the UDC since the 90s. After this period, the left bloc became "brahmin" in the sense that it gathered strong support among the most educated classes, while its popular support moved either into abstention or to the UDC.
 
-The transformation of party systems into a mutli-elite and tripolar political space came with important change in the structural basis of party support. @oesch_rennwald_class_2010 show that, in Switzerland, the cultural cleavage is still rooted in the class structure, but caused a re-alignment between class and party support. Before this shift took place, the Swiss Socialist party was a hybrid-class party gathering above-average support from socio-cultural professionals (teachers, academics, journalists...) and production workers, but also from technicians, clerks and service workers [@rennwald_social_2020]. This strong class heterogeneity of the Swiss left declined: an analysis of Swiss post-election surveys for 2003 and 2007 show that the Swiss left was deserted by production workers who directed their support for the Swiss People's party due to cultural issues [@oesch_rennwald_class_2010]. Using European Social Survey data for 2011 and 2015, @rennwald_social_2020 show that socio-cultural professionals remain the only "party preserve" of the Swiss left.
+The transformation of party systems into a mutli-elite and tripolar political space came with important change in the structural basis of party support. @oesch_rennwald_class_2010 show that, in Switzerland, the cultural cleavage is rooted in the class structure, and caused a re-alignment between class and party support. Before this shift took place, the traditional left bloc politically represented by the Socialist Party was a hybrid-class coalition gathering socio-cultural professionals (teachers, academics, journalists...) and production workers, but also from technicians, clerks and service workers [@rennwald_social_2020].
+
+
+This strong class heterogeneity of the Swiss left declined: an analysis of Swiss post-election surveys for 2003 and 2007 show that the Swiss left was deserted by production workers who directed their support for the Swiss People's party due to cultural issues [@oesch_rennwald_class_2010]. Using European Social Survey data for 2011 and 2015, @rennwald_social_2020 show that socio-cultural professionals remain the only "party preserve" of the Swiss left.
 
 @oesch_electoral_2018 show that the rise of the radical-right and of the cultural cleavage transformed the patterns of class voting. The working class, or at least some of its constituencies such as production workers, are still attracted to the left due to their economic interests, but also by the far-right because of cultural issues, leaving socio-cultural professionals as the sole "stronghold" of the left. Small artisans and business owners are also divided between their support to the center-right and the far-right: their economic preferences make them closer to the center-right while their cultural preferences are closer to the far-right. 
 
-Although the results presented by Oesch and Rennwald offer interesting and well documented understanding of the transformation of party support's class structure in Switzerland, their work is limited by some methodological and theoretical flaws. First, their definition of social class, based on @oesch
 
 The empirical agenda of the present study is to test the validity and relevance of the literature reviewed above. More specifically, how are socio-economic factor shaping the composition of each Swiss social blocs? The objective of the empirical analysis conducted here is to test the following hypotheses derived from the contributions of the WPID project [@piketty_brahmin_2018; @piketty_capital_2019; @durrer_de_la_sota_party_2021; @gethin_political_2021; @gethin_brahmin_2022]; @oesch_electoral_2018; and Amable and Darcillon [-@amable_brahmin_2022; -@amable_brahmin_2022-1]:
 
@@ -371,36 +375,33 @@ vox <-
 
 
 glmer_ps <- glmer(data = vox, 
-                          pss ~ incomef + educationf + age_cat + gender + religion + house_ownership + (1 | annee_f) + (1 | canton),
-                          family = binomial(link = "probit"),
-                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
-glmer_ps2 <- glmer(data = vox, 
                           pss ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
                           family = binomial(link = "probit"),
-                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap")) 
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
 
-glmer_udc3 <- glmer(data = vox, 
-                          udc ~ incomef + educationf + age_cat + gender + religion + house_ownership + scale(share_50perc_nationalincome) + scale(share_50perc_nationalincome) + (incomef + educationf | annee_f) + (incomef + educationf | canton),
+
+glmer_udc <- glmer(data = vox, 
+                          udc ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
                           family = binomial(link = "probit"),
                           nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
 
 glmer_plr <- glmer(data = vox, 
-                          plr ~ incomef + educationf + age_cat + gender + religion + house_ownership + (1 | annee_f) + (1 | canton),
+                          plr ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
                           family = binomial(link = "probit"),
                           nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
 
 glmer_pdc <- glmer(data = vox, 
-                          pdc_pcs ~ incomef + educationf + age_cat + gender + religion + house_ownership + (1 | annee_f) + (1 | canton),
+                          pdc_pcs ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
                           family = binomial(link = "probit"),
                           nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
 
 glmer_greens <- glmer(data = vox, 
-                          green ~ incomef + educationf + age_cat + gender + religion + house_ownership + (1 | annee_f) + (1 | canton),
+                          green ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
                           family = binomial(link = "probit"),
                           nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
 
 glmer_noparty <- glmer(data = vox, 
-                          no_party ~ incomef + educationf + age_cat + gender + religion + house_ownership + (1 | annee_f) + (1 | canton),
+                          no_party ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
                           family = binomial(link = "probit"),
                           nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
 
@@ -409,12 +410,13 @@ tab_model(glmer_udc, glmer_udc2, glmer_udc3,
 ameps <- 
 glmer_ps %>% 
   avg_slopes()
-r2_nakagawa(glmer_ps, tolerance = 1e-1000)
+r2_nakagawa(glmer_plr, tolerance = 1e-1000)
+icc(glmer_plr, tolerance = 1e-1000)
 
 library(VGAM)
 library(MASS)
 
-tab_model(glmer_ps, glmer_ps2)
+tab_model(glmer_ps)
 Anova(glmer_ps2)
 ```
 
@@ -426,24 +428,24 @@ Anova(glmer_ps2)
 #| include: false
 
 comp_ps <- 
-  glmer_ps %>% 
-  avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
+  vox_regression_ps %>% 
+  avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
-comp_udc2 <- 
-  glmer_udc2 %>% 
-  avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
+comp_udc <- 
+  glmer_udc %>% 
+  avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
 comp_plr <- 
   glmer_plr %>% 
-  avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
+  avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
 comp_pdc <- 
   glmer_pdc %>% 
-  avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
+  avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
 comp_greens <- 
   glmer_greens %>% 
-  avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
+  avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
 comp_noparty <- 
   glmer_noparty %>% 
@@ -475,17 +477,7 @@ comp_udc %>%
   labs(title = "Difference in predicted probabilites",
        x = "", y = "")
 
-comp_udc2 %>% 
-  ggplot()+
-  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  theme_bw()+
-  geom_hline(yintercept = 0)+
-  facet_wrap(~canton)+
-  scale_y_continuous(labels = scales::percent)+
-  labs(title = "Difference in predicted probabilites",
-       x = "", y = "")
+
 
 comp_noparty %>% 
   filter() %>% 
@@ -500,6 +492,7 @@ comp_noparty %>%
   labs(title = "Difference in predicted probabilites",
        x = "", y = "")
 
+plot_plr <- 
 comp_plr %>% 
   filter() %>% 
   ggplot()+
@@ -513,8 +506,9 @@ comp_plr %>%
   labs(title = "Difference in predicted probabilites",
        x = "", y = "")
 
+plot_pdc <- 
 comp_pdc %>% 
-  filter(canton == "BE") %>% 
+  filter() %>% 
   ggplot()+
   aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
   geom_point()+
@@ -526,6 +520,7 @@ comp_pdc %>%
   labs(title = "Difference in predicted probabilites",
        x = "", y = "")
 
+plot_greens <- 
 comp_greens %>% 
   filter() %>% 
   ggplot()+
@@ -542,46 +537,24 @@ comp_greens %>%
 
 ```
 
+```{r}
 
-
-
-
-
-
-
-
-
-
-```{r julia code}
-#| echo: false
-#| message: false
-#| warning: false
-#| include: false
-dyn.load("C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin/libopenlibm.DLL")
-julia.dir <- julia_setup(JULIA_HOME = "C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin")
-julia.dir <- julia_setup(JULIA_HOME = "C:/Users/celal/AppData/Local/Programs/Julia-1.9.3/bin")
-
-julia_library("MixedModels")
-julia_library("RCall")
-julia_library("JellyMe4")
-
-julia.dir$library("MixedModels")
-julia.dir$assign("vox", vox)
-julia.dir$assign("form", formula(pss ~ 1 + incomef + educationf + age_cat + gender + religion + ( incomef + educationf + age_cat + gender + religion | canton) + ( incomef + educationf + age_cat + gender + religion | annee_cat)))
-results <- julia.dir$eval("res = fit(MixedModel, form, vox, Bernoulli())", need_return = c("Julia"))
-res <- julia.dir$eval("res")
-julia_setup()
-beta.random = t(julia_eval("ranef(res)")[1])
-
-julia_assign("vox", vox)
-
-blblb <- julia_command("@time fm1 = fit!(LinearMixedModel(@formula(pss ~ incomef + educationf + age_cat + gender + (incomef + educationf | canton/annee_cat)), vox))")
-
-library(optimx)
-fit = glmer(pss ~ incomef + educationf + age_cat + gender + (incomef + educationf | canton/annee_cat), data = vox,
-            control = lme4::glmerControl(optimizer = "optimx", calc.derivs = FALSE, optCtrl = list(method = "nlminb", starttests = FALSE, kkt = FALSE)), family = binomial(link = "probit"))
-summary(fit)
+plot_ps
+plot_udc
+plot_plr
+plot_pdc
+plot_greens
 ```
+
+
+
+
+
+
+
+
+
+
 
 
 
