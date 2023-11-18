@@ -1,5 +1,87 @@
 # Appendix
 
+
+```{r functions}
+#| echo: false
+#| warning: false
+#| echo: false
+jmer <- function(formula, data, REML=TRUE){
+    # to simplify maintainence here (in the hopes of turning this into a real
+    # package), I'm depending on JellyMe4, which copies the dataframe back with
+    # the model this is of course what you want if you're primarily working in
+    # Julia and just using RCall for the the R ecosystem of extras for
+    # MixedModels, but it does create an unnecessary copy if you're starting
+    # with your data in R.
+    #
+    # Also, this means we suffer/benefit from the same level of compatibility in
+    # the formula as in JellyMe4, i.e. currently no support for the ||
+
+    jf <- deparse(formula,width = 500)
+    jreml = ifelse(REML, "true", "false")
+
+    julia_assign("jmerdat",data)
+    julia_command(sprintf("jmermod = fit!(LinearMixedModel(@formula(%s),jmerdat),REML=%s);",jf,jreml))
+
+    julia_eval("robject(:lmerMod, Tuple([jmermod,jmerdat]));",need_return="R")
+}
+
+ame <- function(model, group, term1, term2){
+  
+  pred_model_term1 <- 
+  {{model}} %>% 
+    avg_slopes(variables = {{term1}}, b = {{group}})
+  
+  pred_model_term2 <- 
+  {{model}} %>% 
+    avg_slopes(variables = {{term2}}, b = {{group}})  
+  
+  data <- rbind(pred_model_term1, pred_model_term2)
+  
+}
+
+comp <- function(model, term1, term2, group){
+  
+  comp1 <- 
+  {{model}} %>% 
+    avg_comparisons(variables = {{term1}}, by = {{group}})
+  
+  comp2 <- 
+    {{model}} %>% 
+    avg_comparisons(variables = {{term2}}, by = {{group}})
+  
+  data <- rbind(comp1, comp2)
+  
+}
+
+ame_plot <- function(data){
+  
+  {{data}} %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = term, shape = term)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  theme_bw()+
+  geom_hline(yintercept = 0)+
+  scale_y_continuous(labels = scales::percent())
+}
+```
+
+```{r missing value check}
+#| echo: false
+#| message: false
+#| warning: false
+#| include: false
+vox %>% 
+  group_by(annee) %>% 
+  count(no_party) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  filter(no_party == 1) %>% 
+  ungroup()
+freq(vox$p02)
+freq(vox$no_party)
+```
+
+
 ```{r set up}
 #| echo: false
 #| warning: false
@@ -288,3 +370,52 @@ fit = glmer(pss ~ incomef + educationf + age_cat + gender + (incomef + education
 summary(fit)
 ```
 
+```{r run party glmer}
+#| echo: false
+
+
+glmer_ps <- glmer(data = vox, 
+                          pss ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+
+glmer_udc <- glmer(data = vox, 
+                          udc ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+glmer_plr <- glmer(data = vox, 
+                          plr ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+glmer_pdc <- glmer(data = vox, 
+                          pdc_pcs ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+glmer_greens <- glmer(data = vox, 
+                          green ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+glmer_noparty <- glmer(data = vox, 
+                          no_party ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+tab_model(glmer_udc, glmer_udc2, glmer_udc3,
+          transform = NULL, show.aic = TRUE)
+ameps <- 
+glmer_ps %>% 
+  avg_slopes()
+r2_nakagawa(glmer_plr, tolerance = 1e-1000)
+icc(glmer_plr, tolerance = 1e-1000)
+
+library(VGAM)
+library(MASS)
+
+tab_model(glmer_ps)
+Anova(glmer_ps2)
+```

@@ -1,72 +1,6 @@
 # Social blocs, socio-economic factors and voting outcomes in Switzerland
 
 
-```{r functions}
-#| echo: false
-#| warning: false
-#| echo: false
-jmer <- function(formula, data, REML=TRUE){
-    # to simplify maintainence here (in the hopes of turning this into a real
-    # package), I'm depending on JellyMe4, which copies the dataframe back with
-    # the model this is of course what you want if you're primarily working in
-    # Julia and just using RCall for the the R ecosystem of extras for
-    # MixedModels, but it does create an unnecessary copy if you're starting
-    # with your data in R.
-    #
-    # Also, this means we suffer/benefit from the same level of compatibility in
-    # the formula as in JellyMe4, i.e. currently no support for the ||
-
-    jf <- deparse(formula,width = 500)
-    jreml = ifelse(REML, "true", "false")
-
-    julia_assign("jmerdat",data)
-    julia_command(sprintf("jmermod = fit!(LinearMixedModel(@formula(%s),jmerdat),REML=%s);",jf,jreml))
-
-    julia_eval("robject(:lmerMod, Tuple([jmermod,jmerdat]));",need_return="R")
-}
-
-ame <- function(model, group, term1, term2){
-  
-  pred_model_term1 <- 
-  {{model}} %>% 
-    avg_slopes(variables = {{term1}}, b = {{group}})
-  
-  pred_model_term2 <- 
-  {{model}} %>% 
-    avg_slopes(variables = {{term2}}, b = {{group}})  
-  
-  data <- rbind(pred_model_term1, pred_model_term2)
-  
-}
-
-comp <- function(model, term1, term2, group){
-  
-  comp1 <- 
-  {{model}} %>% 
-    avg_comparisons(variables = {{term1}}, by = {{group}})
-  
-  comp2 <- 
-    {{model}} %>% 
-    avg_comparisons(variables = {{term2}}, by = {{group}})
-  
-  data <- rbind(comp1, comp2)
-  
-}
-
-ame_plot <- function(data){
-  
-  {{data}} %>% 
-  ggplot()+
-  aes(x = annee_cat, y = estimate, color = term, shape = term)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  theme_bw()+
-  geom_hline(yintercept = 0)+
-  scale_y_continuous(labels = scales::percent())
-}
-```
-
-
 ## The Swiss bourgeois and left blocs: historical perspective
 
 A striking feature of the history of Switzerland's social blocs is the persistence and resilience of a right-wing bloc since the creation of modern Switzerland in 1848, a bloc that the existing literature on the topic calls the bourgeois bloc. Tracing the history of Switzerland's social blocs is therefore essentially a matter of tracing that of the bourgeois bloc. However, we shall see that once this history has been briefly traced, the extent to which this bloc can truly be described as bourgeois must be questioned.
@@ -118,7 +52,7 @@ library(pacman)
 library(easystats)
 ```
 
-```{r}
+```{r party share graph}
 #| warning: false
 #| message: false
 #| echo: false
@@ -186,11 +120,9 @@ In this context of multi-elite party system and multidimensional political divid
 
 The transformation of party systems into a mutli-elite and tripolar political space came with important change in the structural basis of party support. @oesch_rennwald_class_2010 show that, in Switzerland, the cultural cleavage is rooted in the class structure, and caused a re-alignment between class and party support. Before this shift took place, the traditional left bloc politically represented by the Socialist Party was a hybrid-class coalition gathering socio-cultural professionals (teachers, academics, journalists...) and production workers, but also from technicians, clerks and service workers [@rennwald_social_2020].
 
-
-This strong class heterogeneity of the Swiss left declined: an analysis of Swiss post-election surveys for 2003 and 2007 show that the Swiss left was deserted by production workers who directed their support for the Swiss People's party due to cultural issues [@oesch_rennwald_class_2010]. Using European Social Survey data for 2011 and 2015, @rennwald_social_2020 show that socio-cultural professionals remain the only "party preserve" of the Swiss left.
+This strong class heterogeneity of the Swiss left declined: an analysis of Swiss post-election surveys for 2003 and 2007 show that the Swiss left was deserted by production workers who directed their support for the Swiss People's party due to cultural issues [@oesch_class_2010]. Using European Social Survey data for 2011 and 2015, @rennwald_social_2020 show that socio-cultural professionals remain the only "party preserve" of the Swiss left.
 
 @oesch_electoral_2018 show that the rise of the radical-right and of the cultural cleavage transformed the patterns of class voting. The working class, or at least some of its constituencies such as production workers, are still attracted to the left due to their economic interests, but also by the far-right because of cultural issues, leaving socio-cultural professionals as the sole "stronghold" of the left. Small artisans and business owners are also divided between their support to the center-right and the far-right: their economic preferences make them closer to the center-right while their cultural preferences are closer to the far-right. 
-
 
 The empirical agenda of the present study is to test the validity and relevance of the literature reviewed above. More specifically, how are socio-economic factor shaping the composition of each Swiss social blocs? The objective of the empirical analysis conducted here is to test the following hypotheses derived from the contributions of the WPID project [@piketty_brahmin_2018; @piketty_capital_2019; @durrer_de_la_sota_party_2021; @gethin_political_2021; @gethin_brahmin_2022]; @oesch_electoral_2018; and Amable and Darcillon [-@amable_brahmin_2022; -@amable_brahmin_2022-1]:
 
@@ -209,14 +141,14 @@ To test the hypotheses above, two types of data are especially relevant. The *Sw
 
 The main dependent variables are binary variables for party support. 
 
-The two main explanatory variables are income and education levels. The latter is centered around zero to make the intercept meaningful and is treated as continuous for simplicity. The income variable needed more recoding since the scale of the variable changed in 1991: "nivmena" is a four scale variables on the respondent's standard of living, while "revenu" is a more standard income variable in five categories. In order to have significant and robust results, years are grouped into categories of two. The cumulative dataset offers few variables which a few missing value rates across the years and can be added as control variables: age (recoded into categories), gender and house ownership.
+The two main explanatory variables are income and education levels. The income variable needed more recoding since the scale of the variable changed in 1991: "nivmena" is a four scale variables on the respondent's standard of living, while "revenu" is a more standard income variable in five categories. In order to have significant and robust results, years are grouped into categories of two. The cumulative dataset offers few variables which a few missing value rates across the years and can be added as control variables: age (recoded into categories), gender and house ownership.
 
 #### The model
 
 The main methodological challenge of these two repeated cross-sectional datasets (RPC) is the clustering structure of the data. On the one hand, the observations (Swiss citizen) are clustered into cantons, which are an important level in Switzerland. On the other hand, the time structure and trend of the data are highly relevant for our research question. 
 
-To face this challenge, multilevel binary probit regressions are run for each Swiss main parties (PRD-PLR, PS, UDC, PDC, Greens). In our case study, multilevel/hierarchical models offer several advantages and relevant properties. On the one hand, they allow to take regions (here Swiss cantons) and time as levels in which observations are nested. Taking cantons as a level is especially relevant for Switzerland, in which every day political life, institutions and part system are highly decentralized, federalist and organized at the cantonal level.
-Each canton has its own specific institutions and can show very different patterns of party support and party system. For instance, some parties exist solely at the cantonal level, like the *Mouvement Citoyen Genevois* (*Genevan Citizen Movement*, MCG) or the *Lega Ticinesi*. On the other hand, taking into account the multilevel structure of the data allow better inference and, parameters and standard errors estimations [@julian_consequence_2001; @steenberger_modeling_2002].
+To face this challenge, multilevel binary probit regressions are run for each Swiss main parties (PRD-PLR, PS, UDC, PDC, Greens). In our case study, multilevel/hierarchical models offer several advantages and relevant properties. On the one hand, they allow to take regions (here Swiss cantons) and time as levels in which observations are nested. Taking cantons as a level is especially relevant for Switzerland, in which every day political life, institutions and party system are highly decentralized, federalist and organized at the cantonal level.
+Each canton has its own specific institutions and can show very different patterns of party support and party system. For instance, some parties exist solely at the cantonal level, like the *Mouvement Citoyen Genevois* (*Genevan Citizen Movement*, MCG) or the *Lega Ticinesi*. On the other hand, taking into account the multilevel structure of the data allow better inference and, parameters and standard errors estimations [@julian_consequences_2001; @steenbergen_modeling_2002].
 
 To analyze the time trend, two approaches are considered. In a classic study which explored the links between income and party support in the US, @gelman_rich_2007 used repeated multilevel modelling for US post-election surveys to uncover the "rich states, blue states" paradox, the fact that, at the state level, richer states support the democrats while, at the national (individual) level, richer voters still support the Republican. By Using this "secret weapon", @gelman_rich_2007 showed that this paradox is the result of varying strength of association between income and party support across states: in poor states, the link between income and support for republican is higher than in rich states. Another possible approach is to consider time as level per se: instead of running separate regressions for each year, time can be modeled directly as a level [@gelman_data_2006].
 
@@ -229,21 +161,6 @@ To analyze the time trend, two approaches are considered. In a classic study whi
 #| warning: false
 
 vox <- read_sav("data/voxit.sav")
-```
-
-```{r missing value check}
-#| echo: false
-#| message: false
-#| warning: false
-#| include: false
-vox %>% 
-  group_by(annee) %>% 
-  count(no_party) %>% 
-  mutate(prop = n/sum(n)) %>% 
-  filter(no_party == 1) %>% 
-  ungroup()
-freq(vox$p02)
-freq(vox$no_party)
 ```
 
 ```{r create income and educ variable}
@@ -369,55 +286,23 @@ vox <-
   left_join(aggregate_data_ch, by = c("annee" = "year"))
 ```
 
-
-```{r run party glmer}
+```{r load regression results}
+#| warning: false
+#| message: false
 #| echo: false
 
 
-glmer_ps <- glmer(data = vox, 
-                          pss ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
-                          family = binomial(link = "probit"),
-                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+vox_regression_greens <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_greens.rds")
 
+vox_regression_noparty <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_noparty.rds")
 
-glmer_udc <- glmer(data = vox, 
-                          udc ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
-                          family = binomial(link = "probit"),
-                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+vox_regression_pdc <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_pdc.rds")
 
-glmer_plr <- glmer(data = vox, 
-                          plr ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
-                          family = binomial(link = "probit"),
-                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+vox_regression_plr <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_plr.rds")
 
-glmer_pdc <- glmer(data = vox, 
-                          pdc_pcs ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
-                          family = binomial(link = "probit"),
-                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+vox_regression_ps <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_ps.rds")
 
-glmer_greens <- glmer(data = vox, 
-                          green ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
-                          family = binomial(link = "probit"),
-                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
-
-glmer_noparty <- glmer(data = vox, 
-                          no_party ~ incomef + educationf + age_cat + gender + religion + house_ownership + (incomef + educationf | annee_f) + (incomef + educationf | canton),
-                          family = binomial(link = "probit"),
-                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
-
-tab_model(glmer_udc, glmer_udc2, glmer_udc3,
-          transform = NULL, show.aic = TRUE)
-ameps <- 
-glmer_ps %>% 
-  avg_slopes()
-r2_nakagawa(glmer_plr, tolerance = 1e-1000)
-icc(glmer_plr, tolerance = 1e-1000)
-
-library(VGAM)
-library(MASS)
-
-tab_model(glmer_ps)
-Anova(glmer_ps2)
+vox_regression_udc <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_udc.rds")
 ```
 
 
@@ -432,23 +317,23 @@ comp_ps <-
   avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
 comp_udc <- 
-  glmer_udc %>% 
+  vox_regression_udc %>% 
   avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
 comp_plr <- 
-  glmer_plr %>% 
+  vox_regression_plr %>% 
   avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
 comp_pdc <- 
-  glmer_pdc %>% 
+  vox_regression_pdc %>% 
   avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
 comp_greens <- 
-  glmer_greens %>% 
+  vox_regression_greens %>% 
   avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
 comp_noparty <- 
-  glmer_noparty %>% 
+  vox_regression_noparty %>% 
   avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
 
 plot_ps <- 
@@ -462,7 +347,8 @@ comp_ps %>%
   facet_wrap(~canton)+
   scale_y_continuous(labels = scales::percent)+
   labs(title = "Difference in predicted probabilites",
-       x = "", y = "")
+       x = "", y = "")+
+  theme(legend.position = "bottom")
 
 plot_udc <- 
 comp_udc %>% 
@@ -478,7 +364,7 @@ comp_udc %>%
        x = "", y = "")
 
 
-
+plotnoparty <- 
 comp_noparty %>% 
   filter() %>% 
   ggplot()+
@@ -535,15 +421,18 @@ comp_greens %>%
        x = "", y = "")
 
 
+
 ```
 
-```{r}
+```{r plots ame comp}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-height: 9
 
 plot_ps
-plot_udc
-plot_plr
-plot_pdc
-plot_greens
+
+
 ```
 
 
