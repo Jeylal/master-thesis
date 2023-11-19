@@ -169,25 +169,58 @@ freq(selects$income_centered)
 #| echo: false
 #| warning: false
 #| message: false
-selects1971 <- 
+selects1970s <-  
   selects %>% 
-  filter(year %in% c(1971))
+  filter(year %in% c(1971, 1975))
+
+selects1975 <- 
+  selects %>% filter(annee == 1975)
+
+selects1975$kriesi_new <- factor(as_character(selects1975$sch7a))
 
 selects1971$classKriesi <- as.factor(as_character(selects1971$sc7b))
 
-freq(selects1971$sc2g_71)
+selects1970s <- 
+  selects1970s %>% 
+  mutate(
+    class_kriesi = case_when(
+      sch7a == 1 | sch7r == 1 ~ "farmers",
+      sch7a == 2 | sch7r == 2 ~ "other_selfemployed",
+      sch7a == 3 | sch7r == 3 ~ "semiskilled_unskilled_workers",
+      sch7a == 4 | sch7r == 4 ~ "skilled_workers_&_foremen",
+      sch7a == 5 | sch7r == 5 ~ "routine_nonmanual_workers",
+      sch7a %in% c(6,7,8) | sch7r == 6 ~ "service_class_employees"
+    ),
+    languagef = factor(as_character(language))
+  )
 
-summary(pss <- glm(data = selects1971, 
-                         pss ~ classKriesi + age_cat + factor(sg1),
+selects1970s$class_kriesi = relevel(factor(selects1970s$class_kriesi), ref = "semiskilled_unskilled_workers")
+
+selects1970s$education = relevel(factor(selects1970s$education), ref = "low_education")
+
+freq(selects1970s$lr1)
+
+
+
+selects1971_5 <- 
+  selects1970s %>% filter(annee %in% c(1971,1975))
+
+summary(plr <- glm(data = selects1971_5, 
+                         plr ~ class_kriesi + age_cat + gender + educ,
                          family = binomial(link = "probit")))
 
-selects1970s %>% 
-  group_by(year) %>% 
-  count(is.na(sch7r)) %>% 
-  mutate(prop = n/sum(n)) %>% 
-  filter() %>% ungroup() 
+summary(schwarz <- glm(data = selects1971_5, 
+                         factor(ip8) ~ class_kriesi + age_cat + gender + educ + as_character(sg1),
+                         family = binomial(link = "probit")))
 
+summary(income_distr <- glm(data = selects1971_5, 
+                         factor(ip6) ~ class_kriesi + age_cat + gender + education + as_character(sg1),
+                         family = binomial(link = "probit")))
 
+summary(distribution <- glm(data = selects1970s, 
+                         factor(ip7) ~ class_kriesi + age_cat,
+                         family = binomial(link = "probit")))
+tab_model(income_distr)
 
 ```
 
