@@ -1,5 +1,16 @@
 # Appendix
 
+```{r import aggregate data}
+#| warning: false
+#| message: false
+#| echo: false
+#| include: false
+aggregate_data_ch <- read_excel("data/aggregate_data_ch.xlsx", sheet = 3)
+
+vox <- 
+  vox %>% 
+  left_join(aggregate_data_ch, by = c("annee" = "year"))
+```
 
 ```{r functions}
 #| echo: false
@@ -73,9 +84,9 @@ ame_plot <- function(data){
 #| include: false
 vox %>% 
   group_by(annee) %>% 
-  count(no_party) %>% 
+  count(is.na(val5)) %>% 
   mutate(prop = n/sum(n)) %>% 
-  filter(no_party == 1) %>% 
+  filter(`is.na(val5)` == TRUE) %>% 
   ungroup()
 freq(vox$p02)
 freq(vox$no_party)
@@ -457,8 +468,7 @@ Anova(glmer_ps2)
 
 
 ```{r}
-library(fmsb)
-
+reg_ps <- glm(data = na.omit(vox[c("pss","income","education","annee_cat","gender","age_cat","religion","regionL")]), pss ~ income*education*annee_cat*gender*age_cat + religion + regionL, family = binomial(link = "logit"))
 vox %>% 
   group_by(annee) %>% 
   count(income) %>% 
@@ -468,7 +478,7 @@ NagelkerkeR2(reg_pdc)
 
 plot(reg_ps)
 
-reg_ps <- glm(data = na.omit(vox[c("pss","income","education","annee_cat","gender","age_cat","religion","regionL")]), pss ~ income*education*annee_cat*gender*age_cat*religion*regionL, family = binomial(link = "logit"))
+reg_ps <- glm(data = na.omit(vox[c("pss","income","education","annee_cat","gender","age_cat","religion","regionL")]), pss ~ income*education*annee_cat*gender*age_cat + religion + regionL, family = binomial(link = "logit"))
 
 summary(reg_ps)
 reg_udc <- glm(data = vox, udc ~ income*education*annee_cat*gender*age_cat*religion*regionL, family = binomial(link = "logit"))
@@ -556,6 +566,23 @@ ggplot()+
 
 
 
+```{r}
+voxlr %>% 
+  group_by(annee_cat) %>% 
+  count(incomef) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  ungroup() %>% 
+  ggplot()+
+  aes(x = incomef, y = prop)+
+  geom_col()+
+  facet_wrap(~annee_cat)
+
+vox %>% 
+  group_by(annee) %>% 
+  count(is.na(lr)) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  ungroup()
+```
 
 
 

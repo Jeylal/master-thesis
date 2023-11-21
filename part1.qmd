@@ -246,7 +246,7 @@ vox$religion <- relevel(factor(as_character(vox$confess)), ref = "Catholique rom
 
 vox$age_cat <- cut(vox$age, c(13, 30, 45, 65, 99), right = FALSE, include.lowest = TRUE)
 
-vox$annee_cat <- cut(vox$annee, seq(from = 1981, to = 2016, by = 4), right = FALSE, include.lowest = TRUE)
+vox$annee_cat <- cut(vox$annee, seq(from = 1981, to = 2016, by = 5), right = TRUE, include.lowest = TRUE)
 vox$annee_f <- factor(vox$annee)
 
 vox$canton <- as_character(vox$canton)
@@ -264,172 +264,173 @@ vox <-
     public = if_else(posprof == 6, 1, 0),
     atheist = if_else(confess == 4, 1, 0),
     protestant = if_else(confess == 1, 1, 0),
-    catholic = if_else(confess %in% c(2, 5), 1, 0)
+    catholic = if_else(confess %in% c(2, 5), 1, 0),
+    lr = as.ordered(p04)
     
   )
 
+voxlr <- vox %>% filter(annee >= 1990)
+freq(vox$p04)
+freq(voxlr$lr)
 ```
 
-```{r import aggregate data}
-#| warning: false
-#| message: false
-#| echo: false
-#| include: false
-aggregate_data_ch <- read_excel("data/aggregate_data_ch.xlsx", sheet = 3)
-
-vox <- 
-  vox %>% 
-  left_join(aggregate_data_ch, by = c("annee" = "year"))
-```
-
-```{r load regression results}
-#| warning: false
-#| message: false
-#| echo: false
+```{r run regressions}
 
 
-vox_regression_greens <- readRDS("/master-thesis/data/regression_results/vox_regression_greens.rds")
+reg_ps <- glm(data = na.omit(vox[c("pss","incomef","educationf","annee_cat","gender","age_cat","religion","regionL")]), pss ~ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
 
-vox_regression_noparty <- readRDS("/master-thesis/data/regression_results/vox_regression_noparty.rds")
+reg_plr <- glm(data = na.omit(vox[c("plr","incomef","educationf","annee_cat","gender","age_cat","religion","regionL")]), plr ~ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
 
-vox_regression_pdc <- readRDS("/master-thesis/data/regression_results/vox_regression_pdc.rds")
+reg_pdc <- glm(data = na.omit(vox[c("pdc_pcs","incomef","educationf","annee_cat","gender","age_cat","religion","regionL")]), pdc_pcs ~ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
 
-vox_regression_plr <- readRDS("/master-thesis/data/regression_results/vox_regression_plr.rds")
+reg_udc <- glm(data = na.omit(vox[c("udc","incomef","educationf","annee_cat","gender","age_cat","religion","regionL")]), udc ~ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
 
-vox_regression_ps <- readRDS("/master-thesis/data/regression_results/vox_regression_ps.rds")
+reg_greens <- glm(data = na.omit(vox[c("green","incomef","educationf","annee_cat","gender","age_cat","religion","regionL")]), green ~ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
 
-vox_regression_udc <- readRDS("/master-thesis/data/regression_results/vox_regression_udc.rds")
+reg_abstention <- glm(data = na.omit(vox[c("no_party","incomef","educationf","annee_cat","gender","age_cat","religion","regionL")]), no_party ~ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
+
+library(mvord)
+
+reg_lr <- polr(data = voxlr, lr ~ income + education + annee_cat, Hess = TRUE)
+summary(reg_lr)
+
+reg_lr %>% 
+  slopes()
+
+########ps
+ps_ame_inc <- 
+  reg_ps %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+ps_ame_edu <- 
+  reg_ps %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ps_ame <- rbind(ps_ame_edu, ps_ame_inc) %>% 
+  mutate(party = "ps")
+
+######plr
+plr_ame_inc <- 
+  reg_plr %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+plr_ame_edu <- 
+  reg_plr %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+plr_ame <- rbind(plr_ame_edu, plr_ame_inc) %>% 
+  mutate(party = "plr")
+####### pdc
+pdc_ame_inc <- 
+  reg_pdc %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+pdc_ame_edu <- 
+  reg_pdc %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+pdc_ame <- rbind(pdc_ame_edu, pdc_ame_inc) %>% 
+  mutate(party = "pdc")
+
+######### udc
+udc_ame_inc <- 
+  reg_udc %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+udc_ame_edu <- 
+  reg_udc %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+udc_ame <- rbind(udc_ame_edu, udc_ame_inc) %>% 
+  mutate(party = "udc")
+
+###### greens
+greens_ame_inc <- 
+  reg_greens %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+greens_ame_edu <- 
+  reg_greens %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+greens_ame <- rbind(greens_ame_inc, greens_ame_edu) %>% 
+  mutate(party = "greens")
+
+###### noparty
+
+noparty_ame_inc <- 
+  reg_abstention %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+noparty_ame_edu <- 
+  reg_abstention %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+noparty_ame <- rbind(noparty_ame_inc, noparty_ame_edu) %>% 
+  mutate(party = "noparty")
+
+ame <- rbind(ps_ame, udc_ame, plr_ame, pdc_ame, greens_ame, noparty_ame)
+
+
+
+####### lr 
 ```
 
 ```{r ame parties}
 #| echo: false
 #| message: false
 #| warning: false
-#| include: false
-
-comp_ps <- 
-  vox_regression_ps %>% 
-  avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
-
-comp_udc <- 
-  vox_regression_udc %>% 
-  avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
-
-comp_plr <- 
-  vox_regression_plr %>% 
-  avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
-
-comp_pdc <- 
-  vox_regression_pdc %>% 
-  avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
-
-comp_greens <- 
-  vox_regression_greens %>% 
-  avg_comparisons(variables = list(educationf = c("voc_training", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
-
-comp_noparty <- 
-  vox_regression_noparty %>% 
-  avg_comparisons(variables = list(educationf = c("comp_school", "University"), incomef = c("low", "high")), by = c("annee_f", "canton"))
-
-plot_ps <- 
-comp_ps %>% 
+ame %>% 
+  filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
+  filter(party %in% c("ps", "greens", "noparty", "plr")) %>% 
   ggplot()+
-  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast, group = party)+
   geom_point()+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  labs(title = "Party Support: Average Marginal Contrasts",
+       subtitle = "Income and Education levels, Switzerland 1981-2016",
+       x = "", y = "", caption = "Source: VoxIt")+
   theme_bw()+
+  scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
-  facet_wrap(~canton)+
-  scale_y_continuous(labels = scales::percent)+
-  labs(title = "Difference in predicted probabilites",
-       x = "", y = "")+
-  theme(legend.position = "bottom")
+  facet_wrap(~party)+
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
 
-plot_udc <- 
-comp_udc %>% 
+ame %>% 
+  filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
+  filter(party %in% c("pdc", "udc")) %>% 
   ggplot()+
-  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast, group = party)+
   geom_point()+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  labs(title = "Party Support: Average Marginal Contrasts",
+       subtitle = "Income and Education levels, Switzerland 1981-2016",
+       x = "", y = "", caption = "Source: VoxIt")+
   theme_bw()+
+  scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
-  facet_wrap(~canton)+
-  scale_y_continuous(labels = scales::percent)+
-  labs(title = "Difference in predicted probabilites",
-       x = "", y = "")
+  facet_wrap(~party)+
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
 
 
-plotnoparty <- 
-comp_noparty %>% 
-  filter() %>% 
+ame_lr %>% 
+  filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
   ggplot()+
-  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
   geom_point()+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  labs(x = "", y = "", caption = "Source: VoxIt")+
   theme_bw()+
+  scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
-  facet_wrap(~canton)+
-  scale_y_continuous(labels = scales::percent)+
-  labs(title = "Difference in predicted probabilites",
-       x = "", y = "")
-
-plot_plr <- 
-comp_plr %>% 
-  filter() %>% 
-  ggplot()+
-  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  theme_bw()+
-  geom_hline(yintercept = 0)+
-  facet_wrap(~canton)+
-  scale_y_continuous(labels = scales::percent)+
-  labs(title = "Difference in predicted probabilites",
-       x = "", y = "")
-
-plot_pdc <- 
-comp_pdc %>% 
-  filter() %>% 
-  ggplot()+
-  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  theme_bw()+
-  geom_hline(yintercept = 0)+
-  facet_wrap(~canton)+
-  scale_y_continuous(labels = scales::percent)+
-  labs(title = "Difference in predicted probabilites",
-       x = "", y = "")
-
-plot_greens <- 
-comp_greens %>% 
-  filter() %>% 
-  ggplot()+
-  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  theme_bw()+
-  geom_hline(yintercept = 0)+
-  facet_wrap(~canton)+
-  scale_y_continuous(labels = scales::percent)+
-  labs(title = "Difference in predicted probabilites",
-       x = "", y = "")
-
-
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
 
 ```
 
-```{r plots ame comp}
-#| warning: false
-#| message: false
-#| echo: false
-#| include: false
 
-
-plot_ps
-
-
-```
 
 
 
