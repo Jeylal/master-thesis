@@ -452,3 +452,124 @@ library(MASS)
 tab_model(glmer_ps)
 Anova(glmer_ps2)
 ```
+
+
+
+
+```{r}
+library(fmsb)
+
+vox %>% 
+  group_by(annee) %>% 
+  count(income) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  ungroup()
+NagelkerkeR2(reg_pdc)
+
+plot(reg_ps)
+
+reg_ps <- glm(data = na.omit(vox[c("pss","income","education","annee_cat","gender","age_cat","religion","regionL")]), pss ~ income*education*annee_cat*gender*age_cat*religion*regionL, family = binomial(link = "logit"))
+
+summary(reg_ps)
+reg_udc <- glm(data = vox, udc ~ income*education*annee_cat*gender*age_cat*religion*regionL, family = binomial(link = "logit"))
+
+reg_psf <- glm(data = vox, pss ~ incomef*educationf*annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
+
+reg_plr <- glm(data = vox, plr ~ income*education*annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
+
+reg_pdc <- glm(data = vox, pdc_pcs ~ income*education*annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
+
+anova(reg_ps2, reg_ps3, test = "Chisq")
+plot(reg_ps3)
+
+
+ameps_inc <- 
+  reg_ps %>% 
+  avg_slopes(variables = c("income"), by = "annee_cat")
+
+ameps_educ <- 
+  reg_ps %>% 
+  avg_slopes(variables = c("education"), by = "annee_cat")
+
+ameps <- rbind(ameps_inc, ameps_educ)
+
+ameps %>% 
+ggplot()+
+  aes(x = annee_cat, y = estimate, color = term, shape = term)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  geom_hline(yintercept = 0)
+
+
+ameudc_inc <- 
+  reg_udc %>% 
+  avg_slopes(variables = c("income"), by = "annee_cat")
+
+ameudc_educ <- 
+  reg_udc %>% 
+  avg_slopes(variables = c("education"), by = "annee_cat")
+
+ameudc <- rbind(ameudc_educ, ameudc_inc)
+
+ameudc %>% 
+ggplot()+
+  aes(x = annee_cat, y = estimate, color = term, shape = term)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  geom_hline(yintercept = 0)
+
+
+ameplr_inc <- 
+  reg_plr %>% 
+  avg_slopes(variables = c("income"), by = "annee_cat")
+
+ameplr_educ <- 
+  reg_plr %>% 
+  avg_slopes(variables = c("education"), by = "annee_cat")
+
+ameplr <- rbind(ameplr_educ, ameplr_inc)
+
+ameplr %>% 
+ggplot()+
+  aes(x = annee_cat, y = estimate, color = term, shape = term)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  geom_hline(yintercept = 0)
+
+amepdc_inc <- 
+  reg_pdc %>% 
+  avg_slopes(variables = c("income"), by = "annee_cat")
+
+amepdc_educ <- 
+  reg_pdc %>% 
+  avg_slopes(variables = c("education"), by = "annee_cat")
+
+amepdc <- rbind(amepdc_educ, amepdc_inc)
+
+amepdc %>% 
+ggplot()+
+  aes(x = annee_cat, y = estimate, color = term, shape = term)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  geom_hline(yintercept = 0)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

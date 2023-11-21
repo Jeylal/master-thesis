@@ -196,8 +196,7 @@ vox <- vox %>%
     educ == 2 ~ "voc_training",
     educ == 3 ~ "maturity",
     educ == 4 ~ "higher_voctraining",
-    educ == 5 ~ "HES",
-    educ == 6 ~ "University",
+    educ %in% c(5,6) ~ "University",
     is.na(educ) ~ NA
   ),
   incomef = case_when(
@@ -247,7 +246,7 @@ vox$religion <- relevel(factor(as_character(vox$confess)), ref = "Catholique rom
 
 vox$age_cat <- cut(vox$age, c(13, 30, 45, 65, 99), right = FALSE, include.lowest = TRUE)
 
-vox$annee_cat <- cut(vox$annee, seq(from = 1981, to = 2016, by = 1), right = FALSE, include.lowest = TRUE)
+vox$annee_cat <- cut(vox$annee, seq(from = 1981, to = 2016, by = 4), right = FALSE, include.lowest = TRUE)
 vox$annee_f <- factor(vox$annee)
 
 vox$canton <- as_character(vox$canton)
