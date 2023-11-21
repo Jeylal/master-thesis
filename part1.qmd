@@ -195,8 +195,7 @@ vox <- vox %>%
     educ == 1 ~ "comp_school",
     educ == 2 ~ "voc_training",
     educ == 3 ~ "maturity",
-    educ == 4 ~ "higher_voctraining",
-    educ %in% c(5,6) ~ "University",
+    educ %in% c(4,5,6) ~ "University",
     is.na(educ) ~ NA
   ),
   incomef = case_when(
@@ -265,37 +264,75 @@ vox <-
     atheist = if_else(confess == 4, 1, 0),
     protestant = if_else(confess == 1, 1, 0),
     catholic = if_else(confess %in% c(2, 5), 1, 0),
-    lr = as.ordered(p04)
+    lr = as.ordered(p04),
+    
+    left = if_else(p04 %in% c(0,1,2,3,4), 1,
+                   if_else(is.na(p04), NA, 0)),
+    center = if_else(p04 %in% c(5), 1,
+                   if_else(is.na(p04), NA, 0)),
+    right = if_else(p04 %in% c(6,7,8,9,10), 1,
+                   if_else(is.na(p04), NA, 0)),
+    stateint = if_else(val11 %in% c(1,2,3), 1,
+                       if_else(is.na(val11), NA, 0)),
+    redistribution = if_else(val5 %in% c(5,6,7), 1,
+                       if_else(is.na(val5), NA, 0)),
+    equal_rights_chforeign = if_else(val9 %in% c(1,2,3), 1,
+                       if_else(is.na(val9), NA, 0))
     
   )
 
 voxlr <- vox %>% filter(annee >= 1990)
-freq(vox$p04)
-freq(voxlr$lr)
+freq(vox$val9)
+freq(vox$center)
 ```
 
 ```{r run regressions}
 
 
-reg_ps <- glm(data = na.omit(vox[c("pss","incomef","educationf","annee_cat","gender","age_cat","religion","regionL")]), pss ~ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
+reg_ps <- glm(data = vox, pss ~incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
 
-reg_plr <- glm(data = na.omit(vox[c("plr","incomef","educationf","annee_cat","gender","age_cat","religion","regionL")]), plr ~ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
+reg_plr <- glm(data = vox, plr ~incomef*educationf+ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
-reg_pdc <- glm(data = na.omit(vox[c("pdc_pcs","incomef","educationf","annee_cat","gender","age_cat","religion","regionL")]), pdc_pcs ~ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
+reg_pdc <- glm(data = vox, pdc_pcs ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
 
-reg_udc <- glm(data = na.omit(vox[c("udc","incomef","educationf","annee_cat","gender","age_cat","religion","regionL")]), udc ~ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
+reg_udc <- glm(data = vox, udc ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
-reg_greens <- glm(data = na.omit(vox[c("green","incomef","educationf","annee_cat","gender","age_cat","religion","regionL")]), green ~ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
+reg_greens <- glm(data = vox, green ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
-reg_abstention <- glm(data = na.omit(vox[c("no_party","incomef","educationf","annee_cat","gender","age_cat","religion","regionL")]), no_party ~ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL, family = binomial(link = "logit"))
+reg_abstention <- glm(data = vox, no_party ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
-library(mvord)
+reg_lr <- clm(data = voxlr, lr ~ incomef*educationf*annee_cat + gender + age_cat)
+reg_lrols <- lm(data = voxlr, p04 ~ incomef*educationf*annee_cat + gender + age_cat)
 
-reg_lr <- polr(data = voxlr, lr ~ income + education + annee_cat, Hess = TRUE)
-summary(reg_lr)
+reg_left <- glm(data = voxlr, 
+                left ~ incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL)
 
-reg_lr %>% 
-  slopes()
+reg_state <- glm(data = voxlr, 
+                stateint ~ incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership)
+
+reg_redistr <- glm(data = voxlr, 
+                redistribution ~ incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership)
+
+ame_left_inc <- 
+  reg_left %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+ame_left_educ <- 
+  reg_left %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ame_left <- rbind(ame_left_educ, ame_left_inc)
+
+
+ame_state_inc <- 
+  reg_state %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+ame_state_educ <- 
+  reg_state %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ame_state <- rbind(ame_state_educ, ame_state_inc)
 
 ########ps
 ps_ame_inc <- 
@@ -415,7 +452,20 @@ ame %>%
         axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
 
 
-ame_lr %>% 
+ame_left %>% 
+  filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
+  labs(x = "", y = "", caption = "Source: VoxIt")+
+  theme_bw()+
+  scale_y_continuous(labels=scales::percent)+
+  geom_hline(yintercept = 0)+
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
+
+ame_state %>% 
   filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
   ggplot()+
   aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
