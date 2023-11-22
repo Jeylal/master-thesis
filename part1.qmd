@@ -75,7 +75,7 @@ library(easystats)
 #| echo: false
 #| fig-cap: "Party Strength: 1918-2019"
 #| label: fig-partystrength
-party_share <- read_excel(path = "/master-thesis/data/force_parti_ofs.xlsx",
+party_share <- read_excel(path = "data/force_parti_ofs.xlsx",
                           sheet = 2)
 party_share[party_share == "*"] <- NA
 party_share <- data.frame(lapply(party_share, as.numeric))
@@ -132,7 +132,6 @@ The empirical agenda of the present study is to test the validity and relevance 
     The support for the right increases with both income and education levels. Popular groups support either the nativist far-right (SVP) or abstention.
 
 ### Data and empirical strategy
-
 
 ```{r import voxit}
 #| echo: false
@@ -327,16 +326,14 @@ vox %>%
 
 A series of binary logit regressions for party support, political leaning and some issue positions are run. The results presented in this section come essentially from the following model:
 
-$$Y_{it} = \alpha + \beta_{I}I_{it} + \beta_{E}E_{it} + \beta I_{it}E_{it} + \gamma X_{it} + \eta_{1} Year + \eta_{2}YearI_{it}+ \eta_{3}YearE_{it} + \epsilon_{it}$$ {#eq-1}
+$$ Y_{it} = \alpha + \beta_{I}I_{it} + \beta_{E}E_{it} + \beta I_{it}E_{it} + \gamma X_{it} + \eta_{1} Year + \eta_{2}YearI_{it}+ \eta_{3}YearE_{it} + \epsilon_{it} $$ {#eq-1}
 
-With $I{it}$ and $E_{it}$ the income and education level of individual $i$ in period $t$ and $X$ a vector of socio-demographic characteristics control variables which were available in the dataset for all time periods. The controls are for age (grouped into 4 categories), gender, religion, linguistic region (french, german, italian and romanche), marital status and a dummy for house ownership. $Year$ are dummy variables for the time periods and $\epsilon_{it}$ is the error term. The models include interaction terms between education and income as well as between income, education and time period in order to assess the temporal evolution of the correlation between the dependent and main explanatory variables. Income and Education are treated as categorical variables, with vocational training and low income as reference levels.
+With $I_{it}$ and $E_{it}$ the income and education level of individual $i$ in period $t$ and $X$ a vector of socio-demographic characteristics control variables which were available in the dataset for all time periods. The controls are for age (grouped into 4 categories), gender, religion, linguistic region (french, german, italian and romanche), marital status and a dummy for house ownership. $Year$ are dummy variables for the time periods and $\epsilon_{it}$ is the error term. The models include interaction terms between education and income as well as between income, education and time period in order to assess the temporal evolution of the correlation between the dependent and main explanatory variables. Income and Education are treated as categorical variables, with vocational training and low income as reference levels.
 
 One possible methodological issue of the VoxIt dataset is the clustering structure of the data. On the one hand, the observations (Swiss citizen) are clustered into cantons, which are an important level in Switzerland. On the other hand, the time structure and trend of the data are highly relevant for our research question. The cantons represent an important institutional and political level in Switzerland, and it thus likely that individuals within the same canton are not independent and show some patterns and correlation. To assess this potential issue, multilevel regression with years and cantons as levels were conducted. However, the results (see appendix) of the multilevel regression show that the intra-class correlation coefficient are low for the cantonal level, indicating that there is not much difference between cantons. Moreover, the results of the multilevel regressions and @eq-1 are very similar.
 
-
-
 ```{r run regressions}
-summary(reg_abstention)
+
 
 reg_ps <- glm(data = vox, pss ~incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
 
@@ -350,18 +347,29 @@ reg_greens <- glm(data = vox, green ~incomef*educationf +  incomef:annee_cat + e
 
 reg_abstention <- glm(data = vox, no_party ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
-reg_lr <- clm(data = voxlr, lr ~ incomef*educationf*annee_cat + gender + age_cat)
-reg_lrols <- lm(data = voxlr, p04 ~ incomef*educationf*annee_cat + gender + age_cat)
+###### political leaning regression
 
 reg_left <- glm(data = voxlr, 
-                left ~ incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL)
+                left ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
+reg_center <- glm(data = voxlr, 
+                center ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_right <- glm(data = voxlr, 
+                right ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+#########3 issue position regression
 reg_state <- glm(data = voxlr, 
-                stateint ~ incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership)
+                stateint ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
 reg_redistr <- glm(data = voxlr, 
-                redistribution ~ incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership)
+                redistribution ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
 
+reg_equal_rights_chforeign <- glm(data = voxlr, 
+               equal_rights_chforeign  ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+
+####### political leaning ame
 ame_left_inc <- 
   reg_left %>% 
   avg_slopes(variables = c("incomef"), by = c("annee_cat"))
@@ -370,9 +378,32 @@ ame_left_educ <-
   reg_left %>% 
   avg_slopes(variables = c("educationf"), by = c("annee_cat"))
 
-ame_left <- rbind(ame_left_educ, ame_left_inc)
+ame_left <- rbind(ame_left_educ, ame_left_inc) %>% mutate(leaning = "left")
+
+ame_right_inc <- 
+  reg_right %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+ame_right_educ <- 
+  reg_right %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ame_right <- rbind(ame_right_educ, ame_right_inc) %>% mutate(leaning = "right")
+
+ame_center_inc <- 
+  reg_center %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+ame_center_educ <- 
+  reg_center %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ame_center <- rbind(ame_center_educ, ame_center_inc) %>% mutate(leaning = "center")
+
+ame_polleaning <- rbind(ame_left, ame_right, ame_center)
 
 
+####### issue position ame
 ame_state_inc <- 
   reg_state %>% 
   avg_slopes(variables = c("incomef"), by = c("annee_cat"))
@@ -381,7 +412,29 @@ ame_state_educ <-
   reg_state %>% 
   avg_slopes(variables = c("educationf"), by = c("annee_cat"))
 
-ame_state <- rbind(ame_state_educ, ame_state_inc)
+ame_state <- rbind(ame_state_educ, ame_state_inc) %>% mutate(issue = "state_vs_market")
+
+ame_redistr_inc <- 
+  reg_redistr %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+ame_redistr_educ <- 
+  reg_redistr %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ame_redistr <- rbind(ame_redistr_educ, ame_redistr_inc) %>% mutate(issue = "redistribution")
+
+ame_eqrights_inc <- 
+  reg_equal_rights_chforeign %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+ame_eqrights_educ <- 
+  reg_equal_rights_chforeign %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ame_eqrights <- rbind(ame_eqrights_educ, ame_eqrights_inc) %>% mutate(issue = "Equal Chances CH - Foreigners")
+
+ame_IP <- rbind(ame_redistr, ame_state, ame_eqrights)
 
 ########ps
 ps_ame_inc <- 
@@ -483,11 +536,11 @@ ame %>%
   theme(legend.position = "bottom",
         axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
 
-ame %>% 
+
+ame_polleaning %>% 
   filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
-  filter(party %in% c("pdc", "udc")) %>% 
   ggplot()+
-  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast, group = party)+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast, group = leaning)+
   geom_point()+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
   labs(title = "Party Support: Average Marginal Contrasts",
@@ -496,34 +549,23 @@ ame %>%
   theme_bw()+
   scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
-  facet_wrap(~party)+
+  facet_wrap(~leaning)+
   theme(legend.position = "bottom",
         axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
 
-
-ame_left %>% 
+ame_IP %>% 
   filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
   ggplot()+
-  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast, group = issue)+
   geom_point()+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  labs(x = "", y = "", caption = "Source: VoxIt")+
+  labs(title = "Party Support: Average Marginal Contrasts",
+       subtitle = "Income and Education levels, Switzerland 1981-2016",
+       x = "", y = "", caption = "Source: VoxIt")+
   theme_bw()+
   scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
-  theme(legend.position = "bottom",
-        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
-
-ame_state %>% 
-  filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
-  ggplot()+
-  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
-  geom_point()+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  labs(x = "", y = "", caption = "Source: VoxIt")+
-  theme_bw()+
-  scale_y_continuous(labels=scales::percent)+
-  geom_hline(yintercept = 0)+
+  facet_wrap(~issue)+
   theme(legend.position = "bottom",
         axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
 
