@@ -1,5 +1,224 @@
 # Appendix
 
+
+
+
+
+```{r run regressions}
+
+
+reg_ps <- glm(data = vox, pss ~incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+reg_plr <- glm(data = vox, plr ~incomef*educationf+ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_pdc <- glm(data = vox, pdc_pcs ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+reg_udc <- glm(data = vox, udc ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_greens <- glm(data = vox, green ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_abstention <- glm(data = vox, no_party ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+###### political leaning regression
+
+reg_left <- glm(data = vox2, 
+                left ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_center <- glm(data = vox2, 
+                center ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_right <- glm(data = vox2, 
+                right ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+#########3 issue position regression
+reg_state <- glm(data = vox2, 
+                stateint ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_redistr <- glm(data = vox2, 
+                redistribution ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+reg_equal_rights_chforeign <- glm(data = vox2, 
+               equal_rights_chforeign  ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+####### political leaning ame
+ame_left_inc <- 
+  reg_left %>% 
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
+
+ame_left_educ <- 
+  reg_left %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ame_left <- rbind(ame_left_educ, ame_left_inc) %>% mutate(leaning = "left")
+
+ame_right_inc <- 
+  reg_right %>% 
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
+
+ame_right_educ <- 
+  reg_right %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ame_right <- rbind(ame_right_educ, ame_right_inc) %>% mutate(leaning = "right")
+
+ame_center_inc <- 
+  reg_center %>% 
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
+
+ame_center_educ <- 
+  reg_center %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ame_center <- rbind(ame_center_educ, ame_center_inc) %>% mutate(leaning = "center")
+
+ame_polleaning <- rbind(ame_left, ame_right, ame_center)
+
+
+####### issue position ame
+ame_state_inc <- 
+  reg_state %>% 
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
+
+ame_state_educ <- 
+  reg_state %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ame_state <- rbind(ame_state_educ, ame_state_inc) %>% mutate(issue = "state_vs_market")
+
+ame_redistr_inc <- 
+  reg_redistr %>% 
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
+
+ame_redistr_educ <- 
+  reg_redistr %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ame_redistr <- rbind(ame_redistr_educ, ame_redistr_inc) %>% mutate(issue = "redistribution")
+
+ame_eqrights_inc <- 
+  reg_equal_rights_chforeign %>% 
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
+
+ame_eqrights_educ <- 
+  reg_equal_rights_chforeign %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ame_eqrights <- rbind(ame_eqrights_educ, ame_eqrights_inc) %>% mutate(issue = "Equal Chances CH - Foreigners")
+
+ame_IP <- rbind(ame_redistr, ame_state, ame_eqrights)
+
+########ps
+ps_ame_inc <- 
+  reg_ps %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+ps_ame_edu <- 
+  reg_ps %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+ps_ame <- rbind(ps_ame_edu, ps_ame_inc) %>% 
+  mutate(party = "ps")
+
+######plr
+plr_ame_inc <- 
+  reg_plr %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+plr_ame_edu <- 
+  reg_plr %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+plr_ame <- rbind(plr_ame_edu, plr_ame_inc) %>% 
+  mutate(party = "plr")
+####### pdc
+pdc_ame_inc <- 
+  reg_pdc %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+pdc_ame_edu <- 
+  reg_pdc %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+pdc_ame <- rbind(pdc_ame_edu, pdc_ame_inc) %>% 
+  mutate(party = "pdc")
+
+######### udc
+udc_ame_inc <- 
+  reg_udc %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+udc_ame_edu <- 
+  reg_udc %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+udc_ame <- rbind(udc_ame_edu, udc_ame_inc) %>% 
+  mutate(party = "udc")
+
+###### greens
+greens_ame_inc <- 
+  reg_greens %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+greens_ame_edu <- 
+  reg_greens %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+greens_ame <- rbind(greens_ame_inc, greens_ame_edu) %>% 
+  mutate(party = "greens")
+
+###### noparty
+
+noparty_ame_inc <- 
+  reg_abstention %>% 
+  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+
+noparty_ame_edu <- 
+  reg_abstention %>% 
+  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+
+noparty_ame <- rbind(noparty_ame_inc, noparty_ame_edu) %>% 
+  mutate(party = "noparty")
+
+ame <- rbind(ps_ame, udc_ame, plr_ame, pdc_ame, greens_ame, noparty_ame)
+
+####### other ame
+ame_inc_educ_ps <- 
+  reg_ps %>% 
+  avg_slopes(variables = c("educationf"), by = c("incomef"))
+  
+
+####### lr 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```{r import aggregate data}
 #| warning: false
 #| message: false
