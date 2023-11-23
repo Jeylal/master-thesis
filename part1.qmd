@@ -332,6 +332,30 @@ With $I_{it}$ and $E_{it}$ the income and education level of individual $i$ in p
 
 One possible methodological issue of the VoxIt dataset is the clustering structure of the data. On the one hand, the observations (Swiss citizen) are clustered into cantons, which are an important level in Switzerland. On the other hand, the time structure and trend of the data are highly relevant for our research question. The cantons represent an important institutional and political level in Switzerland, and it thus likely that individuals within the same canton are not independent and show some patterns and correlation. To assess this potential issue, multilevel regression with years and cantons as levels were conducted. However, the results (see appendix) of the multilevel regression show that the intra-class correlation coefficient are low for the cantonal level, indicating that there is not much difference between cantons. Moreover, the results of the multilevel regressions and @eq-1 are very similar.
 
+```{r vox2}
+
+vox2 <- 
+  vox %>% 
+  filter(annee >= 1992) %>% 
+  mutate(
+    revenuf = factor(as_character(revenu)),
+    income = case_when(
+      revenu == 1 ~ "less_3k",
+      revenu == 2 ~ "[3k,5k]",
+      revenu == 3 ~ "[5k,7k]",
+      revenu == 4 ~ "[7k,9k]",
+      revenu == 5 ~ "more_9k"
+      
+    )
+  )
+
+vox2$income <- relevel(factor(vox2$income), ref = "less_3k")
+
+vox2$annee_cat <- cut(vox2$annee, seq(from = 1992, to = 2016, by = 4), right = FALSE, include.lowest = TRUE)
+
+```
+
+
 ```{r run regressions}
 
 
@@ -349,30 +373,29 @@ reg_abstention <- glm(data = vox, no_party ~ incomef*educationf + incomef:annee_
 
 ###### political leaning regression
 
-reg_left <- glm(data = voxlr, 
-                left ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+reg_left <- glm(data = vox2, 
+                left ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
-reg_center <- glm(data = voxlr, 
-                center ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+reg_center <- glm(data = vox2, 
+                center ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
-reg_right <- glm(data = voxlr, 
-                right ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+reg_right <- glm(data = vox2, 
+                right ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
 #########3 issue position regression
-reg_state <- glm(data = voxlr, 
-                stateint ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+reg_state <- glm(data = vox2, 
+                stateint ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
-reg_redistr <- glm(data = voxlr, 
-                redistribution ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+reg_redistr <- glm(data = vox2, 
+                redistribution ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
 
-reg_equal_rights_chforeign <- glm(data = voxlr, 
-               equal_rights_chforeign  ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
-
+reg_equal_rights_chforeign <- glm(data = vox2, 
+               equal_rights_chforeign  ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
 
 ####### political leaning ame
 ame_left_inc <- 
   reg_left %>% 
-  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
 
 ame_left_educ <- 
   reg_left %>% 
@@ -382,7 +405,7 @@ ame_left <- rbind(ame_left_educ, ame_left_inc) %>% mutate(leaning = "left")
 
 ame_right_inc <- 
   reg_right %>% 
-  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
 
 ame_right_educ <- 
   reg_right %>% 
@@ -392,7 +415,7 @@ ame_right <- rbind(ame_right_educ, ame_right_inc) %>% mutate(leaning = "right")
 
 ame_center_inc <- 
   reg_center %>% 
-  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
 
 ame_center_educ <- 
   reg_center %>% 
@@ -406,7 +429,7 @@ ame_polleaning <- rbind(ame_left, ame_right, ame_center)
 ####### issue position ame
 ame_state_inc <- 
   reg_state %>% 
-  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
 
 ame_state_educ <- 
   reg_state %>% 
@@ -416,7 +439,7 @@ ame_state <- rbind(ame_state_educ, ame_state_inc) %>% mutate(issue = "state_vs_m
 
 ame_redistr_inc <- 
   reg_redistr %>% 
-  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
 
 ame_redistr_educ <- 
   reg_redistr %>% 
@@ -426,7 +449,7 @@ ame_redistr <- rbind(ame_redistr_educ, ame_redistr_inc) %>% mutate(issue = "redi
 
 ame_eqrights_inc <- 
   reg_equal_rights_chforeign %>% 
-  avg_slopes(variables = c("incomef"), by = c("annee_cat"))
+  avg_slopes(variables = c("income"), by = c("annee_cat"))
 
 ame_eqrights_educ <- 
   reg_equal_rights_chforeign %>% 
@@ -538,7 +561,7 @@ ame %>%
 
 
 ame_polleaning %>% 
-  filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
+  filter(contrast %in% c("mean(more_9k) - mean(less_3k)", "mean(University) - mean(voc_training)")) %>%
   ggplot()+
   aes(x = annee_cat, y = estimate, color = contrast, shape = contrast, group = leaning)+
   geom_point()+
@@ -554,7 +577,7 @@ ame_polleaning %>%
         axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
 
 ame_IP %>% 
-  filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
+  filter(contrast %in% c("mean(more_9k) - mean(less_3k)", "mean(University) - mean(voc_training)")) %>%
   ggplot()+
   aes(x = annee_cat, y = estimate, color = contrast, shape = contrast, group = issue)+
   geom_point()+

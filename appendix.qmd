@@ -588,29 +588,160 @@ vox %>%
 
 
 ```{r}
-## simple model:
-fm1 <- clm(rating ~ contact + temp, data=wine)
-summary(fm1)
+vox1 <- 
+  vox %>% 
+  filter(annee <= 1992) %>% 
+  mutate(
+    nivmenaf = factor(as_character(nivmena)),
+    annee_cat = case_when(
+      annee %in% c(1981:1985) ~ "[1981,1985]",
+      annee %in% c(1986:1989) ~ "[1986,1989]",
+      annee %in% c(1990:1992) ~ "[1990,1992]"
+    )
+  )
 
-## Fitted values with standard errors and confidence intervals:
-predict(fm1, se.fit=TRUE, interval=TRUE) # type="prob"
-## class predictions for the observations:
-predict(fm1, type="class")
+vox2 <- 
+  vox %>% 
+  filter(annee >= 1992) %>% 
+  mutate(
+    revenuf = factor(as_character(revenu)),
+    income = case_when(
+      revenu == 1 ~ "less_3k",
+      revenu == 2 ~ "[3k,5k]",
+      revenu == 3 ~ "[5k,7k]",
+      revenu == 4 ~ "[7k,9k]",
+      revenu == 5 ~ "more_9k"
+      
+    )
+  )
+freq(vox2$revenu)
+freq(vox2$income)
 
-newData <- expand.grid(temp = c("cold", "warm"),
-                       contact = c("no", "yes"))
+vox2$income <- relevel(factor(vox2$income), ref = "less_3k")
 
-## Predicted probabilities in all five response categories for each of
-## the four cases in newData:
-predict(fm1, newdata=newData, type="prob")
-## now include standard errors and intervals:
-predict(fm1, newdata=newData, se.fit=TRUE, interval=TRUE, type="prob")
-freq(vox$val11)
+vox2$annee_cat <- cut(vox2$annee, seq(from = 1992, to = 2016, by = 4), right = FALSE, include.lowest = TRUE)
+
+
+freq(vox2$annee_cat)
+vox1 %>% 
+  group_by(annee_f) %>% 
+  count(educationf) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  drop_na() %>% 
+  ungroup() %>% 
+  ggplot()+
+  aes(x = educationf, y = prop)+
+  geom_col()+
+  facet_wrap(~annee_f)+
+  scale_y_continuous(labels = scales::percent)+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  labs(y = "", x = "", caption = "source: VoxIt")
 ```
 
 
+```{r}
+library(performance)
+reg_ps1 <- glm(data = vox1,
+               pss ~ nivmenaf*educationf + nivmenaf:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership)
+
+reg_ps2 <- glm(data = vox2,
+               pss ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership)
+
+reg_plr1 <- glm(data = vox1,
+               plr ~ nivmenaf*educationf + nivmenaf:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership)
+
+reg_plr2 <- glm(data = vox2,
+               plr ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership)
+
+reg_pdc1 <- glm(data = vox1,
+               pdc_pcs ~ nivmenaf*educationf + nivmenaf:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership)
+
+reg_pdc2 <- glm(data = vox2,
+               pdc_pcs ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership)
+
+plr1_ame_inc <- 
+  reg_plr1 %>% 
+  comparisons(variables = list(nivmenaf = c("Bas", "Elevé")), by = "annee_cat") %>% 
+  mutate(party = "PRD-PLS")
+
+plr1_ame_educ <-  
+  reg_plr1 %>% 
+  comparisons(variables = list(educationf = c("voc_training", "University")), by = "annee_cat") %>% 
+  mutate(party = "PRD-PLS")
+
+plr2_ame_inc <- 
+  reg_plr2 %>% 
+  comparisons(variables = list(income = c("less_3k", "more_9k")), by = "annee_cat") %>% 
+  mutate(party = "PRD-PLR")
+
+plr2_ame_educ <-  
+  reg_plr2 %>% 
+  comparisons(variables = list(educationf = c("voc_training", "University")), by = "annee_cat") %>% 
+  mutate(party = "PRD-PLR")
+
+plr2_ame <- rbind(plr2_ame_educ, plr2_ame_inc)
+
+ps1_ame_inc <- 
+  reg_ps1 %>% 
+  comparisons(variables = list(nivmenaf = c("Bas", "Elevé")), by = "annee_cat") %>% 
+  mutate(party = "ps")
+
+ps1_ame_educ <- 
+  reg_ps1 %>% 
+  comparisons(variables = list(educationf = c("voc_training", "University")), by = "annee_cat") %>% 
+  mutate(party = "ps")
+
+ps1_ame <- rbind(ps1_ame_educ, ps1_ame_inc)
+
+ps2_ame_inc <- 
+  reg_ps2 %>% 
+  comparisons(variables = list(income = c("less_3k", "more_9k")), by = "annee_cat") %>% 
+  mutate(party = "ps")
+
+ps2_ame_educ <- 
+  reg_ps2 %>% 
+  comparisons(variables = list(educationf = c("voc_training", "University")), by = "annee_cat") %>% 
+  mutate(party = "ps")
+
+ps2_ame <- rbind(ps2_ame_educ, ps2_ame_inc)
+
+plot_ps1 <- 
+  ps1_ame %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+plot_ps2 <- 
+  ps2_ame %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+plot_plr1 <- 
+  plr1_ame %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+plot_plr2 <- 
+  plr2_ame %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+```
 
 
+```{r}
+plot_ps1
+plot_ps2
+plot_plr1
+plot_plr2
+```
 
 
 
