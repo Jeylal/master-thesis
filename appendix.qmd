@@ -389,11 +389,52 @@ selects <-
     canton = as.factor(as_character(sg2)),
     annee = as.factor(year),
     religionf = as.factor(as_character(religion)),
-    gender = as.factor(as_character(sex))
+    gender = as.factor(as_character(sex)),
+    incomef = factor(as_character(income)),
+    polleaning = case_when(
+      lr1 %>% between(0,4.99) ~ "left",
+      lr1 == 5 ~ "center",
+      lr1 %>% between(5.01,10) ~ "right"
+    ),
+    left = if_else(polleaning == "left", 1, if_else(is.na(polleaning), NA, 0)),
+    right = if_else(polleaning == "right", 1, if_else(is.na(polleaning), NA, 0)),
+    center = if_else(polleaning == "center", 1, if_else(is.na(polleaning), NA, 0))
   )
-freq(selects$income)
+freq(selects75$ip5)
 freq(selects$income_centered)
 ```
+
+```{r}
+selects75 <- 
+selects %>% filter(year == 1975)
+selects7579 <- 
+  selects %>% filter(year %in% c(1975, 1979))
+```
+
+```{r}
+lm_statemarket <- lm(data = selects75, ip5 ~ incomef + education + age_cat + gender)
+clm_statemarket <- clm(data = selects75, ordered(ip5) ~ incomef + education + age_cat + gender)
+summary(lm_statemarket)
+summary(clm_statemarket)
+r2_nagelkerke(clm_statemarket)
+tab_model(clm_statemarket)
+
+glm_right <- glm(data = selects7579, right ~ incomef + education + age_cat + gender)
+glm_left <- glm(data = selects7579, left ~ incomef + education + age_cat + gender)
+glm_center <- glm(data = selects7579, center ~ incomef + education + age_cat + gender)
+tab_model(glm_right, glm_left, glm_center)
+
+reg_left <- glm(data = selects, left ~ incomef + education + factor(annee) + incomef:factor(annee) + education:factor(annee) + age_cat + gender)
+
+tab_model(reg_left)
+
+```
+
+
+
+
+
+
 
 ```{r selects regression 1971}
 #| echo: false
