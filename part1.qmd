@@ -1,4 +1,4 @@
-# Social blocs, socio-economic factors and voting outcomes in Switzerland
+# Social blocs, socio-economic groups and political divides in Switzerland
 
 ## The traditional Swiss bourgeois and left blocs: historical perspectives
 
@@ -87,15 +87,18 @@ party_share  %>%
                values_to = "Party_strength") %>% 
   rename(year = "...1")
 
+party_share_long$party[party_share_long$party == "PLR..PRD..3."] <- "PRD-PLR"
+
 party_share_long %>% 
-  filter(party %in% c("PLR..PRD..3.", "PDC", "PS", "UDC", "PES")) %>% 
+  filter(party %in% c("PRD-PLR", "PDC", "PS", "UDC", "PES")) %>% 
   ggplot()+
   aes(x = year, y = Party_strength, color = party, shape = party)+
   scale_x_continuous()+
   geom_line()+
   geom_point()+
   theme_bw()+
-  scale_color_brewer(palette = "Set1")
+  scale_color_brewer(palette = "Set1")+
+  labs(caption = "Source: OFS", x = "", y = "Party Strength in %")
 
 ```
 
@@ -111,8 +114,7 @@ Those paradox thus gave way to a recent literature linking political cleavages a
 
 Underlying the rise of a new cleavage in the 70s and 80s, Piketty and the WPID tackle a topic which is well-known in political science: the emergence of a cleavage centered around cultural values, that Piketty calls the "nativists-internationalists" divide, which cuts across the traditional class conflict and is the result of the increase in average education level and of globalization. The combination of this new cultural cleavage with the traditional class-based conflict draws a bi-dimensional political space in which four social blocs are possible: an internationalist-egalitarian bloc which is on the left both culturally and economically; an internationalist-inegalitarian bloc on the left culturally but economically on the right; a nativist-inegalitarian bloc on the right culturally and economically; and a nativist-egalitarian bloc which is culturally conservative but economically on the left [@piketty_brahmin_2018; @piketty_capital_2019]. This "cultural cleavage" has been given as many labels as it has analysts among political scientists: "materialist-postmaterialist" divide for Inglehart [-@inglehart_silent_1971; -@inglehart_value_1987; -@inglehart_culture_1990]; the "libertarian-authoritarian" cleavage [@kitschelt_transformation_1994; @flanagan_new_2003]; winners vs losers of globalization [@kriesi_globalization_2006; @kriesi_west_2008; @teney_winners_2014]; the "transnational cleavage" [@hooghe_cleavage_2018] or the "universalism--particularism" cleavage [@bornschier_cleavage_2010; @zollinger_cleavage_2022].
 
-Testing the relevance of the brahmin left vs merchant right divide, @amable_brahmin_2022 offer contrasting results. On the one hand, preference for redistribution decreases with both education and income levels. On the other hand, support for globalization (such as immigration) is not only structured by education level, but also positively associated with income. @amable_brahmin_2022 suggest the possibility of a rapprochement between the brahmin left and the merchant right, giving birth to a bourgeois bloc uniting the wealthiest and most educated groups from the left and the right. @amable_brahmin_2022-1 show that the brahmin left vs merchant right divide has not taken place in every country and that the classical popular left versus bourgeois right opposition is still relevant for many countries. 
-
+Testing the relevance of the brahmin left vs merchant right divide, @amable_brahmin_2022 offer contrasting results. On the one hand, preference for redistribution decreases with both education and income levels. On the other hand, support for globalization (such as immigration) is not only structured by education level, but also positively associated with income. @amable_brahmin_2022 suggest the possibility of a rapprochement between the brahmin left and the merchant right, giving birth to a bourgeois bloc uniting the wealthiest and most educated groups from the left and the right. @amable_brahmin_2022-1 show that the brahmin left vs merchant right divide has not taken place in every country and that the classical popular left versus bourgeois right opposition is still relevant for many countries.
 
 In this context of multi-elite party system and multidimensional political divides, Switzerland is an interesting case study. A widespread idea claims that the class-based cleavage always played a relatively minor role in Switzerland. On the one hand, class conflict was always cut across a wide variety of other divides: religious, linguistic or regional. As a result, Switzerland was a forerunner in the emergence of this "cultural" cleavage, but also in the precociousness and strength of the educational shift. @durrer_de_la_sota_party_2021 offer a detailed analysis of the links between socio-economic factors and the vote for the main Swiss social blocs. During the post-war period until the 1990s, the left bloc (mainly the PS) was supported by low income and education voters while right-wing parties showed different patterns of class support, which call into question the extent to which this bourgeois bloc can truly be characterized as "bourgeois". Of the three parties constituting the bourgeois bloc, only one of them, the PRD-PLR party, had clearly a bourgeois composition since it is consistently supported by the most wealthy and educated groups since the post-war period. The PDC and the UDC cannot really be described as "bourgeois" since, according to @durrer_de_la_sota_party_2021, the support for the two parties was negatively associated with income and education. While this negative association tends to decline for the PDC, it became even more strong for the UDC since the 90s. After this period, the left bloc became "brahmin" in the sense that it gathered strong support among the most educated classes, while its popular support moved either into abstention or to the UDC.
 
@@ -300,9 +302,9 @@ vox2$annee_cat <- cut(vox2$annee, seq(from = 1992, to = 2016, by = 4), right = F
 
 To test the hypotheses above, two types of data sources are especially relevant. The *Swiss Election Studies (SELECTS) cumulative dataset* is a harmonized dataset merging every Swiss post-election (federal assembly elections, which take place every four years) surveys from 1971 to 2019 [@tresch_swiss_2022]. Since SELECTS data are already drastically analyzed by the literature (for instance by @durrer_de_la_sota_party_2021), I contribute to the existing research by analyzing another data source, the *VoxIt* cumulative dataset which harmonize every post-vote surveys from 1981 to 2016 [@brunner_enquetes_2017].
 
-The main dependent variables are dummy variables for party identification and political leaning. Some variables regarding issue position on public policies such as redistribution, state intervention and equal rights between Swiss citizen and foreigners are also considered.
+In each poll, respondents were asked which party they supported and their self-placement on the left-right axis on a Likert 10 points scale. The main dependent variables are dummy variables for party identification and political leaning computed from these two variables. Three other variables regarding issue position on public policies such as redistribution, state intervention and equal rights between Swiss citizen and foreigners are also considered.
 
-The main independent variables are education and income levels. The variable "educ" is a qualitative variables on the highest achieved educational formation with 6 modalities ranging from primary school to university. It is important here to stress some peculiarities of the Swiss educational system. Switzerland's education system is strongly based on vocational training. As a result, other education categories tend to be missing for a lot of year-periods of the dataset. To solve this problem, but also to simplify the data structure, years are aggregated into several time periods to avoid separation issues. 
+The main independent variables are education and income levels. The variable "educ" is a qualitative variables on the highest achieved educational formation with 6 modalities ranging from primary school to university. It is important here to stress some peculiarities of the Swiss educational system. Switzerland's education system is strongly based on vocational training. As a result, other education categories tend to be missing for a lot of year-periods of the dataset. To solve this problem, but also to simplify the data structure, years are aggregated into several time periods to avoid separation issues.
 
 ```{r educational level plot}
 #| message: false
@@ -339,30 +341,50 @@ Regarding income levels, the dataset contains two variables. The variable "nivme
 #| warning: false
 #| echo: false
 #| label: fig-inc
-#| fig-cap: "Income levels in Switzerland: 1981-2016"
+#| fig-cap: "Descriptive statistics: variable nivmena and revenu"
+
+
+plotincome1 <- 
 vox %>% 
+  filter(annee_cat %in% c("[1981,1986]", "(1986,1991]")) %>% 
   group_by(annee_cat) %>% 
   count(incomef) %>% 
-  mutate(prop = n/sum(n)) %>% 
   drop_na() %>% 
+  mutate(prop = n/sum(n)) %>% 
   ungroup() %>% 
   ggplot()+
-  aes(x = incomef, y = prop)+
+  aes(x = incomef, y = prop, group = incomef)+
+  geom_col()+
+  facet_wrap(~annee_cat)+
+  scale_y_continuous(labels = scales::percent)+
+  scale_x_discrete(limits = c("low", "middle_low", "middle_high", "high"))+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  labs(y = "", x = "", caption = "", title = "Nivmena")
+
+plotincome2 <- 
+vox2 %>% 
+  group_by(annee_cat) %>% 
+  count(income) %>% 
+  drop_na() %>% 
+  mutate(prop = n/sum(n)) %>% 
+  ungroup() %>% 
+  ggplot()+
+  aes(x = income, y = prop)+
   geom_col()+
   facet_wrap(~annee_cat)+
   scale_y_continuous(labels = scales::percent)+
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
-  labs(y = "", x = "", caption = "source: VoxIt")
+  labs(y = "", x = "", caption = "source: VoxIt", title = "Revenu")
+
+cowplot::plot_grid(plotincome1, plotincome2)
 
 ```
 
-A series of binary logit regressions for party support, political leaning, opinion on redistribution, state intervention and equal rights between Swiss and foreigners are run. The results presented in this section come essentially from the following model:
+A series of binary logit regressions for party support, political leaning, opinion on redistribution, state intervention and equal rights between Swiss and foreigners are conducted. The results presented in this section come from the following model:
 
 $$ Y_{it} = \alpha + \beta_{I}I_{it} + \beta_{E}E_{it} + \beta I_{it}E_{it} + \gamma X_{it} + \eta_{1} Year + \eta_{2}YearI_{it}+ \eta_{3}YearE_{it} + \epsilon_{it} $$ {#eq-1}
 
-With $I_{it}$ and $E_{it}$ the income and education level of individual $i$ in period $t$ and $X$ a vector of socio-demographic characteristics control variables which were available in the dataset for all time periods. The controls are for age (grouped into 4 categories), gender, religion, linguistic region (french, german, italian and romanche), marital status and a dummy for house ownership. $Year$ are dummy variables for the time periods and $\epsilon_{it}$ is the error term. The models include interaction terms between education and income as well as between income, education and time period in order to assess the temporal evolution of the correlation between the dependent and main explanatory variables. Income and Education are treated as categorical variables, with vocational training and low income as reference levels.
-
-One possible methodological issue of the VoxIt dataset is the clustering structure of the data. On the one hand, the observations (Swiss citizen) are clustered into cantons, which are an important level in Switzerland. On the other hand, the time structure and trend of the data are highly relevant for our research question. The cantons represent an important institutional and political level in Switzerland, and it thus likely that individuals within the same canton are not independent and show some patterns and correlation. To assess this potential issue, multilevel regression with years and cantons as levels were conducted. However, the results (see appendix) of multilevel models show that the intra-class correlation coefficient are low for the cantonal level, indicating that there is not much difference between cantons. Moreover, the results of the multilevel regressions and @eq-1 are very similar.
+With $I_{it}$ and $E_{it}$ the income and education level of individual $i$ in period $t$ and $X$ a vector of socio-demographic characteristics control variables which were available in the dataset for all time periods. The controls are for age (grouped into 4 categories), gender, religion, linguistic region (french, german, italian and romanche), marital status and a dummy for house ownership. $Year$ are dummy variables for the time periods and $\epsilon_{it}$ is the error term. The models include interaction terms between education and income as well as between income, education and time period in order to assess the temporal evolution of the correlation between the dependent and main explanatory variables. Income and Education are treated as categorical variables, with vocational training and low income as reference levels. The results presented below are essentially average marginal contrasts which allow to compare the difference in predicted probabilities between groups of interests, in our case, between highest and lowest income groups and between university graduates and vocational training graduates.
 
 
 
@@ -372,10 +394,10 @@ One possible methodological issue of the VoxIt dataset is the clustering structu
 #| warning: false
 #| label: fig-ameparties
 #| fig-cap: "Party support in Switzerland: 1981-2016. Average difference in probabilities between the highest and lowest income groups and between university and vocational training graduates."
-
-ame_IP <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_IP.rds")
-ame_parties <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_parties.rds")
-ame_polleaning <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_polleaning.rds")
+#| fig-height: 6
+ame_IP <- readRDS("/master-thesis/data/ame/ame_IP.rds")
+ame_parties <- readRDS("/master-thesis/data/ame/ame_parties.rds")
+ame_polleaning <- readRDS("/master-thesis/data/ame/ame_polleaning.rds")
 
 ame_parties %>% 
   filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
@@ -394,10 +416,15 @@ ame_parties %>%
   theme(legend.position = "bottom",
         axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
 
-
-
-
 ```
+
+@fig-ameparties show average marginal contrasts for each party or no party support for each time periods. The results partially confirm those of @durrer_de_la_sota_party_2021. First, the Swiss Socialist party (PS) used to be supported by relatively low education and income groups in the 1980s and became indeed a brahmin left party over time: the difference between the highly educated and vocational training graduates became positive in the second half of the 1980s continued to increase in almost all time periods while the negative difference between the highest and lowest income groups increased, indicating that the party's social basis became more educated and wealthier over time. Furthermore the results show that the educational shift took place already in the 80s: university graduates already supported more the PS compared to vocational training graduates. This is an important result because it indicates that the PS became the party of the most educated in the 80s, before the economic and political crisis of the 90s and, most importantly, before the vote on the adhesion to the European Economic Area (EEA) in 1992, events which are often associated with the educational shift and the PS's loss of popular support. Second, the Liberal-Radical party (Radical-Democratic and Swiss Liberal Party before the latter merged in 2008) (PLR) shows a clear bourgeois basis for almost all time periods. The PLR is thus indeed the party of the wealthiest and most educated groups and is the only party that shows this pattern. In @durrer_de_la_sota_party_2021, another party, the Greens, also became bourgeois between 2011-2019, with the Difference between the top 10% income and bottom 90% income voting Green becoming positive during this period while the difference between the top 10% and bottom 90% educated was positive since the 80s. The results shown in @fig-ameparties rather indicate that the Greens, like the PS, are a brahmin left party from 1981 to 2016.
+
+Second, the results show that the Swiss People's Part (UDC) was a merchant right party whose social basis became popular both in terms of education and income levels. Before the 90s the party gathered the less educated, but also the weatlhiest income groups (hence "merchant" in Piketty's terms). Here the results contrasts with those of @durrer_de_la_sota_party_2021 which show that the UDC was already a popular party gathering the less educated and poorest income groups in the 70s. Finally, we can see that popular groups, both in terms of education and income levels, are likely to not support any party relatively to the wealthy and most educated. 
+
+
+
+
 
 
 
@@ -450,4 +477,32 @@ ame_IP %>%
   theme(legend.position = "bottom",
         axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
 ```
+
+
+
+
+One possible methodological issue of *VoxIt* data is the clustering structure of the observations. On the one hand, Swiss citizen are clustered into several geographical levels, the most important ones being the cantonal and communal (district) levels. Switzerland is a highly decentralized and federalist country: every day political life as well as economic and political institutions can be substantially different across cantons. Every canton has its own party system and some Swiss parties, such as the *Lega Ticinessi* or *Mouvement Citoyen Genevois* (*Geneva Citizen Movement*) exist only at the cantonal level. Swiss communes represent an even more relevant level
+
+On the other hand, the time structure and trend of the data are highly relevant for our research question. The cantons represent an important institutional and political level in Switzerland, and it thus likely that individuals within the same canton are not independent and show some patterns and correlation. To assess this potential issue, multilevel regression with years and cantons as levels were conducted. However, the results (see appendix) of multilevel models show that the intra-class correlation coefficient are low for the cantonal level, indicating that there is not much difference between cantons. Moreover, the results of the multilevel regressions and @eq-1 are very similar.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
