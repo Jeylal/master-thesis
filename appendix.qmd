@@ -43,11 +43,25 @@ reg_equal_rights_chforeign <- glm(data = vox2,
 ####### political leaning ame
 ame_left_inc <- 
   reg_left %>% 
-  avg_slopes(variables = c("income"), by = c("annee_cat"))
+  avg_slopes(variables = c("income"), by = c("annee_cat", "educationf"))
+
+ame_left_inc %>% 
+  ggplot()+
+  aes(x = educationf, y = estimate, color = contrast)+
+  geom_point(position = position_dodge(width = 0.3))+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
+  facet_wrap(~annee_cat)
 
 ame_left_educ <- 
   reg_left %>% 
-  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+  avg_slopes(variables = c("educationf"), by = c("annee_cat", "income"))
+
+ame_left_educ %>% 
+  ggplot()+
+  aes(x = income, y = estimate, color = contrast)+
+  geom_point(position = position_dodge(width = 0.3))+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
+  facet_wrap(~annee_cat)
 
 ame_left <- rbind(ame_left_educ, ame_left_inc) %>% mutate(leaning = "left")
 
@@ -77,21 +91,51 @@ ame_polleaning <- rbind(ame_left, ame_right, ame_center)
 ####### issue position ame
 ame_state_inc <- 
   reg_state %>% 
-  avg_slopes(variables = c("income"), by = c("annee_cat"))
+  avg_slopes(variables = c("income"), by = c("annee_cat", "educationf"))
 
 ame_state_educ <- 
   reg_state %>% 
-  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+  avg_slopes(variables = c("educationf"), by = c("annee_cat", "income"))
 
 ame_state <- rbind(ame_state_educ, ame_state_inc) %>% mutate(issue = "state_vs_market")
 
+ame_state_educ %>% 
+  ggplot()+
+  aes(x = income, y = estimate, color = contrast)+
+  geom_point(position = position_dodge(width = 0.3))+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
+  facet_wrap(~annee_cat)
+
+ame_state_inc %>% 
+  ggplot()+
+  aes(x = educationf, y = estimate, color = contrast)+
+  geom_point(position = position_dodge(width = 0.3))+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
+  facet_wrap(~annee_cat)
+
+
+
 ame_redistr_inc <- 
   reg_redistr %>% 
-  avg_slopes(variables = c("income"), by = c("annee_cat"))
+  avg_slopes(variables = c("income"), by = c("annee_cat", "educationf"))
 
 ame_redistr_educ <- 
   reg_redistr %>% 
-  avg_slopes(variables = c("educationf"), by = c("annee_cat"))
+  avg_slopes(variables = c("educationf"), by = c("annee_cat", "income"))
+
+ame_redistr_inc %>% 
+  ggplot()+
+  aes(x = educationf, y = estimate, color = contrast)+
+  geom_point(position = position_dodge(width = 0.3))+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
+  facet_wrap(~annee_cat)
+
+ame_redistr_educ %>% 
+  ggplot()+
+  aes(x = income, y = estimate, color = contrast)+
+  geom_point(position = position_dodge(width = 0.3))+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
+  facet_wrap(~annee_cat)
 
 ame_redistr <- rbind(ame_redistr_educ, ame_redistr_inc) %>% mutate(issue = "redistribution")
 
@@ -183,7 +227,7 @@ ame <- rbind(ps_ame, udc_ame, plr_ame, pdc_ame, greens_ame, noparty_ame)
 
 ####### other ame
 ame_inc_educ_ps <- 
-  reg_ps %>% 
+  reg_left %>% 
   avg_slopes(variables = c("educationf"), by = c("incomef"))
   
 
@@ -192,6 +236,15 @@ ame_inc_educ_ps <-
 
 
 
+```{r}
+ame_inc_educ_ps %>% 
+  filter(contrast == "mean(University) - mean(voc_training)") %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = incomef)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+```
 
 
 

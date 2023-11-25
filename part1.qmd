@@ -110,7 +110,7 @@ How have the social bases of the Swiss left, center-right and radical-right evol
 
 Moreover, a recent trend in political economy developed a tremendous analysis of the long run transformations of political cleavages, social blocs, and voting outcomes in almost all democratic countries around the world. The popularity of inequality studies, after the contributions of renown economists such as Atkinson [-@atkinson_inequality_2015], Milanovic [-@milanovic_global_2016] and of course Piketty [@piketty_capital_2014], economists recently became interested in the problematic of social conflict and political cleavages. One possible explanation of this sudden interest is the inequality paradox: increasing inequality and neoliberal reforms did not pave the way for growing support for redistribution, taxation of top income and wealth owners, or for left parties. The same paradox could be applied to a "climate change paradox", that is, the fact that the growing emergency or environmental issues were not followed by increasing support for green parties. For instance, the Swiss green parties were the biggest losers in the 2023 federal elections.
 
-Those paradox thus gave way to a recent literature linking political cleavages and voting outcomes as function of a set of socio-economic factors, mainly income and education level. Trying to explore this inequality paradox, @piketty_brahmin_2018 underlines the fact that, rather than bringing back class-based divide back to its post-war salience, the global rise in inequality since the 1970s was followed by the emergence of a new cleavage and a multi-elite party system. During the post-war period, the electoral support for the left parties in The US, UK and France was mainly constituted by popular classes with low income and education levels whereas right-wing parties were supported by high income and education voters. The popular element of the support for the left blocs then transformed in the 1970-80s: left parties became the bloc of the highly educated, thus becoming the "brahmin right", whereas the right kept the support of the wealthy ("merchant right") [@piketty_brahmin_2018; @piketty_capital_2019]. A further project, which gave birth to the World Political Cleavage and Inequality Database (WPID), showed that these transformations affected almost all Western democracies [@gethin_political_2021].
+Those paradox thus gave way to a recent literature linking political cleavages and voting outcomes as function of a set of socio-economic factors, mainly income and education level. Trying to explore this inequality paradox, @piketty_brahmin_2018 underlines the fact that, rather than bringing back class-based divide back to its post-war salience, the global rise in inequality since the 1970s was followed by the emergence of a new cleavage and a multi-elite party system. During the post-war period, the electoral support for the left parties in The US, UK and France was mainly constituted by popular classes with low income and education levels whereas right-wing parties were supported by high income and education voters. The popular element of the support for the left blocs then transformed in the 1970-80s: left parties became the bloc of the highly educated, thus becoming the *brahmin left*, whereas the right kept the support of the wealthy (*merchant right*) [@piketty_brahmin_2018; @piketty_capital_2019]. A further project, which gave birth to the World Political Cleavage and Inequality Database (WPID), showed that these transformations affected almost all Western democracies [@gethin_political_2021].
 
 Underlying the rise of a new cleavage in the 70s and 80s, Piketty and the WPID tackle a topic which is well-known in political science: the emergence of a cleavage centered around cultural values, that Piketty calls the "nativists-internationalists" divide, which cuts across the traditional class conflict and is the result of the increase in average education level and of globalization. The combination of this new cultural cleavage with the traditional class-based conflict draws a bi-dimensional political space in which four social blocs are possible: an internationalist-egalitarian bloc which is on the left both culturally and economically; an internationalist-inegalitarian bloc on the left culturally but economically on the right; a nativist-inegalitarian bloc on the right culturally and economically; and a nativist-egalitarian bloc which is culturally conservative but economically on the left [@piketty_brahmin_2018; @piketty_capital_2019]. This "cultural cleavage" has been given as many labels as it has analysts among political scientists: "materialist-postmaterialist" divide for Inglehart [-@inglehart_silent_1971; -@inglehart_value_1987; -@inglehart_culture_1990]; the "libertarian-authoritarian" cleavage [@kitschelt_transformation_1994; @flanagan_new_2003]; winners vs losers of globalization [@kriesi_globalization_2006; @kriesi_west_2008; @teney_winners_2014]; the "transnational cleavage" [@hooghe_cleavage_2018] or the "universalism--particularism" cleavage [@bornschier_cleavage_2010; @zollinger_cleavage_2022].
 
@@ -128,11 +128,12 @@ The empirical agenda of the present study is to test the validity and relevance 
 
 1.  *Brahmin left versus merchant right hypothesis*
 
-    Over time, the association between education and support for the left should increase while a negative link between income and support for the left should be observed. A positive relationship between support for the right and income should remain rather stable, with no clear or negative association and evolution with education level.
+    - The support for the left should be negatively associated with education and income levels in the first time periods. The negative association with education should then decrease and become positive over time. Same for the support towards state intervention, redistribution and equal rights.
+    - The support for the right should be positively associated with education and income in the first time periods and the positive association with education should decrease over time. Same for the support towards state intervention, redistribution and equal rights.
 
 2.  *Bourgeois bloc hypothesis*
 
-    The support for the right and liberal policies (pro-market and anti-redistribution) increases with both income and education levels.
+    - The support for redistribution and state intervention should decrease with education and income. Support for equal rights between Swiss citizen and foreigners should increase with education and income.
 
 ### Data and empirical strategy
 
@@ -386,15 +387,13 @@ $$ Y_{it} = \alpha + \beta_{I}I_{it} + \beta_{E}E_{it} + \beta I_{it}E_{it} + \g
 
 With $I_{it}$ and $E_{it}$ the income and education level of individual $i$ in period $t$ and $X$ a vector of socio-demographic characteristics control variables which were available in the dataset for all time periods. The controls are for age (grouped into 4 categories), gender, religion, linguistic region (french, german, italian and romanche), marital status and a dummy for house ownership. $Year$ are dummy variables for the time periods and $\epsilon_{it}$ is the error term. The models include interaction terms between education and income as well as between income, education and time period in order to assess the temporal evolution of the correlation between the dependent and main explanatory variables. Income and Education are treated as categorical variables, with vocational training and low income as reference levels. The results presented below are essentially average marginal contrasts which allow to compare the difference in predicted probabilities between groups of interests, in our case, between highest and lowest income groups and between university graduates and vocational training graduates.
 
-
-
 ```{r plot ame parties}
 #| echo: false
 #| message: false
 #| warning: false
 #| label: fig-ameparties
 #| fig-cap: "Party support in Switzerland: 1981-2016. Average difference in probabilities between the highest and lowest income groups and between university and vocational training graduates."
-#| fig-height: 6
+#| fig-height: 4
 ame_IP <- readRDS("/master-thesis/data/ame/ame_IP.rds")
 ame_parties <- readRDS("/master-thesis/data/ame/ame_parties.rds")
 ame_polleaning <- readRDS("/master-thesis/data/ame/ame_polleaning.rds")
@@ -406,9 +405,7 @@ ame_parties %>%
   aes(x = annee_cat, y = estimate, color = contrast, shape = contrast, group = party)+
   geom_point()+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  labs(title = "Party Support: Average Marginal Contrasts",
-       subtitle = "Income and Education levels, Switzerland 1981-2016",
-       x = "", y = "", caption = "Source: VoxIt")+
+  labs(x = "", y = "", caption = "Source: VoxIt")+
   theme_bw()+
   scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
@@ -422,29 +419,22 @@ ame_parties %>%
 
 Second, the results show that the Swiss People's Part (UDC) was a merchant right party whose social basis became popular both in terms of education and income levels. Before the 90s the party gathered the less educated, but also the weatlhiest income groups (hence "merchant" in Piketty's terms). Here the results contrasts with those of @durrer_de_la_sota_party_2021 which show that the UDC was already a popular party gathering the less educated and poorest income groups in the 70s. Finally, we can see that popular groups, both in terms of education and income levels, are likely to not support any party relatively to the wealthy and most educated. 
 
-
-
-
-
-
-
 ```{r plot ame political leaning}
 #| echo: false
 #| message: false
 #| warning: false
 #| label: fig-amepolleaning
 #| fig-cap: "Political leaning in Switzerland: 1981-2016. Average difference in probabilities between the highest and lowest income groups (less than 3000CHF per month vs more than 9000CHF) and between university and vocational training graduates."
+#| fig-height: 3
 
 ame_polleaning$leaning[ame_polleaning$leaning == "center"] <- "don't know"
 ame_polleaning %>% 
-  filter(contrast %in% c("mean(more_9k) - mean(less_3k)", "mean(University) - mean(voc_training)")) %>%
+  filter(contrast %in% c("mean(University) - mean(voc_training)", "mean([7k,9k]) - mean(less_3k)", "mean(more_9k) - mean(less_3k)")) %>%
   ggplot()+
   aes(x = annee_cat, y = estimate, color = contrast, shape = contrast, group = leaning)+
   geom_point()+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  labs(title = "Political Leaning: Average Marginal Contrasts",
-       subtitle = "Income and Education levels, Switzerland 1992-2016",
-       x = "", y = "", caption = "Source: VoxIt")+
+  labs(x = "", y = "", caption = "Source: VoxIt")+
   theme_bw()+
   scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
@@ -454,22 +444,22 @@ ame_polleaning %>%
 
 ```
 
+@fig-amepolleaning show average marginal contrasts for leaning for the left, right and neither left and right. Interestingly, we can see that right leaning used to correspond to the bourgeois bloc hypothesis in the 80s and 90s while left leaning used to validate the brahmin left hypothesis. Over time, left leaning became bourgeois to some extent and right leaning became merchant. In the 80s and 90s, left leaning was positively associated with education, but not with income level while right leaning was positively associated with both. The positive difference between university and vocational training graduates declined for right leaning whereas it stayed rather stable for left leaning, indicating that the most educated support the left for all time periods while their support for the right declined over time. Popular groups tend to support neither the left and the right. 
+
 ```{r plot ame issue position}
 #| echo: false
 #| message: false
 #| warning: false
 #| label: fig-ameIP
 #| fig-cap: "Opinion on several social issues in Switzerland: 1992-2016. Average difference in probabilities between the highest and lowest income groups (less than 3000CHF per month vs more than 9000CHF) and between university and vocational training graduates."
-
+#| fig-height: 2
 ame_IP %>% 
-  filter(contrast %in% c("mean(more_9k) - mean(less_3k)", "mean(University) - mean(voc_training)")) %>%
+  filter(contrast %in% c("mean(University) - mean(voc_training)", "mean(more_9k) - mean(less_3k)")) %>%
   ggplot()+
   aes(x = annee_cat, y = estimate, color = contrast, shape = contrast, group = issue)+
   geom_point()+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))+
-  labs(title = "Political Leaning: Average Marginal Contrasts",
-       subtitle = "Income and Education levels, Switzerland 1992-2016",
-       x = "", y = "", caption = "Source: VoxIt")+
+  labs(x = "", y = "", caption = "Source: VoxIt")+
   theme_bw()+
   scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
@@ -477,6 +467,8 @@ ame_IP %>%
   theme(legend.position = "bottom",
         axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
 ```
+
+Finally, @fig-ameIP show average marginal contrasts for issue positions regarding equal rights between foreigner and Swiss citizen, redistribution and state intervention. The support for equal rights is positively associated with both education and income levels. However, the positive difference between income groups tend to decrease since the 2000s, indicating a decline of the "progressive attitude" of the wealthiest towards foreigners. The difference between income groups in the support for redistribution is negative for all time periods whereas the difference between education groups was declining from 1992 to 2008, but tend to increase since 2008. Regarding support for state intervention, the difference between for education and income are respectively positive and negative: unversity graduates tend to be more in favor of state intervention and the highest income groups tend to be against for all time periods, indicating a brahmin left vs merchant right divide over state intervention.
 
 
 
