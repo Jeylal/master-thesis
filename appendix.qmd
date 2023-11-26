@@ -21,6 +21,8 @@ reg_abstention <- glm(data = vox, no_party ~ incomef*educationf + incomef:annee_
 
 ###### political leaning regression
 
+vox2$redistribution <- relevel(factor(vox2$educationf), ref = "voc_training")
+
 reg_left <- glm(data = vox2, 
                 left ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
@@ -43,24 +45,24 @@ reg_equal_rights_chforeign <- glm(data = vox2,
 ####### political leaning ame
 ame_left_inc <- 
   reg_left %>% 
-  avg_slopes(variables = c("income"), by = c("annee_cat", "educationf"))
+  avg_slopes(variables = c("income"), by = c("educationf"))
 
 ame_left_inc %>% 
   ggplot()+
   aes(x = educationf, y = estimate, color = contrast)+
   geom_point(position = position_dodge(width = 0.3))+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))
   facet_wrap(~annee_cat)
 
 ame_left_educ <- 
   reg_left %>% 
-  avg_slopes(variables = c("educationf"), by = c("annee_cat", "income"))
+  avg_slopes(variables = c("educationf"), by = c("income"))
 
 ame_left_educ %>% 
   ggplot()+
   aes(x = income, y = estimate, color = contrast)+
   geom_point(position = position_dodge(width = 0.3))+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))
   facet_wrap(~annee_cat)
 
 ame_left <- rbind(ame_left_educ, ame_left_inc) %>% mutate(leaning = "left")
@@ -117,13 +119,17 @@ ame_state_inc %>%
 
 ame_redistr_inc <- 
   reg_redistr %>% 
-  avg_slopes(variables = c("income"), by = c("annee_cat", "educationf"))
+  comparisons(variables = list(educationf = c("comp_school", "University")), by = "annee_cat")
+
+ame_redistr_inc2 <- 
+  reg_redistr %>% 
+  avg_comparisons(variables = "income", by = c("annee_cat", "educationf"))
 
 ame_redistr_educ <- 
   reg_redistr %>% 
-  avg_slopes(variables = c("educationf"), by = c("annee_cat", "income"))
+  comparisons(variables = list(educationf = c("comp_school", "University")), by = c("annee_cat", "income"))
 
-ame_redistr_inc %>% 
+ame_redistr_inc2 %>% 
   ggplot()+
   aes(x = educationf, y = estimate, color = contrast)+
   geom_point(position = position_dodge(width = 0.3))+
@@ -134,7 +140,7 @@ ame_redistr_educ %>%
   ggplot()+
   aes(x = income, y = estimate, color = contrast)+
   geom_point(position = position_dodge(width = 0.3))+
-  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))
   facet_wrap(~annee_cat)
 
 ame_redistr <- rbind(ame_redistr_educ, ame_redistr_inc) %>% mutate(issue = "redistribution")
@@ -1056,6 +1062,11 @@ plot_plr1
 plot_plr2
 ```
 
+```{r}
+library(stargazer)
+tab_model(reg_redistr)
+stargazer(reg_redistr, type = "text")
+```
 
 
 
