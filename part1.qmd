@@ -1,29 +1,5 @@
 # Social blocs, socio-economic groups and political divides in Switzerland
 
-## The traditional Swiss bourgeois and left blocs: historical perspectives
-
-A striking feature of the history of Switzerland's social blocs is the persistence and resilience of a liberal-right bloc since the creation of modern Switzerland in 1848, a bloc that the existing literature on the topic calls the *bourgeois bloc*. Tracing the history of Switzerland's social blocs is therefore essentially a matter of tracing that of the bourgeois bloc. However, we shall see that tracing this history calls into question the extent to which, from the neorealist perspective, this bourgeois bloc can truly be described as bourgeois.
-
-The history of the Swiss bourgeois bloc goes back to the creation of modern Switzerland. The combination of a religious and urban-rural divide between Radicals-Protestants modernizers and Catholic federalists, which was historically one of the most structuring conflicts in Switzerland, led to the Sonderbund civil war (1847) and the foundation of modern Switzerland in 1848. The federal institutions elaborated during and in the decades following the first Swiss constitution of 1848 can be interpreted as a social compromise between the losers of the Sonderbund civil war, the Catholic-Conservative coalition opposed to the centralization and modernization of the Swiss Confederation, and the victorious Radicals who were on average Protestants and bourgeois from urban areas [@sciarini_politique_2023]. However, these two blocs were highly heterogeneous and subject to internal contradictions.
-
-From the outset of their movement, the Radicals were gathered by an unitary illusion: the pretention to transcend cleavages running through Swiss society and unite all its elements thanks to an encompassing goal: the modernization and centralization of the Swiss state. Far from homogenous, the Radical bloc was a kaleidoscopic mass-movement constituted by the working class through the Grütli Union and by an elite gathering entrepreneurs, bankers, journalists, lawyers and teachers, who were nonetheless divided over the role of the Swiss state. The Democrats were partisans of a more centralized and interventionist state while the liberal or "manchesterian" Radicals, were more federalist and in favor of laissez-faire. This divide between interventionists and liberals was made explicit as early as 1852 over the issue of the nationalization of the Swiss railway industries. Supporters of a state-run railroad network, represented by for instance Jakob Stämplfi and Johann Jakob Speiser, were opposed by liberal Radicals such as Alfred Escher, who were industrialists and bankers close to the private railway companies, when they weren't the owners themselves [@meuwly_les_2010].
-
-Regarding the Catholic-Conservative bloc, the latter was from the start a cross-class coalition, constituted by, of course, the Catholic elite, but also by peasants, farmers, artisans and the commercial middle class from rural areas. These groups were united by Catholicism, but also by anti-modernism and federalism. This conservative coalition was the first to make extensive use of the constitutional and optional referendum (respectively 1848 and 1874) to block the modernization promulgated by the Radicals. While the Radicals were convinced that the idea of the Swiss nation would transcend divisions and social conflict, the Catholic-Conservative believed that religion, rather than the Swiss state, would endorse this role [@altermatt_conservatism_1979].
-
-As industrialization, proletarianization and unionization intensified in the late 19th, the hegemony of the Radical mosaic gradually shattered. Part of the democrats and of the working class joined or even founded socialist organizations, as seen the creation of the Swiss socialist party in 1888 by a former Radical, Albert Steck. The creation of the latter and of the Radical-democratic party (PRD) in 1894 marked the beginning of the Radical shift towards liberal stances, which became clear-cut after the general strike of 1912, after which "a long-denied class conflict became evident" [@meuwly_les_2010, p.49]. Conversely, industrialization and class conflict represented an opportunity for an extension of the social basis of the Catholic-Conservatives bloc towards the working class. The global development of a Catholic social doctrine, beginning with the encyclical *Rerum Novarum* (1881), was integrated by the Swiss Catholic-Conservatives, who then tried to attract parts of the working class [@altermatt_conservatism_1979].
-
-This polarization around class conflict between a left and right bloc became even more salient after the second general strike of 1918, which was the biggest strike and social protest in Swiss history. The latter was followed by the introduction of the proportional representation system: the Radicals lost their hegemony in the parliament and the Christian-Democrats and the Socialists became important political actors in the National Council. The Socialist Party (PS) consolidated a left bloc while the Radical-Democrats (PRD), the Christian-Democrats (PDC) and the Agrarians formed an alliance against the left. This coalition between the PRD, PDC and Agrarians and its close links with business association such as the Vorort (1870) led many observers to name this dominant coalition the "bourgeois bloc" [@mach_redefinition_2007].
-
-However, the extent to which this dominant bloc can truly be described as bourgeois must be questioned. In the definition given by Swiss social scientists, the bourgeois bloc refers to a political coalition between the Radical-Democrats, the Christian-Democrats and the Agrarians (now UDC) and its close ties with business interest associations. This bloc is hence bourgeois only because it gathers right-wing parties and business interest associations, a definition which is rather narrow and can be misleading since it does not take into account the social basis of the bloc. Calling the right-wing coalition bourgeois ignores, for instance, the fact that this bloc gathered some popular socio-economic groups such as small-business owners and peasants, mainly through the Agrarian Party. In the sense given by Amable and Palombarini, the bloc bourgeois observed in France corresponds to the aggregation of the wealthiest and most educated groups of the traditional left and right blocs. I argue that, from a neorealist perspective, the Radical bloc of the 19th century and the right-wing coalition of the 20th cannot be described as bourgeois and that other terms such as "liberal-conservative" or simply "right-wing" blocs are more suited.
-
-In fact, until the post-war period, the evolution of the Swiss social blocs can thus be resumed as follows. From the middle to the late 19th century, the Radicals formed a strongly heterogeneous but dominant social bloc. This dominant social bloc was composed by the working class (mainly through the Grütli Union), and an urban elite composed by the most educated (journalists, lawyers, teachers) and the wealthy industrial bourgeoisie (entrepreneurs, bankers...). This DSB was united by their willingness to modernize the Confederation against the Catholic-Conservatives. A second period, from the late 19th to the second World War, marked the recomposition of the DSB and its transformation into a liberal-conservative political bloc. Part of the working class and of the democrats (educated elite) joined the emerging socialist-left bloc while the Christian-Democrats attracted part of the working class while being progressively incorporated into the DSB, along with the Agrarian party which represented the peasant and farmer classes.
-
-Analyses of the first Swiss post-electoral surveys which were conducted in the 1970s show the heterogeneity of the Swiss "bourgeois bloc" and that the word bourgeois is not valid for the right bloc as a whole. The social basis of the Liberal-Radical party was constituted by large employers/liberal professions and managers. The UDC relied heavily on small business owners' support while the PDC's social basis was rather cross-class [@rennwald_class_2014; @tawfik_les_2019]. Therefore, of the three right-wing government parties, only the Liberal-Radical party's social basis can truly be described as bourgeois. Regarding the support for the Socialist party, the latter was neither a bourgeois nor solely a popular party, but a hybrid-class party whose social basis was constituted by socio-cultural professionals and production workers [@rennwald_social_2020].
-
-The coalition between the Radical-Democrats, Christian-Democrats and Agrarians against the left bloc took deeply roots into the Swiss socio-political system: it persisted during the post-war period and still shapes Swiss politics to some extent nowadays [@mazzoleni_voisinages_2013; @meuwly_les_2010; @meuwly_liberte_2008]. A striking feature of the Swiss DSB is its persistence and resilience since 1848: even though this bloc underwent important transformations, especially after the introduction of the proportional system in 1918, it was always mediated by right-wing parties, first the Radicals and then an extended coalition with the Catholic-Conservative and the Agrarians. Despite its incorporation in the parliament and government, the left bloc never truly became dominant in Switzerland.
-
-However, since the break-up of the post-war Keynesian "historical compromise" between the traditional Swiss left and right-wing parties during the so-called "decade of all dangers" of the 90s [@boschetti_conquete_2007], this so-called bourgeois bloc is undergoing important transformations, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People Party (UDC), one of the most successful far-right populist parties in Europe. The electoral success of the UDC is often associated with the destabilization of the traditional bourgeois bloc, which entered a phase of "cacophonic" crisis [@meuwly_liberte_2008] which still persists in the early 2020s.
-
 ```{r set up}
 #| echo: false
 #| warning: false
@@ -69,40 +45,67 @@ library(pacman)
 library(easystats)
 ```
 
-```{r party share graph}
-#| warning: false
-#| message: false
-#| echo: false
-#| fig-cap: "Party Strength: 1918-2019"
-#| label: fig-partystrength
-party_share <- read_excel(path = "data/force_parti_ofs.xlsx",
-                          sheet = 2)
-party_share[party_share == "*"] <- NA
-party_share <- data.frame(lapply(party_share, as.numeric))
+## The traditional Swiss bourgeois and left blocs: historical perspectives
 
-party_share_long <- 
-party_share  %>% 
-  pivot_longer(cols = !`...1`,
-               names_to = "party",
-               values_to = "Party_strength") %>% 
-  rename(year = "...1")
+A striking feature of the history of Switzerland's social blocs is the persistence and resilience of a liberal-conservative bloc since the creation of modern Switzerland in 1848, a bloc that the existing literature on the topic calls the *bourgeois bloc*. Tracing the history of Switzerland's social blocs is therefore essentially a matter of tracing that of the bourgeois bloc. However, we shall see that tracing this history calls into question the extent to which, from a neorealist perspective, this bourgeois bloc can truly be described as bourgeois.
 
-party_share_long$party[party_share_long$party == "PLR..PRD..3."] <- "PRD-PLR"
+The history of the Swiss bourgeois bloc goes back to the creation of modern Switzerland. The combination of a religious and urban-rural divide between Radicals-Protestants modernizers and Catholic federalists, which was historically one of the most structuring conflicts in Switzerland, led to the Sonderbund civil war (1847) and the foundation of modern Switzerland in 1848. The federal institutions elaborated during and in the decades following the first Swiss constitution of 1848 can be interpreted as a social compromise between the losers of the Sonderbund civil war, the Catholic-Conservative coalition opposed to the centralization and modernization of the Swiss Confederation, and the victorious Radicals who were on average Protestants and bourgeois from urban areas [@sciarini_politique_2023]. However, these two blocs were highly heterogeneous and subject to internal contradictions.
 
-party_share_long %>% 
-  filter(party %in% c("PRD-PLR", "PDC", "PS", "UDC", "PES")) %>% 
-  ggplot()+
-  aes(x = year, y = Party_strength, color = party, shape = party)+
-  scale_x_continuous()+
-  geom_line()+
-  geom_point()+
-  theme_bw()+
-  scale_color_brewer(palette = "Set1")+
-  labs(caption = "Source: OFS", x = "", y = "Party Strength in %")
+From the outset of their movement, the Radicals were gathered by an unitary illusion: the pretention to transcend cleavages running through Swiss society and unite all its elements thanks to an encompassing goal: the modernization and centralization of the Swiss state. Far from homogenous, the Radical bloc was a kaleidoscopic mass-movement constituted by the working class through the Grütli Union and by an elite gathering entrepreneurs, bankers, journalists, lawyers and teachers, who were nonetheless divided over the role of the Swiss state. The Democrats were partisans of a more centralized and interventionist state while the liberal or "manchesterian" Radicals, were more federalist and in favor of laissez-faire. This divide between interventionists and liberals was made explicit as early as 1852 over the issue of the nationalization of the Swiss railway industry. Supporters of a state-run railroad network, represented by for instance Jakob Stämplfi and Johann Jakob Speiser, were opposed by liberal Radicals such as Alfred Escher, who were industrialists and bankers close to the private railway companies, when they weren't the owners themselves [@meuwly_les_2010].
 
-```
+Regarding the Catholic-Conservative bloc, the latter was from the start a cross-class coalition, constituted by, of course, the Catholic elite, but also by peasants, farmers, artisans and the commercial middle class from rural areas. These groups were united by Catholicism, but also by anti-modernism and federalism. This conservative coalition was the first to make extensive use of the constitutional and optional referendum (respectively 1848 and 1874) to block the modernization promulgated by the Radicals. While the Radicals were convinced that the idea of the Swiss nation would transcend divisions and social conflict, the Catholic-Conservative believed that religion, rather than the Swiss state, would endorse this role [@altermatt_conservatism_1979].
 
-In fact, all the Swiss traditional main parties, the Swiss Socialist Party (PS) The Radical-Liberals (PLR) and the PDC, are in decline since the post-war period (see @fig-partystrength). On the right, the crisis can be seen through the fall in vote shares (apart from the SVP); and the increase in party merges and re-configurations. In 2008, the Bourgeois Democratic Party (PBD) was created after a scission from the SVP. One year later, the Radicals, who created the Swiss modern state in 1848 and dominated Swiss politics until the first half of the 20th century, merged with the liberals to create the PLR. The PBD, whose creation disturbed the composition of a reputed unchangeable federal council, then merged with the PDC to create *Le Centre* (the Center) in 2021. The federal election of 2023 led to major historical change for the Swiss right. The PLR, very far from its former hegemonic domination of Swiss politics, is now in the fourth place in terms of low chamber parliamentary seats.
+As industrialization, proletarianization and unionization intensified in the late 19th, the hegemony of the Radical mosaic gradually shattered as the contradictions between the policy expectation of the popular and bourgeois bases increased. Part of the democrats and of the working class joined or even founded socialist organizations, as seen through the creation of the Swiss socialist party in 1888 by a former Radical, Albert Steck. The creation of the latter and of the Radical-Democratic party (PRD) in 1894 marked the beginning of the Radical shift towards liberal stances, which became clear-cut after the general strike of 1912, after which "a long-denied class conflict became evident" [@meuwly_les_2010, p.49]. Conversely, industrialization and class conflict represented an opportunity for an extension of the social basis of the Catholic-Conservatives bloc towards the working class. The global development of a Catholic social doctrine, beginning with the encyclical *Rerum Novarum* (1881), was integrated by the Swiss Catholic-Conservatives, who then tried to attract parts of the working class [@altermatt_conservatism_1979].
+
+This polarization of class conflict around a left and right bloc became even more salient after the second general strike of 1918, which was the biggest strike and social protest in Swiss history. The latter was followed by the introduction of the proportional representation system: the Radicals lost their hegemony in the parliament and the Catholic-Conservatives, who meanwhile became the Christian-Democrats, and the Socialists became important political actors in the National Council. The Socialist Party (PS) consolidated a left bloc while the Radical-Democrats (PRD), the Christian-Democrats (PDC) and the Agrarians formed an alliance against the left. This coalition between the PRD, PDC and Agrarians and its close links with business association such as the Vorort (1870) led many observers to name this dominant coalition the "bourgeois bloc" [@mach_redefinition_2007].
+
+However, the extent to which this dominant bloc can truly be described as bourgeois must be questioned. In the sense given by the literature [@mach_redefinition_2007], the bourgeois bloc refers to a political coalition between the Radical-Democrats, the Christian-Democrats and the Agrarians (now UDC) and its close ties with business interest associations. This bloc is hence bourgeois only because it gathers right-wing parties and business interest associations, a definition which is rather narrow and can be misleading since it does not take into account the social basis of the bloc. Calling the right-wing coalition bourgeois ignores, for instance, the fact that this bloc gathered some popular socio-economic groups such as small-business owners and peasants, mainly through the Agrarian Party. In the sense given by Amable and Palombarini [@amable_illusion_2017], the bloc bourgeois observed in France corresponds to the aggregation of the wealthiest and most educated groups of the traditional left and right blocs. I argue that, from a neorealist perspective, the Radical bloc of the 19th century and the right-wing coalition of the 20th cannot be described as bourgeois and that other terms such as "liberal-conservative" or simply "right-wing" bloc are more suited.
+
+In fact, until the post-war period, the evolution of the Swiss social blocs can thus be resumed as follows. From the middle to the late 19th century, the Radicals formed a strongly heterogeneous but dominant social bloc. This dominant social bloc was composed by the working class (mainly through the Grütli Union), and an urban elite composed by the most educated (journalists, lawyers, teachers) and the wealthy industrial bourgeoisie (entrepreneurs, bankers...). This DSB was united by their willingness to modernize the Confederation against the Catholic-Conservatives. A second period, from the late 19th to the second World War, marked the recomposition of the DSB and its transformation into a liberal-conservative political bloc. Part of the working class and of the democrats (educated elite) joined the emerging socialist-left bloc while the Christian-Democrats attracted part of the working class while being progressively incorporated into the DSB, along with the Agrarian party which represented the peasant and farmer classes.
+
+Analyses of the first Swiss post-electoral surveys which were conducted in the 1970s show the heterogeneity of the Swiss "bourgeois bloc" and that the word bourgeois is not valid for the right bloc as a whole. The social basis of the Liberal-Radical party was constituted by large employers/liberal professions and managers. The UDC relied heavily on small business owners' support while the PDC's social basis was rather cross-class [@rennwald_class_2014; @tawfik_les_2019]. Therefore, of the three right-wing government parties, only the Liberal-Radical party's social basis can truly be described as bourgeois. Regarding the support for the Socialist party, the latter was neither a bourgeois nor solely a popular party, but a hybrid-class party whose social basis was constituted by socio-cultural professionals and production workers [@rennwald_social_2020].
+
+The coalition between the Radical-Democrats, Christian-Democrats and Agrarians against the left bloc took deeply roots into the Swiss socio-political system: it persisted during the post-war period and still shapes Swiss politics to some extent nowadays [@mazzoleni_voisinages_2013; @meuwly_les_2010; @meuwly_liberte_2008]. A striking feature of the Swiss DSB is its persistence and resilience since 1848: even though this bloc underwent important transformations, especially after the introduction of the proportional system in 1918, it was always mediated by right-wing parties, first the Radicals and then an extended coalition with the Catholic-Conservative and the Agrarians. Despite its incorporation in the parliament and government, the left bloc never truly became dominant in Switzerland.
+
+To sum up, Switzerland's traditional social blocs crystallized into an opposition between two blocs, which is summarized in @tbl-socialblocs1. On the one hand, the dominant social bloc, which can be called liberal-conservative, gathered the large employers and owners of the big industrialized and internationalized firms, medium and small business owners and farmers, and skilled workers from the private sector. The main economic policy demands of the large industrialized firms were to maintain low social protection, low taxation, no barriers to external trade and to promote free trade at the international level. At the political level, this socio-political group was represented by the *Vorort* (now *EconomieSuisse*), a business interest associations, and the Radical-Democratic party. Alongside this group were the medium and small business owners producing essentially for the national market, and skilled workers (managers) from the private sector. The policy demands from the medium and small firms differed substantially from those of the large companies in terms of the degree of protection from international competition and public subsidies. Unlike the big corporations, small firms felt more threatened by external competition, and, since they produced mainly for the internal and rather small Swiss market, they tended to ask for protection and public subsidies.
+
++---------------------------+------------------------------------------------------------------+-----------------------------------------------+
+|                           | Socio-political groups                                           | Policy demands                                |
++===========================+==================================================================+===============================================+
+| Liberal-conservative bloc | -   Large industrial and internationalized firms                 | -   Low employment protection                 |
+|                           |                                                                  |                                               |
+|                           |                                                                  | -   Limited redistribution                    |
+|                           |                                                                  |                                               |
+|                           |                                                                  | -   Low tax level                             |
+|                           |                                                                  |                                               |
+|                           |                                                                  | -   Free-trade                                |
++---------------------------+------------------------------------------------------------------+-----------------------------------------------+
+|                           | -   Medium and small firms, farmers                              | -   Low tax level                             |
+|                           |                                                                  |                                               |
+|                           |                                                                  | -   Public transfers (subsidies)              |
+|                           |                                                                  |                                               |
+|                           |                                                                  | -   Protection from international competition |
++---------------------------+------------------------------------------------------------------+-----------------------------------------------+
+|                           | -   Skilled workers from the private sector                      | -   Competitiveness                           |
+|                           |                                                                  |                                               |
+|                           |                                                                  | -   Lower taxes                               |
++---------------------------+------------------------------------------------------------------+-----------------------------------------------+
+| Left bloc                 | -   Socio-cultural professionals, workers from the public sector | -   State intervention                        |
+|                           |                                                                  |                                               |
+|                           |                                                                  | -   Increase in real wages                    |
+|                           |                                                                  |                                               |
+|                           |                                                                  | -   Expansionary macroeconomic policy         |
++---------------------------+------------------------------------------------------------------+-----------------------------------------------+
+|                           | -   Production workers from the private sector                   | -   Increase in real wage                     |
+|                           |                                                                  |                                               |
+|                           |                                                                  | -   Social and employment protection          |
+|                           |                                                                  |                                               |
+|                           |                                                                  | -   Protection from external competition      |
++---------------------------+------------------------------------------------------------------+-----------------------------------------------+
+
+: Social blocs in Switzerland during the 70s and 80s. Classification based on Rennwald (2014), Tawfiq (2019). {#tbl-socialblocs1}
+
+On the other hand, the main social bloc excluded from the DSB was the left bloc, constituted by socio-cultural professional, workers from the public sector, and production workers from the private sector. These groups were mediated by the Swiss Socialist party, which was incorporated into the government during the Post-war period, but never really managed to dominate the parliament and government.
 
 ## Swiss social blocs and socio-economic factors: 1980-2016
 
@@ -124,53 +127,53 @@ In this context of multi-elite party system and multidimensional political divid
 
 This article by @durrer_de_la_sota_party_2021, which is part of the WPID project, shows that Piketty's brahmin left vs merchant right divide is partially valid in Switzerland: a Swiss brahmin left indeed exists through the Swiss Socialist Party. However this bloc do not face a merchant right, but rather a bourgeois bloc gathered by the Radical-Liberals and a popular bloc which support the UDC or do not support any party. Rather than being constituted by a brahmin left, a merchant right and a nativist bloc, Switzerland's tripolar political space is rather divided between a bourgeois bloc, a brahmin left and a popular bloc.
 
-+-----------------------------+-----------------------------------------------------+-----------------------------------------------------+
-| **Income/**                 | **High level of income**                            | **Low level of income**                             |
-|                             |                                                     |                                                     |
-| **Education**               |                                                     |                                                     |
-+=============================+=====================================================+=====================================================+
-| **High level of education** | **Bloc Bourgeois**                                  | **Brahmin**                                         |
-|                             |                                                     |                                                     |
-|                             | <br>                                                | <br>                                                |
-|                             |                                                     |                                                     |
-|                             | \- PLR-PRD<br>                                      | \- PS since the 90s<br>                             |
-|                             |                                                     |                                                     |
-|                             | \- Greens since 2011-2019                           | \- Greens until 2011-2019<br>                       |
-|                             |                                                     |                                                     |
-|                             | <br>                                                | <br>Policy preferences:<br>                         |
-|                             |                                                     |                                                     |
-|                             | <br>Policy preferences:                             | \- For redistribution<br>-                          |
-|                             |                                                     |                                                     |
-|                             | <br>                                                | For state intervention<br>                          |
-|                             |                                                     |                                                     |
-|                             | \- Against redistribution<br>                       | \- For equal rights & chances CH-foreigner          |
-|                             |                                                     |                                                     |
-|                             | \- Against state intervention<br>                   |                                                     |
-|                             |                                                     |                                                     |
-|                             | \- For equal rights & chances CH-foreigners         |                                                     |
-+-----------------------------+-----------------------------------------------------+-----------------------------------------------------+
-| **Low level of education**  | **Merchant**                                        | **Popular groups**                                  |
-|                             |                                                     |                                                     |
-|                             | <br>                                                | <br>                                                |
-|                             |                                                     |                                                     |
-|                             | \- None                                             | \- UDC<br>                                          |
-|                             |                                                     |                                                     |
-|                             | <br>                                                | \- Abstention<br>                                   |
-|                             |                                                     |                                                     |
-|                             | <br>Policy preferences:<br>                         | \- PS until the 90s`<br`{=html}                     |
-|                             |                                                     |                                                     |
-|                             | \- Against redistribution<br>                       | `>`{=html}- Christian parties until the 90s<br>     |
-|                             |                                                     |                                                     |
-|                             | \- Against state intervention<br>                   | <br>Policy preferences:<br>                         |
-|                             |                                                     |                                                     |
-|                             | \- For more rights and better chances for the Swiss | \- For redistribution<br>                           |
-|                             |                                                     |                                                     |
-|                             |                                                     | \- For state intervention<br>                       |
-|                             |                                                     |                                                     |
-|                             |                                                     | \- For more rights and better chances for the Swiss |
-+-----------------------------+-----------------------------------------------------+-----------------------------------------------------+
++-----------------------------+------------------------------------------------------+------------------------------------------------------+
+| **Income/**                 | **High level of income**                             | **Low level of income**                              |
+|                             |                                                      |                                                      |
+| **Education**               |                                                      |                                                      |
++=============================+======================================================+======================================================+
+| **High level of education** | **Bloc Bourgeois**                                   | **Brahmin**                                          |
+|                             |                                                      |                                                      |
+|                             | <br>                                                 | <br>                                                 |
+|                             |                                                      |                                                      |
+|                             | -   PLR-PRD<br>                                      | -   PS since the 90s<br>                             |
+|                             |                                                      |                                                      |
+|                             | -   Greens since 2011-2019                           | <!-- -->                                             |
+|                             |                                                      |                                                      |
+|                             | <br>                                                 | -   Greens until 2011-2019<br>                       |
+|                             |                                                      |                                                      |
+|                             | <br>Policy preferences:                              | <br>Policy preferences:<br>                          |
+|                             |                                                      |                                                      |
+|                             | <br>                                                 | -   For redistribution<br>                           |
+|                             |                                                      |                                                      |
+|                             | -   Against redistribution<br>                       | <!-- -->                                             |
+|                             |                                                      |                                                      |
+|                             | -   Against state intervention<br>                   | -   For state intervention<br>                       |
+|                             |                                                      |                                                      |
+|                             | -   For equal rights & chances CH-foreigners         | -   For equal rights & chances CH-foreigner          |
++-----------------------------+------------------------------------------------------+------------------------------------------------------+
+| **Low level of education**  | **Merchant**                                         | **Popular groups**                                   |
+|                             |                                                      |                                                      |
+|                             | <br>                                                 | <br>                                                 |
+|                             |                                                      |                                                      |
+|                             | -   None                                             | -   UDC<br>                                          |
+|                             |                                                      |                                                      |
+|                             | <br>                                                 | -   Abstention<br>                                   |
+|                             |                                                      |                                                      |
+|                             | <br>Policy preferences:<br>                          | -   PS until the 90s\<br                             |
+|                             |                                                      |                                                      |
+|                             | -   Against redistribution<br>                       | -   Christian parties until the 90s<br>              |
+|                             |                                                      |                                                      |
+|                             | -   Against state intervention<br>                   | <br>Policy preferences:<br>                          |
+|                             |                                                      |                                                      |
+|                             | -   For more rights and better chances for the Swiss | -   For redistribution<br>                           |
+|                             |                                                      |                                                      |
+|                             |                                                      | -   For state intervention<br>                       |
+|                             |                                                      |                                                      |
+|                             |                                                      | -   For more rights and better chances for the Swiss |
++-----------------------------+------------------------------------------------------+------------------------------------------------------+
 
-: Social blocs in Switzerland. Party classification is based on Durrer de la Sota, Gethin, and Martinez-Toledano (2021) results (see their appendix). Policy preferences are based on Piketty (2018, 2019) and Amable and Darcillon (2022b) {#tbl-socialblocs}
+: Social blocs in Switzerland. Party classification is based on Durrer de la Sota, Gethin, and Martinez-Toledano (2021) results (see their appendix). Policy preferences are based on Piketty (2018, 2019) and Amable and Darcillon (2022b) {#tbl-socialblocs2}
 
 The transformation of party systems into a mutli-elite and tripolar political space came with important change in the structural basis of party support. @oesch_class_2010 show that, in Switzerland, the cultural cleavage is rooted in the class structure, and caused a re-alignment between class and party support. Before this shift took place, the traditional left bloc politically represented by the Socialist Party was a hybrid-class coalition gathering socio-cultural professionals (teachers, academics, journalists...) and production workers, but also from technicians, clerks and service workers [@rennwald_social_2020].
 
@@ -448,9 +451,9 @@ With $I_{it}$ and $E_{it}$ the income and education level of individual $i$ in p
 #| label: fig-ameparties
 #| fig-cap: "Party support in Switzerland: 1981-2016. Average difference in  predicted probabilities between the highest and lowest income groups and between university and vocational training graduates."
 #| fig-height: 5
-ame_IP <- readRDS("/master-thesis/data/ame/ame_IP.rds")
-ame_parties <- readRDS("/master-thesis/data/ame/ame_parties.rds")
-ame_polleaning <- readRDS("/master-thesis/data/ame/ame_polleaning.rds")
+ame_IP <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_IP.rds")
+ame_parties <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_parties.rds")
+ame_polleaning <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_polleaning.rds")
 
 ame_parties %>% 
   filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
@@ -540,24 +543,41 @@ On the other hand, the perspective adopted in this section is essentially a top-
 
 ## The transformation of the Swiss social blocs during the crisis of the 90s: between recomposition and resilience
 
+However, since the break-up of the post-war Keynesian "historical compromise" between the traditional Swiss left and right-wing parties during the so-called "decade of all dangers" of the 90s [@boschetti_conquete_2007], this so-called bourgeois bloc is undergoing important transformations, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People Party (UDC), one of the most successful far-right populist parties in Europe. The electoral success of the UDC is often associated with the destabilization of the traditional bourgeois bloc, which entered a phase of "cacophonic" crisis [@meuwly_liberte_2008] which still persists in the early 2020s.
 
+```{r party share graph}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-cap: "Party Strength: 1918-2019"
+#| label: fig-partystrength
+party_share <- read_excel(path = "data/force_parti_ofs.xlsx",
+                          sheet = 2)
+party_share[party_share == "*"] <- NA
+party_share <- data.frame(lapply(party_share, as.numeric))
 
+party_share_long <- 
+party_share  %>% 
+  pivot_longer(cols = !`...1`,
+               names_to = "party",
+               values_to = "Party_strength") %>% 
+  rename(year = "...1")
 
+party_share_long$party[party_share_long$party == "PLR..PRD..3."] <- "PRD-PLR"
 
+party_share_long %>% 
+  filter(party %in% c("PRD-PLR", "PDC", "PS", "UDC", "PES")) %>% 
+  ggplot()+
+  aes(x = year, y = Party_strength, color = party, shape = party)+
+  scale_x_continuous()+
+  geom_line()+
+  geom_point()+
+  theme_bw()+
+  scale_color_brewer(palette = "Set1")+
+  labs(caption = "Source: OFS", x = "", y = "Party Strength in %")
 
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+In fact, all the Swiss traditional main parties, the Swiss Socialist Party (PS) The Radical-Liberals (PLR) and the PDC, are in decline since the post-war period (see @fig-partystrength). On the right, the crisis can be seen through the fall in vote shares (apart from the SVP); and the increase in party merges and re-configurations. In 2008, the Bourgeois Democratic Party (PBD) was created after a scission from the SVP. One year later, the Radicals, who created the Swiss modern state in 1848 and dominated Swiss politics until the first half of the 20th century, merged with the liberals to create the PLR. The PBD, whose creation disturbed the composition of a reputed unchangeable federal council, then merged with the PDC to create *Le Centre* (the Center) in 2021. The federal election of 2023 led to major historical change for the Swiss right. The PLR, very far from its former hegemonic domination of Swiss politics, is now in the fourth place in terms of low chamber parliamentary seats.
 
 
