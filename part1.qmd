@@ -173,7 +173,7 @@ This article by @durrer_de_la_sota_party_2021, which is part of the WPID project
 |                             |                                                      | -   For more rights and better chances for the Swiss |
 +-----------------------------+------------------------------------------------------+------------------------------------------------------+
 
-: Social blocs in Switzerland. Party classification is based on Durrer de la Sota, Gethin, and Martinez-Toledano (2021) results (see their appendix). Policy preferences are based on Piketty (2018, 2019) and Amable and Darcillon (2022b) {#tbl-socialblocs2}
+: The four possible social blocs based on a bi-dimensional political divide and income and education levels. Party classification is based on Durrer de la Sota, Gethin, and Martinez-Toledano (2021) results (see their appendix). Policy preferences are based on Piketty (2018, 2019) and Amable and Darcillon (2022b) {#tbl-socialblocs2}
 
 The transformation of party systems into a mutli-elite and tripolar political space came with important change in the structural basis of party support. @oesch_class_2010 show that, in Switzerland, the cultural cleavage is rooted in the class structure, and caused a re-alignment between class and party support. Before this shift took place, the traditional left bloc politically represented by the Socialist Party was a hybrid-class coalition gathering socio-cultural professionals (teachers, academics, journalists...) and production workers, but also from technicians, clerks and service workers [@rennwald_social_2020].
 
