@@ -543,7 +543,23 @@ On the other hand, the perspective adopted in this section is essentially a top-
 
 ## The transformation of the Swiss social blocs during the crisis of the 90s: between recomposition and resilience
 
-However, since the break-up of the post-war Keynesian "historical compromise" between the traditional Swiss left and right-wing parties during the so-called "decade of all dangers" of the 90s [@boschetti_conquete_2007], this so-called bourgeois bloc is undergoing important transformations, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People Party (UDC), one of the most successful far-right populist parties in Europe. The electoral success of the UDC is often associated with the destabilization of the traditional bourgeois bloc, which entered a phase of "cacophonic" crisis [@meuwly_liberte_2008] which still persists in the early 2020s.
+The objective of the present section is to assess empirically the reconfiguration of the Swiss social blocs during the 90s. More specifically, the objective is to analyze how the dominant Swiss social bloc was able to recompose during the crisis using a bottom-up approach different from the previous section, and more aligned with the neorealist approach. One of the main limitations of the regression analysis of the previous section was to consider social groups as pre-defined based on different income and educational levels, or occupation, and only two cleavage dimensions.
+
+As explained in the introduction, the neorealist approach starts from the diversity of social expectations emanating from the heterogeneity of the social structure. Socio-political groups could be endogenously defined based on the proximity of Swiss citizen's preferences regarding economic and public policies. A method that allow such procedure is latent class analysis (LCA). LCA is rarely used in the social sciences, but has recently been applied as part of the neorealist approach to infer socio-political groups based on a set of policy preferences variables from post-electoral surveys. This section has for ambition to conduct a first analysis of this kind using for Switzerland using post-election social survey data. The methodology and approach used here closely follow the approach taken in @amable_search_2021.
+
+### The latent class model and estimation method
+
+LCA allows to find a categorical structure from a set of categorical variables. The idea is that the Swiss population can be divided into different subgroups (socio-political groups given our theoretical framework), but that the latter are unobserved and can be indirectly estimated through a set of questions regarding policy preferences. The method employed here takes the following form:
+
+$$P(y_{i}) = \sum^c_{c = 1} P(X = c) \prod^T_{T=1} P(y_{it} | X = c)$$ {#eq-lca}
+
+With $y_{i}$ the answer of individual $i$ to one of the $T$ survey questions included in the model as indicator. $P(X = c)$ is the probability to belong to cluster $c$. An important step of LCA consist of selecting the appropriate number of cluster. The approach chosen to determine the number of clusters in this section is based on a bootstrap likelihood ratio test, an indicator which, according to @nylund_deciding_2007, is the most suited compared to information criteria (AIC, BIC...). A series of models are thus estimated, increasing the number of clusters with each new model until the bootstrap likelihood ratio test showed no significance of adding a supplementary cluster to the model. Two LCA are performed: one estimating socio-political groups in 1999 and another which use the most recent SELECTS data which were available for 2019.
+
+### Estimation of Swiss socio-political groups in 1999: the 12 clusters model
+
+As explained in section 2.1, the Swiss socio-political landscape was structured around two social blocs during the post-war period: a dominant liberal-conservative and a subordinate left bloc. These two blocs were able to cooperate in what Pietro Boschetti famously called the Swiss variant of the "historical compromise" between the Swiss left and right-wing parties. On the one hand, the PLR, PDC and Agrarian parties were willing to cooperate with the Swiss Socialist party and develop social security to a certain extent. On the other hand, the Swiss Socialist party abandoned its anti-capitalist stances and became a moderate social-democrat reformist party aimed at promoting the creation of a Swiss welfare state, increase in real wage and promote the public sector and employment protection [@boschetti_conquete_2007].
+
+However, since the break-up of the post-war Keynesian "historical compromise" between the traditional Swiss left and right-wing parties during the so-called "decade of all dangers" of the 90s [@boschetti_conquete_2007], the liberal-conservative and left blocs are undergoing important transformations, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People Party (UDC), one of the most successful far-right populist parties in Europe. The electoral success of the UDC is often associated with the destabilization of the traditional "bourgeois" bloc, which entered a phase of cacophonic crisis [@meuwly_liberte_2008] which still persists in the early 2020s.
 
 ```{r party share graph}
 #| warning: false
@@ -578,6 +594,21 @@ party_share_long %>%
 
 ```
 
-In fact, all the Swiss traditional main parties, the Swiss Socialist Party (PS) The Radical-Liberals (PLR) and the PDC, are in decline since the post-war period (see @fig-partystrength). On the right, the crisis can be seen through the fall in vote shares (apart from the SVP); and the increase in party merges and re-configurations. In 2008, the Bourgeois Democratic Party (PBD) was created after a scission from the SVP. One year later, the Radicals, who created the Swiss modern state in 1848 and dominated Swiss politics until the first half of the 20th century, merged with the liberals to create the PLR. The PBD, whose creation disturbed the composition of a reputed unchangeable federal council, then merged with the PDC to create *Le Centre* (the Center) in 2021. The federal election of 2023 led to major historical change for the Swiss right. The PLR, very far from its former hegemonic domination of Swiss politics, is now in the fourth place in terms of low chamber parliamentary seats.
+In fact, all the Swiss traditional main parties, the Swiss Socialist Party (PS) The Radical-Liberals (PLR) and the PDC, are in decline since the post-war period (see @fig-partystrength). On the right, the crisis can be seen through the fall in vote shares (apart from the UDC); and the increase in party merges and re-configurations. In 2008, the Bourgeois Democratic Party (PBD) was created after a scission from the SVP. One year later, the Radicals, who created the Swiss modern state in 1848 and dominated Swiss politics until the first half of the 20th century, merged with the liberals to create the PLR. The PBD, whose creation disturbed the composition of a reputed unchangeable federal council, then merged with the PDC to create *Le Centre* (the Center) in 2021. The federal election of 2023 led to major historical change for the Swiss right. The PLR, very far from its former hegemonic domination of Swiss politics, is now in the fourth place in terms of low chamber parliamentary seats.
+
+the crisis of the 90s marked an important turning point in the history and evolution of the Swiss social blocs described in @tbl-socialblocs1. In fact, both the liberal-conservative and left blocs were based on internal compromises between their socio-political groups which shattered under the pressure of structural and external pressures. The demands of the large exporting industries and sectors producing for the internal market converged in terms of labor market flexibility, low employment protection and weak welfare state, but they differed in terms of commercial and industrial policies. The large exporting industries asked for liberal, free-trade commercial policy while the farmers and small business owners producing for the internal Swiss market asked for protection and subsidies. These contradictory demands were partially compatible during the post-war period and, as a result, reinforced the dual structure of the Swiss economy which combined a highly liberalized and free-trade exporting sector with a subsidized and highly protected internal sector.
+
+However, as globalization, financialization and European integration intensified in the late 20th, the social groups attached to the interests of the internationalized Swiss industries gradually dissociated themselves from the groups attached to the internal sector. This dissociation was made explicit by the publication of a series of "white-books" by political and economic actors defending the interests of the Swiss multinational corporations. These white books advocated a dismantling of the Swiss Hybrid model by promoting a series of neoliberal reforms. The main policy demands of the white books were to increase competition in the international sector by dismantling Swiss cartels, reform the taxation system, reduce employment protection and social security, and privatize the public sector.
+
+
+
+
+
+
+
+
+
+
+
 
 
