@@ -180,7 +180,11 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#data-and-empirical-strategy" id="toc-data-and-empirical-strategy" class="nav-link" data-scroll-target="#data-and-empirical-strategy"><span class="header-section-number">2.2.1</span> Data and empirical strategy</a></li>
   </ul></li>
-  <li><a href="#the-transformation-of-the-swiss-social-blocs-during-the-crisis-of-the-90s-between-recomposition-and-resilience" id="toc-the-transformation-of-the-swiss-social-blocs-during-the-crisis-of-the-90s-between-recomposition-and-resilience" class="nav-link" data-scroll-target="#the-transformation-of-the-swiss-social-blocs-during-the-crisis-of-the-90s-between-recomposition-and-resilience"><span class="header-section-number">2.3</span> The transformation of the Swiss social blocs during the crisis of the 90s: between recomposition and resilience</a></li>
+  <li><a href="#in-search-of-the-liberal-conservative-and-left-blocs" id="toc-in-search-of-the-liberal-conservative-and-left-blocs" class="nav-link" data-scroll-target="#in-search-of-the-liberal-conservative-and-left-blocs"><span class="header-section-number">2.3</span> In search of the liberal-conservative and left blocs</a>
+  <ul class="collapse">
+  <li><a href="#the-latent-class-model-and-estimation-method" id="toc-the-latent-class-model-and-estimation-method" class="nav-link" data-scroll-target="#the-latent-class-model-and-estimation-method"><span class="header-section-number">2.3.1</span> The latent class model and estimation method</a></li>
+  <li><a href="#estimation-of-swiss-socio-political-groups-in-1999-the-12-clusters-model" id="toc-estimation-of-swiss-socio-political-groups-in-1999-the-12-clusters-model" class="nav-link" data-scroll-target="#estimation-of-swiss-socio-political-groups-in-1999-the-12-clusters-model"><span class="header-section-number">2.3.2</span> Estimation of Swiss socio-political groups in 1999: the 12 clusters model</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -457,15 +461,86 @@ div.csl-indent {
 <p>To sum up, the results overall confirm the brahmin left vs merchant right hypotheses, even more than the results of the WPID project. The support for the Swiss Socialist party evolved from a traditional popular support towards a brahmin left support in the 80s. The results confirm the bourgeois composition of the PLR, since the latter seems to be gradually transforming into a merchant right composition since the beginning of the 2010s. The greens belong to the brahmin left since the 80s and there is no clear trend that the party evolved into a bourgeois party. Regarding the UDC, the latter used to be a merchant right party in the 80s, and evolved into a populist or, in Piketty’s terms, a nativist party in the 90s. Thus, unlike <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span> and the classification presented in <span class="quarto-unresolved-ref">?tbl-socialblocs</span>, the social basis of the PLR seems to be transforming into a merchant right, while the Greens have kept their brahmin elements.</p>
 <p>However, if one looks at political leaning on a left-right axis instead of party support, self-identification to the right used to be rather bourgeois in the 90s, and then went merchant afterwards. Self-identification to the left used to be brahmin in the 90s and even became bourgeois in recent time periods, if one looks at the difference in predicted probabilities between the upper-middle income and lowest income groups.</p>
 <p>Finally, regarding policy preferences, preferences for equal opportunities and rights between foreigners and Swiss citizen for the highest incomes and the most educated seemed to converge until the mid-2000s, and have been diverging ever since. The divide over state intervention shows a brahmin vs merchant opposition in all time periods, with the highest income group being in favor of free market (relatively to the lowest income group) and university graduates being relatively more in favor of state intervention (relatively to vocational training graduates). The divide over income redistribution is less clear-cut than the state vs market divide: the cleavage appears to be brahmin vs merchant for some time periods (mostly 1992-1996 and 2008-20012), solely negatively correlated with income (1996-2004) or show a bourgeois vs anti-bourgeois opposition (2004-2008), with both the most education and wealthy being relatively opposed to redistribution.</p>
-<p>Overall, the regression analysis conducted in this section, using a different data source from the WPID project and from Oesch and Rennwald, offer a new way to describe the evolution of the Swiss social blocs, which is summarized in table 2. However, this analysis suffers from several limitations.</p>
+<div id="tbl-socialblocs3" class="anchored">
+<table class="table">
+<caption>Table&nbsp;2.3: The four possible social blocs based on a bi-dimensional political divide and income and education levels. Results from regression analysis of VoxIt data</caption>
+<colgroup>
+<col style="width: 19%">
+<col style="width: 37%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><p>Income/</p>
+<p>Education</p></th>
+<th>High level of income</th>
+<th>Low level of income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>High level of education</td>
+<td><p><strong>Bloc Bourgeois</strong></p>
+<ul>
+<li>PRD-PLR from 1986 to 2006</li>
+</ul>
+<p><strong>Policy preferences:</strong></p>
+<ul>
+<li>For equal rights &amp; chances Swiss-foreigners</li>
+</ul></td>
+<td><p><strong>Brahmin</strong></p>
+<ul>
+<li><p>Greens</p></li>
+<li><p>PS since the 80s</p></li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>Low level of education</td>
+<td><p><strong>Merchant</strong></p>
+<ul>
+<li><p>PRD-PLR since 2006 UDC in 1986-1991</p></li>
+<li><p>Self-identification to the right</p></li>
+</ul>
+<p><strong>Policy preferences:</strong></p>
+<ul>
+<li><p>Against state intervention</p></li>
+<li><p>Against redistribution</p></li>
+</ul></td>
+<td><p><strong>Popular classes</strong></p>
+<ul>
+<li><p>UDC since the 90s</p></li>
+<li><p>No party support</p></li>
+</ul>
+<p><strong>Policy preferences:</strong></p>
+<ul>
+<li>Better rights &amp; chances for the Swiss (until 2008)</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Overall, the regression analysis conducted in this section, using a different data source from the WPID project and from Oesch and Rennwald, offer a new way to describe the evolution of the Swiss social blocs, which is summarized in <a href="#tbl-socialblocs3">Table&nbsp;<span>2.3</span></a>. However, this analysis suffers from several limitations.</p>
 <p>On the one hand, one possible methodological issue of <em>VoxIt</em> dataset is the clustering structure of the data. Swiss citizen are clustered into several geographical levels, the most important ones being the cantonal and communal (district) levels. Switzerland is a highly decentralized and federalist country: every day political life as well as economic and political institutions can be substantially different across cantons. Every canton has its own party system and some Swiss parties, such as the <em>Lega Ticinessi</em> or <em>Mouvement Citoyen Genevois</em> (<em>Geneva Citizen Movement</em>) exist only at the cantonal level. A possible methodological solution, which would take into account both the time periods and the cantons as levels in which data are clustered, was considered by the author: a series of multilevel logit regressions. However, the results from these multilevel regressions showed that the variations between canton were negligible and thus a more simple model, the one presented in this section, was chosen. Moreover, the results between the multilevel model and the model of this section give overall similar results.</p>
 <p>On the other hand, the perspective adopted in this section is essentially a top-down approach, in which social blocs are derived from the relationships between party support, political leaning or policy preferences taken as dependent variables to be explained by a set of socio-economic characteristics. This is the method which is the most widespread in the literature, but it suffers from having an oversimplified view of social conflict, which is almost always reduced to two dimensions (the so-called cultural and economic divides). One important contribution of the neorealist approach is to underline the fact that social conflict is multidimensional <span class="citation" data-cites="amable_multidimensional_2023">(<a href="references.html#ref-amable_multidimensional_2023" role="doc-biblioref">Amable and Palombarini 2023</a>)</span> and that a bottom-up approach can be more suited to analyze the formation of social blocs. The next section will therefore adopt this bottom-up approach which is specific to the neorealist approach by conducting two latent class analysis for two different periods: 1999 and 2019.</p>
 </section>
 </section>
-<section id="the-transformation-of-the-swiss-social-blocs-during-the-crisis-of-the-90s-between-recomposition-and-resilience" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="the-transformation-of-the-swiss-social-blocs-during-the-crisis-of-the-90s-between-recomposition-and-resilience"><span class="header-section-number">2.3</span> The transformation of the Swiss social blocs during the crisis of the 90s: between recomposition and resilience</h2>
-<p>As explained in section 2.1, the Swiss socio-political landscape was structured around two social blocs during the post-war period: a dominant liberal-conservative and a subordinate left bloc. These two blocs were able to cooperate in what Pietro Boschetti famously called the Swiss variant of the “historical compromise” between the Swiss left and right-wing parties. On the one hand, the PLR, PDC and Agrarian parties were willing to cooperate with the Swiss Socialist party and develop social security to a certain extent. On the other hand, the Swiss Socialist party abandoned its anti-capitalist stances and became a moderate social-democrat reformist party aimed at promoting the creation of a Swiss welfare state, increase in real wage and promote the public sector and employment protection <span class="citation" data-cites="boschetti_conquete_2007">(<a href="references.html#ref-boschetti_conquete_2007" role="doc-biblioref">Boschetti 2007</a>)</span>.</p>
-<p>However, since the break-up of the post-war Keynesian “historical compromise” between the traditional Swiss left and right-wing parties during the so-called “decade of all dangers” of the 90s <span class="citation" data-cites="boschetti_conquete_2007">(<a href="references.html#ref-boschetti_conquete_2007" role="doc-biblioref">Boschetti 2007</a>)</span>, the liberal-conservative and left blocs are undergoing important transformations, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People Party (UDC), one of the most successful far-right populist parties in Europe. The electoral success of the UDC is often associated with the destabilization of the traditional “bourgeois” bloc, which entered a phase of cacophonic crisis <span class="citation" data-cites="meuwly_liberte_2008">(<a href="references.html#ref-meuwly_liberte_2008" role="doc-biblioref">Meuwly 2008</a>)</span> which still persists in the early 2020s.</p>
+<section id="in-search-of-the-liberal-conservative-and-left-blocs" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="in-search-of-the-liberal-conservative-and-left-blocs"><span class="header-section-number">2.3</span> In search of the liberal-conservative and left blocs</h2>
+<p>The objective of the present section is to assess empirically the reconfiguration of the Swiss social blocs during the 90s. More specifically, the objective is to analyze how the dominant Swiss social bloc was able to recompose during the crisis using a bottom-up approach different from the previous section, and more aligned with the neorealist approach. One of the main limitations of the regression analysis of the previous section was to consider social groups as pre-defined based on different income and educational levels, or occupation, and only two cleavage dimensions.</p>
+<p>As explained in the introduction, the neorealist approach starts from the diversity of social expectations emanating from the heterogeneity of the social structure. Socio-political groups could be endogenously defined based on the proximity of Swiss citizen’s preferences regarding economic and public policies. A method that allow such procedure is latent class analysis (LCA). LCA is rarely used in the social sciences, but has recently been applied as part of the neorealist approach to infer socio-political groups based on a set of policy preferences variables from post-electoral surveys. It was first used by <span class="citation" data-cites="amable_leconomie_2012">Amable, Guillaud, and Palombarini (<a href="references.html#ref-amable_leconomie_2012" role="doc-biblioref">2012</a>)</span> to identify socio-political groups in France and Italy. The analysis resulted in the identification of twelve groups for France, and seven for Italy. The analysis of France socio-political groups and social blocs was then improved in a subsequent paper by <span class="citation" data-cites="amable_search_2021">Amable (<a href="references.html#ref-amable_search_2021" role="doc-biblioref">2021</a>)</span>.</p>
+<p>This section has for ambition to extend the contribution of <span class="citation" data-cites="amable_leconomie_2012">Amable, Guillaud, and Palombarini (<a href="references.html#ref-amable_leconomie_2012" role="doc-biblioref">2012</a>)</span> and <span class="citation" data-cites="amable_search_2021">Amable (<a href="references.html#ref-amable_search_2021" role="doc-biblioref">2021</a>)</span> to Switzerland by conducting LCA analysis using Swiss election studies data. The methodology and approach used here closely follow the approach taken in <span class="citation" data-cites="amable_search_2021">Amable (<a href="references.html#ref-amable_search_2021" role="doc-biblioref">2021</a>)</span>.</p>
+<section id="the-latent-class-model-and-estimation-method" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="the-latent-class-model-and-estimation-method"><span class="header-section-number">2.3.1</span> The latent class model and estimation method</h3>
+<p>LCA allows to find a categorical structure from a set of categorical variables. The idea is that the Swiss population can be divided into different subgroups (socio-political groups given our theoretical framework), but that the latter are unobserved and can be indirectly estimated through a set of questions regarding policy preferences. The method employed here takes the following form:</p>
+<p><span id="eq-lca"><span class="math display">\[P(y_{1},...,y_{t}) = \sum^c_{c = 1} P(X = c) \prod^T_{t=1} P(y_{t} | X = c) \tag{2.2}\]</span></span></p>
+<p>With <span class="math inline">\(P(y_{1},...,y_{t})\)</span> the joint probability to observe a response pattern to a set of questions <span class="math inline">\(T\)</span> taken as indicators. <span class="math inline">\(P(X = c)\)</span> is the probability to belong to cluster <span class="math inline">\(c\)</span> of the discrete latent variable <span class="math inline">\(X\)</span>. The association between the latent class variable <span class="math inline">\(X\)</span> and the indicators <span class="math inline">\(t\)</span> is estimated through binary logistic regression (if the indicators are dichotomous) or, in our case, through multinomial logistic regression (if the indicators have more than two unordered categories).</p>
+<p>An important step of LCA is model selection, that is, choosing the model with the appropriate number of clusters. The criteria chosen to determine the number of clusters in this section is a bootstrap likelihood ratio test, an indicator which, according to <span class="citation" data-cites="nylund_deciding_2007">Nylund, Asparouhov, and Muthén (<a href="references.html#ref-nylund_deciding_2007" role="doc-biblioref">2007</a>)</span>, is the most suited compared to information criteria (AIC, BIC…). A series of models are thus estimated, increasing the number of clusters with each new model until the bootstrap likelihood ratio test showed no significance of adding a supplementary cluster to the model<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+</section>
+<section id="estimation-of-swiss-socio-political-groups-in-1999-the-12-clusters-model" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="estimation-of-swiss-socio-political-groups-in-1999-the-12-clusters-model"><span class="header-section-number">2.3.2</span> Estimation of Swiss socio-political groups in 1999: the 12 clusters model</h3>
+<p>For the first LCA estimation, the Swiss post-electoral study of 1999 <span class="citation" data-cites="hardmeier_befragung_2022">(<a href="references.html#ref-hardmeier_befragung_2022" role="doc-biblioref">Hardmeier et al. 2022</a>)</span> was chosen. The reasons behind this choice are technical, but first and foremost historical as the 90s represent a turning point in Swiss history and the evolution of the Swiss social blocs.</p>
+<p>As explained in section 2.1, the Swiss socio-political landscape was structured around two social blocs before the 90s: a dominant liberal-conservative and a subordinate left bloc. These two blocs were able to cooperate in what Pietro Boschetti famously called the Swiss variant of the “historical compromise” between the Swiss left and right-wing parties. On the one hand, the PLR, PDC and Agrarian parties were willing to cooperate with the Swiss Socialist party and develop social security to a certain extent. On the other hand, the Swiss Socialist party abandoned its anti-capitalist stances and became a moderate social-democrat reformist party aimed at promoting the creation of a Swiss welfare state, increase in real wage and promote the public sector and employment protection <span class="citation" data-cites="boschetti_conquete_2007">(<a href="references.html#ref-boschetti_conquete_2007" role="doc-biblioref">Boschetti 2007</a>)</span>.</p>
+<p>However, since the break-up of the post-war Keynesian “historical compromise” between the traditional Swiss left and right-wing parties during the so-called “decade of all dangers” of the 90s <span class="citation" data-cites="boschetti_conquete_2007">(<a href="references.html#ref-boschetti_conquete_2007" role="doc-biblioref">Boschetti 2007</a>)</span>, the liberal-conservative and left blocs are undergoing important transformations, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People Party (UDC), one of the most successful far-right populist parties in Europe. The electoral success of the UDC is often associated with the destabilization of the liberal-conservative bloc, which entered a phase of cacophonic crisis <span class="citation" data-cites="meuwly_liberte_2008">(<a href="references.html#ref-meuwly_liberte_2008" role="doc-biblioref">Meuwly 2008</a>)</span> which still persists in the early 2020s.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-partystrength" class="quarto-figure quarto-figure-center anchored">
@@ -476,16 +551,211 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>In fact, all the Swiss traditional main parties, the Swiss Socialist Party (PS) The Radical-Liberals (PLR) and the PDC, are in decline since the post-war period (see <a href="#fig-partystrength">Figure&nbsp;<span>2.6</span></a>). On the right, the crisis can be seen through the fall in vote shares (apart from the UDC); and the increase in party merges and re-configurations. In 2008, the Bourgeois Democratic Party (PBD) was created after a scission from the SVP. One year later, the Radicals, who created the Swiss modern state in 1848 and dominated Swiss politics until the first half of the 20th century, merged with the liberals to create the PLR. The PBD, whose creation disturbed the composition of a reputed unchangeable federal council, then merged with the PDC to create <em>Le Centre</em> (the Center) in 2021. The federal election of 2023 led to major historical change for the Swiss right. The PLR, very far from its former hegemonic domination of Swiss politics, is now in the fourth place in terms of low chamber parliamentary seats.</p>
-<p>the crisis of the 90s marked an important turning point in the history and evolution of the Swiss social blocs described in <a href="#tbl-socialblocs1">Table&nbsp;<span>2.1</span></a>. In fact, both the liberal-conservative and left blocs were based on internal compromises between their socio-political groups which shattered under the pressure of structural and external pressures. The demands of the large exporting industries and sectors producing for the internal market converged in terms of labor market flexibility, low employment protection and weak welfare state, but they differed in terms of commercial and industrial policies. The large exporting industries asked for liberal, free-trade commercial policy while the farmers and small business owners producing for the internal Swiss market asked for protection and subsidies. These contradictory demands were partially compatible during the post-war period and, as a result, reinforced the dual structure of the Swiss economy which combined a highly liberalized and free-trade exporting sector with a subsidized and highly protected internal sector.</p>
+<p>In fact, all the Swiss traditional main government parties, the Swiss Socialist Party (PS) The Radical-Liberals (PLR) and the PDC, are in decline since the post-war period (see <a href="#fig-partystrength">Figure&nbsp;<span>2.6</span></a>). On the right, the crisis can be seen through the fall in vote shares (apart from the UDC); and the increase in party merges and re-configurations. In 2008, the Bourgeois Democratic Party (PBD) was created after a scission from the SVP. One year later, the Radicals, who created the Swiss modern state in 1848 and dominated Swiss politics until the first half of the 20th century, merged with the liberals to create the PLR. The PBD, whose creation disturbed the composition of a reputed unchangeable federal council, then merged with the PDC to create <em>Le Centre</em> (the Center) in 2021. The federal election of 2023 led to major historical change for the Swiss right. The PLR, very far from its former hegemonic domination of Swiss politics, is now in the fourth place in terms of low chamber parliamentary seats.</p>
+<p>the crisis of the 90s marked an important turning point in the history and evolution of the Swiss social blocs described in <a href="#tbl-socialblocs1">Table&nbsp;<span>2.1</span></a>. In fact, both the liberal-conservative and left blocs were based on internal compromises between their socio-political groups which shattered under the pressure of structural and external pressures. The demands of the large exporting industries and sectors producing for the internal market converged in terms of labor market flexibility, low employment protection and weak welfare state, but they differed in terms of commercial and industrial policies. The large exporting industries asked for liberal, free-trade commercial policies while the farmers and small business owners producing for the internal Swiss market asked for protection and subsidies. These contradictory demands were temporarily compatible during the post-war period and, as a result, reinforced the dual structure of the Swiss economy which combined a highly liberalized and free-trade exporting sector with a subsidized and highly protected internal sector.</p>
 <p>However, as globalization, financialization and European integration intensified in the late 20th, the social groups attached to the interests of the internationalized Swiss industries gradually dissociated themselves from the groups attached to the internal sector. This dissociation was made explicit by the publication of a series of “white-books” by political and economic actors defending the interests of the Swiss multinational corporations. These white books advocated a dismantling of the Swiss Hybrid model by promoting a series of neoliberal reforms. The main policy demands of the white books were to increase competition in the international sector by dismantling Swiss cartels, reform the taxation system, reduce employment protection and social security, and privatize the public sector.</p>
-<p>The objective of the present section is to assess empirically the reconfiguration of the Swiss social blocs during the 90s. More specifically, the objective is to analyze how the dominant Swiss social bloc was able to recompose during the crisis using a bottom-up approach different from the previous section, and more aligned with the neorealist approach. One of the main limitations of the regression analysis of the previous section was to consider social groups as pre-defined based on different income and educational levels, or occupation, and only two cleavage dimensions.</p>
-<p>As explained in the introduction, the neorealist approach starts from the diversity of social expectations emanating from the heterogeneity of the social structure. Socio-political groups could be endogenously defined based on the proximity of Swiss citizen’s preferences regarding economic and public policies. A method that allow such procedure is latent class analysis (LCA). LCA is rarely used in the social sciences, but has recently been applied as part of the neorealist approach to infer socio-political groups based on a set of policy preferences variables from post-electoral surveys. This section has for ambition to conduct a first analysis of this kind using Swiss post-election social survey (SELECTS) data. The methodology and approach used here closely follow the approach taken in <span class="citation" data-cites="amable_search_2018">(<a href="references.html#ref-amable_search_2018" role="doc-biblioref"><strong>amable_search_2018?</strong></a>)</span>.</p>
+<p>Furthermore, the Swiss post-electoral study of 1999 <span class="citation" data-cites="hardmeier_befragung_2022">(<a href="references.html#ref-hardmeier_befragung_2022" role="doc-biblioref">Hardmeier et al. 2022</a>)</span> has the advantage of having enough observation (3258 records) and containing issue position variables with good enough qualities to infer socio-political groups quiet fairly. The ideal data set would be the one containing issue position variables which cover a good range of institutional areas, such as the one considered in <span class="citation" data-cites="amable_diversity_2003">Amable (<a href="references.html#ref-amable_diversity_2003" role="doc-biblioref">2003</a>)</span>: products market, social protection, labour market, the financial system and the educational system along with general policy orientations <span class="citation" data-cites="amable_search_2021">(<a href="references.html#ref-amable_search_2021" role="doc-biblioref">Amable 2021</a>)</span>. Although the Swiss post-electoral study of 1999 is the most relevant for the present research, it is still limited by the questions available.</p>
+<p>Nine questions were considered relevant to be taken as indicators. Of the nine questions, three concern economic policy. One question asked the respondent whether they were in favor of increasing or reducing social spending by the confederation, the second one whether taxes on high income should be increased or decreased, and the third one whether the respondent was in favor of more state intervention of for free market.</p>
+<p>One interesting question is about the opinion on Swiss army, which asked whether the respondent preferred a strong army or no army at all. This question is relevant regarding the historical context since the 90s represented a turbulent period for the Swiss army. In 1986, the <em>Group for a Switzerland without an army</em> launched a popular initiative called <em>For a Switzerland Without an Army and an Overall Peaceful Political Stance</em> which, three years later, unexpectedly gathered 35.5% positive votes with a majority of yes in two cantons: Jura (55.5%) and Geneva (50.4%). These stunning results (no one would have expected such a high share of yes) greatly disturbed the government and the Swiss army, and the latter underwent a process of important reforms thereafter. Despite the rejection of this initiative, the debate over the role and the future of the Swiss army was still very heated in the late 90s.</p>
+<p>Another question is about European integration. In surely of the most important and disputed referendum in Swiss history, Swiss citizen were to vote on their country’s adhesion to the European Economic Area (EEA) in 1992. As in other European countries, European integration became an important cleavage which destabilized both the liberal-conservative and left blocs. In the former, the UDC was the only major party to oppose the adhesion, while, in the latter, the Swiss Socialist party and labor unions were strongly in favor, with the exception of the Greens. This party was however divided over this issue, with a cleavage between the German-speaking cantons which strongly opposed the adhesion while the French-speaking cantons were in favor. The attitude towards European integration was included to assess the extent to which Switzerland displays a similar pattern than France in terms of European integration cleavage and the break-up of the traditional social blocs. As underlined by <span class="citation" data-cites="amable_illusion_2018">Amable and Palombarini (<a href="references.html#ref-amable_illusion_2018" role="doc-biblioref">2018</a>)</span>, <span class="citation" data-cites="amable_structural_2017">Amable (<a href="references.html#ref-amable_structural_2017" role="doc-biblioref">2017</a>)</span>, European integration played an important role in the break-up of the traditional left and right blocs in France. The popular groups of the two blocs tended to opposed European integration while the most skilled and wealthiest elements were united around the pursuit of EU integration, which is one of the main policy demand of the bloc bourgeois, along with neoliberal reforms and progressive “cultural attitude”.</p>
+<p>Two questions are about environmental issues. One of them was a trade-off question which asked whether the respondent was in favor of environmental protection or economic growth. The other one asked whether the respondent was in favor or against nuclear energy.</p>
+<p>The two last questions concern “cultural” issues: attitude towards Swiss traditions and foreigners. The former asked whether the respondents whether they preferred Swiss traditions or modernity. The latter asked whether the respondents whether they were in favor of unequal rights between Swiss citizen and foreigners and better chances for the Swiss or equal rights and chances. Switzerland stands out for its high proportion of foreigners who have less rights than Swiss citizen. During the Post-war period, Switzerland became a country of immigration due to high sustained growth and labor shortages. Immigrants were mainly seasonal workers on temporary residence permits, with no right to family reunification and no voting rights. They were expelled as soon as their labor force was no longer needed. It is often said that, in this way, Switzerland maintain full employment by exporting its unemployed foreign labor force. As soon as the Swiss economy overheated in the late 60s, restrictive immigration policies were adopted, while certain rights for foreign residents were improved, under pressure from negotiations with neighboring countries (Piguet 2004). Including these two cultural issue positions variables are important to situate the socio-political groups on the so-called “cultural” cleavage, which may be important to assess the transformations of the traditional Swiss social blocs.</p>
+<section id="description-of-the-12-clusters-model" class="level4" data-number="2.3.2.1">
+<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="description-of-the-12-clusters-model"><span class="header-section-number">2.3.2.1</span> Description of the 12 clusters model</h4>
+<div id="tbl-clusters" class="anchored">
+<table class="table">
+<caption>Table&nbsp;2.4: Cluster description</caption>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 10%">
+<col style="width: 60%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cluster</th>
+<th>Weight</th>
+<th>Policy Preferences</th>
+<th>Characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>17,8%<br>
+</td>
+<td><p>For increase in social spending and in taxes on high income (HI). Rather free market.</p>
+<p>No clear opinion on Swiss army.</p>
+<p>Rather pro-EU integration, but with an appreciable minority of anti-EU supporters (40%)</p>
+<p>For equal chances Swiss-foreigners, but defend traditions.</p>
+<p>Rather pro-environment and against nuclear energy.</p></td>
+<td><p>Rather middle-aged and old.</p>
+<p>Female, low income, low and middle education.</p>
+<p>Protestant, urban, German.</p></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>13,7%</td>
+<td><p>Strongly against neoliberal policies (against reducing social spending, taxes on HI).</p>
+<p>For no Swiss army. Strongly pro-EU integration.</p>
+<p>For equal chances Swiss-CH and culturally progressive.</p>
+<p>Srongly pro-environment and against nuclear energy.</p></td>
+<td><p>Young, female,</p>
+<p>high income, High education,</p>
+<p>French-speaking, urban.</p></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>13,4%</td>
+<td><p>Against social spending, for taxes on HI, rather free-market.</p>
+<p>For a strong Swiss army.</p>
+<p>Against EU integration.</p>
+<p>For better chances for the Swiss, culturally conservative.</p>
+<p>Pro-environment and against nuclear energy.</p></td>
+<td><p>Rather old, female,</p>
+<p>low income,</p>
+<p>low education, unskilled workers,</p>
+<p>craft specialists, self-employed,</p>
+<p>Protestant, German and Italian Speaking,</p>
+<p>rural.</p></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>12,4%</td>
+<td><p>In favor of social spending and taxes HI, but rather free-market.</p>
+<p>Divided over Swiss army, but with a majority of no army supporters (46%).</p>
+<p>Pro-EU integration.</p>
+<p>For equal chances Swiss-foreigners, but divided over tradition vs modernity.</p>
+<p>For environment protection and against nuclear energy.</p></td>
+<td><p>Young, female,</p>
+<p>middle-high income and education,</p>
+<p>skilled workers and managers,</p>
+<p>catholics or no religion, urban.</p></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>7,1%</td>
+<td><p>Against social spending and state intervention, but for taxes HI.</p>
+<p>For strong army.</p>
+<p>Against EU-integration.</p>
+<p>For better chances for the Swiss, culturally conservative.</p>
+<p>Divided over environment vs growth, for nuclear energy.</p></td>
+<td><p>Rather old,</p>
+<p>Male,</p>
+<p>middle-low income and education,</p>
+<p>protestant, German speaking,</p>
+<p>rural.</p></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>6,9%</td>
+<td><p>No opinion on social spending, no opinion or rather in favor of taxes HI and free market.</p>
+<p>Pro-EU integration.</p>
+<p>For equal chances Swiss-foreigners, rather defend traditions. For nuclear energy</p></td>
+<td><p>Rather old, high income, high education,</p>
+<p>vocational training,</p>
+<p>managers, skilled employees,</p>
+<p>retired, German-speaking,</p>
+<p>urban.</p></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>6,9%</td>
+<td><p>For higher taxes on HI. For strong army.</p>
+<p>Pro-EU integration.</p>
+<p>For equal chances Swiss-foreigners and defend traditions.</p>
+<p>Against nuclear energy.</p></td>
+<td><p>Old, low income,</p>
+<p>low education,</p>
+<p>protestant, craft specialists,</p>
+<p>skilled and unskilled employees,</p>
+<p>managers,</p>
+<p>German-speaking,</p>
+<p>rural.</p></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>5,9%</td>
+<td><p>For increase in social spending and taxes on HI.</p>
+<p>For no army.</p>
+<p>Pro-EU integration.</p>
+<p>For equal chances Swiss-foreigners and question traditions.</p>
+<p>Rather pro-environment and against nuclear energy.</p></td>
+<td><p>Rather young,</p>
+<p>female,</p>
+<p>high income,</p>
+<p>high education,</p>
+<p>skilled workers, managers,</p>
+<p>socio-cultural specialists,</p>
+<p>German and french-speaking,</p>
+<p>Protestant, catholics,</p>
+<p>no religion, urban.</p></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>4,9%</td>
+<td><p>Against social spending and taxes on HI, strongly for free-markets.</p>
+<p>For strong army.</p>
+<p>Against EU-integration.</p>
+<p>Rather for better chances for the Swiss and defend traditions.</p>
+<p>Divided on environment vs growth, pro-nuclear energy.</p></td>
+<td><p>Old, male, high income,</p>
+<p>rather high education,</p>
+<p>protestant, self-employed,, German-speaking,</p></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>4.9%</td>
+<td><p>Against social spending and taxes on HI, strongly for free markets.</p>
+<p>For strong army, but with a appreciable minority of no army supporters (37%).</p>
+<p>For EU-integration.</p>
+<p>For equal chances Swiss-foreigners, question traditions.</p>
+<p>Rather for economic growth and nuclear energy.</p></td>
+<td><p>Young, male, high income,</p>
+<p>high education,</p>
+<p>managers, skilled workers,</p>
+<p>self-employed,</p>
+<p>German-speaking, urban.</p></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>3,3%</td>
+<td>Against EU-integration. For better chances for the Swiss and defend traditions. For environment protection and against nuclear energy.</td>
+<td><p>Old, female,</p>
+<p>low income, middle-education,</p>
+<p>skilled and unskilled workers,</p>
+<p>protestant.</p></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>2,6%</td>
+<td><p>For increase in social spending and taxes HI and state intervention.</p>
+<p>Rather for no army.</p>
+<p>For better chances for the Swiss and defend traditions.</p>
+<p>For environment protection, against nuclear energy.</p></td>
+<td><p>Rather old, female,</p>
+<p>low income,</p>
+<p>low education,</p>
+<p>unskilled workers,</p>
+<p>socio-cultural specialists.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-altermatt_conservatism_1979" class="csl-entry" role="listitem">
 Altermatt, Urs. 1979. <span>“Conservatism in Switzerland: A Study in Antimodernism.”</span> <em>Journal of Contemporary History</em> 14 (4): 581–610. <a href="https://doi.org/10.1177/002200947901400402">https://doi.org/10.1177/002200947901400402</a>.
+</div>
+<div id="ref-amable_diversity_2003" class="csl-entry" role="listitem">
+Amable, Bruno. 2003. <em>The Diversity of Modern Capitalism</em>. Oxford ; New York: Oxford University Press.
+</div>
+<div id="ref-amable_structural_2017" class="csl-entry" role="listitem">
+———. 2017. <em>Structural Crisis and Institutional Change in Modern Capitalism: French Capitalism in Transition</em>. Oxford University Press. <a href="https://doi.org/10.1093/acprof:oso/9780198787815.001.0001">https://doi.org/10.1093/acprof:oso/9780198787815.001.0001</a>.
+</div>
+<div id="ref-amable_search_2021" class="csl-entry" role="listitem">
+———. 2021. <span>“In Search of the Bloc Bourgeois.”</span> <em>Revue de La Régulation. Capitalisme, Institutions, Pouvoirs</em>, no. 31 (August). <a href="https://doi.org/10.4000/regulation.20350">https://doi.org/10.4000/regulation.20350</a>.
 </div>
 <div id="ref-amable_brahmin_2022-1" class="csl-entry" role="listitem">
 Amable, Bruno, and Thibault Darcillon. 2022a. <span>“Brahmin Left Versus Merchant Right. How Useful Is This Distinction for the Analysis of Political Divides in Western Democracies?”</span> <em>Political Economy Working Papers</em>.
@@ -493,8 +763,14 @@ Amable, Bruno, and Thibault Darcillon. 2022a. <span>“Brahmin Left Versus Merch
 <div id="ref-amable_brahmin_2022" class="csl-entry" role="listitem">
 ———. 2022b. <span>“The Brahmin Left, the Merchant Right and the Bloc Bourgeois.”</span> <em>Review of International Political Economy</em> 29 (4): 1342–67. <a href="https://doi.org/10.1080/09692290.2021.1913440">https://doi.org/10.1080/09692290.2021.1913440</a>.
 </div>
+<div id="ref-amable_leconomie_2012" class="csl-entry" role="listitem">
+Amable, Bruno, Elvire Guillaud, and Stefano Palombarini. 2012. <em>L’économie politique du néolibéralisme: Le cas de la France et de l’Italie</em>. Collection du <span>CEPREMAP</span> 26. Paris: Éditions Rue d’Ulm.
+</div>
+<div id="ref-amable_illusion_2018" class="csl-entry" role="listitem">
+Amable, Bruno, and Stefano Palombarini. 2018. <em>L’illusion Du Bloc Bourgeois: Alliances Sociales Et Avenir Du Modèle Français</em>. Raisons d’Agir. Paris.
+</div>
 <div id="ref-amable_multidimensional_2023" class="csl-entry" role="listitem">
-Amable, Bruno, and Stefano Palombarini. 2023. <span>“Multidimensional Social Conflict and Institutional Change.”</span> <em>New Political Economy</em>, May, 1–16. <a href="https://doi.org/10.1080/13563467.2023.2215701">https://doi.org/10.1080/13563467.2023.2215701</a>.
+———. 2023. <span>“Multidimensional Social Conflict and Institutional Change.”</span> <em>New Political Economy</em>, May, 1–16. <a href="https://doi.org/10.1080/13563467.2023.2215701">https://doi.org/10.1080/13563467.2023.2215701</a>.
 </div>
 <div id="ref-atkinson_inequality_2015" class="csl-entry" role="listitem">
 Atkinson, Anthony B. 2015. <em>Inequality: What Can Be Done?</em> Harvard University Press.
@@ -519,6 +795,9 @@ Gethin, Amory, Clara Martínez-Toledano, and Thomas Piketty. 2022. <span>“Brah
 </div>
 <div id="ref-gethin_political_2021" class="csl-entry" role="listitem">
 Gethin, Armory, Clara Martinez-Toledano, and Thomas Piketty. 2021. <em>Political Cleavages and Social Inequalities a Study of Fifty Democracies, 1948–2020</em>. Harvard Univeristy Press.
+</div>
+<div id="ref-hardmeier_befragung_2022" class="csl-entry" role="listitem">
+Hardmeier, Sibylle, Ulrich Klöti, Hanspeter Kriesi, Wolf Linder, Pascal Sciarini, and Adrian Vatter. 2022. <span>“Befragung der Wählerinnen und Wähler nach den Wahlen - 1999.”</span> <span>FORS</span>. <a href="https://doi.org/10.48573/9EX9-FP54">https://doi.org/10.48573/9EX9-FP54</a>.
 </div>
 <div id="ref-hooghe_cleavage_2018" class="csl-entry" role="listitem">
 Hooghe, Liesbet, and Gary Marks. 2018. <span>“Cleavage Theory Meets Europe’s Crises: Lipset, Rokkan, and the Transnational Cleavage.”</span> <em>Journal of European Public Policy</em> 25 (1): 109–35. <a href="https://doi.org/10.1080/13501763.2017.1310279">https://doi.org/10.1080/13501763.2017.1310279</a>.
@@ -555,6 +834,9 @@ Meuwly, Olivier. 2008. <em>La Liberté Cacophonique: Essai Sur La Crise Des Droi
 </div>
 <div id="ref-milanovic_global_2016" class="csl-entry" role="listitem">
 Milanović, Branko. 2016. <em>Global Inequality: A New Approach for the Age of Globalization</em>. First Harvard University Press paperback edition. Cambridge, Massachusetts London, England: The Belknap Press of Harvard University Press.
+</div>
+<div id="ref-nylund_deciding_2007" class="csl-entry" role="listitem">
+Nylund, Karen L., Tihomir Asparouhov, and Bengt O. Muthén. 2007. <span>“Deciding on the Number of Classes in Latent Class Analysis and Growth Mixture Modeling: A Monte Carlo Simulation Study.”</span> <em>Structural Equation Modeling: A Multidisciplinary Journal</em> 14 (4): 535–69. <a href="https://doi.org/10.1080/10705510701575396">https://doi.org/10.1080/10705510701575396</a>.
 </div>
 <div id="ref-oesch_class_2010" class="csl-entry" role="listitem">
 Oesch, Daniel, and Line Rennwald. 2010. <span>“The Class Basis of Switzerland’s Cleavage Between the New Left and the Populist Right.”</span> <em>Swiss Political Science Review</em> 16 (3): 343–71. <a href="https://doi.org/10.1002/j.1662-6370.2010.tb00433.x">https://doi.org/10.1002/j.1662-6370.2010.tb00433.x</a>.
@@ -593,6 +875,14 @@ Tresch, Anke, and Georg Lutz. 2022. <span>“Swiss Election Study (Selects), Cum
 Zollinger, Delia. 2022. <span>“Cleavage Identities in Voters’ Own Words: Harnessing Open-Ended Survey Responses.”</span> <em>American Journal of Political Science</em> n/a: 1–21. <a href="https://doi.org/10.1111/ajps.12743">https://doi.org/10.1111/ajps.12743</a>.
 </div>
 </div>
+</section>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The models were estimated with the statistical software <em>LatentGOLD</em>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

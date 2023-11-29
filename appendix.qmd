@@ -17,6 +17,8 @@ reg_udc <- glm(data = vox, udc ~incomef*educationf +  incomef:annee_cat + educat
 
 reg_greens <- glm(data = vox, green ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
+reg_libgreens <- glm(data = vox2[vox2$annee_cat %in% c("(2006,2011]", "(2011,2016]"),], libgreens ~income*educationf +  income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
 reg_abstention <- glm(data = vox, no_party ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
 
 ###### political leaning regression
@@ -43,6 +45,16 @@ reg_equal_rights_chforeign <- glm(data = vox2,
                equal_rights_chforeign  ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
 
 ####### political leaning ame
+
+ame_libgreens_inc <- 
+  reg_libgreens %>% 
+  avg_slopes(variables = c("income"), by = "annee_cat")
+
+
+ame_libgreens_educ <- 
+  reg_libgreens %>% 
+  avg_slopes(variables = c("educationf"), by = "annee_cat")
+
 ame_left_inc <- 
   reg_left %>% 
   avg_slopes(variables = c("income"), by = c("educationf"))
@@ -977,6 +989,14 @@ reg_pdc1 <- glm(data = vox1,
 
 reg_pdc2 <- glm(data = vox2,
                pdc_pcs ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership)
+
+reg_libgreens<- glm(data = vox2,
+               libgreens ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership)
+
+libgreens_ame_inc <- 
+  reg_libgreens %>% 
+  comparisons(variables = list(income = c("les_3k", "more_9k")), by = "annee_cat") %>% 
+  mutate(party = "Green-liberals")
 
 plr1_ame_inc <- 
   reg_plr1 %>% 
