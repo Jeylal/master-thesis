@@ -1092,6 +1092,151 @@ stargazer(reg_redistr, type = "text")
 
 
 
+```{r}
+reg_ps <- glm(data = vox, pss ~incomef*educationLevel + incomef:annee_cat + educationLevel:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+reg_plr <- glm(data = vox, plr ~incomef*educationLevel+ incomef:annee_cat + educationLevel:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_pdc <- glm(data = vox, pdc_pcs ~incomef*educationLevel +  incomef:annee_cat + educationLevel:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+reg_udc <- glm(data = vox, udc ~incomef*educationLevel +  incomef:annee_cat + educationLevel:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_greens <- glm(data = vox, green ~incomef*educationLevel +  incomef:annee_cat + educationLevel:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_libgreens <- glm(data = vox2[vox2$annee_cat %in% c("(2006,2011]", "(2011,2016]"),], libgreens ~income*educationf +  income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_abstention <- glm(data = vox, no_party ~ incomef*educationLevel + incomef:annee_cat + educationLevel:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+###### political leaning regression
+
+vox2$educationf <- relevel(factor(vox2$educationf), ref = "voc_training")
+
+reg_left <- glm(data = vox2, 
+                left ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_center <- glm(data = vox2, 
+                center ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_right <- glm(data = vox2, 
+                right ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+#########3 issue position regression
+reg_state <- glm(data = vox2, 
+                stateint ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_redistr <- glm(data = vox2, 
+                redistribution ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+reg_equal_rights_chforeign <- glm(data = vox2, 
+               equal_rights_chforeign  ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+```
 
 
+```{r}
+ame_ps_educ <- 
+  reg_ps %>% 
+  avg_slopes(variables = c("educationLevel"), by = "annee_cat")
+
+ame_ps_inc <- 
+  reg_ps %>% 
+  avg_slopes(variables = c("incomef"), by = "annee_cat")
+
+ame_ps <- rbind(ame_ps_educ, ame_ps_inc) %>% mutate(party = "ps")
+
+ame_plr_educ <- 
+  reg_plr %>% 
+  avg_slopes(variables = c("educationLevel"), by = "annee_cat")
+
+ame_plr_inc <- 
+  reg_plr %>% 
+  avg_slopes(variables = c("incomef"), by = "annee_cat")
+
+ame_plr <- rbind(ame_plr_educ, ame_plr_inc) %>% mutate(party = "plr")
+
+ame_pdc_educ <- 
+  reg_pdc %>% 
+  avg_slopes(variables = c("educationLevel"), by = "annee_cat")
+
+ame_pdc_inc <- 
+  reg_pdc %>% 
+  avg_slopes(variables = c("incomef"), by = "annee_cat")
+
+ame_pdc <- rbind(ame_pdc_educ, ame_pdc_inc) %>% mutate(party = "pdc")
+
+ame_udc_educ <- 
+  reg_udc %>% 
+  avg_slopes(variables = c("educationLevel"), by = "annee_cat")
+
+ame_udc_inc <- 
+  reg_udc %>% 
+  avg_slopes(variables = c("incomef"), by = "annee_cat")
+
+ame_udc <- rbind(ame_udc_educ, ame_udc_inc) %>% mutate(party = "udc")
+
+ame_greens_educ <- 
+  reg_greens %>% 
+  avg_slopes(variables = c("educationLevel"), by = "annee_cat")
+
+ame_greens_inc <- 
+  reg_greens %>% 
+  avg_slopes(variables = c("incomef"), by = "annee_cat")
+
+ame_greens <- rbind(ame_greens_educ, ame_greens_inc) %>% mutate(party = "greens")
+
+ame_noparty_educ <- 
+  reg_abstention %>% 
+  avg_slopes(variables = c("educationLevel"), by = "annee_cat")
+
+ame_noparty_inc <- 
+  reg_abstention %>% 
+  avg_slopes(variables = c("incomef"), by = "annee_cat")
+
+ame_noparty <- rbind(ame_noparty_educ, ame_noparty_inc) %>% mutate(party = "no party")
+
+```
+
+```{r}
+ame_ps %>% 
+  filter(contrast %in% c("mean(high) - mean(low)", "mean(tertiary) - mean(primary)")) %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+
+ame_plr %>% 
+  filter(contrast %in% c("mean(high) - mean(low)", "mean(tertiary) - mean(primary)", "mmean(secondary) - mean(primary)")) %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+ame_pdc %>% 
+  filter(contrast %in% c("mean(high) - mean(low)", "mean(tertiary) - mean(primary)", "mmean(secondary) - mean(primary)")) %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+ame_udc %>% 
+    filter(contrast %in% c("mean(high) - mean(low)", "mean(tertiary) - mean(primary)", "mmean(secondary) - mean(primary)")) %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+ame_greens %>% 
+    filter(contrast %in% c("mean(high) - mean(low)", "mean(tertiary) - mean(primary)", "mmean(secondary) - mean(primary)")) %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+
+ame_noparty %>% 
+    filter(contrast %in% c("mean(high) - mean(low)", "mean(tertiary) - mean(primary)", "mmean(secondary) - mean(primary)")) %>% 
+  ggplot()+
+  aes(x = annee_cat, y = estimate, color = contrast, shape = contrast)+
+  geom_point()+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
+```
 
