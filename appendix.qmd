@@ -1240,3 +1240,21 @@ ame_noparty %>%
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high))
 ```
 
+```{r}
+freq(selects1999_classifLatest$lr)
+freq(selects1999_classifLatest$lr_recoded)
+selects1999_classifLatest <- 
+  selects1999_classifLatest %>% 
+  mutate(
+    lr_recoded = case_when(
+      lr %in% c(0,1,2) ~ "left",
+      lr %in% c(3,4) ~ "center_left",
+      lr %in% c(5) ~ "center",
+      lr %in% c(6,7) ~ "center-right",
+      lr %in% c(8,9,10) ~ "right"
+    )
+  )
+
+write_sav(selects1999_classifLatest, "selects1999_classifLatest_rec.sav")
+```
+

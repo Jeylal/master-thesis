@@ -462,9 +462,9 @@ With $I_{it}$ and $E_{it}$ the income and education level of individual $i$ in p
 #| label: fig-ameparties
 #| fig-cap: "Party support in Switzerland: 1981-2016. Average difference in  predicted probabilities between the highest and lowest income groups and between university and vocational training graduates."
 #| fig-height: 5
-ame_IP <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_IP.rds")
-ame_parties <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_parties.rds")
-ame_polleaning <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_polleaning.rds")
+ame_IP <- readRDS("/master-thesis/data/ame/ame_IP.rds")
+ame_parties <- readRDS("/master-thesis/data/ame/ame_parties.rds")
+ame_polleaning <- readRDS("/master-thesis/data/ame/ame_polleaning.rds")
 
 ame_parties %>% 
   filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
@@ -671,198 +671,82 @@ The two last questions concern "cultural" issues: attitude towards Swiss traditi
 
 #### Description of the 12 clusters model
 
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
-| Cluster | Weight  | Policy Preferences                                           | Characteristics                               |
-+=========+=========+==============================================================+:==============================================+
-| 1       | 17,8%\  | For increase in social spending                              | Rather middle-aged and old;                   |
-|         |         |                                                              |                                               |
-|         |         | For increase in taxes on high income (HI)                    | female; low income; middle education;         |
-|         |         |                                                              |                                               |
-|         |         | Rather free market                                           | Protestant; urban; German-speaking.           |
-|         |         |                                                              |                                               |
-|         |         | No clear opinion on Swiss army                               |                                               |
-|         |         |                                                              |                                               |
-|         |         | Rather pro-EU integration                                    |                                               |
-|         |         |                                                              |                                               |
-|         |         | but with an appreciable minority of anti-EU supporters (40%) |                                               |
-|         |         |                                                              |                                               |
-|         |         | For equal chances Swiss-foreigners                           |                                               |
-|         |         |                                                              |                                               |
-|         |         | Defend traditions                                            |                                               |
-|         |         |                                                              |                                               |
-|         |         | Pro-environment                                              |                                               |
-|         |         |                                                              |                                               |
-|         |         | Against nuclear energy                                       |                                               |
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
-| 2       | 13,7%   | For increase in social spending                              | Young; female;                                |
-|         |         |                                                              |                                               |
-|         |         | For higher taxes HI                                          | high income; high education;                  |
-|         |         |                                                              |                                               |
-|         |         | For state intervention                                       | French-speaking; urban.                       |
-|         |         |                                                              |                                               |
-|         |         | For no Swiss army                                            |                                               |
-|         |         |                                                              |                                               |
-|         |         | Strongly pro-EU integration                                  |                                               |
-|         |         |                                                              |                                               |
-|         |         | For equal chances Swiss-CH                                   |                                               |
-|         |         |                                                              |                                               |
-|         |         | Question traditions                                          |                                               |
-|         |         |                                                              |                                               |
-|         |         | Pro-environment                                              |                                               |
-|         |         |                                                              |                                               |
-|         |         | Against nuclear energy                                       |                                               |
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
-| 3       | 13,4%   | Against social spending                                      | Rather old; female; low income;               |
-|         |         |                                                              |                                               |
-|         |         | Against taxes on HI                                          | low education; unskilled workers;             |
-|         |         |                                                              |                                               |
-|         |         | Rather free-market.                                          | craft specialists; self-employed; Protestant; |
-|         |         |                                                              |                                               |
-|         |         | For a strong Swiss army                                      | German and Italian-speaking; rural.           |
-|         |         |                                                              |                                               |
-|         |         | Against EU integration.                                      |                                               |
-|         |         |                                                              |                                               |
-|         |         | For better chances for the Swiss                             |                                               |
-|         |         |                                                              |                                               |
-|         |         | Defend traditions                                            |                                               |
-|         |         |                                                              |                                               |
-|         |         | Pro-environment                                              |                                               |
-|         |         |                                                              |                                               |
-|         |         | Against nuclear energy                                       |                                               |
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
-| 4       | 12,4%   | For increase in social spending                              | Young; female;                                |
-|         |         |                                                              |                                               |
-|         |         | For increase in taxes on HI                                  | middle-high income and education;             |
-|         |         |                                                              |                                               |
-|         |         | Rather free-market                                           | skilled workers and managers;                 |
-|         |         |                                                              |                                               |
-|         |         | Divided over Swiss army                                      | Catholics or no religion; urban.              |
-|         |         |                                                              |                                               |
-|         |         | Pro-EU integration                                           |                                               |
-|         |         |                                                              |                                               |
-|         |         | For equal chances Swiss-foreigners                           |                                               |
-|         |         |                                                              |                                               |
-|         |         | Pro-environment                                              |                                               |
-|         |         |                                                              |                                               |
-|         |         | Against nuclear energy                                       |                                               |
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
-| 5       | 7,1%    | Against social spending                                      | Rather old; male;                             |
-|         |         |                                                              |                                               |
-|         |         | For increase in taxes on HI                                  | middle-low income and education;              |
-|         |         |                                                              |                                               |
-|         |         | For free markets                                             | Protestant; German speaking; rural.           |
-|         |         |                                                              |                                               |
-|         |         | For strong army                                              |                                               |
-|         |         |                                                              |                                               |
-|         |         | Against EU-integration                                       |                                               |
-|         |         |                                                              |                                               |
-|         |         | For better chances for the Swiss                             |                                               |
-|         |         |                                                              |                                               |
-|         |         | culturally conservative                                      |                                               |
-|         |         |                                                              |                                               |
-|         |         | Divided over environment vs growth                           |                                               |
-|         |         |                                                              |                                               |
-|         |         | Pro-nuclear energy                                           |                                               |
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
-| 6       | 6,9%    | Pro-EU integration                                           | Rather old; high income; high education;      |
-|         |         |                                                              |                                               |
-|         |         | For equal chances Swiss-foreigners                           | vocational training;                          |
-|         |         |                                                              |                                               |
-|         |         | Rather defend traditions                                     | managers; skilled employees;                  |
-|         |         |                                                              |                                               |
-|         |         | Pro-nuclear energy                                           | retired; German-speaking; urban.              |
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
-| 7       | 6,9%    | For higher taxes on HI                                       | Old; retired; low income;                     |
-|         |         |                                                              |                                               |
-|         |         | For strong army                                              | low education; Protestant;                    |
-|         |         |                                                              |                                               |
-|         |         | Pro-EU integration                                           | craft specialists;                            |
-|         |         |                                                              |                                               |
-|         |         | For equal chances Swiss-foreigners                           | skilled and unskilled employees; managers;    |
-|         |         |                                                              |                                               |
-|         |         | Defend traditions                                            | German-speaking; rural.                       |
-|         |         |                                                              |                                               |
-|         |         | Against nuclear energy                                       |                                               |
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
-| 8       | 5,9%    | For increase in social spending                              | Rather young; female;                         |
-|         |         |                                                              |                                               |
-|         |         | For higher taxes on HI                                       | high income; high education; skilled workers; |
-|         |         |                                                              |                                               |
-|         |         | For no army                                                  | managers; socio-cultural specialists;         |
-|         |         |                                                              |                                               |
-|         |         | Pro-EU integration                                           | German and French-speaking;                   |
-|         |         |                                                              |                                               |
-|         |         | For equal chances Swiss-foreigners                           | Protestant, Catholics; no religion; urban.    |
-|         |         |                                                              |                                               |
-|         |         | Question traditions.                                         |                                               |
-|         |         |                                                              |                                               |
-|         |         | Pro-environment                                              |                                               |
-|         |         |                                                              |                                               |
-|         |         | Against nuclear energy                                       |                                               |
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
-| 9       | 4,9%    | For reducing taxes on HI                                     | Old; male; high income;                       |
-|         |         |                                                              |                                               |
-|         |         | For reducing social spending                                 | rather high education; Protestant;            |
-|         |         |                                                              |                                               |
-|         |         | strongly for free-markets                                    | self-employed; German-speaking                |
-|         |         |                                                              |                                               |
-|         |         | For strong army                                              |                                               |
-|         |         |                                                              |                                               |
-|         |         | Against EU-integration                                       |                                               |
-|         |         |                                                              |                                               |
-|         |         | Rather for better chances for the Swiss                      |                                               |
-|         |         |                                                              |                                               |
-|         |         | Defend traditions                                            |                                               |
-|         |         |                                                              |                                               |
-|         |         | Divided on environment vs growth                             |                                               |
-|         |         |                                                              |                                               |
-|         |         | pro-nuclear energy                                           |                                               |
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
-| 10      | 4.9%    | For reducing social spending                                 | Young; male; high income;                     |
-|         |         |                                                              |                                               |
-|         |         | For reducing taxes on HI                                     | high education; managers;                     |
-|         |         |                                                              |                                               |
-|         |         | strongly for free markets                                    | skilled workers; self-employed;               |
-|         |         |                                                              |                                               |
-|         |         | For strong army                                              | German-speaking; urban.                       |
-|         |         |                                                              |                                               |
-|         |         | Minority of no army supporters (37%)                         |                                               |
-|         |         |                                                              |                                               |
-|         |         | For EU-integration                                           |                                               |
-|         |         |                                                              |                                               |
-|         |         | For equal chances Swiss-foreigners                           |                                               |
-|         |         |                                                              |                                               |
-|         |         | Question traditions                                          |                                               |
-|         |         |                                                              |                                               |
-|         |         | Rather for economic growth                                   |                                               |
-|         |         |                                                              |                                               |
-|         |         | Pro-nuclear energy                                           |                                               |
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
-| 11      | 3,3%    | Against EU-integration                                       | Old; female; low income;                      |
-|         |         |                                                              |                                               |
-|         |         | For better chances for the Swiss                             | middle-education;                             |
-|         |         |                                                              |                                               |
-|         |         | Defend traditions.                                           | skilled and unskilled workers;                |
-|         |         |                                                              |                                               |
-|         |         | Pro-environment                                              | Protestant                                    |
-|         |         |                                                              |                                               |
-|         |         | Against nuclear energy                                       |                                               |
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
-| 12      | 2,6%    | For increase in social spending                              | Rather old; female; low income;               |
-|         |         |                                                              |                                               |
-|         |         | For increase in taxes on HI                                  | low education; unskilled workers;             |
-|         |         |                                                              |                                               |
-|         |         | For state intervention                                       | socio-cultural specialists.                   |
-|         |         |                                                              |                                               |
-|         |         | Rather for no army                                           |                                               |
-|         |         |                                                              |                                               |
-|         |         | For better chances for the Swiss                             |                                               |
-|         |         |                                                              |                                               |
-|         |         | Defend traditions                                            |                                               |
-|         |         |                                                              |                                               |
-|         |         | Pro-environment                                              |                                               |
-|         |         |                                                              |                                               |
-|         |         | Against nuclear energy                                       |                                               |
-+---------+---------+--------------------------------------------------------------+-----------------------------------------------+
+```{r 12 clusters table}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: fig-clusters
+#| fig-cap: Cluster description
 
-: Cluster description {#tbl-clusters}
+
+library(webshot2)
+
+clustertable <- read_excel(sheet = 7, "F:/master-thesis/lca estimations/selects1999_lcaresults.xlsx")
+clustertable_html <- 
+clustertable %>% 
+  gt() # use gt-save() to save if needed
+
+
+include_graphics("F:/master-thesis/data/clustertable.png")
+```
+
+@fig-clusters gives a brief description of each cluster's relative weight, policy preferences and overall socio-economic characteristics. The largest cluster (cluster 1) represents 17.8% of the total sample. This cluster rather supports an increase in social spending by the Confederation and also in taxes on high income, but remains supportive of free markets rather than state intervention. Cluster 1 is, in majority, in favor of European integration, but with an appreciable minority (around 40%) who is against. This cluster support equal rights and chances between Swiss citizen and foreigner, but are attached to traditions. This cluster prefers environment protection over growth and is strongly against nuclear energy.
+
+Cluster 2, the second largest group (13,7%) supports increase in social spending, higher taxes on high income and, conversely to cluster 1, supports more state intervention. It is also very much in favor of equal rights and opportunities for foreigners, questioning Swiss traditions, and is also pro-environment and against nuclear energy. Cluster 3 is similar to cluster 1 regarding higher taxes, but has a higher proportion of members in favor of state intervention, and differs in its preference for cutting social spending, for being more in favor of a strong army and is more skeptical about EU integration. It differs from cluster 1 by being also against foreigners' equal rights and chances.
+
+Cluster 4 is rather similar to cluster 2, but what sets it apart is its preference for free markets over state intervention. Cluster 5 members are rather similar to cluster 3, but they are more divided over environmental issues and they strongly support nuclear energy.
+
+Cluster 6 has no clear opinion on social spending, rather supports higher taxes but not state intervention. It supports EU integration, equal chances and rights for foreigners, rather wants to defend traditions. It has no preferences between environment vs economic growth, but is supportive of nuclear energy.
+
+Cluster 7 supports higher taxes on high income, is rather for free markets, supports a strong army, the defense of traditions, better chances and rights for the Swiss and wants to stay out of the EU.
+
+Cluster 8 is the only cluster which, like cluster 2, is strongly in favor of a Switzerland without an army. Conversely to cluster 2, cluster 8 is nonetheless less in favor of state intervention.
+
+Cluster 9 and 10 broadly support neoliberal economic policies (lower taxes high income, cut social spending, for free markets). However, cluster 9 is more in favor of a strong Swiss army, against EU integration and equal rights and chances for foreigners. It also supports nuclear energy.
+
+Cluster 11 expresses no clear preferences, except for EU integration (stay out), attitude towards foreigners (better chances for the Swiss) and taxes on high income (rather in favor, but also strongly undecided).
+
+Like cluster 2, cluster 12 supports left-wing economic policies, environment protection and is also rather against the army. However, this cluster prefers better chances for the Swiss and to defend traditions.
+
+The socio-economic characteristics for each group can be precised by taking into account variables that have not been considered as active indicators, but can define some general characteristics within each cluster by comparing the proportions within the clusters with the overall proportion of the sample.
+
+Cluster 1 members are older than average. This cluster has an over-representation of women, lower income groups[^part1-4], and of low to medium levels of education. Cluster 2 is the youngest (on average seven years old younger than the total average). It also has a strong proportion of female (59% percent compared to an overall proportion of 54%) and of high income groups. University graduates are over-represented in cluster 2, with a proportion of 24% compared to an overall proportion of 11%. Cluster 2 is predominantly French-speaking, with a proportion of 48% (compared to an overall proportion of 28,6%), non religious and urban.
+
+[^part1-4]: The income variable considered here is the gross monthly income of the household.
+
+Cluster 3 is composed of female, low income groups, vocational training and compulsory school graduates.
+
+The wealthiest clusters in terms of income are (in descending order) cluster 10, 9, 8, 2 and 6. Cluster 10 is especially wealthy and well educated, with 33,8% of its member belonging to the highest income group (overall proportion of this income bracket is 16,8%) and a high representation of university and higher vocational training graduates. Cluster 9 is also wealthy is well educated, but less than cluster 10. Clusters 9 and 10 also have strong proportion of male and self-employed.
+
+The poorest clusters are cluster 7, 12 and 3. Farmers and skilled workers and retired people are strongly represented in cluster 7.
+
+#### Cluster membership and political leaning
+
+The political identification of each cluster can be assessed by regressing cluster membership on left-right self-identification recoded into 4 categories; left (0 to 2), center-left (3 and 4), center (5), center-right (6 and 7) and right (8 to 10). To do so, the so-called three-step approach is used: after clusters are defined (step one), each cluster membership posterior probabilities are assigned to every observations (second step). Then, cluster membership can be regressed on a set of independent variables.
+
+```{r 3 step table}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: tbl-3steplr
+#| tbl-cap: Influence of political leaning on cluster membership. Z-values under the coefficients.
+step3lr <- read_excel(sheet = 6, "F:/master-thesis/lca estimations/selects1999_lcaresults.xlsx")
+step3lr$Cluster[is.na(step3lr$Cluster)] <- ""
+step3lr %>% 
+  gt()
+```
+
+The results are presented in @tbl-3steplr and can be resumed as follows: clusters 2, 8 and 12 lean to the left; clusters 1, 4 and 6 to the center-left; cluster 10 to the center-right and clusters 3, 5, 7 and 9 to the right. 
+
+
+
+
+
+
+
+
+
+
+
+
+
