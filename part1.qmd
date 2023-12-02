@@ -608,7 +608,7 @@ An important step of LCA is model selection, that is, choosing the model with th
 
 ### Estimation of Swiss socio-political groups in 1999: the 12 clusters model
 
-For the first LCA estimation, the Swiss post-electoral study of 1999 [@hardmeier_befragung_2022] was chosen. The reasons behind this choice are technical, but first and foremost historical as the 90s represent a turning point in Swiss history and the evolution of the Swiss social blocs.
+For the LCA estimation, the Swiss post-electoral study of 1999 [@hardmeier_befragung_2022] is chosen. The reasons behind this choice are technical, but first and foremost historical as the 90s represent a turning point in Swiss history and the evolution of the Swiss social blocs.
 
 As explained in section 2.1, the Swiss socio-political landscape was structured around two social blocs before the 90s: a dominant liberal-conservative and a subordinate left bloc. These two blocs were able to cooperate in what Pietro Boschetti famously called the Swiss variant of the "historical compromise" between the Swiss left and right-wing parties. On the one hand, the PLR, PDC and Agrarian parties were willing to cooperate with the Swiss Socialist party and develop social security to a certain extent. On the other hand, the Swiss Socialist party abandoned its anti-capitalist stances and became a moderate social-democrat reformist party aimed at promoting the creation of a Swiss welfare state, increase in real wage and promote the public sector and employment protection [@boschetti_conquete_2007].
 
@@ -663,7 +663,7 @@ But in 1986, the *Group for a Switzerland without an army* launched a popular in
 
 [^part1-3]: For a short history and overview of the current challenges and of the role of the Swiss army, see @juilland__2012.
 
-Another question is about European integration. In surely of the most important and disputed referendum in Swiss history, Swiss citizen were to vote on their country's adhesion to the European Economic Area (EEA) in 1992. As in other European countries, European integration became an important cleavage which destabilized both the liberal-conservative and left blocs. In the former, the UDC was the only major party to oppose the adhesion, while, in the latter, the Swiss Socialist party and labor unions were strongly in favor, with the exception of the Greens. This party was however divided over this issue, with a cleavage between the German-speaking cantons which strongly opposed the adhesion while the French-speaking cantons were in favor. The attitude towards European integration was included to assess the extent to which Switzerland displays a similar pattern than France in terms of European integration cleavage and the break-up of the traditional social blocs. As underlined by @amable_illusion_2018 and @amable_structural_2017, European integration played an important role in the break-up of the traditional left and right blocs in France. The popular groups of the two blocs tended to opposed European integration while the most skilled and wealthiest elements were united around the pursuit of EU integration, which is one of the main policy demand of the bloc bourgeois, along with neoliberal reforms and progressive "cultural attitude".
+Another question is about European integration. In surely one of the most important and disputed referendum in Swiss history, Swiss citizen were to vote on their country's adhesion to the European Economic Area (EEA) in 1992. As in other European countries, European integration became an important cleavage which destabilized both the liberal-conservative and left blocs. In the former, the UDC was the only major party to oppose the adhesion, while, in the latter, the Swiss Socialist party and labor unions were strongly in favor, with the exception of the Greens. This party was however divided over this issue, with a cleavage between the German-speaking cantons which strongly opposed the adhesion while the French-speaking cantons were in favor. The attitude towards European integration was included to assess the extent to which Switzerland displays a similar pattern than France in terms of European integration cleavage and the break-up of the traditional social blocs. As underlined by @amable_illusion_2018 and @amable_structural_2017, European integration played an important role in the break-up of the traditional left and right blocs in France. The popular groups of the two blocs tended to opposed European integration while the most skilled and wealthiest elements were united around the pursuit of EU integration, which is one of the main policy demand of the bloc bourgeois, along with neoliberal reforms and progressive "cultural attitude".
 
 Two questions are about environmental issues. One of them was a trade-off question which asked whether the respondent was in favor of environmental protection or economic growth. The other one asked whether the respondent was in favor or against nuclear energy.
 
@@ -681,13 +681,13 @@ The two last questions concern "cultural" issues: attitude towards Swiss traditi
 
 library(webshot2)
 
-clustertable <- read_excel(sheet = 7, "F:/master-thesis/lca estimations/selects1999_lcaresults.xlsx")
+clustertable <- read_excel(sheet = 7, "C:/Users/celal/OneDrive/Bureau/master-thesis/lca estimations/selects1999_lcaresults.xlsx")
 clustertable_html <- 
 clustertable %>% 
-  gt() # use gt-save() to save if needed
-
-
-include_graphics("F:/master-thesis/data/clustertable.png")
+  gt() 
+# use gt-save() to save if needed
+#gtsave(clustertable_html, "C:/Users/celal/OneDrive/Bureau/master-thesis/dataclustertable.png")
+include_graphics("C:/Users/celal/OneDrive/Bureau/master-thesis/dataclustertable.png")
 ```
 
 @fig-clusters gives a brief description of each cluster's relative weight, policy preferences and overall socio-economic characteristics. The largest cluster (cluster 1) represents 17.8% of the total sample. This cluster rather supports an increase in social spending by the Confederation and also in taxes on high income, but remains supportive of free markets rather than state intervention. Cluster 1 is, in majority, in favor of European integration, but with an appreciable minority (around 40%) who is against. This cluster support equal rights and chances between Swiss citizen and foreigner, but are attached to traditions. This cluster prefers environment protection over growth and is strongly against nuclear energy.
@@ -736,17 +736,4 @@ step3lr %>%
   gt()
 ```
 
-The results are presented in @tbl-3steplr and can be resumed as follows: clusters 2, 8 and 12 lean to the left; clusters 1, 4 and 6 to the center-left; cluster 10 to the center-right and clusters 3, 5, 7 and 9 to the right. 
-
-
-
-
-
-
-
-
-
-
-
-
-
+The results are presented in @tbl-3steplr and can be resumed as follows: clusters 2, 8 and 12 lean to the left; clusters 1, 4 and 6 to the center-left; cluster 10 to the center-right and clusters 3, 5, 7 and 9 to the right.
