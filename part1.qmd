@@ -120,8 +120,6 @@ On the other hand, the main social bloc excluded from the DSB was the left bloc,
 
 In its early days, the Swiss Socialist party had strong communist stances. Its first program (1888) had strong marxist and anti-capitalist positions: it advocated nationalization, collectivization, economic planning as ways out of capitalism. In the post-war period, the party moderated its program and became more a social-democratic reformist party. The main policy demands of the revised program of 1959 were focused on social reforms and expansionary policies within the capitalist framework: extending social protection; promote economic growth and anti-cyclical Keynesian macroeconomic policies and ensure full employment [@degen_parti_2022].
 
-(écrire davantage sur les programmes politiques de la gauche et de la droite afin de justifier la colonne policy demands ci-dessus ?)
-
 ## Swiss social blocs and socio-economic factors: 1980-2016
 
 How have the social bases of the liberal-conservative and left blocs evolved since the 70s? How are the support for the main Swiss social blocs influenced by socio-economic characteristics? The objective of this section is to explore the composition of the Swiss social blocs in terms of socio-economic characteristics and assess their evolution since the post-war period.
@@ -177,7 +175,7 @@ This article by @durrer_de_la_sota_party_2021, shows that Piketty's brahmin left
 |                             |                                                      |                                                      |
 |                             | <br>                                                 | -   Abstention<br>                                   |
 |                             |                                                      |                                                      |
-|                             | <br>Policy preferences:<br>                          | -   PS until the 90s\<br                             |
+|                             | <br>Policy preferences:<br>                          | -   PS until the 90s                                 |
 |                             |                                                      |                                                      |
 |                             | -   Against redistribution<br>                       | -   Christian parties until the 90s<br>              |
 |                             |                                                      |                                                      |
@@ -477,7 +475,7 @@ With $I_{it}$ and $E_{it}$ the income and education level of individual $i$ in p
 #| warning: false
 #| label: fig-ameparties
 #| fig-cap: "Party support in Switzerland: 1981-2016. Average difference in  predicted probabilities between the highest and lowest income groups and between university and vocational training graduates."
-#| fig-height: 5
+#| fig-height: 6
 ame_IP <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_IP.rds")
 ame_parties <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_parties.rds")
 ame_polleaning <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_polleaning.rds")
@@ -494,8 +492,9 @@ ame_parties %>%
   scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
   facet_wrap(~party)+
-  theme(legend.position = "bottom",
-        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
+  theme(legend.position="bottom", legend.box="vertical", legend.margin=margin(),
+        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))+
+  guides(color=guide_legend(nrow=3))
 
 ```
 
@@ -525,8 +524,9 @@ ame_polleaning %>%
   scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
   facet_wrap(~leaning)+
-  theme(legend.position = "bottom",
-        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
+  theme(legend.position="bottom",
+        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))+
+  guides(color=guide_legend(nrow=3))
 
 ```
 
@@ -539,6 +539,12 @@ ame_polleaning %>%
 #| label: fig-ameIP
 #| fig-cap: "Opinion on several social issues in Switzerland: 1992-2016. Average difference in predicted probabilities between the highest and lowest income groups (less than 3000CHF per month vs more than 9000CHF) and between university and vocational training graduates."
 #| fig-height: 4
+
+ame_IP$issue[ame_IP$issue == "state_vs_market"] <- "State intervention"
+ame_IP$issue[ame_IP$issue == "redistribution"] <- "Redistribution"
+ame_IP$issue[ame_IP$issue == "Equal Chances CH - Foreigners"] <- "Equal chances CH-foreign"
+
+
 ame_IP %>% 
   filter(contrast %in% c("mean(University) - mean(voc_training)", "mean(more_9k) - mean(less_3k)")) %>%
   ggplot()+
@@ -551,12 +557,13 @@ ame_IP %>%
   geom_hline(yintercept = 0)+
   facet_wrap(~issue)+
   theme(legend.position = "bottom",
-        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
+        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))+
+  guides(color=guide_legend(nrow=3))
 ```
 
 Finally, @fig-ameIP show average marginal contrasts for issue positions regarding equal rights between foreigner and Swiss citizen, redistribution and state intervention. The support for equal rights is positively associated with both education and income levels. However, the positive difference between highest and lowest income groups tend to decrease since the 2000s, indicating a decline of the "progressive attitude" of the wealthiest income groups towards foreigners. The difference between income groups in the support for redistribution is negative for all time periods whereas the difference between education groups was declining from 1992 to 2008, but tend to increase since in 2008-2012, but is not significant in 2012-2016. Regarding support for state intervention, the difference between education groups and income groups are respectively positive and negative: university graduates tend to be relatively more in favor of state intervention and the highest income groups tend to be relatively against for all time periods, indicating a brahmin left vs merchant right divide over state intervention.
 
-To sum up, the results overall confirm the brahmin left vs merchant right hypotheses, even more than the results of the WPID project. The support for the Swiss Socialist party evolved from a traditional popular support towards a brahmin left support in the 80s. The results confirm the bourgeois composition of the PLR, since the latter seems to be gradually transforming into a merchant right composition since the beginning of the 2010s. The greens belong to the brahmin left since the 80s and there is no clear trend that the party evolved into a bourgeois party. Regarding the UDC, the latter used to be a merchant right party in the 80s, and evolved into a populist or, in Piketty's terms, a nativist party in the 90s. Thus, unlike @durrer_de_la_sota_party_2021 and the classification presented in @tbl-socialblocs, the social basis of the PLR seems to be transforming into a merchant right, while the Greens have kept their brahmin elements.
+To sum up, the results overall confirm the brahmin left vs merchant right hypotheses, even more than the results of the WPID project. The support for the Swiss Socialist party evolved from a traditional popular support towards a brahmin left support in the 80s. The results confirm the bourgeois composition of the PLR, since the latter seems to be gradually transforming into a merchant right composition since the beginning of the 2010s. The greens belong to the brahmin left since the 80s and there is no clear trend that the party evolved into a bourgeois party. Regarding the UDC, the latter used to be a merchant right party in the 80s, and evolved into a populist or, in Piketty's terms, a nativist party in the 90s. Thus, unlike @durrer_de_la_sota_party_2021 and the classification presented in @tbl-socialblocs1, the social basis of the PLR seems to be transforming into a merchant right, while the Greens have kept their brahmin elements.
 
 However, if one looks at political leaning on a left-right axis instead of party support, self-identification to the right used to be rather bourgeois in the 90s, and then went merchant afterwards. Self-identification to the left used to be brahmin in the 90s and even became bourgeois in recent time periods, if one looks at the difference in predicted probabilities between the upper-middle income and lowest income groups.
 
@@ -600,7 +607,7 @@ Overall, the regression analysis conducted in this section, using a different da
 
 On the one hand, one possible methodological issue of *VoxIt* dataset is the clustering structure of the data. Swiss citizen are clustered into several geographical levels, the most important ones being the cantonal and communal (district) levels. Switzerland is a highly decentralized and federalist country: every day political life as well as economic and political institutions can be substantially different across cantons. Every canton has its own party system and some Swiss parties, such as the *Lega Ticinessi* or *Mouvement Citoyen Genevois* (*Geneva Citizen Movement*) exist only at the cantonal level. A possible methodological solution, which would take into account both the time periods and the cantons as levels in which data are clustered, was considered by the author: a series of multilevel logit regressions. However, the results from these multilevel regressions showed that the variations between canton were negligible and thus a more simple model, the one presented in this section, was chosen. Moreover, the results between the multilevel model and the model of this section give overall similar results.
 
-On the other hand, the perspective adopted in this section is essentially a top-down approach, in which social blocs are derived from the relationships between party support, political leaning or policy preferences taken as dependent variables to be explained by a set of socio-economic characteristics. This is the method which is the most widespread in the literature, but it suffers from having an oversimplified view of social conflict, which is almost always reduced to two dimensions (the so-called cultural and economic divides). One important contribution of the neorealist approach is to underline the fact that social conflict is multidimensional [@amable_multidimensional_2023] and that a bottom-up approach can be more suited to analyze the formation of social blocs. The next section will therefore adopt this bottom-up approach which is specific to the neorealist approach by conducting two latent class analysis for two different periods: 1999 and 2019.
+On the other hand, the perspective adopted in this section is essentially a top-down approach, in which social blocs are derived from the relationships between party support, political leaning or policy preferences taken as dependent variables to be explained by a set of socio-economic characteristics. This is the method which is the most widespread in the literature, but it suffers from having an oversimplified view of social conflict, which is almost always reduced to two dimensions (the so-called cultural and economic divides). One important contribution of the neorealist approach is to underline the fact that social conflict is multidimensional [@amable_multidimensional_2023] and that a bottom-up approach can be more suited to analyze the formation of social blocs. The next section will therefore adopt this bottom-up approach which is specific to the neorealist approach by conducting a latent class analysis for the late 90s.
 
 ## In search of the liberal-conservative and left blocs
 
@@ -614,11 +621,11 @@ This section has for ambition to extend the contribution of @amable_leconomie_20
 
 LCA allows to find a categorical structure from a set of categorical variables. The idea is that the Swiss population can be divided into different subgroups (socio-political groups given our theoretical framework), but that the latter are unobserved and can be indirectly estimated through a set of questions regarding policy preferences. The method employed here takes the following form:
 
-$$P(y_{1},...,y_{t}) = \sum^c_{c = 1} P(X = c) \prod^T_{t=1} P(y_{t} | X = c)$$ {#eq-lca}
+$$f(y_i) = \sum^K_{x = 1} P(x) \prod^T_{t=1} P(y_{it} | x)$$ {#eq-lca}
 
-With $P(y_{1},...,y_{t})$ the joint probability to observe a response pattern to a set of questions $T$ taken as indicators. $P(X = c)$ is the probability to belong to cluster $c$ of the discrete latent variable $X$. The association between the latent class variable $X$ and the indicators $T$ is estimated through binary logistic regression (if the indicators are dichotomous) or, in our case, through multinomial logistic regression (if the indicators have more than two un-ordered categories).
+With $f(y_i)$ the probability density function corresponding to a particular response pattern $y_i$. $y_{it}$ is the response pattern of individual $i$ to a set of $T$ survey questions taken as indicators in the model. $P(X)$ is the probability to belong to a certain cluster given by the latent discrete variable $x$, which is between one and $K$ clusters ($1\le x \le K$). The association between the latent class variable and the indicators $T$ is estimated through binary logistic regressions (if the indicators are dichotomous) or, in our case, through multinomial logistic regressions (if the indicators have more than two un-ordered categories) [@vermunt_technical_2016].
 
-An important step of LCA is model selection, that is, choosing the model with the appropriate number of clusters. The criteria chosen to determine the number of clusters in this section is a bootstrap likelihood ratio test, an indicator which, according to @nylund_deciding_2007, is the most suited compared to information criteria (AIC, BIC...). A series of models are thus estimated, increasing the number of clusters with each new model until the bootstrap likelihood ratio test showed no significance of adding a supplementary cluster to the model[^part1-3].
+An important step of LCA is model selection, that is, choosing the model with the appropriate number of clusters. The criteria chosen to determine the number of clusters in this section is a bootstrap likelihood ratio test, an indicator which, according to the simulation tests performed by @nylund_deciding_2007, is the most suited compared to information criteria (AIC, BIC...). A series of models are thus estimated, increasing the number of clusters with each new model until the bootstrap likelihood ratio test showed no significance of adding a supplementary cluster to the model[^part1-3].
 
 [^part1-3]: The models were estimated with the statistical software *LatentGOLD*.
 
@@ -626,9 +633,9 @@ An important step of LCA is model selection, that is, choosing the model with th
 
 For the LCA estimation, the Swiss post-electoral study of 1999 [@hardmeier_befragung_2022] is chosen. The reasons behind this choice are technical, but first and foremost historical since the 90s represent a turning point in Swiss history and the evolution of the Swiss social blocs.
 
-As explained in section 2.1, the Swiss socio-political landscape was structured around two social blocs before the 90s: a dominant liberal-conservative and a subordinate left bloc. These two blocs were able to cooperate in what Pietro Boschetti famously called the Swiss variant of the "historical compromise" between the Swiss left and right-wing parties. On the one hand, the PRD, PDC and Agrarian parties were willing to cooperate with the Swiss Socialist party and develop social security to a certain extent. On the other hand, the Swiss Socialist party abandoned its anti-capitalist stances and became a moderate social-democrat reformist party aimed at promoting the creation of a Swiss welfare state, increase in real wage and promote the public sector and employment protection [@boschetti_conquete_2007]. However, this compromise should not be overestimated, as the liberal-conservative bloc remained largely dominant and corresponded more to a "asymmetrical class compromise" [@kergomard_ni_2022, p.3] between the two blocs.
+As explained in section 2.1, the Swiss socio-political landscape was structured around two social blocs before the 90s: a dominant liberal-conservative and a subordinate left bloc. These two blocs were able to cooperate in what Pietro Boschetti famously called the Swiss variant of the "historical compromise" between the Swiss left and right-wing parties. On the one hand, the PRD, PDC and Agrarian parties were willing to cooperate with the Swiss Socialist party and develop social security to a certain extent. On the other hand, the Swiss Socialist party abandoned its anti-capitalist stances and became a moderate and social-democrat reformist party aimed at promoting the creation of a Swiss welfare state, increase in real wage and promote the public sector and employment protection [@boschetti_conquete_2007]. However, this compromise should not be overestimated, as the liberal-conservative bloc remained largely dominant, this compromise corresponded more to a "asymmetrical class compromise" [@kergomard_ni_2022, p.3] between the two blocs.
 
-Since the break-up of the post-war Keynesian "historical compromise" between the traditional Swiss left and right-wing parties during the so-called "decade of all dangers" of the 90s [@boschetti_conquete_2007], the liberal-conservative and left blocs are undergoing important transformations, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People Party (UDC), one of the most successful far-right populist parties in Europe, and the Greens. The electoral success of the UDC is often associated with the destabilization of the liberal-conservative bloc, which entered a phase of "cacophonic" crisis [@meuwly_liberte_2008] which still persists in the early 2020s.
+Since the break-up of the post-war Keynesian "historical compromise" between the traditional Swiss left and right-wing parties during the so-called "decade of all dangers" of the 90s [@boschetti_conquete_2007], the liberal-conservative and left blocs are undergoing important transformations, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People Party (UDC), one of the most successful far-right populist parties in Europe, and the Greens. The electoral success of the UDC is often associated with the destabilization of the liberal-conservative bloc, which entered during the 90s into a phase of "cacophonic" crisis [@meuwly_liberte_2008] which still persists in the early 2020s.
 
 ```{r party share graph}
 #| warning: false
@@ -667,7 +674,7 @@ In fact, all the Swiss traditional main government parties, the Swiss Socialist 
 
 the crisis of the 90s marked an important turning point in the history and evolution of the Swiss social blocs described in @tbl-socialblocs1. In fact, both the liberal-conservative and left blocs were based on internal compromises between their socio-political groups which shattered under the pressure of structural and external pressures.
 
-The demands of the large exporting industries and sectors producing for the internal market converged in terms of labor market flexibility, low employment protection and weak welfare state, but they differed in terms of commercial and industrial policies. In fact, the dualist structure of the Swiss economy, split between a protected sector producing for the domestic market and a competitive and export-led sector, implied some important contradictory policy demands within the bloc. This internal cleavage was reflected in the structure of the Swiss business interests associations, divided between those (like the *Vorort*) defending the large export-oriented industries and thus asked for liberal, free-trade commercial policies and those defending the farmers and small business owners producing for the internal Swiss market who asked for protection and subsidies. These contradictory demands were temporarily compatible during the post-war period and, as a result, reinforced the dual structure of the Swiss economy which combined a highly liberalized and free-trade exporting sector with a subsidized and highly protected internal sector [@eichenberger_organized_2011].
+The demands of the large export-oriented industries and sectors producing essentially for the internal market converged in terms of labor market flexibility, low employment protection and weak welfare state, but they differed in terms of commercial and industrial policies. In fact, the dualist structure of the Swiss economy, split between a protected sector producing for the domestic market and a competitive and export-led sector, implied some important contradictory policy demands within the bloc. This internal cleavage was reflected in the structure of the Swiss business interests associations, divided between those (like the *Vorort*) defending the large export-oriented industries and thus asked for liberal, free-trade commercial policies and those defending the farmers, medium and small firms, and small business owners producing for the internal Swiss market who asked for protection and subsidies. These contradictory demands were temporarily compatible during the post-war period and, as a result, reinforced the dual structure of the Swiss economy which combined a highly liberalized and free-trade exporting sector with a subsidized and highly protected internal sector [@mach_organized_2011].
 
 However, as globalization, financialization and European integration intensified in the late 20th, the social groups attached to the interests of the internationalized Swiss industries gradually dissociated themselves from the groups attached to the internal sector. This dissociation was made explicit by the publication of a series of "white-books" by political and economic actors defending the interests of the Swiss multinational corporations. These white books advocated a dismantling of the Swiss Hybrid model by promoting a series of neoliberal reforms. The main policy demands of the white books were to increase competition in the international sector by dismantling Swiss cartels, reform the taxation system, reduce employment protection and social security, and privatize the public sector [@mach_redefinition_2007].
 
@@ -689,6 +696,8 @@ The two last questions concern "cultural" issues: attitude towards Swiss traditi
 
 #### Description of the 12 clusters model
 
+A series of models were thus estimated, increasing the number of clusters by one until the bootstrap likelihood ratio test indicated a lack of significance of adding a supplementary cluster to the model. By doing so, the 12 cluster model described below was selected.
+
 ```{r 12 clusters table}
 #| echo: false
 #| warning: false
@@ -708,7 +717,7 @@ clustertable %>%
 include_graphics("C:/Users/celal/OneDrive/Bureau/master-thesis/dataclustertable.png")
 ```
 
-@fig-clusters gives a brief description of each cluster's relative weight, policy preferences and overall socio-economic characteristics. The largest cluster (cluster 1) represents 17.8% of the total sample. This cluster rather supports an increase in social spending by the Confederation and also in taxes on high income, but remains supportive of free markets rather than state intervention. Cluster 1 is, in majority, in favor of European integration, but with an appreciable minority (around 40%) who is against. This cluster support equal rights and chances between Swiss citizen and foreigner, but are attached to traditions. This cluster prefers environment protection over growth and is strongly against nuclear energy.
+@fig-clusters gives a description of each cluster's relative weight, policy preferences and overall socio-economic characteristics. The largest cluster (cluster 1) represents 17.8% of the total sample. This cluster shows ambivalent policy preferences, but can be said to belong to the center-left since it supports an increase in social spending by the Confederation and also in taxes on high income, but remains supportive of free markets rather than state intervention. Cluster 1 is, in majority, in favor of European integration, but with an appreciable minority (around 40%) who is against. This cluster support equal rights and chances between Swiss citizen and foreigner, but is attached to traditions. Finally, it prefers environment protection over growth and is strongly against nuclear energy.
 
 Cluster 2, the second largest group (13,7%) supports increase in social spending, higher taxes on high income and, conversely to cluster 1, supports more state intervention. It is also very much in favor of equal rights and opportunities for foreigners, questioning Swiss traditions, and is also pro-environment and against nuclear energy. Cluster 3 is similar to cluster 1 regarding higher taxes, but has a higher proportion of members in favor of state intervention, and differs in its preference for cutting social spending, for being more in favor of a strong army and is more skeptical about EU integration. It differs from cluster 1 by being also against foreigners' equal rights and chances.
 
@@ -734,11 +743,9 @@ Cluster 1 members are older than average. This cluster has an over-representatio
 
 Cluster 3 is composed of female, low income groups, vocational training and compulsory school graduates.
 
-The wealthiest clusters in terms of income are (in descending order) cluster 10, 9, 8, 2 and 6. Cluster 10 is especially wealthy and well educated, with 33,8% of its member belonging to the highest income group (overall proportion of this income bracket is 16,8%) and a high representation of university and higher vocational training graduates. Cluster 9 is also wealthy is well educated, but less than cluster 10. Clusters 9 and 10 also have strong proportion of male and self-employed.
+The wealthiest clusters in terms of income are (in descending order) cluster 10, 9, 8, 2 and 6. Cluster 10 is especially wealthy and well educated, with 33,8% of its member belonging to the highest income group (overall proportion of this income bracket is 16,8%) and a high representation of university and higher vocational training graduates. Cluster 9 is also wealthy is well educated, but less than cluster 10. Clusters 9 and 10 also have strong proportion of males and self-employed. The poorest clusters are cluster 3, 7, and 12. Farmers and skilled workers and retired people are strongly represented in cluster 7.
 
-The poorest clusters are cluster 7, 12 and 3. Farmers and skilled workers and retired people are strongly represented in cluster 7.
-
-#### Cluster membership and political leaning
+#### Aggregation into social blocs
 
 The political identification of each cluster can be assessed by regressing cluster membership on left-right self-identification recoded into 4 categories; left (0 to 2), center-left (3 and 4), center (5), center-right (6 and 7) and right (8 to 10). To do so, the so-called three-step approach is used: after clusters are defined (step one), each cluster membership posterior probabilities are assigned to every observations (second step). Then, cluster membership can be regressed on a set of independent variables.
 
@@ -754,4 +761,29 @@ step3lr %>%
   gt()
 ```
 
-The results are presented in @tbl-3steplr and can be resumed as follows: clusters 2, 8 and 12 lean to the left; clusters 1, 4 and 6 to the center-left; cluster 10 to the center-right and clusters 3, 5, 7 and 9 to the right.
+The results are presented in @tbl-3steplr and can be resumed as follows: clusters 2, 8 and 12 lean to the left; cluster 4 to the center-left; cluster 10 to the center-right and clusters 3, 5, 7 and 9 to the right.
+
+Cluster 2 constitutes the core of the left bloc: its members have strong left-wing preferences regarding all issue positions, which broadly correspond to the program of the Swiss Socialist party during the 90s. 
+
+Cluster 8 could also easily fit into the left bloc since it only differs from cluster 2 by its less pronounced support for environment protection (although it is still against nuclear energy). The left could also include cluster 12, which has however a dissenting position vis-à-vis EU integration and cultural issues (more conservative). All these three clusters combined, the left bloc constitutes 22.3% of the sample, which approximately corresponds to the party's share of the vote of the Socialist party in the 1999 elections (22.5%). An extended left bloc would include cluster 1 (17,8%) and/or 4 (12,36%), which support social expenditure, taxes on high income and EU integration, but are more in favor of free markets and of defending traditions.
+
+The heart of the bloc bourgeois is constituted by cluster 10 since it is the only cluster being strongly in favor of neoliberal policies, European integration, and which has broad "culturally progressive" preferences while being socially composed by the highest income and educational groups. This cluster is however rather limited in size (4.9%) and isolated from the other right-wing clusters regarding EU integration and cultural preferences. Cluster 9 is the core of the conservative branch within the Liberal-Conservatives: it is in favor of neoliberal policies while being against EU integration and equal rights and chances for foreigners, and strongly for defending traditions. Its preferences are close to clusters 3 and 5 and these three clusters could easily be aggregated into a neoliberal and conservative bloc that would represent 25.7% of the sample. This bloc could also include cluster 7 (7%), which is however more divided over neoliberal policies (it is for instance strongly in favor of increasing taxes on high income).
+
+
+#### Discussion of the results
+
+The results of the LCA analysis using post-election survey data for 1999 shows how the post-war left and liberal-conservative blocs recomposed during the 90s. The left bloc seemed less destabilized than the liberal-conservative bloc. The former, which includes clusters 2 and 8 (19.67%) had two alternative strategies to extend the bloc by including other socio-political groups. One the one hand, it could have tried to include cluster 12, which has left-wing economic policy preferences, but is limited in size (2,6%) and is less in favor of EU integration and more conservative culturally. On the other hand, it could have tried to include more center or center-left groups like clusters 1 and 4, but at the expense of dampening its economic program by being more in favor of free markets to meet their expectations. 
+
+This strategy would have corresponded to a Swiss variant of the "Third Way", incarnated by Tony Blair's Labour Party in the UK and Schröder's SPD in Germany. In the years following the 1999 national elections, this strategy was attempted by certain members of the Socialist Party, most notably by Simonetta Sommaruga, who published in 2001 the *Gurten Manifesto, for a new and progressive SP policy*. This manifesto, co-authored with the political scientist Wolf Linder, the historian Tobias Kaestli and Henri Huber, was a clear call for a Third Way in Switzerland. However, the Third Way was never fully endorsed by the Swiss Socialist Party, at least compared to other countries [@oesch_class_2010, p.347]. The cluster analysis performed here shows why a third way strategy was a dead end for the Swiss left, considering the diversity of socio-political groups' preferences. To attract clusters 1 or 4, the Swiss Socialist Party had to be more conservative not only economically, but also *culturally* since these clusters are in favor of defending Swiss traditions. This strategy would have hence come with the risk for the Socialist Party to lose its fundamental base constituted by cluster 2. The other strategy, attract cluster 12, seemed more feasible, as the left bloc could have attracted this cluster thanks to their proximity in terms of economic issues.
+
+The divisions within the liberal-conservative clusters marked a shift in power balance within the bloc: the core of the bourgeois bloc was very limited (5%) whereas the neoliberal, conservative and anti-EU clusters (3, 5, 10) became a majority within the bloc. This shows that the neoliberal strategy based on the revitalization program and combined with a pro-EU and culturally progressive agenda was not sustainable as its social base was not large enough. This could explain why Switzerland, under the leadership of the UDC, rapidly adopted some forms of conservative neoliberalism.
+
+
+
+
+
+
+
+
+
+
