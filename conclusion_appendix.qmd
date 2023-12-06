@@ -4,13 +4,151 @@ The aim of this study was to explore the social foundations of the transformatio
 
 The crisis of the 90s did not mark a break-up of the Swiss dominant social bloc, but a recomposition and a change in the power balance within the bloc itself. While the crisis did not destabilized the left bloc that much, the right bloc, that I named "liberal-conservative" throughout this work, underwent important process of change.
 
-The social bases of the political parties representing the liberal-conservative bloc, the PRD-PLR, PDC and UDC, changed substantially since the 80s. Unlike @@durrer_de_la_sota_party_2021, who showed that the social base of right-wing government parties stayed rather stable since the 70s, the results presented in the previous section show that, while the UDC's social basis was rather merchant in the 80s, it transformed into a popular base during the 90s. Furthermore, the social basis of the PRD (then PLR) used to be very bourgeois until the 2010s, period after which this social base showed trends towards an evolution into a merchant right. Interestingly, my results are more supportive of the brahmin left vs merchant right divide hypothesis than the WPID's own results for the Swiss case. However, if one looks at political leaning instead of party support, the left appears to be bourgeois in the sense that it is supported by the upper-middle income groups and by university graduates, while right self-identification evolved into a merchant right pattern.
+The social bases of the political parties representing the liberal-conservative bloc, the PRD-PLR, PDC and UDC, changed substantially since the 80s. Unlike @durrer_de_la_sota_party_2021, who showed that the social base of right-wing government parties stayed rather stable since the 70s, the results presented in the previous section show that, while the UDC's social basis was rather merchant in the 80s, it transformed into a popular base during the 90s. Furthermore, the social basis of the PRD (then PLR) used to be very bourgeois until the 2010s, period after which this social base showed trends towards an evolution into a merchant right. Interestingly, my results are more supportive of the brahmin left vs merchant right divide hypothesis than the WPID's own results for the Swiss case. However, if one looks at political leaning instead of party support, the left appears to be bourgeois in the sense that it is supported by the upper-middle income groups and by university graduates, while right self-identification evolved into a merchant right pattern.
 
 Then, an analysis closer to the methods and conceptual framework of the neorealist approach was carried out through a latent class analysis for the late 1990s in order to assess more closely the recomposition of the left and liberal-conservative blocs during the crisis. The LCA results show...
 
 As stated in the introduction, the present work is a first attempt to employ neorealist framework and methodology to study institutional change in Switzerland. The present work suffers from several limitations that could be improve in further studies. First, the time span ranges from 1981 to 2016. Although the time frame can't really go back further than 1981, it could be extended to most recent years. This could be done, for instance, by analyzing the *VOTO* studies (the successor of the *VOX* studies since 2017) which collected post-voting survey data from 2017 to 2020. This analysis of the *VOTO* studies could be complemented, as done in this work, by a latent class analysis using more recent data, for instance the SELECTS 2019 panel study, which offers even better questions than the SELECTS post-election data for 1999 used in the previous section. Overall, more recent data analysis would be a good complement to the present study.
 
-Second, the present work tends to overlook the crucial role of ideology, institutions and structural change. Institutions and structural change should be taken into account to explain, for instance, why social blocs in Switzerland differ from those observed in Italy and France.
+Finally, the present work tends to overlook the crucial role of ideology and political strategies. On the one hand, the different political strategies aimed at promoting a new Swiss socio-economic model, both on the left and the right, deserve to be more carefully explored. On the other hand, ideology, both at the Swiss and international levels, could explain the transformations of these strategies, but also the transformation of the social basis of the different blocs.
 
 
 # Appendix
+
+
+```{r set up}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(irr)
+library(JuliaCall)
+library(JuliaConnectoR)
+library(tidyverse)
+library(haven)
+library(quarto)
+library(sjlabelled)
+library(readr)
+library(readxl)
+library(haven)
+library(viridis)
+library(stargazer)
+library(gtsummary)
+library(gt)
+library(brms)
+library(ggrepel)
+library(cowplot)
+library(ggpubr)
+library(lme4)
+library(prediction)
+library(marginaleffects)
+library(ggeffects)
+library(ordinal)
+library(broom)
+library(knitr)
+library(readr)
+library(gtExtras)
+library(broom.mixed)
+library(GGally)
+library(questionr)
+library(car)
+library(effects)
+library(sjPlot)
+library(margins)
+library(cAIC4)
+library(ordinal)
+library(pacman)
+```
+
+
+
+```{r}
+vox_regression_ps <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_ps.rds")
+vox_regression_plr <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_plr.rds")
+vox_regression_udc <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_udc.rds")
+vox_regression_pdc <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_pdc.rds")
+vox_regression_greens <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_greens.rds")
+vox_regression_noparty <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_noparty.rds")
+
+glmer_ame_issue <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/glmer_ame_issue.rds")
+
+glmer_ame_leaning <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/glmer_ame_leaning.rds")
+
+glmer_ame_party <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/glmer_ame_party.rds")
+
+```
+
+
+```{r}
+
+
+glmer_ame_party %>% 
+  filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
+  filter(party %in% c("ps", "plr", "udc", "pdc", "greens", "No party")) %>% 
+  ggplot()+
+  aes(x = annee_f, y = estimate, color = contrast, shape = contrast, group = party)+
+  geom_point(position = position_dodge(width = 0.3))+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
+  labs(x = "", y = "", caption = "Source: VoxIt")+
+  theme_bw()+
+  scale_y_continuous(labels=scales::percent)+
+  geom_hline(yintercept = 0)+
+  facet_wrap(~party)+
+  theme(legend.position="bottom", legend.box="vertical", legend.margin=margin(),
+        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))+
+  guides(color=guide_legend(nrow=3))
+
+
+glmer_ame_leaning %>% 
+  filter(contrast %in% c("mean(more_9k) - mean(less_3k)", "mean(University) - mean(voc_training)")) %>%
+  filter(leaning %in% c("Right", "Left", "Don't know")) %>% 
+  ggplot()+
+  aes(x = annee_f, y = estimate, color = contrast, shape = contrast, group = leaning)+
+  geom_point(position = position_dodge(width = 0.3))+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
+  labs(x = "", y = "", caption = "Source: VoxIt")+
+  theme_bw()+
+  scale_y_continuous(labels=scales::percent)+
+  geom_hline(yintercept = 0)+
+  facet_wrap(~leaning)+
+  theme(legend.position="bottom", legend.box="vertical", legend.margin=margin(),
+        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))+
+  guides(color=guide_legend(nrow=3))
+
+
+glmer_ame_issue %>% 
+  filter(contrast %in% c("mean(more_9k) - mean(less_3k)", "mean(University) - mean(voc_training)")) %>%
+  filter(issue %in% c("Equal chances CH-foreign", "Redistribution", "State intervention")) %>% 
+  ggplot()+
+  aes(x = annee_f, y = estimate, color = contrast, shape = contrast, group = issue)+
+  geom_point(position = position_dodge(width = 0.3))+
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
+  labs(x = "", y = "", caption = "Source: VoxIt")+
+  theme_bw()+
+  scale_y_continuous(labels=scales::percent)+
+  geom_hline(yintercept = 0)+
+  facet_wrap(~issue)+
+  theme(legend.position="bottom", legend.box="vertical", legend.margin=margin(),
+        axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))+
+  guides(color=guide_legend(nrow=3))
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

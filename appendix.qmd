@@ -780,19 +780,83 @@ glmer_noparty <- glmer(data = vox,
                           family = binomial(link = "probit"),
                           nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
 
+
+glmer_left <- glmer(data = vox2, 
+                          left ~ income + educationf + age_cat + gender + religion + house_ownership + (income + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+
+glmer_right <- glmer(data = vox2, 
+                          right ~ income + educationf + age_cat + gender + religion + house_ownership + (income + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+glmer_center <- glmer(data = vox2, 
+                          center ~ income + educationf + age_cat + gender + religion + house_ownership + (income + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+glmer_redistribution <- glmer(data = vox2, 
+                          redistribution ~ income + educationf + age_cat + gender + religion + house_ownership + (income + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+
+glmer_stateint <- glmer(data = vox2, 
+                          stateint ~ income + educationf + age_cat + gender + religion + house_ownership + (income + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+glmer_equal_rights_chforeign <- glmer(data = vox2, 
+                          equal_rights_chforeign ~ income + educationf + age_cat + gender + religion + house_ownership + (income + educationf | annee_f) + (incomef + educationf | canton),
+                          family = binomial(link = "probit"),
+                          nAGQ = 0, control = glmerControl(calc.derivs = FALSE, optimizer = "nloptwrap"))
+
+saveRDS(ame_issue_glmer, "glmer_ame_issue.rds")
+tab_model(glmer_left, glmer_right)
+
+ame_inc_redistr <- 
+glmer_redistribution %>% 
+  avg_slopes(variables = "income", by = "annee_f")
+
+
+ame_educ_redistr <- 
+glmer_redistribution %>% 
+  avg_slopes(variables = "educationf", by = "annee_f")
+
+ame_redistribution <- rbind(ame_inc_redistr, ame_educ_redistr) %>% mutate(issue = "Redistribution")
+
+
+ame_inc_eq <- 
+glmer_equal_rights_chforeign %>% 
+  avg_slopes(variables = "income", by = "annee_f")
+
+
+ame_educ_eq <- 
+glmer_equal_rights_chforeign %>% 
+  avg_slopes(variables = "educationf", by = "annee_f")
+
+ame_eq <- rbind(ame_inc_eq, ame_educ_eq) %>% mutate(issue = "Equal chances CH-foreign")
+
+
+ame_issue_glmer <- rbind(ame_eq, ame_redistribution, ame_stateint)
+
 tab_model(glmer_udc, glmer_udc2, glmer_udc3,
           transform = NULL, show.aic = TRUE)
 ameps <- 
 glmer_ps %>% 
   avg_slopes()
-r2_nakagawa(glmer_plr, tolerance = 1e-1000)
-icc(glmer_plr, tolerance = 1e-1000)
+r2_nakagawa(vox_regression_greens, tolerance = 1e-1000)
+icc(vox_regression_greens, tolerance = 1e-1000)
 
 library(VGAM)
 library(MASS)
-
-tab_model(glmer_ps)
+library(performance)
+tab_model(vox_regression_ps, vox_regression_greens, vox_regression_plr, vox_regression_pdc)
 Anova(glmer_ps2)
+
+binned_residuals(glmer_center)
 ```
 
 
