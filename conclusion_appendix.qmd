@@ -61,8 +61,220 @@ library(pacman)
 ```
 
 
+```{r import voxit}
+#| echo: false
+#| message: false
+#| warning: false
+
+vox <- read_sav("data/voxit.sav")
+```
+
+```{r create income and educ variable}
+#| warning: false
+#| message: false
+#| echo: false
+
+# Two ways to create the income variable
+vox <- vox %>% 
+  mutate(income = if_else(revenu == 1 & is.na(nivmena), 4,
+                          if_else(revenu == 2 & is.na(nivmena), 3,
+                                  if_else(revenu %in% c(3,4) & is.na(nivmena), 2,
+                                          if_else(revenu == 5 & is.na(nivmena), 1,
+                                                  if_else(is.na(revenu) & annee <= 1993, nivmena, NA))))))
+
+         
+vox$income <- ifelse(vox$income == 4, -1,
+                    ifelse(vox$income == 3, 0,
+                        ifelse(vox$income == 2, 1,
+                          ifelse(vox$income == 1, 2, NA)))) # centering around zero, this will make the intercept more interpretable 
+
+
+# for education, rescale the values so that the lowest level is equal to zero
+vox <- vox %>% 
+  mutate(education = case_when(
+    educ == 1 ~ 0,
+    educ == 2 ~ 1,
+    educ == 3 ~ 2,
+    educ == 4 ~ 3,
+    educ == 5 ~ 4,
+    educ == 6 ~ 5,
+    is.na(educ) ~ NA
+  ),
+  educationf = case_when(
+    educ == 1 ~ "comp_school",
+    educ == 2 ~ "voc_training",
+    educ == 3 ~ "maturity",
+    educ == 4 ~ "higher_voctraining",
+    educ %in% c(5,6) ~ "University",
+    is.na(educ) ~ NA
+  ),
+  educationLevel = case_when(
+    educationf == "comp_school" ~ "primary",
+    educationf %in% c("voc_training", "maturity") ~ "secondary",
+    educationf %in% c("higher_voctraining", "University") ~ "tertiary"
+  ),
+  
+  incomef = case_when(
+    income == -1 ~ "low",
+    income == 0 ~ "middle_low",
+    income == 1 ~ "middle_high",
+    income == 2 ~ "high"
+  ))
+
+vox$educationf <- relevel(factor(vox$educationf), ref = "voc_training")
+vox$educationLevel <- relevel(factor(vox$educationLevel), ref = "primary")
+vox$incomef <- relevel(factor(vox$incomef), ref = "low")
+```
+
+```{r party dummies and other recoding}
+#| warning: false
+#| message: false
+#| echo: false
+
+vox$pss <- ifelse(vox$p02 == 12, 1,
+                  ifelse(is.na(vox$p02), NA, 0))
+
+vox$udc <- ifelse(vox$p02 == 13, 1,
+                  ifelse(is.na(vox$p02), NA, 0))
+
+vox$plr <- ifelse(vox$p02 == 20, 1, ### le parti radical democratique fusionne avec le parti liberal en 2009
+                  ifelse(vox$p02 == 4, 1,
+                  ifelse(is.na(vox$p02), NA, 0)))
+
+vox$green <- ifelse(vox$p02 == 6, 1,
+                  ifelse(is.na(vox$p02), NA, 0))
+
+vox$pdc_pcs <- if_else(vox$p02 %in% c(0, 1, 2), 1,
+                       if_else(is.na(vox$p02), NA, 0))
+
+vox$no_party <- if_else(vox$p02 %in% c(33), 1,
+                       if_else(is.na(vox$p02), 1, 0))
+
+vox$libgreens <- if_else(vox$p02 %in% c(19), 1,
+                       if_else(is.na(vox$p02), NA, 0))
+
+vox$gender <- factor(vox$sexe, levels = c(1, 2), labels = c("male", "female"))
+vox$married <- ifelse(vox$etatciv == 2, 1,
+                      ifelse(is.na(vox$etatciv), NA, 0))
+
+vox$regionL <- as_character(vox$regiling)
+vox$religion <- relevel(factor(as_character(vox$confess)), ref = "Catholique romain")
+
+## recoding age in 4 categories
+
+vox$age_cat <- cut(vox$age, c(13, 30, 45, 65, 99), right = FALSE, include.lowest = TRUE)
+
+vox$annee_cat <- cut(vox$annee, seq(from = 1981, to = 2016, by = 5), right = TRUE, include.lowest = TRUE)
+vox$annee_f <- factor(vox$annee)
+
+vox$canton <- as_character(vox$canton)
+
+
+vox$house_ownership <- if_else(vox$statloge == 1, 1, 0)
+
+### classes sociales dummies selon le secteur du répondant (posprof) ou du chef du menage (s31) sauf pour public
+vox <- 
+  vox %>% 
+  mutate(
+    farmer = if_else(posprof == 1 | s31 == 4, 1, 0), 
+    self_employed = if_else(posprof == 2 | s31 == 1, 1, 0),
+    ouvrier = if_else(posprof == 7 | s31 == 5, 1, 0),
+    public = if_else(posprof == 6, 1, 0),
+    atheist = if_else(confess == 4, 1, 0),
+    protestant = if_else(confess == 1, 1, 0),
+    catholic = if_else(confess %in% c(2, 5), 1, 0),
+    lr = as.ordered(p04),
+    
+    left = if_else(p04 %in% c(0,1,2,3,4), 1,
+                   if_else(is.na(p04), NA, 0)),
+    center = if_else(p04 %in% c(5), 1,
+                   if_else(is.na(p04), NA, 0)),
+    right = if_else(p04 %in% c(6,7,8,9,10), 1,
+                   if_else(is.na(p04), NA, 0)),
+    stateint = if_else(val11 %in% c(1,2,3), 1,
+                       if_else(is.na(val11), NA, 0)),
+    redistribution = if_else(val5 %in% c(5,6,7), 1,
+                       if_else(is.na(val5), NA, 0)),
+    equal_rights_chforeign = if_else(val9 %in% c(1,2,3), 1,
+                       if_else(is.na(val9), NA, 0))
+    
+  )
+
+vox1 <- 
+  vox %>% 
+  filter(annee <= 1992) %>% 
+  mutate(
+    nivmenaf = factor(as_character(nivmena)),
+    annee_cat = case_when(
+      annee %in% c(1981:1985) ~ "[1981,1985]",
+      annee %in% c(1986:1989) ~ "[1986,1989]",
+      annee %in% c(1990:1992) ~ "[1990,1992]"
+    )
+  )
+
+vox2 <- 
+  vox %>% 
+  filter(annee >= 1992) %>% 
+  mutate(
+    revenuf = factor(as_character(revenu)),
+    income = case_when(
+      revenu == 1 ~ "less_3k",
+      revenu == 2 ~ "[3k,5k]",
+      revenu == 3 ~ "[5k,7k]",
+      revenu == 4 ~ "[7k,9k]",
+      revenu == 5 ~ "more_9k"
+      
+    )
+  )
+
+
+vox2$income <- relevel(factor(vox2$income), ref = "less_3k")
+
+vox2$annee_cat <- cut(vox2$annee, seq(from = 1992, to = 2016, by = 4), right = FALSE, include.lowest = TRUE)
+
+```
 
 ```{r}
+#| message: false
+#| echo: false
+#| warning: false
+
+reg_ps <- glm(data = vox, pss ~incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+reg_plr <- glm(data = vox, plr ~incomef*educationf+ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_pdc <- glm(data = vox, pdc_pcs ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+reg_udc <- glm(data = vox, udc ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_greens <- glm(data = vox, green ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_abstention <- glm(data = vox, no_party ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+###### political leaning regression
+
+vox2$redistribution <- relevel(factor(vox2$educationf), ref = "voc_training")
+
+reg_left <- glm(data = vox2, 
+                left ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_center <- glm(data = vox2, 
+                center ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_right <- glm(data = vox2, 
+                right ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+#########3 issue position regression
+reg_state <- glm(data = vox2, 
+                stateint ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_redistr <- glm(data = vox2, 
+                redistribution ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+reg_equal_rights_chforeign <- glm(data = vox2, 
+               equal_rights_chforeign  ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+
 vox_regression_ps <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_ps.rds")
 vox_regression_plr <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_plr.rds")
 vox_regression_udc <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_udc.rds")
@@ -78,9 +290,20 @@ glmer_ame_party <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/am
 
 ```
 
+```{r stargazer parties}
+#| warning: false
+#| message: false
+#| echo: false
+
+stargazer(reg_ps, reg_greens, reg_pdc, reg_plr, reg_udc, reg_abstention, type = "latex")
+
+```
+
 
 ```{r}
-
+#| message: false
+#| echo: false
+#| warning: false
 
 glmer_ame_party %>% 
   filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
@@ -133,9 +356,6 @@ glmer_ame_issue %>%
   guides(color=guide_legend(nrow=3))
 
 ```
-
-
-
 
 
 

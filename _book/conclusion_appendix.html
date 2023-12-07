@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -172,14 +191,297 @@ ul.task-list li input[type="checkbox"] {
 
 <p>The aim of this study was to explore the social foundations of the transformation of Swiss capitalism since the 1980s. The rationale was to show that the neoliberal transformation of the Swiss hybrid model had to be founded on a strategy of institutional change supported by a sufficiently broad social base.</p>
 <p>The crisis of the 90s did not mark a break-up of the Swiss dominant social bloc, but a recomposition and a change in the power balance within the bloc itself. While the crisis did not destabilized the left bloc that much, the right bloc, that I named “liberal-conservative” throughout this work, underwent important process of change.</p>
-<p>The social bases of the political parties representing the liberal-conservative bloc, the PRD-PLR, PDC and UDC, changed substantially since the 80s. Unlike <span class="citation" data-cites="durrer_party_2021">(<a href="references.html#ref-durrer_party_2021" role="doc-biblioref"><strong>durrer_party_2021?</strong></a>)</span>, who showed that the social base of right-wing government parties stayed rather stable since the 70s, the results presented in the previous section show that, while the UDC’s social basis was rather merchant in the 80s, it transformed into a popular base during the 90s. Furthermore, the social basis of the PRD (then PLR) used to be very bourgeois until the 2010s, period after which this social base showed trends towards an evolution into a merchant right. Interestingly, my results are more supportive of the brahmin left vs merchant right divide hypothesis than the WPID’s own results for the Swiss case. However, if one looks at political leaning instead of party support, the left appears to be bourgeois in the sense that it is supported by the upper-middle income groups and by university graduates, while right self-identification evolved into a merchant right pattern.</p>
+<p>The social bases of the political parties representing the liberal-conservative bloc, the PRD-PLR, PDC and UDC, changed substantially since the 80s. Unlike <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span>, who showed that the social base of right-wing government parties stayed rather stable since the 70s, the results presented in the previous section show that, while the UDC’s social basis was rather merchant in the 80s, it transformed into a popular base during the 90s. Furthermore, the social basis of the PRD (then PLR) used to be very bourgeois until the 2010s, period after which this social base showed trends towards an evolution into a merchant right. Interestingly, my results are more supportive of the brahmin left vs merchant right divide hypothesis than the WPID’s own results for the Swiss case. However, if one looks at political leaning instead of party support, the left appears to be bourgeois in the sense that it is supported by the upper-middle income groups and by university graduates, while right self-identification evolved into a merchant right pattern.</p>
 <p>Then, an analysis closer to the methods and conceptual framework of the neorealist approach was carried out through a latent class analysis for the late 1990s in order to assess more closely the recomposition of the left and liberal-conservative blocs during the crisis. The LCA results show…</p>
 <p>As stated in the introduction, the present work is a first attempt to employ neorealist framework and methodology to study institutional change in Switzerland. The present work suffers from several limitations that could be improve in further studies. First, the time span ranges from 1981 to 2016. Although the time frame can’t really go back further than 1981, it could be extended to most recent years. This could be done, for instance, by analyzing the <em>VOTO</em> studies (the successor of the <em>VOX</em> studies since 2017) which collected post-voting survey data from 2017 to 2020. This analysis of the <em>VOTO</em> studies could be complemented, as done in this work, by a latent class analysis using more recent data, for instance the SELECTS 2019 panel study, which offers even better questions than the SELECTS post-election data for 1999 used in the previous section. Overall, more recent data analysis would be a good complement to the present study.</p>
-<p>Second, the present work tends to overlook the crucial role of ideology, institutions and structural change. Institutions and structural change should be taken into account to explain, for instance, why social blocs in Switzerland differ from those observed in Italy and France.</p>
+<p>Finally, the present work tends to overlook the crucial role of ideology and political strategies. On the one hand, the different political strategies aimed at promoting a new Swiss socio-economic model, both on the left and the right, deserve to be more carefully explored. On the other hand, ideology, both at the Swiss and international levels, could explain the transformations of these strategies, but also the transformation of the social basis of the different blocs.</p>
 <section id="appendix" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Appendix</h1>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+% Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at gmail.com
+% Date and time: jeu., déc. 07, 2023 - 10:30:13
+\begin{table}[!htbp] \centering 
+  \caption{} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lcccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ &amp; \multicolumn{6}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-7} 
+\\[-1.8ex] &amp; pss &amp; green &amp; pdc\_pcs &amp; plr &amp; udc &amp; no\_party \\ 
+\\[-1.8ex] &amp; (1) &amp; (2) &amp; (3) &amp; (4) &amp; (5) &amp; (6)\\ 
+\hline \\[-1.8ex] 
+ incomefhigh &amp; $-$1.054$^{***}$ &amp; $-$1.407$^{**}$ &amp; 0.267 &amp; 1.262$^{***}$ &amp; $-$0.008 &amp; $-$0.251$^{**}$ \\ 
+  &amp; (0.181) &amp; (0.568) &amp; (0.179) &amp; (0.165) &amp; (0.209) &amp; (0.104) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_high &amp; $-$0.309$^{***}$ &amp; $-$0.555$^{*}$ &amp; 0.068 &amp; 0.969$^{***}$ &amp; $-$0.033 &amp; $-$0.289$^{***}$ \\ 
+  &amp; (0.113) &amp; (0.313) &amp; (0.143) &amp; (0.142) &amp; (0.165) &amp; (0.077) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_low &amp; $-$0.012 &amp; $-$0.361 &amp; 0.005 &amp; 0.382$^{***}$ &amp; 0.023 &amp; $-$0.082 \\ 
+  &amp; (0.102) &amp; (0.278) &amp; (0.133) &amp; (0.139) &amp; (0.153) &amp; (0.070) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfcomp\_school &amp; $-$0.083 &amp; $-$1.244$^{***}$ &amp; 0.034 &amp; 0.129 &amp; 0.012 &amp; 0.202$^{***}$ \\ 
+  &amp; (0.103) &amp; (0.367) &amp; (0.124) &amp; (0.130) &amp; (0.135) &amp; (0.068) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfhigher\_voctraining &amp; 0.507$^{***}$ &amp; 0.249 &amp; $-$0.344 &amp; 0.301 &amp; $-$0.672$^{***}$ &amp; $-$0.412$^{***}$ \\ 
+  &amp; (0.137) &amp; (0.335) &amp; (0.211) &amp; (0.189) &amp; (0.212) &amp; (0.102) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfmaturity &amp; $-$0.345 &amp; 1.296$^{***}$ &amp; $-$0.420 &amp; 0.442$^{*}$ &amp; $-$1.473$^{***}$ &amp; $-$0.629$^{***}$ \\ 
+  &amp; (0.228) &amp; (0.398) &amp; (0.312) &amp; (0.241) &amp; (0.461) &amp; (0.163) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfUniversity &amp; $-$0.156 &amp; 1.302$^{***}$ &amp; $-$0.306 &amp; $-$0.014 &amp; $-$1.505$^{**}$ &amp; $-$0.651$^{***}$ \\ 
+  &amp; (0.261) &amp; (0.406) &amp; (0.333) &amp; (0.287) &amp; (0.607) &amp; (0.188) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ annee\_cat(1986,1991] &amp; $-$0.919$^{***}$ &amp; 0.327 &amp; $-$0.619$^{***}$ &amp; $-$0.698$^{***}$ &amp; $-$0.670$^{***}$ &amp; 0.287$^{***}$ \\ 
+  &amp; (0.137) &amp; (0.309) &amp; (0.171) &amp; (0.187) &amp; (0.228) &amp; (0.092) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ annee\_cat(1991,1996] &amp; $-$0.601$^{***}$ &amp; 0.211 &amp; $-$0.737$^{***}$ &amp; $-$0.417$^{***}$ &amp; $-$0.064 &amp; 0.119 \\ 
+  &amp; (0.120) &amp; (0.295) &amp; (0.159) &amp; (0.161) &amp; (0.182) &amp; (0.083) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ annee\_cat(1996,2001] &amp; $-$0.940$^{***}$ &amp; $-$1.191$^{***}$ &amp; $-$0.970$^{***}$ &amp; $-$0.668$^{***}$ &amp; 0.171 &amp; 0.248$^{***}$ \\ 
+  &amp; (0.124) &amp; (0.372) &amp; (0.160) &amp; (0.165) &amp; (0.172) &amp; (0.082) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ annee\_cat(2001,2006] &amp; $-$0.667$^{***}$ &amp; $-$0.295 &amp; $-$1.039$^{***}$ &amp; $-$0.575$^{***}$ &amp; 0.965$^{***}$ &amp; $-$0.118 \\ 
+  &amp; (0.118) &amp; (0.305) &amp; (0.164) &amp; (0.164) &amp; (0.161) &amp; (0.082) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ annee\_cat(2006,2011] &amp; $-$0.751$^{***}$ &amp; 0.148 &amp; $-$0.597$^{***}$ &amp; $-$0.316$^{*}$ &amp; 0.947$^{***}$ &amp; $-$0.237$^{**}$ \\ 
+  &amp; (0.143) &amp; (0.319) &amp; (0.188) &amp; (0.189) &amp; (0.185) &amp; (0.101) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ annee\_cat(2011,2016] &amp; $-$0.645$^{***}$ &amp; $-$0.169 &amp; $-$1.132$^{***}$ &amp; $-$0.281 &amp; 1.267$^{***}$ &amp; $-$0.355$^{***}$ \\ 
+  &amp; (0.143) &amp; (0.350) &amp; (0.200) &amp; (0.185) &amp; (0.183) &amp; (0.103) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ genderfemale &amp; 0.124$^{***}$ &amp; 0.382$^{***}$ &amp; $-$0.149$^{***}$ &amp; $-$0.242$^{***}$ &amp; $-$0.550$^{***}$ &amp; 0.259$^{***}$ \\ 
+  &amp; (0.021) &amp; (0.045) &amp; (0.030) &amp; (0.025) &amp; (0.027) &amp; (0.016) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ age\_cat[30,45) &amp; 0.227$^{***}$ &amp; 0.132$^{**}$ &amp; 0.166$^{***}$ &amp; 0.044 &amp; 0.126$^{***}$ &amp; $-$0.305$^{***}$ \\ 
+  &amp; (0.035) &amp; (0.067) &amp; (0.054) &amp; (0.044) &amp; (0.048) &amp; (0.025) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ age\_cat[45,65) &amp; 0.278$^{***}$ &amp; $-$0.110 &amp; 0.321$^{***}$ &amp; 0.123$^{***}$ &amp; 0.201$^{***}$ &amp; $-$0.452$^{***}$ \\ 
+  &amp; (0.036) &amp; (0.071) &amp; (0.054) &amp; (0.044) &amp; (0.048) &amp; (0.026) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ age\_cat[65,99] &amp; 0.173$^{***}$ &amp; $-$0.672$^{***}$ &amp; 0.726$^{***}$ &amp; 0.539$^{***}$ &amp; 0.128$^{**}$ &amp; $-$0.640$^{***}$ \\ 
+  &amp; (0.039) &amp; (0.090) &amp; (0.056) &amp; (0.046) &amp; (0.051) &amp; (0.028) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ religionAthée &amp; 0.461$^{***}$ &amp; 0.791$^{***}$ &amp; $-$1.906$^{***}$ &amp; $-$0.299$^{***}$ &amp; 0.034 &amp; 0.074$^{***}$ \\ 
+  &amp; (0.033) &amp; (0.062) &amp; (0.077) &amp; (0.047) &amp; (0.048) &amp; (0.027) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ religionAutre &amp; 0.293$^{***}$ &amp; 0.204 &amp; $-$1.604$^{***}$ &amp; $-$0.452$^{***}$ &amp; 0.155$^{*}$ &amp; 0.140$^{***}$ \\ 
+  &amp; (0.060) &amp; (0.130) &amp; (0.124) &amp; (0.092) &amp; (0.083) &amp; (0.046) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ religionCatholique chrétien &amp; 0.035 &amp; $-$0.034 &amp; $-$0.329$^{***}$ &amp; $-$0.060 &amp; 0.213$^{**}$ &amp; 0.189$^{***}$ \\ 
+  &amp; (0.076) &amp; (0.178) &amp; (0.091) &amp; (0.086) &amp; (0.091) &amp; (0.057) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ religionProtestant &amp; 0.267$^{***}$ &amp; 0.186$^{***}$ &amp; $-$1.978$^{***}$ &amp; 0.269$^{***}$ &amp; 0.487$^{***}$ &amp; 0.001 \\ 
+  &amp; (0.024) &amp; (0.053) &amp; (0.039) &amp; (0.027) &amp; (0.029) &amp; (0.017) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ regionLSuisse italienne &amp; $-$0.110$^{**}$ &amp; $-$0.710$^{***}$ &amp; $-$0.205$^{***}$ &amp; 0.598$^{***}$ &amp; $-$0.779$^{***}$ &amp; $-$0.007 \\ 
+  &amp; (0.048) &amp; (0.128) &amp; (0.054) &amp; (0.047) &amp; (0.062) &amp; (0.034) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ regionLSuisse romande &amp; 0.177$^{***}$ &amp; 0.057 &amp; $-$0.325$^{***}$ &amp; $-$0.146$^{***}$ &amp; $-$1.225$^{***}$ &amp; 0.314$^{***}$ \\ 
+  &amp; (0.024) &amp; (0.051) &amp; (0.036) &amp; (0.031) &amp; (0.042) &amp; (0.018) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ married &amp; $-$0.015 &amp; $-$0.217$^{***}$ &amp; 0.154$^{***}$ &amp; 0.035 &amp; 0.205$^{***}$ &amp; $-$0.082$^{***}$ \\ 
+  &amp; (0.024) &amp; (0.051) &amp; (0.035) &amp; (0.029) &amp; (0.032) &amp; (0.018) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ house\_ownership &amp; $-$0.311$^{***}$ &amp; $-$0.173$^{***}$ &amp; 0.422$^{***}$ &amp; 0.248$^{***}$ &amp; 0.415$^{***}$ &amp; $-$0.182$^{***}$ \\ 
+  &amp; (0.023) &amp; (0.050) &amp; (0.031) &amp; (0.026) &amp; (0.028) &amp; (0.017) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefhigh:educationfcomp\_school &amp; 0.054 &amp; 0.754$^{*}$ &amp; $-$0.173 &amp; $-$0.324$^{*}$ &amp; 0.113 &amp; 0.209$^{*}$ \\ 
+  &amp; (0.213) &amp; (0.426) &amp; (0.220) &amp; (0.196) &amp; (0.199) &amp; (0.118) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_high:educationfcomp\_school &amp; 0.089 &amp; 0.478$^{*}$ &amp; 0.001 &amp; $-$0.276$^{**}$ &amp; 0.224$^{*}$ &amp; $-$0.094 \\ 
+  &amp; (0.106) &amp; (0.271) &amp; (0.123) &amp; (0.130) &amp; (0.120) &amp; (0.068) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_low:educationfcomp\_school &amp; 0.092 &amp; 0.274 &amp; 0.009 &amp; $-$0.190 &amp; 0.083 &amp; $-$0.069 \\ 
+  &amp; (0.093) &amp; (0.246) &amp; (0.110) &amp; (0.120) &amp; (0.109) &amp; (0.059) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefhigh:educationfhigher\_voctraining &amp; $-$0.245 &amp; $-$0.059 &amp; 0.161 &amp; 0.298 &amp; 0.080 &amp; 0.107 \\ 
+  &amp; (0.156) &amp; (0.332) &amp; (0.224) &amp; (0.193) &amp; (0.190) &amp; (0.114) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_high:educationfhigher\_voctraining &amp; $-$0.096 &amp; $-$0.254 &amp; 0.029 &amp; 0.063 &amp; 0.067 &amp; 0.260$^{***}$ \\ 
+  &amp; (0.125) &amp; (0.271) &amp; (0.195) &amp; (0.180) &amp; (0.166) &amp; (0.095) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_low:educationfhigher\_voctraining &amp; $-$0.148 &amp; $-$0.029 &amp; 0.124 &amp; 0.140 &amp; 0.203 &amp; 0.132 \\ 
+  &amp; (0.132) &amp; (0.277) &amp; (0.206) &amp; (0.190) &amp; (0.177) &amp; (0.099) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefhigh:educationfmaturity &amp; 0.090 &amp; $-$0.342 &amp; 0.037 &amp; $-$0.151 &amp; $-$0.331 &amp; 0.307$^{**}$ \\ 
+  &amp; (0.155) &amp; (0.294) &amp; (0.247) &amp; (0.193) &amp; (0.240) &amp; (0.120) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_high:educationfmaturity &amp; $-$0.066 &amp; $-$0.242 &amp; 0.119 &amp; $-$0.248 &amp; 0.173 &amp; 0.222$^{**}$ \\ 
+  &amp; (0.132) &amp; (0.234) &amp; (0.215) &amp; (0.181) &amp; (0.210) &amp; (0.104) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_low:educationfmaturity &amp; $-$0.014 &amp; $-$0.443$^{*}$ &amp; 0.094 &amp; $-$0.113 &amp; 0.128 &amp; 0.166 \\ 
+  &amp; (0.137) &amp; (0.245) &amp; (0.225) &amp; (0.191) &amp; (0.224) &amp; (0.108) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefhigh:educationfUniversity &amp; $-$0.047 &amp; $-$0.164 &amp; 0.341$^{*}$ &amp; $-$0.072 &amp; $-$0.246 &amp; 0.219$^{**}$ \\ 
+  &amp; (0.118) &amp; (0.239) &amp; (0.199) &amp; (0.153) &amp; (0.174) &amp; (0.093) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_high:educationfUniversity &amp; $-$0.170 &amp; 0.021 &amp; 0.210 &amp; $-$0.250$^{*}$ &amp; 0.017 &amp; 0.265$^{***}$ \\ 
+  &amp; (0.104) &amp; (0.199) &amp; (0.185) &amp; (0.146) &amp; (0.163) &amp; (0.084) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_low:educationfUniversity &amp; $-$0.009 &amp; 0.074 &amp; 0.053 &amp; $-$0.175 &amp; 0.031 &amp; 0.091 \\ 
+  &amp; (0.112) &amp; (0.210) &amp; (0.206) &amp; (0.161) &amp; (0.182) &amp; (0.093) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefhigh:annee\_cat(1986,1991] &amp; 0.437$^{*}$ &amp; 0.744 &amp; $-$0.351 &amp; 0.019 &amp; 0.684$^{**}$ &amp; $-$0.058 \\ 
+  &amp; (0.249) &amp; (0.645) &amp; (0.250) &amp; (0.228) &amp; (0.305) &amp; (0.143) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_high:annee\_cat(1986,1991] &amp; 0.228 &amp; 0.483 &amp; $-$0.037 &amp; 0.161 &amp; 0.407 &amp; $-$0.105 \\ 
+  &amp; (0.156) &amp; (0.360) &amp; (0.191) &amp; (0.196) &amp; (0.250) &amp; (0.105) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_low:annee\_cat(1986,1991] &amp; 0.104 &amp; 0.361 &amp; $-$0.053 &amp; 0.075 &amp; $-$0.004 &amp; 0.005 \\ 
+  &amp; (0.139) &amp; (0.323) &amp; (0.175) &amp; (0.191) &amp; (0.237) &amp; (0.095) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefhigh:annee\_cat(1991,1996] &amp; 0.901$^{***}$ &amp; 0.898 &amp; $-$0.234 &amp; $-$0.128 &amp; $-$0.158 &amp; $-$0.204 \\ 
+  &amp; (0.208) &amp; (0.604) &amp; (0.231) &amp; (0.199) &amp; (0.265) &amp; (0.130) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_high:annee\_cat(1991,1996] &amp; 0.262$^{*}$ &amp; 0.350 &amp; 0.008 &amp; $-$0.352$^{**}$ &amp; $-$0.233 &amp; 0.102 \\ 
+  &amp; (0.136) &amp; (0.343) &amp; (0.176) &amp; (0.171) &amp; (0.205) &amp; (0.094) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_low:annee\_cat(1991,1996] &amp; $-$0.165 &amp; 0.264 &amp; $-$0.046 &amp; $-$0.034 &amp; $-$0.154 &amp; 0.111 \\ 
+  &amp; (0.126) &amp; (0.311) &amp; (0.165) &amp; (0.168) &amp; (0.193) &amp; (0.087) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefhigh:annee\_cat(1996,2001] &amp; 1.206$^{***}$ &amp; 1.404$^{**}$ &amp; $-$0.462$^{**}$ &amp; $-$0.390$^{*}$ &amp; $-$0.155 &amp; $-$0.064 \\ 
+  &amp; (0.205) &amp; (0.651) &amp; (0.228) &amp; (0.202) &amp; (0.245) &amp; (0.124) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_high:annee\_cat(1996,2001] &amp; 0.492$^{***}$ &amp; 0.803$^{**}$ &amp; $-$0.093 &amp; $-$0.636$^{***}$ &amp; $-$0.171 &amp; 0.173$^{*}$ \\ 
+  &amp; (0.137) &amp; (0.409) &amp; (0.174) &amp; (0.175) &amp; (0.191) &amp; (0.092) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_low:annee\_cat(1996,2001] &amp; 0.038 &amp; 0.817$^{**}$ &amp; $-$0.195 &amp; $-$0.268 &amp; $-$0.076 &amp; 0.101 \\ 
+  &amp; (0.130) &amp; (0.390) &amp; (0.168) &amp; (0.174) &amp; (0.181) &amp; (0.086) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefhigh:annee\_cat(2001,2006] &amp; 1.099$^{***}$ &amp; 1.429$^{**}$ &amp; $-$0.434$^{*}$ &amp; $-$0.498$^{**}$ &amp; $-$0.332 &amp; 0.031 \\ 
+  &amp; (0.197) &amp; (0.589) &amp; (0.224) &amp; (0.196) &amp; (0.228) &amp; (0.121) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_high:annee\_cat(2001,2006] &amp; 0.534$^{***}$ &amp; 0.565 &amp; $-$0.126 &amp; $-$0.581$^{***}$ &amp; $-$0.419$^{**}$ &amp; 0.191$^{**}$ \\ 
+  &amp; (0.131) &amp; (0.347) &amp; (0.179) &amp; (0.173) &amp; (0.179) &amp; (0.092) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_low:annee\_cat(2001,2006] &amp; 0.114 &amp; 0.430 &amp; $-$0.042 &amp; $-$0.294$^{*}$ &amp; $-$0.317$^{*}$ &amp; 0.074 \\ 
+  &amp; (0.124) &amp; (0.322) &amp; (0.172) &amp; (0.173) &amp; (0.169) &amp; (0.086) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefhigh:annee\_cat(2006,2011] &amp; 0.936$^{***}$ &amp; 1.355$^{**}$ &amp; $-$0.485$^{**}$ &amp; $-$0.337 &amp; $-$0.368 &amp; $-$0.228$^{*}$ \\ 
+  &amp; (0.214) &amp; (0.592) &amp; (0.241) &amp; (0.218) &amp; (0.248) &amp; (0.136) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_high:annee\_cat(2006,2011] &amp; 0.426$^{***}$ &amp; 0.485 &amp; $-$0.266 &amp; $-$0.312 &amp; $-$0.110 &amp; $-$0.172 \\ 
+  &amp; (0.154) &amp; (0.356) &amp; (0.201) &amp; (0.197) &amp; (0.202) &amp; (0.110) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_low:annee\_cat(2006,2011] &amp; 0.172 &amp; 0.246 &amp; $-$0.330 &amp; $-$0.181 &amp; $-$0.107 &amp; $-$0.022 \\ 
+  &amp; (0.154) &amp; (0.340) &amp; (0.204) &amp; (0.204) &amp; (0.199) &amp; (0.109) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefhigh:annee\_cat(2011,2016] &amp; 1.100$^{***}$ &amp; 1.305$^{**}$ &amp; $-$0.105 &amp; $-$0.325 &amp; $-$0.640$^{***}$ &amp; $-$0.264$^{*}$ \\ 
+  &amp; (0.212) &amp; (0.609) &amp; (0.248) &amp; (0.213) &amp; (0.245) &amp; (0.136) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_high:annee\_cat(2011,2016] &amp; 0.715$^{***}$ &amp; 0.397 &amp; 0.400$^{*}$ &amp; $-$0.225 &amp; $-$0.284 &amp; $-$0.462$^{***}$ \\ 
+  &amp; (0.153) &amp; (0.381) &amp; (0.211) &amp; (0.191) &amp; (0.199) &amp; (0.111) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ incomefmiddle\_low:annee\_cat(2011,2016] &amp; 0.200 &amp; 0.193 &amp; 0.379$^{*}$ &amp; $-$0.078 &amp; $-$0.264 &amp; $-$0.197$^{*}$ \\ 
+  &amp; (0.152) &amp; (0.370) &amp; (0.210) &amp; (0.196) &amp; (0.194) &amp; (0.110) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfcomp\_school:annee\_cat(1986,1991] &amp; 0.145 &amp; 0.657$^{*}$ &amp; 0.120 &amp; 0.025 &amp; $-$0.155 &amp; $-$0.137$^{*}$ \\ 
+  &amp; (0.115) &amp; (0.365) &amp; (0.131) &amp; (0.134) &amp; (0.168) &amp; (0.076) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfhigher\_voctraining:annee\_cat(1986,1991] &amp; 0.011 &amp; 0.362 &amp; 0.339 &amp; 0.075 &amp; $-$0.366 &amp; $-$0.275$^{*}$ \\ 
+  &amp; (0.211) &amp; (0.393) &amp; (0.284) &amp; (0.213) &amp; (0.448) &amp; (0.152) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfmaturity:annee\_cat(1986,1991] &amp; 0.772$^{***}$ &amp; $-$0.704$^{*}$ &amp; 0.633$^{**}$ &amp; $-$0.091 &amp; 0.920$^{**}$ &amp; $-$0.018 \\ 
+  &amp; (0.222) &amp; (0.391) &amp; (0.273) &amp; (0.205) &amp; (0.450) &amp; (0.152) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfUniversity:annee\_cat(1986,1991] &amp; 0.869$^{***}$ &amp; $-$0.757$^{*}$ &amp; $-$0.072 &amp; 0.459 &amp; 0.343 &amp; $-$0.118 \\ 
+  &amp; (0.272) &amp; (0.418) &amp; (0.343) &amp; (0.286) &amp; (0.653) &amp; (0.194) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfcomp\_school:annee\_cat(1991,1996] &amp; $-$0.114 &amp; 0.849$^{**}$ &amp; 0.146 &amp; $-$0.127 &amp; $-$0.277$^{*}$ &amp; 0.002 \\ 
+  &amp; (0.114) &amp; (0.368) &amp; (0.133) &amp; (0.134) &amp; (0.159) &amp; (0.074) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfhigher\_voctraining:annee\_cat(1991,1996] &amp; $-$0.175 &amp; 0.299 &amp; 0.056 &amp; $-$0.209 &amp; 0.769$^{***}$ &amp; $-$0.097 \\ 
+  &amp; (0.139) &amp; (0.330) &amp; (0.199) &amp; (0.148) &amp; (0.202) &amp; (0.099) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfmaturity:annee\_cat(1991,1996] &amp; 0.919$^{***}$ &amp; $-$0.296 &amp; 0.371 &amp; $-$0.077 &amp; 0.799$^{*}$ &amp; $-$0.039 \\ 
+  &amp; (0.216) &amp; (0.386) &amp; (0.277) &amp; (0.203) &amp; (0.449) &amp; (0.152) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfUniversity:annee\_cat(1991,1996] &amp; 0.817$^{***}$ &amp; $-$0.594 &amp; 0.017 &amp; 0.647$^{**}$ &amp; 0.623 &amp; 0.002 \\ 
+  &amp; (0.260) &amp; (0.406) &amp; (0.318) &amp; (0.271) &amp; (0.612) &amp; (0.185) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfcomp\_school:annee\_cat(1996,2001] &amp; $-$0.390$^{***}$ &amp; 0.217 &amp; 0.036 &amp; $-$0.218 &amp; $-$0.189 &amp; 0.136$^{*}$ \\ 
+  &amp; (0.124) &amp; (0.494) &amp; (0.141) &amp; (0.151) &amp; (0.146) &amp; (0.075) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfhigher\_voctraining:annee\_cat(1996,2001] &amp; $-$0.021 &amp; 0.474 &amp; 0.453$^{***}$ &amp; $-$0.180 &amp; 0.400$^{**}$ &amp; $-$0.179$^{**}$ \\ 
+  &amp; (0.125) &amp; (0.359) &amp; (0.175) &amp; (0.145) &amp; (0.189) &amp; (0.089) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfmaturity:annee\_cat(1996,2001] &amp; 0.985$^{***}$ &amp; $-$0.242 &amp; 0.191 &amp; $-$0.230 &amp; 0.787$^{*}$ &amp; 0.083 \\ 
+  &amp; (0.220) &amp; (0.433) &amp; (0.297) &amp; (0.226) &amp; (0.454) &amp; (0.155) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfUniversity:annee\_cat(1996,2001] &amp; 0.782$^{***}$ &amp; $-$0.302 &amp; 0.216 &amp; 0.783$^{***}$ &amp; 0.957 &amp; $-$0.148 \\ 
+  &amp; (0.257) &amp; (0.420) &amp; (0.310) &amp; (0.269) &amp; (0.599) &amp; (0.182) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfcomp\_school:annee\_cat(2001,2006] &amp; $-$0.322$^{***}$ &amp; 0.727$^{*}$ &amp; $-$0.093 &amp; $-$0.391$^{**}$ &amp; $-$0.031 &amp; 0.179$^{**}$ \\ 
+  &amp; (0.116) &amp; (0.393) &amp; (0.147) &amp; (0.156) &amp; (0.134) &amp; (0.075) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfhigher\_voctraining:annee\_cat(2001,2006] &amp; $-$0.037 &amp; 0.319 &amp; 0.280 &amp; $-$0.109 &amp; 0.341$^{*}$ &amp; $-$0.100 \\ 
+  &amp; (0.119) &amp; (0.325) &amp; (0.177) &amp; (0.137) &amp; (0.178) &amp; (0.089) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfmaturity:annee\_cat(2001,2006] &amp; 1.012$^{***}$ &amp; $-$0.246 &amp; 0.276 &amp; 0.196 &amp; 0.601 &amp; $-$0.023 \\ 
+  &amp; (0.215) &amp; (0.395) &amp; (0.291) &amp; (0.207) &amp; (0.441) &amp; (0.153) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfUniversity:annee\_cat(2001,2006] &amp; 0.884$^{***}$ &amp; $-$0.189 &amp; 0.184 &amp; 0.691$^{***}$ &amp; 0.788 &amp; $-$0.110 \\ 
+  &amp; (0.254) &amp; (0.397) &amp; (0.306) &amp; (0.266) &amp; (0.595) &amp; (0.181) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfcomp\_school:annee\_cat(2006,2011] &amp; $-$0.262 &amp; 1.285$^{***}$ &amp; $-$0.053 &amp; $-$0.260 &amp; $-$0.090 &amp; 0.071 \\ 
+  &amp; (0.168) &amp; (0.416) &amp; (0.189) &amp; (0.190) &amp; (0.172) &amp; (0.106) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfhigher\_voctraining:annee\_cat(2006,2011] &amp; $-$0.117 &amp; 0.433 &amp; 0.143 &amp; $-$0.650$^{***}$ &amp; 0.337$^{*}$ &amp; 0.056 \\ 
+  &amp; (0.135) &amp; (0.328) &amp; (0.190) &amp; (0.150) &amp; (0.185) &amp; (0.101) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfmaturity:annee\_cat(2006,2011] &amp; 0.821$^{***}$ &amp; $-$0.155 &amp; 0.252 &amp; $-$0.148 &amp; 0.959$^{**}$ &amp; 0.080 \\ 
+  &amp; (0.227) &amp; (0.401) &amp; (0.295) &amp; (0.214) &amp; (0.442) &amp; (0.163) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfUniversity:annee\_cat(2006,2011] &amp; 0.894$^{***}$ &amp; $-$0.241 &amp; 0.088 &amp; 0.221 &amp; 0.707 &amp; $-$0.040 \\ 
+  &amp; (0.258) &amp; (0.402) &amp; (0.308) &amp; (0.268) &amp; (0.597) &amp; (0.184) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfcomp\_school:annee\_cat(2011,2016] &amp; $-$0.314$^{*}$ &amp; 1.135$^{**}$ &amp; 0.401$^{**}$ &amp; $-$0.243 &amp; $-$0.066 &amp; 0.284$^{***}$ \\ 
+  &amp; (0.164) &amp; (0.476) &amp; (0.179) &amp; (0.184) &amp; (0.172) &amp; (0.109) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfhigher\_voctraining:annee\_cat(2011,2016] &amp; $-$0.316$^{**}$ &amp; 0.403 &amp; 0.231 &amp; $-$0.556$^{***}$ &amp; 0.440$^{**}$ &amp; 0.080 \\ 
+  &amp; (0.130) &amp; (0.351) &amp; (0.177) &amp; (0.138) &amp; (0.180) &amp; (0.101) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfmaturity:annee\_cat(2011,2016] &amp; 0.660$^{***}$ &amp; $-$0.346 &amp; 0.396 &amp; $-$0.047 &amp; 1.247$^{***}$ &amp; 0.251 \\ 
+  &amp; (0.219) &amp; (0.414) &amp; (0.280) &amp; (0.202) &amp; (0.434) &amp; (0.157) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ educationfUniversity:annee\_cat(2011,2016] &amp; 0.889$^{***}$ &amp; $-$0.212 &amp; 0.079 &amp; 0.074 &amp; 0.818 &amp; 0.076 \\ 
+  &amp; (0.256) &amp; (0.410) &amp; (0.305) &amp; (0.266) &amp; (0.595) &amp; (0.184) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+ Constant &amp; $-$1.509$^{***}$ &amp; $-$3.693$^{***}$ &amp; $-$1.364$^{***}$ &amp; $-$2.489$^{***}$ &amp; $-$2.501$^{***}$ &amp; 0.222$^{***}$ \\ 
+  &amp; (0.101) &amp; (0.265) &amp; (0.132) &amp; (0.137) &amp; (0.151) &amp; (0.069) \\ 
+  &amp; &amp; &amp; &amp; &amp; &amp; \\ 
+\hline \\[-1.8ex] 
+Observations &amp; 68,501 &amp; 68,501 &amp; 68,501 &amp; 68,501 &amp; 68,501 &amp; 75,456 \\ 
+Log Likelihood &amp; $-$30,158.940 &amp; $-$8,983.191 &amp; $-$17,384.620 &amp; $-$23,338.040 &amp; $-$20,844.110 &amp; $-$48,390.560 \\ 
+Akaike Inf. Crit. &amp; 60,477.870 &amp; 18,126.380 &amp; 34,929.240 &amp; 46,836.070 &amp; 41,848.220 &amp; 96,941.110 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  &amp; \multicolumn{6}{r}{$^{*}$p$&lt;$0.1; $^{**}$p$&lt;$0.05; $^{***}$p$&lt;$0.01} \\ 
+\end{tabular} 
+\end{table} </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="conclusion_appendix_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="conclusion_appendix_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="conclusion_appendix_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-durrer_de_la_sota_party_2021" class="csl-entry" role="listitem">
+Durrer de la Sota, Carmen, Amory Gethin, and Clara Martinez-Toledano. 2021. <span>“Party System Transformation and the Structure of Political Cleavages in Austria, Belgium, the Netherlands and Switzerland, 1967-2019.”</span> <em>World Inequality Lab – Working Paper</em>, no. 2021. <a href="https://wid.world/wp-content/uploads/2021/03/WorldInequalityLab_WP2021_08_PoliticalCleavages_AustriaBelgiumNLSwitzerland.pdf">https://wid.world/wp-content/uploads/2021/03/WorldInequalityLab_WP2021_08_PoliticalCleavages_AustriaBelgiumNLSwitzerland.pdf</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

@@ -1,6 +1,44 @@
 # Appendix
 
 
+```{r}
+reg_ps <- glm(data = vox, pss ~incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+reg_plr <- glm(data = vox, plr ~incomef*educationf+ incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_pdc <- glm(data = vox, pdc_pcs ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+reg_udc <- glm(data = vox, udc ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_greens <- glm(data = vox, green ~incomef*educationf +  incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_libgreens <- glm(data = vox2[vox2$annee_cat %in% c("(2006,2011]", "(2011,2016]"),], libgreens ~income*educationf +  income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_abstention <- glm(data = vox, no_party ~ incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+###### political leaning regression
+
+vox2$redistribution <- relevel(factor(vox2$educationf), ref = "voc_training")
+
+reg_left <- glm(data = vox2, 
+                left ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_center <- glm(data = vox2, 
+                center ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_right <- glm(data = vox2, 
+                right ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+#########3 issue position regression
+reg_state <- glm(data = vox2, 
+                stateint ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
+
+reg_redistr <- glm(data = vox2, 
+                redistribution ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+
+reg_equal_rights_chforeign <- glm(data = vox2, 
+               equal_rights_chforeign  ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
+```
 
 
 
