@@ -20,7 +20,8 @@ Finally, the present work tends to overlook the crucial role of ideology and pol
 #| echo: false
 #| warning: false
 #| message: false
-
+library(flextable)
+library(huxtable)
 library(irr)
 library(JuliaCall)
 library(JuliaConnectoR)
@@ -235,9 +236,9 @@ vox2$annee_cat <- cut(vox2$annee, seq(from = 1992, to = 2016, by = 4), right = F
 ```
 
 ```{r}
+#| warning: false
 #| message: false
 #| echo: false
-#| warning: false
 
 reg_ps <- glm(data = vox, pss ~incomef*educationf + incomef:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL + married + house_ownership, family = binomial(link = "logit"))
 
@@ -290,26 +291,63 @@ glmer_ame_party <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/am
 
 ```
 
-```{r stargazer parties}
+```{r table parties left}
 #| warning: false
 #| message: false
 #| echo: false
+#| tbl-cap: "Binary logit regressions: party support (PS, Greens, No party)"
+#| label: tbl-summarylogitpartiesleft
 
-stargazer(reg_ps, reg_greens, reg_pdc, reg_plr, reg_udc, reg_abstention, type = "latex")
+huxreg("PS" = reg_ps, "Greens" = reg_greens, "No Party" = reg_abstention)
+huxreg("PRD-PLR" = reg_plr, "PDC/PCS" = reg_pdc, "UDC" = reg_udc)
+```
+
+```{r table parties right}
+#| warning: false
+#| message: false
+#| echo: false
+#| tbl-cap: "Binary logit regressions: party support (PRD-PLR, PDC-PCS, UDC)"
+#| label: tbl-summarylogitpartiesright
+
+huxreg("PRD-PLR" = reg_plr, "PDC/PCS" = reg_pdc, "UDC" = reg_udc)
+```
+
+
+```{r table leaning}
+#| warning: false
+#| message: false
+#| echo: false
+#| tbl-cap: "Binary logit regressions: political leaning"
+#| label: tbl-summarylogitleaning
+
+huxreg("Left" = reg_left, "Right" = reg_right, "No leaning" = reg_center)
 
 ```
+
+```{r table issue position}
+#| warning: false
+#| message: false
+#| echo: false
+#| tbl-cap: "Binary logit regressions: issue position"
+#| label: tbl-summarylogitIP
+huxreg("Redistribution" = reg_redistr, "Equal rights & chances CH-foreign" = reg_equal_rights_chforeign, 
+       "State intervention" = reg_state)
+```
+
 
 
 ```{r}
 #| message: false
 #| echo: false
 #| warning: false
+#| fig-cap: "Average marginal contrasts results from multilevel probit model: party support"
+#| label: fig-glmerameparties
 
 glmer_ame_party %>% 
   filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
   filter(party %in% c("ps", "plr", "udc", "pdc", "greens", "No party")) %>% 
   ggplot()+
-  aes(x = annee_f, y = estimate, color = contrast, shape = contrast, group = party)+
+  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast, group = party)+
   geom_point(position = position_dodge(width = 0.3))+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
   labs(x = "", y = "", caption = "Source: VoxIt")+
@@ -321,12 +359,22 @@ glmer_ame_party %>%
         axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))+
   guides(color=guide_legend(nrow=3))
 
+```
+
+```{r ame glmer leaning}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: "Average marginal contrasts results from multilevel probit regressions: political leaning"
+#| label: fig-glmerameleaning
+
+
 
 glmer_ame_leaning %>% 
   filter(contrast %in% c("mean(more_9k) - mean(less_3k)", "mean(University) - mean(voc_training)")) %>%
   filter(leaning %in% c("Right", "Left", "Don't know")) %>% 
   ggplot()+
-  aes(x = annee_f, y = estimate, color = contrast, shape = contrast, group = leaning)+
+  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast, group = leaning)+
   geom_point(position = position_dodge(width = 0.3))+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
   labs(x = "", y = "", caption = "Source: VoxIt")+
@@ -339,11 +387,25 @@ glmer_ame_leaning %>%
   guides(color=guide_legend(nrow=3))
 
 
+
+
+
+
+```
+
+
+```{r ame glmer IP}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: "Average marginal contrasts results from multilevel probit regressions: issue position"
+#| label: fig-glmerameIP
+
 glmer_ame_issue %>% 
   filter(contrast %in% c("mean(more_9k) - mean(less_3k)", "mean(University) - mean(voc_training)")) %>%
   filter(issue %in% c("Equal chances CH-foreign", "Redistribution", "State intervention")) %>% 
   ggplot()+
-  aes(x = annee_f, y = estimate, color = contrast, shape = contrast, group = issue)+
+  aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast, group = issue)+
   geom_point(position = position_dodge(width = 0.3))+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
   labs(x = "", y = "", caption = "Source: VoxIt")+
@@ -355,9 +417,29 @@ glmer_ame_issue %>%
         axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))+
   guides(color=guide_legend(nrow=3))
 
+
+
 ```
 
 
+
+```{r table glmer party}
+#| echo: false
+#| warning: false
+#| message: false
+#| include: false
+load("C:/Users/celal/OneDrive/Bureau/master-thesis/saved_models/glmer_greens.rda")
+load("C:/Users/celal/OneDrive/Bureau/master-thesis/saved_models/glmer_pdc_pcs.rda")
+load("C:/Users/celal/OneDrive/Bureau/master-thesis/saved_models/glmer_plr.rda")
+load("C:/Users/celal/OneDrive/Bureau/master-thesis/saved_models/glmer_ps.rda")
+load("C:/Users/celal/OneDrive/Bureau/master-thesis/saved_models/glmer_udc.rda")
+
+
+tab_model(glmer_pss, glmer_pdc_green, glmer_pdc_pcs, glmer_plr, glmer_udc, dv.labels = c("PS", "Greens", "PDC/PCS", "PRD-PLR", "UDC"), file = "glmer_table.html")
+
+webshot::webshot("C:/Users/celal/OneDrive/Bureau/master-thesis/glmer_table.html", file = "glmer_table.png")
+
+```
 
 
 
