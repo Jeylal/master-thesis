@@ -37,3 +37,8 @@ format:
 
 editor: visual
 
+header-includes:
+- \usepackage{caption}
+- \usepackage{longtable}
+- \usepackage{booktabs}
+

@@ -12,9 +12,7 @@ As stated in the introduction, the present work is a first attempt to employ neo
 
 Finally, the present work tends to overlook the crucial role of ideology and political strategies. On the one hand, the different political strategies aimed at promoting a new Swiss socio-economic model, both on the left and the right, deserve to be more carefully explored. On the other hand, ideology, both at the Swiss and international levels, could explain the transformations of these strategies, but also the transformation of the social basis of the different blocs.
 
-
 # Appendix
-
 
 ```{r set up}
 #| echo: false
@@ -60,7 +58,6 @@ library(cAIC4)
 library(ordinal)
 library(pacman)
 ```
-
 
 ```{r import voxit}
 #| echo: false
@@ -201,6 +198,7 @@ vox <-
     
   )
 
+
 vox1 <- 
   vox %>% 
   filter(annee <= 1992) %>% 
@@ -254,7 +252,6 @@ reg_abstention <- glm(data = vox, no_party ~ incomef*educationf + incomef:annee_
 
 ###### political leaning regression
 
-vox2$redistribution <- relevel(factor(vox2$educationf), ref = "voc_training")
 
 reg_left <- glm(data = vox2, 
                 left ~ income*educationf + income:annee_cat + educationf:annee_cat + annee_cat + gender + age_cat + religion + regionL+ married + house_ownership, family = binomial(link = "logit"))
@@ -298,9 +295,14 @@ glmer_ame_party <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/am
 #| tbl-cap: "Binary logit regressions: party support (PS, Greens, No party)"
 #| label: tbl-summarylogitpartiesleft
 
-huxreg("PS" = reg_ps, "Greens" = reg_greens, "No Party" = reg_abstention)
-huxreg("PRD-PLR" = reg_plr, "PDC/PCS" = reg_pdc, "UDC" = reg_udc)
+library(modelsummary)
+library(knitLatex)
+library(kableExtra)
+
+
+modelsummary(list("PS" = reg_ps, "Greens" = reg_greens, "No party" = reg_abstention), stars = TRUE, coef_omit = 15:80)
 ```
+
 
 ```{r table parties right}
 #| warning: false
@@ -309,9 +311,8 @@ huxreg("PRD-PLR" = reg_plr, "PDC/PCS" = reg_pdc, "UDC" = reg_udc)
 #| tbl-cap: "Binary logit regressions: party support (PRD-PLR, PDC-PCS, UDC)"
 #| label: tbl-summarylogitpartiesright
 
-huxreg("PRD-PLR" = reg_plr, "PDC/PCS" = reg_pdc, "UDC" = reg_udc)
+modelsummary(list("PRD-PLR" = reg_plr, "PDC/PCS" = reg_pdc, "UDC" = reg_udc), stars = TRUE, coef_omit = 15:80)
 ```
-
 
 ```{r table leaning}
 #| warning: false
@@ -320,7 +321,7 @@ huxreg("PRD-PLR" = reg_plr, "PDC/PCS" = reg_pdc, "UDC" = reg_udc)
 #| tbl-cap: "Binary logit regressions: political leaning"
 #| label: tbl-summarylogitleaning
 
-huxreg("Left" = reg_left, "Right" = reg_right, "No leaning" = reg_center)
+modelsummary(list("Left" = reg_left, "Right" = reg_right, "No leaning" = reg_center), stars = TRUE, coef_omit = 15:80)
 
 ```
 
@@ -330,11 +331,9 @@ huxreg("Left" = reg_left, "Right" = reg_right, "No leaning" = reg_center)
 #| echo: false
 #| tbl-cap: "Binary logit regressions: issue position"
 #| label: tbl-summarylogitIP
-huxreg("Redistribution" = reg_redistr, "Equal rights & chances CH-foreign" = reg_equal_rights_chforeign, 
-       "State intervention" = reg_state)
+modelsummary(list("Redistribution" = reg_redistr, "Equal rights & chances\nCH-foreign" = reg_equal_rights_chforeign, 
+       "State intervention" = reg_state), stars = TRUE, coef_omit = 15:80)
 ```
-
-
 
 ```{r}
 #| message: false
@@ -342,6 +341,7 @@ huxreg("Redistribution" = reg_redistr, "Equal rights & chances CH-foreign" = reg
 #| warning: false
 #| fig-cap: "Average marginal contrasts results from multilevel probit model: party support"
 #| label: fig-glmerameparties
+#| fig-height: 7
 
 glmer_ame_party %>% 
   filter(contrast %in% c("mean(high) - mean(low)", "mean(University) - mean(voc_training)")) %>%
@@ -393,7 +393,6 @@ glmer_ame_leaning %>%
 
 ```
 
-
 ```{r ame glmer IP}
 #| echo: false
 #| message: false
@@ -421,8 +420,6 @@ glmer_ame_issue %>%
 
 ```
 
-
-
 ```{r table glmer party}
 #| echo: false
 #| warning: false
@@ -440,17 +437,3 @@ tab_model(glmer_pss, glmer_pdc_green, glmer_pdc_pcs, glmer_plr, glmer_udc, dv.la
 webshot::webshot("C:/Users/celal/OneDrive/Bureau/master-thesis/glmer_table.html", file = "glmer_table.png")
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
