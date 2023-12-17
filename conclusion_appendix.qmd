@@ -4,7 +4,7 @@ The aim of this study was to explore the social foundations of the transformatio
 
 The crisis of the 90s did not mark a break-up of the Swiss dominant social bloc, but a recomposition and a change in the power balance within the bloc itself. While the crisis did not destabilized the left bloc that much, the right bloc, that I named "liberal-conservative" throughout this work, underwent important process of change.
 
-The social bases of the political parties representing the liberal-conservative bloc, the PRD-PLR, PDC and UDC, changed substantially since the 80s. Unlike @durrer_de_la_sota_party_2021, who showed that the social base of right-wing government parties stayed rather stable since the 70s, the results presented in the previous section show that, while the UDC's social basis was rather merchant in the 80s, it transformed into a popular base during the 90s. Furthermore, the social basis of the PRD (then PLR) used to be very bourgeois until the 2010s, period after which this social base showed trends towards an evolution into a merchant right. Interestingly, my results are more supportive of the brahmin left vs merchant right divide hypothesis than the WPID's own results for the Swiss case. However, if one looks at political leaning instead of party support, the left appears to be bourgeois in the sense that it is supported by the upper-middle income groups and by university graduates, while right self-identification evolved into a merchant right pattern.
+In fact, the social bases of the political parties representing the liberal-conservative bloc, the PRD-PLR, PDC and UDC, changed substantially since the 80s. Unlike @durrer_de_la_sota_party_2021, who showed that the social base of right-wing government parties stayed rather stable since the 70s, the results presented in the previous section show that, while the UDC's social basis was rather merchant in the 80s, it transformed into a popular base during the 90s. Furthermore, the social basis of the PRD (then PLR) used to be very bourgeois until the 2010s, period after which this social base showed trends towards an evolution into a merchant right. Interestingly, my results are more supportive of the brahmin left vs merchant right divide hypothesis than the WPID's own results for the Swiss case. However, if one looks at political leaning instead of party support, the left appears to be bourgeois in the sense that it is supported by the upper-middle income groups and by university graduates, while right self-identification evolved into a merchant right pattern.
 
 Then, an analysis closer to the methods and conceptual framework of the neorealist approach was carried out through a latent class analysis for the late 1990s in order to assess more closely the recomposition of the left and liberal-conservative blocs during the crisis. The LCA results show...
 
@@ -301,6 +301,7 @@ library(kableExtra)
 
 
 modelsummary(list("PS" = reg_ps, "Greens" = reg_greens, "No party" = reg_abstention), stars = TRUE, coef_omit = 15:80)
+
 ```
 
 
@@ -331,7 +332,7 @@ modelsummary(list("Left" = reg_left, "Right" = reg_right, "No leaning" = reg_cen
 #| echo: false
 #| tbl-cap: "Binary logit regressions: issue position"
 #| label: tbl-summarylogitIP
-modelsummary(list("Redistribution" = reg_redistr, "Equal rights & chances\nCH-foreign" = reg_equal_rights_chforeign, 
+modelsummary(list("Redistribution" = reg_redistr, "Equal R&C CH-foreign" = reg_equal_rights_chforeign, 
        "State intervention" = reg_state), stars = TRUE, coef_omit = 15:80)
 ```
 
@@ -420,20 +421,23 @@ glmer_ame_issue %>%
 
 ```
 
-```{r table glmer party}
+
+
+```{r lca model selection}
 #| echo: false
 #| warning: false
 #| message: false
-#| include: false
-load("C:/Users/celal/OneDrive/Bureau/master-thesis/saved_models/glmer_greens.rda")
-load("C:/Users/celal/OneDrive/Bureau/master-thesis/saved_models/glmer_pdc_pcs.rda")
-load("C:/Users/celal/OneDrive/Bureau/master-thesis/saved_models/glmer_plr.rda")
-load("C:/Users/celal/OneDrive/Bureau/master-thesis/saved_models/glmer_ps.rda")
-load("C:/Users/celal/OneDrive/Bureau/master-thesis/saved_models/glmer_udc.rda")
+#| label: tbl-modellca
+#| tbl-cap: "Model selection: 12 clusters model"
+
+selects1999_lcaresults <- read_excel("C:/Users/celal/OneDrive/Bureau/master-thesis/lca estimations/selects1999_lcaresults.xlsx", 
+    skip = 5)
 
 
-tab_model(glmer_pss, glmer_pdc_green, glmer_pdc_pcs, glmer_plr, glmer_udc, dv.labels = c("PS", "Greens", "PDC/PCS", "PRD-PLR", "UDC"), file = "glmer_table.html")
-
-webshot::webshot("C:/Users/celal/OneDrive/Bureau/master-thesis/glmer_table.html", file = "glmer_table.png")
-
+selects1999_lcaresults %>% 
+  rename(`L2 bootstrap p` = "Bootstrap p...11",
+         `-2LL Diff bootstrap p` = "Bootstrap p...16") %>% 
+  dplyr::select(!c(Npar, df, VLMR, `p-value...14`, `p-value...10`, `AIC3(LL)`, `Class.Err.`, LL, `Max. BVR`, Model, `BIC(LL)`, `AIC(LL)`)) %>% 
+  gt()
 ```
+
