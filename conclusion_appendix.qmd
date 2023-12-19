@@ -441,3 +441,24 @@ selects1999_lcaresults %>%
   gt()
 ```
 
+```{r lca model indicators}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: fig-lcaindicators
+#| fig-cap: "Variables chosen as indicators in the Latent class model for 1999: descriptive statistics"
+#| fig-width: 11
+library(tidytidbits)
+library(ggstats)
+selects1999_classifLatest_rec <- read_sav("C:/Users/celal/OneDrive/Bureau/master-thesis/data/selects1999_classifLatest_rec.sav")
+
+selects1999_classifLatest_rec %>% 
+  dplyr::select(matches("op.*")) %>% 
+  dplyr::select(!c("polknow_people", "op_order")) %>% 
+  gglikert_stacked(add_labels = TRUE)
+
+```
+
+
+
+
