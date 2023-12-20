@@ -46,7 +46,7 @@ For the analysis of social blocs and institutional change, Switzerland represent
 
 For instance, in Lijphart's famous patterns of democracy, Switzerland stands out as the best example of consensual democracy, which is characterized by a proportional and diffuse distribution of political power, as opposed to the majoritarian system which tends to concentrate political power in the hands of the majority[^intro-3]. Lijphart explicitly argued that consensual democracies outperform majoritarian democracies in terms of governance, political stability and economic performance [@lijphart_patterns_2012]. Further studies have nonetheless shown that the extreme Swiss case of consensual democracy is slightly becoming an average consensual democracy, due to growing political polarization (associated with the rise of the UDC), deregulation in industrial relations and diminishing cooperation between political actors [@vatter_swiss_2008]. 
 
-[^intro-3]: Lijphart described Switzerland as the "clearest consensual prototype" of democracy [@lijphart_patterns_2012, p.245]. Among all the criteria chosen in the author's typology, only the Swiss system of judicial review did not correspond to the consensual system.
+[^intro-3]: Lijphart described Switzerland as the "clearest consensual prototype" [@lijphart_patterns_2012, p.245]. Among all the criteria chosen in the author's typology, only the Swiss system of judicial review did not correspond to the consensual system.
 
 If one considers confidence in government as a good indicator of political stability, and if one looks at the data provided by the OECD on that matter, Switzerland indeed stands out as one of the most stable countries in the OECD.
 
