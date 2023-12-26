@@ -128,7 +128,6 @@ vox$incomef <- relevel(factor(vox$incomef), ref = "low")
 #| warning: false
 #| message: false
 #| echo: false
-
 vox$pss <- ifelse(vox$p02 == 12, 1,
                   ifelse(is.na(vox$p02), NA, 0))
 
@@ -285,6 +284,68 @@ glmer_ame_issue <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/am
 glmer_ame_leaning <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/glmer_ame_leaning.rds")
 
 glmer_ame_party <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/glmer_ame_party.rds")
+
+vox_regression_glmer_eqchances <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_glmer_eqchances.rds")
+
+vox_regression_glmer_redistribution <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_glmer_redistribution.rds")
+
+vox_regression_glmer_stateint <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/regression_results/vox_regression_glmer_stateint.rds")
+
+```
+
+```{r dep variables descriptive statistics}
+#| echo: false
+#| warning: false
+#| message: false
+
+descreg_ps <- lm(data = vox, pss ~ annee_f-1)
+descreg_udc <- lm(data = vox, udc ~ annee_f-1)
+descreg_plr <- lm(data = vox, plr ~ annee_f-1)
+descreg_noparty <- lm(data = vox, no_party ~ annee_f-1)
+descreg_pdc <- lm(data = vox, pdc_pcs ~ annee_f-1)
+descreg_greens <- lm(data = vox, green ~ annee_f-1)
+
+descreg_state <- lm(data = vox, stateint ~ annee_f-1)
+descreg_left <- lm(data = vox, left ~ annee_f-1)
+descreg_noleaning <- lm(data = vox, center ~ annee_f-1)
+descreg_right <- lm(data = vox, right ~ annee_f-1)
+descreg_eqright <- lm(data = vox, equal_rights_chforeign ~ annee_f-1)
+descreg_stateint <- lm(data = vox, stateint ~ annee_f-1)
+descreg_redistribution <- lm(data = vox, redistribution ~ annee_f-1)
+
+```
+
+```{r plot descriptive parties}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: fig-plotdescrparties
+#| fig-cap: "Proportions of Swiss citizen's support for the country's main parties: 1981:2016"
+
+plot_models(descreg_ps, descreg_udc, descreg_plr, descreg_noparty, descreg_greens, descreg_pdc, legend.title = "")+theme_bw()+coord_cartesian()+scale_x_discrete(limits = rev, labels = 1981:2016)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = c(0.85, 0.8), legend.background = element_blank())+ylim(0, 0.6)+labs(y = "", caption = "Source: VoxIt")+guides(color=guide_legend(nrow=3))
+
+```
+
+
+```{r plot descriptive leaning}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: fig-plotdescrleaning
+#| fig-cap: "Proportions of Swiss citizen leaning for the left, the right or neither left or right: 1988-2016"
+
+plot_models(descreg_left, descreg_noleaning, descreg_right, legend.title = "")+theme_bw()+coord_cartesian()+scale_x_discrete(limits = rev, labels = 1988:2016)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = c(0.85,0.8))+ylim(0.2, 0.55)+labs(y = "", caption = "Source: VoxIt")+scale_color_discrete(labels = c("left", "don't know", "right"))
+
+```
+
+```{r plot descriptive issue position}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: fig-plotdescrIP
+#| fig-cap: "Proportions of Swiss citizen supporting state intervention, equal rights & chances for foreigners, and redistribution: 1993-2016"
+
+plot_models(descreg_eqright, descreg_stateint, descreg_redistribution, legend.title = "")+theme_bw()+coord_cartesian()+scale_x_discrete(limits = rev, labels = 1993:2016)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = c(0.70,0.15), legend.background = element_blank())+ylim(0.1, 0.7)+labs(y = "", caption = "Source: VoxIt")+guides(color=guide_legend(nrow=3))+scale_color_discrete(labels = c("In favor of income redistribution", "For state intervention", "For equal rights between foreigners & Swiss citizen"))+ scale_y_continuous(labels = scales::percent)+geom_hline(yintercept = 0.5)
 
 ```
 
