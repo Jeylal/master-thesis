@@ -230,6 +230,20 @@ vox2$income <- relevel(factor(vox2$income), ref = "less_3k")
 
 vox2$annee_cat <- cut(vox2$annee, seq(from = 1992, to = 2016, by = 4), right = FALSE, include.lowest = TRUE)
 
+vox <- 
+vox %>% 
+  mutate(
+    party_id = case_when(
+    p02 %in% c(0, 1, 2) ~ "pdc_pcs",
+    p02 %in% c(4, 9, 20) ~ "plr",
+    p02 %in% c(12) ~ "ps",
+    p02 %in% c(13) ~ "udc",
+    p02 %in% c(6) ~ "greens",
+    p02 %in% c(3,5,7,8,10,11,14,15,16,17,18,19) ~ "other party",
+    p02 %in% c(31,32) ~ "multiple parties or not a party, but a person",
+    p02 %in% c(33) ~ "no party"
+  ))
+
 ```
 
 ```{r}
@@ -320,9 +334,28 @@ descreg_redistribution <- lm(data = vox, redistribution ~ annee_f-1)
 #| warning: false
 #| message: false
 #| label: fig-plotdescrparties
-#| fig-cap: "Proportions of Swiss citizen's support for the country's main parties: 1981:2016"
+#| fig-cap: "Party identification"
 
-plot_models(descreg_ps, descreg_udc, descreg_plr, descreg_noparty, descreg_greens, descreg_pdc, legend.title = "")+theme_bw()+coord_cartesian()+scale_x_discrete(limits = rev, labels = 1981:2016)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = c(0.85, 0.8), legend.background = element_blank())+ylim(0, 0.6)+labs(y = "", caption = "Source: VoxIt")+guides(color=guide_legend(nrow=3))
+vox %>% 
+  group_by(annee_cat) %>% 
+  count(party_id) %>% 
+  drop_na() %>% 
+  mutate(prop = round(n/sum(n), digits = 3)) %>% 
+  ungroup() %>% 
+  ggplot()+
+  aes(x = annee_cat, y = prop, fill = party_id, label = scales::percent(prop))+
+  geom_col()+
+  theme_minimal()+
+  scale_y_continuous(labels = scales::percent)+
+  scale_fill_manual(values = c("chartreuse", "darkgrey", "grey", "salmon", "darkgoldenrod1","darkblue", "darkred", "darkgreen"))+
+  geom_text(position = position_stack(vjust = 0.5), 
+            hjust = 0.5, size = 2.5, color = "white")+
+  theme(legend.position="bottom", legend.box="vertical", legend.margin=margin(), legend.title = element_blank())+
+  guides(color=guide_legend(nrow=3))+
+  labs(x = "", y = "", caption = "Source: VoxIt")
+
+
+  
 
 ```
 
@@ -521,6 +554,40 @@ selects1999_classifLatest_rec %>%
 ```
 
 
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| include: false
+selects <- read_sav("data/495_Selects_CumulativeFile_Data_1971-2019_v2.3.0.sav")
 
+selects <- 
+  selects %>% 
+  mutate(
+    prod_workers = if_else(class8 == 4, 1, if_else(is.na(class8), NA, 0)),
+    eq_chances = if_else(ip9 %in% c(1, 2), 1, if_else(is.na(ip9), NA, 0)),
+    uneq_chances = if_else(ip9 %in% c(4,5), 1, if_else(is.na(ip9), NA, 0)),
+    raise_exp = if_else(ip13 %in% c(4,5), 1, if_else(is.na(ip13), NA, 0)),
+    taxes_hi = if_else(ip2 %in% c(1, 2), 1, if_else(is.na(ip2), NA, 0))
+  )
+
+
+summary(reg_attitude_prodworkers <- lm(eq_chances ~ factor(year) -1, data = selects))
+summary(reg_attitude_prodworkers <- lm(eq_chances ~ factor(year) -1, data = selects[selects$class8 == 4,]))
+summary(reg_attitude <- lm(eq_chances ~ factor(year) -1, data = selects))
+
+summary(reg_taxeshi <- lm(taxes_hi ~ factor(year) -1, data = selects[selects$class8 == 7,]))
+
+plot_model(reg_attitude_prodworkers)
+
+
+selects %>% 
+  filter(class8 == 4) %>% 
+  group_by(year) %>% 
+  count(ip9) %>% 
+  drop_na() %>% 
+  mutate(prop = n/sum(n)) %>% 
+  ungroup()
+```
 
 
