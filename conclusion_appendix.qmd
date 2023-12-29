@@ -335,6 +335,7 @@ descreg_redistribution <- lm(data = vox, redistribution ~ annee_f-1)
 #| message: false
 #| label: fig-plotdescrparties
 #| fig-cap: "Party identification"
+#| fig-width: 8
 
 vox %>% 
   group_by(annee_cat) %>% 
@@ -359,7 +360,6 @@ vox %>%
 
 ```
 
-
 ```{r plot descriptive leaning}
 #| echo: false
 #| warning: false
@@ -367,7 +367,7 @@ vox %>%
 #| label: fig-plotdescrleaning
 #| fig-cap: "Proportions of Swiss citizen leaning for the left, the right or neither left or right: 1988-2016"
 
-plot_models(descreg_left, descreg_noleaning, descreg_right, legend.title = "")+theme_bw()+coord_cartesian()+scale_x_discrete(limits = rev, labels = 1988:2016)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = c(0.85,0.8))+ylim(0.2, 0.55)+labs(y = "", caption = "Source: VoxIt")+scale_color_discrete(labels = c("left", "don't know", "right"))
+plot_models(descreg_left, descreg_noleaning, descreg_right, legend.title = "")+theme_bw()+coord_cartesian()+scale_x_discrete(limits = rev, labels = 1988:2016)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = c(0.85,0.8), legend.background = element_blank())+ylim(0.2, 0.55)+labs(y = "", caption = "Source: VoxIt")+scale_color_discrete(labels = c("left", "don't know", "right"))
 
 ```
 
@@ -377,6 +377,8 @@ plot_models(descreg_left, descreg_noleaning, descreg_right, legend.title = "")+t
 #| message: false
 #| label: fig-plotdescrIP
 #| fig-cap: "Proportions of Swiss citizen supporting state intervention, equal rights & chances for foreigners, and redistribution: 1993-2016"
+#| fig-width: 8
+
 
 plot_models(descreg_eqright, descreg_stateint, descreg_redistribution, legend.title = "")+theme_bw()+coord_cartesian()+scale_x_discrete(limits = rev, labels = 1993:2016)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = c(0.70,0.15), legend.background = element_blank())+ylim(0.1, 0.7)+labs(y = "", caption = "Source: VoxIt")+guides(color=guide_legend(nrow=3))+scale_color_discrete(labels = c("In favor of income redistribution", "For state intervention", "For equal rights between foreigners & Swiss citizen"))+ scale_y_continuous(labels = scales::percent)+geom_hline(yintercept = 0.5)
 
@@ -386,7 +388,7 @@ plot_models(descreg_eqright, descreg_stateint, descreg_redistribution, legend.ti
 #| warning: false
 #| message: false
 #| echo: false
-#| tbl-cap: "Binary logit regressions: party support (PS, Greens, No party)"
+#| tbl-cap: "Binary logit regressions: party support (log-odds). Full table available [here](https://jeylal.github.io/socialblocsthesis_appendix/#tbl-summarylogitpartiesleft)"
 #| label: tbl-summarylogitpartiesleft
 
 library(modelsummary)
@@ -398,22 +400,23 @@ modelsummary(list("PS" = reg_ps, "Greens" = reg_greens, "No party" = reg_abstent
 
 ```
 
-
 ```{r table parties right}
 #| warning: false
 #| message: false
 #| echo: false
-#| tbl-cap: "Binary logit regressions: party support (PRD-PLR, PDC-PCS, UDC)"
+#| tbl-cap: "Binary logit regressions: party support (log-odds). Full table available [here](https://jeylal.github.io/socialblocsthesis_appendix/#tbl-summarylogitpartiesright)"
 #| label: tbl-summarylogitpartiesright
 
 modelsummary(list("PRD-PLR" = reg_plr, "PDC/PCS" = reg_pdc, "UDC" = reg_udc), stars = TRUE, coef_omit = 15:80)
+
 ```
+
 
 ```{r table leaning}
 #| warning: false
 #| message: false
 #| echo: false
-#| tbl-cap: "Binary logit regressions: political leaning"
+#| tbl-cap: "Binary logit regressions: political leaning (log-odds). Full table available [here](https://jeylal.github.io/socialblocsthesis_appendix/#tbl-summarylogitleaning)"
 #| label: tbl-summarylogitleaning
 
 modelsummary(list("Left" = reg_left, "Right" = reg_right, "No leaning" = reg_center), stars = TRUE, coef_omit = 15:80)
@@ -424,7 +427,7 @@ modelsummary(list("Left" = reg_left, "Right" = reg_right, "No leaning" = reg_cen
 #| warning: false
 #| message: false
 #| echo: false
-#| tbl-cap: "Binary logit regressions: issue position"
+#| tbl-cap: "Binary logit regressions: issue position (log-odds). Full table available [here](https://jeylal.github.io/socialblocsthesis_appendix/#tbl-summarylogitIP)"
 #| label: tbl-summarylogitIP
 modelsummary(list("Redistribution" = reg_redistr, "Equal R&C CH-foreign" = reg_equal_rights_chforeign, 
        "State intervention" = reg_state), stars = TRUE, coef_omit = 15:80)
@@ -515,8 +518,6 @@ glmer_ame_issue %>%
 
 ```
 
-
-
 ```{r lca model selection}
 #| echo: false
 #| warning: false
@@ -553,7 +554,6 @@ selects1999_classifLatest_rec %>%
 
 ```
 
-
 ```{r}
 #| echo: false
 #| message: false
@@ -589,5 +589,3 @@ selects %>%
   mutate(prop = n/sum(n)) %>% 
   ungroup()
 ```
-
-
