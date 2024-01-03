@@ -30,7 +30,7 @@ On the other hand, the OECD still underlines the "barriers to free trade and com
 
 The extent to which the Swiss model will complete its mutation towards a neoliberal model represents thus a fundamental economic, political and institutional issue for the years to come. A thorough and non-normative analysis of the path taken by the Swiss model since the crisis of the 1990s is thus duly needed and is behind the motivation of the present paper. What kind of social base made this neoliberal transformation of the Swiss socio-economic model possible? Is this social base stable enough to complete this transformation? A way to answer these questions is to explore the extent to which the formation of social blocs are influenced by different factors: socio-economic characteristics, institutions or even political mediation. The scope of the present analysis will be limited to the identification of the main Swiss social blocs and the extent to which their composition and evolution are influenced by socio-economic characteristics. The first part will conduct a long-term analysis of voting outcomes for the main Swiss political parties, political leaning and for a set of political cleavages, with a special focus on income and educational levels. Then, the second part will present the results of a latent class analysis (LCA) of the Swiss socio-political groups in the late 90s.
 
-The aim of this essay is to conduct an analysis which would constitute a first step into a broader and comprehensive investigation of the political economy of institutional change in Switzerland. Far from the normative approach of mainstream economics, in which structural reforms simply constitute the sole and evident path towards its ideal model of perfect competition purged from rigidities, the methods and theory employed here are extensively based on the political economy of institutional change developed by Amable and Palombarini: the neorealist approach [-@amable_leconomie_2005; -@amable_neorealist_2008]. 
+The aim of this essay is to conduct an analysis which would constitute a first step into a broader and comprehensive investigation of the political economy of institutional change in Switzerland. Far from the normative approach of mainstream economics, in which structural reforms simply constitute the sole and evident path towards its ideal model of perfect competition purged from rigidities, the methods and theory employed here are extensively based on the political economy of institutional change developed by Amable and Palombarini: the neorealist approach [@amable_leconomie_2005; @amable_neorealist_2008]. 
 
 ### Theoretical framework and concept definitions
 
@@ -44,7 +44,7 @@ Finally, social blocs compete in the political sphere with the objective to infl
 
 For the analysis of social blocs and institutional change, Switzerland represents an interesting case study. The country is very different from France and Italy in terms of institutional and political institutions. Moreover, relative to Italy and France, which underwent deep periods of political and systemic crises in the last decades, Switzerland's political stability stands rather remarkably. This stability should, at first sight, not constitute a surprise: Switzerland ranks consistently top among the best performing economies in a wide variety of socio-economic indicators: GDP per capita, Human Living Index (HDI), or even the Economic Complexity Index (ECI)[^intro-2]. Switzerland's success and stability are often associated with the particularities of the country's political institutions. 
 
-For instance, in Lijphart's famous patterns of democracy, Switzerland stands out as the best example of consensual democracy, which is characterized by a proportional and diffuse distribution of political power, as opposed to the majoritarian system which tends to concentrate political power in the hands of the majority[^intro-3]. Lijphart explicitly argued that consensual democracies outperform majoritarian democracies in terms of governance, political stability and economic performance [@lijphart_patterns_2012]. Further studies have nonetheless shown that the extreme Swiss case of consensual democracy is slightly becoming an average consensual democracy, due to growing political polarization (associated with the rise of the UDC), deregulation in industrial relations and diminishing cooperation between political actors [@vatter_swiss_2008]. 
+For instance, in Lijphart's famous patterns of democracy, Switzerland stands out as the best example of consensus democracy, which is characterized by a proportional and diffuse distribution of political power, as opposed to the majoritarian system which tends to concentrate political power in the hands of the majority[^intro-3]. Lijphart explicitly argued that consensus democracies outperform majoritarian democracies in terms of governance, political stability and economic performance [@lijphart_patterns_2012]. Further studies have nonetheless shown that the extreme Swiss case of consensus democracy is slightly becoming an average consensual democracy, due to growing political polarization (associated with the rise of the Swiss People's Party), deregulation in industrial relations and diminishing cooperation between political actors [@vatter_swiss_2008]. 
 
 [^intro-3]: Lijphart described Switzerland as the "clearest consensual prototype" [@lijphart_patterns_2012, p.245]. Among all the criteria chosen in the author's typology, only the Swiss system of judicial review did not correspond to the consensual system.
 
@@ -101,7 +101,7 @@ oecd_trust_gov <- read_csv("data/oecd_trust_gov.csv")
 
 
 oecd_trust_gov %>% 
-  filter(LOCATION %in% c("CHE", "FRA", "DEU", "ITA", "SWE", "GBR", "USA")) %>% 
+  filter(LOCATION %in% c("CHE", "AUT" ,"FRA", "DEU", "ITA", "SWE", "GBR", "USA", "NZL")) %>% 
   ggplot()+
   aes(x = TIME, y = Value, color = LOCATION, shape = LOCATION)+
   geom_line()+
@@ -111,7 +111,7 @@ oecd_trust_gov %>%
   labs(title = "Political Stability across OECD countries",
        subtitle = "Trust in National Government: 2006-2022",
        y = "%", x = "",
-       caption = "Source: OECD")+
+       caption = "Data source: OECD")+
   theme(legend.title = element_blank(),
         axis.text.x = element_text(angle = 60, vjust = 1, hjust = 1))
 
@@ -172,7 +172,7 @@ trust_gov %>%
   ylab("")+
   labs(title = "Confidence in Government",
        subtitle = "Switzerland, 1981-2016",
-       caption = "Source: VoxIt")
+       caption = "Data source: VoxIt")
 ```
 
 @fig-trust2 shows that Switzerland underwent contrasted periods of political stability and crises in the last decades. A first period ranging from 1981 to 1987 was rather stable despite some variation in trust. @fig-trust2 also depicts well the crisis of the 90s, which constitutes the most turbulent period in Switzerland's contemporary history. The crisis of the 1990s can be seen with the fall in trust from 65% in 1987 to a historical low level of 39% of Swiss respondents who declared to not have confidence in the federal government in 1995, three years after the rejection of the referendum for the adhesion to the European Economic Area (EEC). Swiss journalists, political observers, activist and scholars wrote extensively on this period which constitutes a rare case of deep political and economic crisis. 
@@ -189,8 +189,8 @@ In view of the results shown in @fig-trust2, can the confidence crises of the 90
 
 Until now, neorealism has been first and foremost applied to Italy and France. The present contribution seeks to expand the scope to the Swiss case by focusing on the links between political cleavages, the formation and evolution of social blocs, and socio-economic factors such as income and education. 
 
-The next section traces a short history of the Swiss social blocs. Then, the results from a series of regressions to analyze their evolution since the 1980s and test several hypotheses concerning the social bases of the transformation of political cleavages and party support are presented. Finally, the results from a latent class analysis using post-election survey data for 1999 are presented. 
+The research and analysis proposed here are new for the following reasons. First, the present research is, to the author's knowledge, the first to apply neorealist methodology and conceptual framework to Switzerland. Second, a long-term analysis of voting outcomes using post-voting survey data such as VoxIt has never been done in the literature, one possible reason being that researchers tend to focus more on post-election survey data. Last, this research is the first to conduct LCA using Swiss post-election survey data. 
 
-The research and analysis proposed here are new for the following reasons. First, the present research is, to the author's knowledge, the first to apply neorealist methodology and conceptual framework to Switzerland. Second, a long-term analysis of voting outcomes using post-voting survey data such as VoxIt has never been done in the literature, one possible reason being researchers tend to focus more on post-election survey data. Last, this research is the first to conduct LCA using Swiss post-election survey data. 
+The next section traces a short history of the Swiss social blocs. Then, the results from a series of regressions to analyze their evolution since the 1980s and test several hypotheses concerning the social bases of the transformation of political cleavages and party support are presented. Finally, the results from a latent class analysis using post-election survey data for 1999 are presented. 
 
 [^intro-2]: In 2018, Switzerland ranks third in terms of GDP per capita corrected for purchasing power parity among OECD countries [@oecd_oecd_2019, p.14]. Switzerland had also the highest HDI in 2021 [@nations_human_2022, p.272] and the second highest ECI in 2021 [@noauthor_country_nodate].
