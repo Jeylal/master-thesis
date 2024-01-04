@@ -2,13 +2,13 @@
 
 The aim of this study was to explore the social foundations of the transformation of Swiss capitalism since the 1980s. The rationale was to show that the neoliberal transformation of the Swiss hybrid model had to be founded on a strategy of institutional change supported by a sufficiently broad social base.
 
-The crisis of the 90s did not mark a break-up of the Swiss dominant social bloc, but a recomposition and a change in the power balance within the bloc itself. While the crisis did not destabilized the left bloc that much, the right bloc, that I named "liberal-conservative" throughout this work, underwent important process of change.
+The crisis of the 90s did not mark a break-up of the Swiss dominant social bloc, but a recomposition and a change in the power balance within the bloc itself. While the crisis did not destabilized the left bloc that much, the right bloc, that I named "Liberal-Conservative" throughout this work, underwent important process of change.
 
-In fact, the social bases of the political parties representing the liberal-conservative bloc, the PRD-PLR, PDC and UDC, changed substantially since the 80s. Unlike @durrer_de_la_sota_party_2021, who showed that the social base of right-wing government parties stayed rather stable since the 70s, the results presented in the previous section show that, while the UDC's social basis was rather merchant in the 80s, it transformed into a popular base during the 90s. Furthermore, the social basis of the PRD (then PLR) used to be very bourgeois until the 2010s, period after which this social base showed trends towards an evolution into a merchant right. Interestingly, my results are more supportive of the brahmin left vs merchant right divide hypothesis than the WPID's own results for the Swiss case. However, if one looks at political leaning instead of party support, the left appears to be bourgeois in the sense that it is supported by the upper-middle income groups and by university graduates, while right self-identification evolved into a merchant right pattern.
+In fact, the social bases of the political parties representing the Liberal-Conservative bloc, the PRD-PLR, PDC and UDC, changed substantially since the 80s. Unlike @durrer_de_la_sota_party_2021, who showed that the social base of right-wing government parties stayed rather stable since the 70s, the results presented in the previous section show that, while the UDC's social basis was rather merchant in the 80s, it transformed into a popular basis during the 90s. Furthermore, the social basis of the PRD (then PLR) used to be very bourgeois until the 2010s, period after which this social base showed trends towards an evolution into a merchant right. Interestingly, my results are more supportive of the brahmin left vs merchant right divide hypothesis than the WPID's own results for the Swiss case. However, if one looks at political leaning instead of party support, the left appears to be bourgeois in the sense that it is supported by the upper-middle income groups and by university graduates, while right self-identification evolved into a merchant right pattern.
 
-Then, an analysis closer to the methods and conceptual framework of the neorealist approach was carried out through a latent class analysis for the late 1990s in order to assess more closely the recomposition of the left and liberal-conservative blocs during the crisis. The LCA results show...
+Then, an analysis closer to the methods and conceptual framework of the neorealist approach was carried out through a latent class analysis for the late 1990s in order to assess more closely the recomposition of the left and liberal-conservative blocs during the crisis. The LCA results show that the bourgeois basis that, mediated by the PRD, could support a neoliberal and pro-EU strategy was rather narrow (around 5% only). In fact, a strategy aggregating social groups which were opponents of EU integration, conservative vis-à-vis immigration and cultural issues would gather a broader base. This strategy was endorsed by the UDC, which then became the first Swiss party in the 2003 federal elections.
 
-As stated in the introduction, the present work is a first attempt to employ neorealist framework and methodology to study institutional change in Switzerland. The present work suffers from several limitations that could be improve in further studies. First, the time span ranges from 1981 to 2016. Although the time frame can't really go back further than 1981, it could be extended to most recent years. This could be done, for instance, by analyzing the *VOTO* studies (the successor of the *VOX* studies since 2017) which collected post-voting survey data from 2017 to 2020. This analysis of the *VOTO* studies could be complemented, as done in this work, by a latent class analysis using more recent data, for instance the SELECTS 2019 panel study, which offers even better questions than the SELECTS post-election data for 1999 used in the previous section. Overall, more recent data analysis would be a good complement to the present study.
+As stated in the introduction, the present work is a first attempt to employ neorealist framework and methodology to study institutional change in Switzerland. The present work suffers from several limitations that could be improve in further work First, the time span ranges from 1981 to 2016. Although the time frame can't really go back further than 1981, it could be extended to most recent years. This could be done, for instance, by analyzing the *VOTO* studies (the successor of the *VOX* studies since 2017) which collected post-voting survey data from 2017 to 2020. This analysis of the *VOTO* studies could be complemented, as done in this work, by a latent class analysis using more recent data, for instance the SELECTS 2019 panel study, which offers even better questions than the SELECTS post-election data for 1999 used in the previous section. Overall, more recent data analysis would be a good complement to the present study.
 
 Finally, the present work tends to overlook the crucial role of ideology and political strategies. On the one hand, the different political strategies aimed at promoting a new Swiss socio-economic model, both on the left and the right, deserve to be more carefully explored. On the other hand, ideology, both at the Swiss and international levels, could explain the transformations of these strategies, but also the transformation of the social basis of the different blocs.
 
@@ -353,7 +353,7 @@ vox %>%
             hjust = 0.5, size = 2.5, color = "white")+
   theme(legend.position="bottom", legend.box="vertical", legend.margin=margin(), legend.title = element_blank())+
   guides(color=guide_legend(nrow=3))+
-  labs(x = "", y = "", caption = "Source: VoxIt")
+  labs(x = "", y = "", caption = "Data source: VoxIt")
 
 
   
@@ -367,7 +367,7 @@ vox %>%
 #| label: fig-plotdescrleaning
 #| fig-cap: "Proportions of Swiss citizen leaning for the left, the right or neither left or right: 1988-2016"
 
-plot_models(descreg_left, descreg_noleaning, descreg_right, legend.title = "")+theme_bw()+coord_cartesian()+scale_x_discrete(limits = rev, labels = 1988:2016)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = c(0.85,0.8), legend.background = element_blank())+ylim(0.2, 0.55)+labs(y = "", caption = "Source: VoxIt")+scale_color_discrete(labels = c("left", "don't know", "right"))
+plot_models(descreg_left, descreg_noleaning, descreg_right, legend.title = "")+theme_bw()+coord_cartesian()+scale_x_discrete(limits = rev, labels = 1988:2016)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = c(0.85,0.8), legend.background = element_blank())+ylim(0.2, 0.55)+labs(y = "", caption = "Data source: VoxIt")+scale_color_discrete(labels = c("left", "don't know", "right"))
 
 ```
 
@@ -380,7 +380,7 @@ plot_models(descreg_left, descreg_noleaning, descreg_right, legend.title = "")+t
 #| fig-width: 8
 
 
-plot_models(descreg_eqright, descreg_stateint, descreg_redistribution, legend.title = "")+theme_bw()+coord_cartesian()+scale_x_discrete(limits = rev, labels = 1993:2016)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = c(0.70,0.15), legend.background = element_blank())+ylim(0.1, 0.7)+labs(y = "", caption = "Source: VoxIt")+guides(color=guide_legend(nrow=3))+scale_color_discrete(labels = c("In favor of income redistribution", "For state intervention", "For equal rights between foreigners & Swiss citizen"))+ scale_y_continuous(labels = scales::percent)+geom_hline(yintercept = 0.5)
+plot_models(descreg_eqright, descreg_stateint, descreg_redistribution, legend.title = "")+theme_bw()+coord_cartesian()+scale_x_discrete(limits = rev, labels = 1993:2016)+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), legend.position = c(0.70,0.15), legend.background = element_blank())+ylim(0.1, 0.7)+labs(y = "", caption = "Data source: VoxIt")+guides(color=guide_legend(nrow=3))+scale_color_discrete(labels = c("In favor of income redistribution", "For state intervention", "For equal rights between foreigners & Swiss citizen"))+ scale_y_continuous(labels = scales::percent)+geom_hline(yintercept = 0.5)
 
 ```
 
@@ -448,7 +448,7 @@ glmer_ame_party %>%
   aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast, group = party)+
   geom_point(position = position_dodge(width = 0.3))+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
-  labs(x = "", y = "", caption = "Source: VoxIt")+
+  labs(x = "", y = "", caption = "Data source: VoxIt")+
   theme_bw()+
   scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
@@ -475,7 +475,7 @@ glmer_ame_leaning %>%
   aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast, group = leaning)+
   geom_point(position = position_dodge(width = 0.3))+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
-  labs(x = "", y = "", caption = "Source: VoxIt")+
+  labs(x = "", y = "", caption = "Data source: VoxIt")+
   theme_bw()+
   scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
@@ -505,7 +505,7 @@ glmer_ame_issue %>%
   aes(x = as_numeric(annee_f), y = estimate, color = contrast, shape = contrast, group = issue)+
   geom_point(position = position_dodge(width = 0.3))+
   geom_pointrange(aes(ymin = conf.low, ymax = conf.high), position = position_dodge(width = 0.3))+
-  labs(x = "", y = "", caption = "Source: VoxIt")+
+  labs(x = "", y = "", caption = "Data source: VoxIt")+
   theme_bw()+
   scale_y_continuous(labels=scales::percent)+
   geom_hline(yintercept = 0)+
