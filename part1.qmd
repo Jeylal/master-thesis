@@ -693,10 +693,11 @@ party_share_long %>%
   filter(party %in% c("PRD-PLR", "PDC", "PS", "UDC", "PES")) %>% 
   ggplot()+
   aes(x = year, y = Party_strength, color = party, shape = party)+
-  scale_x_continuous()+
-  geom_line()+
-  geom_point()+
+  scale_x_continuous(breaks = seq(from = 1919, to = 2023, by = 4))+
+  geom_line(linewidth = 0.8)+
+  geom_point(size = 1.5)+
   theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
   scale_color_manual(values = c("yellow2", "green", "blue", "red", "darkgreen"))+
   labs(caption = "Data source: OFS", x = "", y = "Party Strength in %")
 
