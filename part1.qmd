@@ -697,7 +697,7 @@ party_share_long %>%
   geom_line()+
   geom_point()+
   theme_bw()+
-  scale_color_brewer(palette = "Set1")+
+  scale_color_manual(values = c("yellow2", "green", "blue", "red", "darkgreen"))+
   labs(caption = "Data source: OFS", x = "", y = "Party Strength in %")
 
 ```

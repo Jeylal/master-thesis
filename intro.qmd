@@ -149,6 +149,31 @@ voxit %>%
   mutate(se = sqrt(prop*(1-prop)/n),
          lower = prop - qnorm(.975)*se,
          upper = prop + qnorm(.975)*se) -> trust_gov
+freq(voxit$regiling)
+
+## create linguistinc region variable to see the difference in trust across regions
+
+voxit <- 
+  voxit %>% 
+  mutate(
+    region = case_when(
+      regiling == 1 ~ "Swiss-German",
+      regiling == 2 ~ "Swiss-French",
+      regiling == 3 ~ "Swiss-Italian"
+    )
+  )
+
+voxit %>% 
+  group_by(annee, region) %>% 
+  count(a22) %>% 
+  drop_na() %>% 
+  mutate(prop = n/sum(n),
+         n_sample = sum(n)) %>% 
+  ungroup() %>% 
+  filter(a22 == 1) %>% 
+  mutate(se = sqrt(prop*(1-prop)/n),
+         lower = prop - qnorm(.975)*se,
+         upper = prop + qnorm(.975)*se) -> trust_gov_regions
 
 ```
 
@@ -173,6 +198,9 @@ trust_gov %>%
   labs(title = "Confidence in Government",
        subtitle = "Switzerland, 1981-2016",
        caption = "Data source: VoxIt")
+
+
+
 ```
 
 @fig-trust2 shows that Switzerland underwent contrasted periods of political stability and crises in the last decades. A first period ranging from 1981 to 1987 was rather stable despite some variation in trust. @fig-trust2 also depicts well the crisis of the 90s, which constitutes the most turbulent period in Switzerland's contemporary history. The crisis of the 1990s can be seen with the fall in trust from 65% in 1987 to a historical low level of 39% of Swiss respondents who declared to not have confidence in the federal government in 1995, three years after the rejection of the referendum for the adhesion to the European Economic Area (EEC). Swiss journalists, political observers, activist and scholars wrote extensively on this period which constitutes a rare case of deep political and economic crisis. 
