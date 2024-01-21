@@ -138,6 +138,7 @@ voxit <- read_sav("data/voxit.sav")
 #| warning: false
 #| message: false
 #| echo: false
+
 voxit %>% 
   group_by(annee) %>% 
   count(a22) %>% 
@@ -149,7 +150,6 @@ voxit %>%
   mutate(se = sqrt(prop*(1-prop)/n),
          lower = prop - qnorm(.975)*se,
          upper = prop + qnorm(.975)*se) -> trust_gov
-freq(voxit$regiling)
 
 ## create linguistinc region variable to see the difference in trust across regions
 
@@ -163,17 +163,6 @@ voxit <-
     )
   )
 
-voxit %>% 
-  group_by(annee, region) %>% 
-  count(a22) %>% 
-  drop_na() %>% 
-  mutate(prop = n/sum(n),
-         n_sample = sum(n)) %>% 
-  ungroup() %>% 
-  filter(a22 == 1) %>% 
-  mutate(se = sqrt(prop*(1-prop)/n),
-         lower = prop - qnorm(.975)*se,
-         upper = prop + qnorm(.975)*se) -> trust_gov_regions
 
 ```
 
