@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -68,7 +69,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -77,29 +84,58 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Social blocs, socio-economic groups and political divides in Switzerland</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part1.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Social blocs, socio-economic groups and political divides in Switzerland</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -124,7 +160,7 @@ div.csl-indent {
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Social Blocs, Political Cleavages and Institutional Change in Switzerland</a> 
@@ -174,7 +210,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -186,7 +222,7 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#data-and-empirical-strategy" id="toc-data-and-empirical-strategy" class="nav-link" data-scroll-target="#data-and-empirical-strategy"><span class="header-section-number">2.2.1</span> Data and empirical strategy</a></li>
   </ul></li>
-  <li><a href="#in-search-of-the-liberal-conservative-and-left-blocs" id="toc-in-search-of-the-liberal-conservative-and-left-blocs" class="nav-link" data-scroll-target="#in-search-of-the-liberal-conservative-and-left-blocs"><span class="header-section-number">2.3</span> In search of the liberal-conservative and left blocs</a>
+  <li><a href="#in-search-of-the-liberal-conservative-and-left-blocs" id="toc-in-search-of-the-liberal-conservative-and-left-blocs" class="nav-link" data-scroll-target="#in-search-of-the-liberal-conservative-and-left-blocs"><span class="header-section-number">2.3</span> In search of the Liberal-Conservative and Left blocs</a>
   <ul class="collapse">
   <li><a href="#the-latent-class-model-and-estimation-method" id="toc-the-latent-class-model-and-estimation-method" class="nav-link" data-scroll-target="#the-latent-class-model-and-estimation-method"><span class="header-section-number">2.3.1</span> The latent class model and estimation method</a></li>
   <li><a href="#estimation-of-swiss-socio-political-groups-in-1999-the-12-clusters-model" id="toc-estimation-of-swiss-socio-political-groups-in-1999-the-12-clusters-model" class="nav-link" data-scroll-target="#estimation-of-swiss-socio-political-groups-in-1999-the-12-clusters-model"><span class="header-section-number">2.3.2</span> Estimation of Swiss socio-political groups in 1999: the 12 clusters model</a></li>
@@ -196,6 +232,7 @@ div.csl-indent {
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
+
 
 
 
@@ -218,12 +255,16 @@ div.csl-indent {
 <p>In fact, until the post-war period, the evolution of the Swiss social blocs can thus be resumed as follows. From the middle to the late 19th century, the Radicals formed a strongly heterogeneous but dominant social bloc. This dominant social bloc was composed by the working class (mainly through the Grütli Union), and an urban elite composed by the most educated (journalists, lawyers, teachers) and the wealthy industrial bourgeoisie (entrepreneurs, bankers…). This DSB was united by their willingness to modernize the Confederation against the Catholic-Conservatives. A second period, from the late 19th to the second World War, marked the recomposition of the DSB and its transformation into a Liberal-Conservative bloc. Parts of the working class and of the democrats (educated elite) joined the emerging socialist-left bloc while the Christian-Democrats attracted part of the working class while being progressively incorporated into the DSB, along with the Agrarian party which represented the peasant and farmer classes.</p>
 <p>Analyses of the first Swiss post-electoral surveys which were conducted in the 1970s show the heterogeneity of the Swiss “bourgeois bloc” and that the term bourgeois is not valid for the Right bloc as a whole. The social basis of the Radical-Democratic party was constituted by large employers/liberal professions and managers. The UDC relied heavily on small business owners’ support while the PDC’s social basis was rather cross-class <span class="citation" data-cites="rennwald_class_2014 tawfik_les_2019">(<a href="references.html#ref-rennwald_class_2014" role="doc-biblioref">L. Rennwald 2014</a>; <a href="references.html#ref-tawfik_les_2019" role="doc-biblioref">Tawfik 2019</a>)</span>. Therefore, of the three right-wing government parties, only the Radical-Democratic party’s social basis can truly be described as bourgeois. Regarding the support for the Socialist party, the latter was neither a bourgeois nor solely a popular party, but a hybrid-class party whose social basis was constituted by socio-cultural professionals and production workers <span class="citation" data-cites="rennwald_social_2020">(<a href="references.html#ref-rennwald_social_2020" role="doc-biblioref">L. Rennwald 2020</a>)</span>.</p>
 <p>The coalition between the Radical-Democrats, Christian-Democrats and Agrarians against the Left bloc took deeply roots into the Swiss socio-political system: it persisted during the post-war period and still shapes Swiss politics to some extent nowadays <span class="citation" data-cites="mazzoleni_voisinages_2013 meuwly_les_2010 meuwly_liberte_2008">(<a href="references.html#ref-mazzoleni_voisinages_2013" role="doc-biblioref">Mazzoleni and Meuwly 2013</a>; <a href="references.html#ref-meuwly_les_2010" role="doc-biblioref">Meuwly 2010</a>, <a href="references.html#ref-meuwly_liberte_2008" role="doc-biblioref">2008</a>)</span>. A striking feature of the Swiss DSB is its persistence and resilience since 1848: even though this bloc underwent important transformations, especially after the introduction of the proportional system in 1918, it was always mediated by right-wing parties, first the Radicals and then an extended coalition with the Catholic-Conservative and the Agrarians. Despite its incorporation in the parliament and government, the Left bloc never truly became dominant in Switzerland.</p>
-<p>To sum up, Switzerland’s traditional social blocs crystallized into an opposition between two blocs, which is summarized in <a href="#tbl-socialblocs1">Table&nbsp;<span>2.1</span></a>. On the one hand, the dominant social bloc, which can be called Liberal-Conservative, gathered the large employers and owners of the big industrialized and internationalized firms, medium and small business owners and farmers, and skilled workers from the private sector. At the political level, this socio-political group was represented by business interest associations such as the <em>Vorort</em> (now <em>EconomieSuisse</em>), and the Radical-Democratic party.</p>
+<p>To sum up, Switzerland’s traditional social blocs crystallized into an opposition between two blocs, which is summarized in <a href="#tbl-socialblocs1" class="quarto-xref">Table&nbsp;<span>2.1</span></a>. On the one hand, the dominant social bloc, which can be called Liberal-Conservative, gathered the large employers and owners of the big industrialized and internationalized firms, medium and small business owners and farmers, and skilled workers from the private sector. At the political level, this socio-political group was represented by business interest associations such as the <em>Vorort</em> (now <em>EconomieSuisse</em>), and the Radical-Democratic party.</p>
 <p>The program of the Radical-Democratic and policy demands from the business interests associations linked to the large industrialized firms and large employees were to maintain low social protection, low taxation, no barriers to external trade and to promote free trade at the international level.</p>
 <p>Alongside this group were the medium and small business owners producing essentially for the national market, and skilled workers (managers) from the private sector. The policy demands from the medium and small firms differed substantially from those of the large companies in terms of the degree of protection from international competition and public subsidies. Unlike the big corporations, small firms felt more threatened by external competition, and, since they produced mainly for the internal and rather small Swiss market, they tended to ask for protection and public subsidies. These contradicting demands between the export-oriented and sheltered domestic-oriented sectors are one of the main factor behind the destabilization of the DSB in the 90s.</p>
-<div id="tbl-socialblocs1" class="anchored">
+<div id="tbl-socialblocs1" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-socialblocs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: Social blocs in Switzerland during the 70s and 80s. Classification based on Rennwald (2014), Tawfiq (2019).
+</figcaption>
+<div aria-describedby="tbl-socialblocs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
-<caption>Table&nbsp;2.1: Social blocs in Switzerland during the 70s and 80s. Classification based on Rennwald (2014), Tawfiq (2019).</caption>
 <colgroup>
 <col style="width: 19%">
 <col style="width: 46%">
@@ -295,6 +336,8 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <p>On the other hand, the main social bloc excluded from the DSB was the Left bloc, constituted by socio-cultural professionals, workers from the public sector, and production workers from the private sector. These groups were mediated by the Swiss Socialist party, which was incorporated into the government during the post-war period, but never really managed to dominate the parliament and government.</p>
 <p>In its early days, the Swiss Socialist party had strong communist stances. Its second program (1904) had strong Marxist and anti-capitalist inspirations: it advocated nationalizations, collectivization, economic planning as ways out of capitalism. In the post-war period, the party moderated its program and became more a social-democratic reformist party. The main policy demands of the revised program of 1959 were focused on social reforms and expansionary policies within the capitalist framework: extending social protection; promote economic growth and anti-cyclical Keynesian macroeconomic policies and ensure full employment <span class="citation" data-cites="degen_parti_2022">(<a href="references.html#ref-degen_parti_2022" role="doc-biblioref">Degen 2022</a>)</span>.</p>
 <p>We have heretofore identified and described the traditional Swiss social blocs. Before moving on to an in-depth analysis of the recomposition of these social blocs during the crisis of the 90s, it is necessary to take a long-run perspective on the evolution of these blocs in the last decades.</p>
@@ -313,9 +356,13 @@ div.csl-indent {
 <p>In this context of multi-elite party system and multidimensional political divides, Switzerland is an interesting case study. A widespread idea claims that the economic cleavage always played a relatively minor role in Switzerland. In Switzerland, class conflict was always cut across a wide variety of other divides, the most important one being the religious cleavage <span class="citation" data-cites="lijphart_religious_1979">(<a href="references.html#ref-lijphart_religious_1979" role="doc-biblioref">Lijphart 1979</a>)</span>. Moreover, due to strong standard-of-living increase throughout the 20th century, Switzerland is also often considered as a forerunner in the emergence of this “cultural” cleavage, and in the precociousness and strength of the educational shift. Following Inglehart Silent Revolution’s argument and empirical estimations, Switzerland shows relatively high level of post-materialism due to its high level of economic development <span class="citation" data-cites="inglehart_changing_2009">(<a href="references.html#ref-inglehart_changing_2009" role="doc-biblioref">Inglehart 2009</a>)</span>.</p>
 <p>As a team part of the WPID project puts it, Switzerland is the country where “the shift of the higher educated towards the left has been the most dramatic” <span class="citation" data-cites="durrer_de_la_sota_party_2021">(<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">Durrer de la Sota, Gethin, and Martinez-Toledano 2021, 4</a>)</span>. During the post-war period until the 1990s, the left bloc (mainly the PS) was supported by low income and education voters while right-wing parties showed different patterns of class support, which call into question the extent to which this bourgeois bloc can truly be characterized as “bourgeois”. Of the three parties constituting the bourgeois bloc, only one of them, the PRD-PLR party, had clearly a bourgeois composition since it is consistently supported by the most wealthy and educated groups since the post-war period. The PDC and the UDC cannot really be described as “bourgeois” since, according to <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span>, the support for the two parties was negatively associated with income and education. While this negative association tends to decline for the PDC, it became even more strong for the UDC since the 90s. After this period, the left bloc became “brahmin” in the sense that it gathered strong support among the most educated classes, while its popular support moved either into abstention or to the UDC.</p>
 <p>This article by <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span>, shows that Piketty’s brahmin left vs merchant right divide is partially valid in Switzerland: a Swiss brahmin left indeed exists through the Swiss Socialist Party. However this bloc do not face a merchant right, but rather a bourgeois bloc gathered by the Radical-Liberals and a popular bloc which support the UDC or do not support any party. Rather than being constituted by a brahmin left, a merchant right and a nativist bloc, Switzerland’s tripolar political space is rather divided between a bourgeois bloc, a brahmin left and a popular bloc.</p>
-<div id="tbl-socialblocs2" class="anchored">
+<div id="tbl-socialblocs2" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-socialblocs2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.2: The four possible social blocs based on a bi-dimensional political divide and income and education levels. This classification is based on <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span> results (see their appendix). The term bourgeois bloc and this table were inspired by <span class="citation" data-cites="amable_brahmin_2022-1">Amable and Darcillon (<a href="references.html#ref-amable_brahmin_2022-1" role="doc-biblioref">2022a</a>)</span>.
+</figcaption>
+<div aria-describedby="tbl-socialblocs2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
-<caption>Table&nbsp;2.2: The four possible social blocs based on a bi-dimensional political divide and income and education levels. This classification is based on <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span> results (see their appendix). The term bourgeois bloc and this table were inspired by <span class="citation" data-cites="amable_brahmin_2022-1">Amable and Darcillon (<a href="references.html#ref-amable_brahmin_2022-1" role="doc-biblioref">2022a</a>)</span>.</caption>
 <colgroup>
 <col style="width: 21%">
 <col style="width: 39%">
@@ -397,6 +444,8 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <p>The transformation of party systems into a mutli-elite and tripolar political space came with important change in the structural basis of party support. Before that, some scholarly debates emphasized the decline of class voting, measured through the Alford index, and the reconsideration of social class as a useful concept <span class="citation" data-cites="clark_are_1991">(<a href="references.html#ref-clark_are_1991" role="doc-biblioref">Clark and Lipset 1991</a>)</span>. However, the rise of the radical right during the 90s and the proletarianization of its electoral basis weakened the end of class voting argument and scholars soon became interested in explaining why workers became part of the radical right’s social basis. <span class="citation" data-cites="oesch_explaining_2008-1">Oesch (<a href="references.html#ref-oesch_explaining_2008-1" role="doc-biblioref">2008a</a>)</span> argued that economic motivations play a lesser role than cultural determinant in explaining the success of the radical right: the latter’s supporters being more likely to feel threatened by immigrant’s impact on their country’s culture rather than on their standard-of-living. Against the decline of class voting argument, <span class="citation" data-cites="oesch_changing_2008">Oesch (<a href="references.html#ref-oesch_changing_2008" role="doc-biblioref">2008b</a>)</span> suggested that position on a new class structure, measured by his own class schema <span class="citation" data-cites="oesch_redrawing_2006">(<a href="references.html#ref-oesch_redrawing_2006" role="doc-biblioref">Oesch 2006</a>)</span>, influence individual’s preferences on both the cultural and economic cleavages and thus class voting, defined as systematic links between social class and party support.</p>
 <p>Empirically, <span class="citation" data-cites="oesch_changing_2008">Oesch (<a href="references.html#ref-oesch_changing_2008" role="doc-biblioref">2008b</a>)</span> observed that, in the late 90s, the Swiss far right draw strong support from production and service workers and from small business owners while the center-right gathered support from large employers, small business owners and managers; and the left’s only above-average support was constituted by socio-cultural specialists. Trying to find the causality behind these new class voting patterns, <span class="citation" data-cites="oesch_changing_2008">Oesch (<a href="references.html#ref-oesch_changing_2008" role="doc-biblioref">2008b</a>)</span> and <span class="citation" data-cites="oesch_class_2010">Oesch and Rennwald (<a href="references.html#ref-oesch_class_2010" role="doc-biblioref">2010</a>)</span> took and developed <span class="citation" data-cites="kitschelt_transformation_1994">Kitschelt (<a href="references.html#ref-kitschelt_transformation_1994" role="doc-biblioref">1994</a>)</span>‘s argument. In the Oesch class schema, class locations are divided vertically and horizontally: different class economic interests come from hierarchical employment relationships while class differences in cultural attitudes are the results of occupations’ “work-logics”. Thus, people employed in “technical” work-logic professions such as production workers (carpenters, asssemblers, mechanics…) are more likely to hold conservative values whereas service workers (nurses, waiters…) and socio-cultural specialists (teachers, journalists, social workers…) employed in interpersonal work-logic occupations are more likely to hold progressive-libertarian attitudes since they experience more social interactions and their occupation requires tolerance for cultural diversity <span class="citation" data-cites="oesch_redrawing_2006 oesch_class_2010">(<a href="references.html#ref-oesch_redrawing_2006" role="doc-biblioref">Oesch 2006</a>; <a href="references.html#ref-oesch_class_2010" role="doc-biblioref">Oesch and Rennwald 2010</a>)</span>.</p>
 <p>This kind of argument relating progressive and conservative attitudes to different “work-logics”, explaining thus why, for instance, the working class supports the far-right despite their economic interests, is however overly deterministic and remains a purely theoretical argument with no empirical evidence. Another explanation deserving more attention and research relates to changes in the hierarchy of preferences: despite the fact that working classes are surely on average less racists than before, their support for the far-right could have increased because of a change in the hierarchy of their social expectations, placing demands of stricter immigration policies above their demands for left-wing economic policies due to a strong neoliberal hegemony excluding any type of left-wing economic reforms as legitimate, thus leaving workers’ conservative demands as the only acceptable ones in the eyes of the dominant ideology <span class="citation" data-cites="amable_ou_2022">(<a href="references.html#ref-amable_ou_2022" role="doc-biblioref">Amable and Palombarini 2022, 108–9</a>)</span>.</p>
@@ -422,22 +471,30 @@ div.csl-indent {
 <p>The main independent variables are education and income levels. The variable “educ” is a qualitative variables on the highest achieved educational level with 6 categories ranging from primary school to university. It is important here to underline the peculiarities of the Swiss education system. Switzerland’s education system is strongly based on vocational training. As a result, other education categories tend to be missing for a lot of year-periods of the dataset. To solve this problem, but also to simplify the data structure, years are aggregated into several time periods to avoid separation issues.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-educ" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="part1_files/figure-html/fig-educ-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.1: Education Levels in Switzerland: 1981-2016</figcaption>
+<div id="fig-educ" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-educ-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="part1_files/figure-html/fig-educ-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-educ-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Education Levels in Switzerland: 1981-2016
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-educ">Figure&nbsp;<span>2.1</span></a> shows the proportions of each level of education and their evolution over time. In the 1980s, most of the Swiss completed either vocational training or compulsory school. The share of compulsory schooling declined over time, reflecting the overall increase in average education, as seen also by the increase in the share of university graduates. The share of vocational training declined over time, but remains the most widespread education level in Switzerland. For the regression analysis, the categories “university” and “higher specialized school” are merged together since the absence of the latter in the first two time periods could cause estimation issues. This does not pose a major issue since higher specialized schooling is rather similar to university in Switzerland.</p>
+<p><a href="#fig-educ" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> shows the proportions of each level of education and their evolution over time. In the 1980s, most of the Swiss completed either vocational training or compulsory school. The share of compulsory schooling declined over time, reflecting the overall increase in average education, as seen also by the increase in the share of university graduates. The share of vocational training declined over time, but remains the most widespread education level in Switzerland. For the regression analysis, the categories “university” and “higher specialized school” are merged together since the absence of the latter in the first two time periods could cause estimation issues. This does not pose a major issue since higher specialized schooling is rather similar to university in Switzerland.</p>
 <p>Regarding income levels, the dataset contains two variables. The variable “nivmena” represents the houshold’s standard of living in four categories (high, middle-high, middle-low, low) available from 1981 to 1991 whereas “revenu” is an income bracket variable in five categories available from 1992 to 2016. To harmonize these two variables in order to construct one single income or standard of living variable, I recode the variable “revenu” in order to make it similar to “nivmena” by grouping the income brackets categories 3 (from 5’001 chf to 7’000 chf) and 4 (from 7’001 to 9’000) into the “middle-high” category. This harmonized variable is used only in regressions for party support because political leaning and issue position variables are not available until 1992 (thus for these dependent variables the variable “revenu” is used as an independent variable for income).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-inc" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="part1_files/figure-html/fig-inc-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.2: Descriptive statistics: variable nivmena and revenu</figcaption>
+<div id="fig-inc" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-inc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="part1_files/figure-html/fig-inc-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Descriptive statistics: variable nivmena and revenu
+</figcaption>
 </figure>
 </div>
 </div>
@@ -445,49 +502,65 @@ div.csl-indent {
 <p>A series of binary logit regressions for party support, political leaning, opinion on redistribution, state intervention and equal rights between Swiss and foreigners are conducted. The results presented in this section come from the following model:</p>
 <p><span id="eq-1"><span class="math display">\[ P(y_{it} = 1) = logit^{-1}(\alpha + \beta_{I}I_{it} + \beta_{E}E_{it} + \beta I_{it}E_{it} + \gamma X_{it} + \eta_{1} Year + \eta_{2}YearI_{it}+ \eta_{3}YearE_{it})  \tag{2.1}\]</span></span></p>
 <p>With <span class="math inline">\(I_{it}\)</span> and <span class="math inline">\(E_{it}\)</span> the income and education level of individual <span class="math inline">\(i\)</span> in period <span class="math inline">\(t\)</span> and <span class="math inline">\(X\)</span> a vector of socio-demographic characteristics control variables which were available in the dataset for all time periods. The controls are for age (grouped into 4 categories), gender, religion, linguistic region (French, German or Italian), marital status and house ownership. <span class="math inline">\(Year\)</span> are dummy variables for the time periods. The models include interaction terms between education and income as well as between income, education and time period in order to assess the temporal evolution of the correlation between the dependent and main explanatory variables. Income and Education are treated as categorical variables, with vocational training and low income as reference categories. The results are presented in the form of average marginal contrasts which allow to compare the difference in average predicted probabilities between groups of interests, in our case, between highest and lowest income groups and between university graduates and vocational training graduates.</p>
-<p>Before running the model presented above (<a href="#eq-1">Equation&nbsp;<span>2.1</span></a>), simple linear models regressing the dependent variables on years were estimated as a descriptive way to evaluate the proportions’ overall time trends in the sample (except for party support, for which general descriptive statistics were computed). The results for party support (<a href="conclusion_appendix.html#fig-plotdescrparties">Figure&nbsp;<span>4.1</span></a>) show that Swiss citizen are most likely to not support any party, even though the proportion of no party support has declined over time. Among political parties, the Swiss Socialist party has the highest proportions of support, whereas The Radical-Democrats rank second until 2001, when the UDC becomes the second largest party in the sample. Out of all government parties, only the UDC has seen its share rise while the support for all other government parties tend to decline. The difference between the estimated proportions for party support and actual party strength during the national elections suggests that UDC support is strongly underestimated in the sample (see <a href="#fig-partystrength">Figure&nbsp;<span>2.6</span></a> and <a href="conclusion_appendix.html#fig-plotdescrparties">Figure&nbsp;<span>4.1</span></a> in the appendix).</p>
-<p>Regarding political leaning, identification with neither the left nor the right increased until 2000 (50%) and then gradually declines 2016 (at around 30%). Left leaning has slightly increased over time while right leaning declined until 2000, and then increased until recovering in 2016 about the same percentage (slightly below 35%) as in 1988. As for issue positions, the percentage of Swiss citizen supporting income redistribution remains rather stable above 50%. The proportion regarding support for equal rights and chances for foreigners has overall increased above 50% since 1993, even though it fell below 50% from 2010 to 2014. Interestingly, the proportion for state intervention’s support has increased rather significantly since the 90s, but remains below 40% (see <a href="conclusion_appendix.html#fig-plotdescrleaning">Figure&nbsp;<span>4.2</span></a> and <a href="conclusion_appendix.html#fig-plotdescrIP">Figure&nbsp;<span>4.3</span></a> in the appendix).</p>
+<p>Before running the model presented above (<a href="#eq-1" class="quarto-xref">Equation&nbsp;<span>2.1</span></a>), simple linear models regressing the dependent variables on years were estimated as a descriptive way to evaluate the proportions’ overall time trends in the sample (except for party support, for which general descriptive statistics were computed). The results for party support (<a href="conclusion_appendix.html#fig-plotdescrparties" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>) show that Swiss citizen are most likely to not support any party, even though the proportion of no party support has declined over time. Among political parties, the Swiss Socialist party has the highest proportions of support, whereas The Radical-Democrats rank second until 2001, when the UDC becomes the second largest party in the sample. Out of all government parties, only the UDC has seen its share rise while the support for all other government parties tend to decline. The difference between the estimated proportions for party support and actual party strength during the national elections suggests that UDC support is strongly underestimated in the sample (see <a href="#fig-partystrength" class="quarto-xref">Figure&nbsp;<span>2.6</span></a> and <a href="conclusion_appendix.html#fig-plotdescrparties" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> in the appendix).</p>
+<p>Regarding political leaning, identification with neither the left nor the right increased until 2000 (50%) and then gradually declines 2016 (at around 30%). Left leaning has slightly increased over time while right leaning declined until 2000, and then increased until recovering in 2016 about the same percentage (slightly below 35%) as in 1988. As for issue positions, the percentage of Swiss citizen supporting income redistribution remains rather stable above 50%. The proportion regarding support for equal rights and chances for foreigners has overall increased above 50% since 1993, even though it fell below 50% from 2010 to 2014. Interestingly, the proportion for state intervention’s support has increased rather significantly since the 90s, but remains below 40% (see <a href="conclusion_appendix.html#fig-plotdescrleaning" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> and <a href="conclusion_appendix.html#fig-plotdescrIP" class="quarto-xref">Figure&nbsp;<span>4.3</span></a> in the appendix).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ameparties" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="part1_files/figure-html/fig-ameparties-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.3: Party support in Switzerland: 1981-2016. Average difference in predicted probabilities between the highest and lowest income groups and between university and vocational training graduates.</figcaption>
+<div id="fig-ameparties" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ameparties-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="part1_files/figure-html/fig-ameparties-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ameparties-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Party support in Switzerland: 1981-2016. Average difference in predicted probabilities between the highest and lowest income groups and between university and vocational training graduates.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-ameparties">Figure&nbsp;<span>2.3</span></a> show average marginal contrasts for each party or no party support in each time periods. The results partially confirm those of <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span> and hypotheses BvsM1 and BvsM2. First, the Swiss Socialist party (PS) used to be supported by relatively low education and income groups in the 1980s and became indeed a brahmin left party over time: the difference between the highly educated and vocational training graduates became positive in the second half of the 1980s and continued to increase in almost all time periods while the negative difference between the highest and lowest income groups decreased, indicating that the party’s social basis became more educated and wealthier over time. However, the results show that the educational shift took place already in the 80s: university graduates already supported more the PS compared to vocational training graduates. This is an important result because it indicates that the PS became the party of the most educated in the 80s, before the economic and political crisis of the 90s and, most importantly, before the vote on the adhesion to the European Economic Area (EEA) in 1992, events which are often associated with the final stage of the educational shift and the PS’s loss of popular support. Furthermore, it not clear whether the relationship between education and support for the Swiss Socialist party was negative in the first half of the 80s, since the difference in average predicted probabilities is not significant for this time-period. Other regressions models that were considered by the author, mainly multilevel models using years and cantons as levels, rather show that this relationship for all the time frame of the dataset, suggesting that the Swiss Socialist party was already a brahmin left party since the beginning of the 80s (see <a href="conclusion_appendix.html#fig-glmerameparties">Figure&nbsp;<span>4.4</span></a> in the appendix).</p>
-<p>Second, the Liberal-Radical party (Radical-Democratic and Swiss Liberal Party before the latter merged in 2008) (PRD-PLR) shows a clear bourgeois basis for almost all time periods. The PRD-PLR party is thus indeed the party of the wealthiest and most educated groups and is the only party that shows this pattern. However, the PRD-PLR seems to gradually become a merchant right party in the last time periods. In <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span>, the Greens supporters also became bourgeois between 2011-2019, with the difference between the top 10% income and bottom 90% income voting Green becoming positive during this period while the difference between the top 10% and bottom 90% educated was positive since the 80s. The results shown in <a href="#fig-ameparties">Figure&nbsp;<span>2.3</span></a> rather indicate that the Greens was a brahmin left party from 1981 to 2016.</p>
+<p><a href="#fig-ameparties" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> show average marginal contrasts for each party or no party support in each time periods. The results partially confirm those of <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span> and hypotheses BvsM1 and BvsM2. First, the Swiss Socialist party (PS) used to be supported by relatively low education and income groups in the 1980s and became indeed a brahmin left party over time: the difference between the highly educated and vocational training graduates became positive in the second half of the 1980s and continued to increase in almost all time periods while the negative difference between the highest and lowest income groups decreased, indicating that the party’s social basis became more educated and wealthier over time. However, the results show that the educational shift took place already in the 80s: university graduates already supported more the PS compared to vocational training graduates. This is an important result because it indicates that the PS became the party of the most educated in the 80s, before the economic and political crisis of the 90s and, most importantly, before the vote on the adhesion to the European Economic Area (EEA) in 1992, events which are often associated with the final stage of the educational shift and the PS’s loss of popular support. Furthermore, it not clear whether the relationship between education and support for the Swiss Socialist party was negative in the first half of the 80s, since the difference in average predicted probabilities is not significant for this time-period. Other regressions models that were considered by the author, mainly multilevel models using years and cantons as levels, rather show that this relationship for all the time frame of the dataset, suggesting that the Swiss Socialist party was already a brahmin left party since the beginning of the 80s (see <a href="conclusion_appendix.html#fig-glmerameparties" class="quarto-xref">Figure&nbsp;<span>4.4</span></a> in the appendix).</p>
+<p>Second, the Liberal-Radical party (Radical-Democratic and Swiss Liberal Party before the latter merged in 2008) (PRD-PLR) shows a clear bourgeois basis for almost all time periods. The PRD-PLR party is thus indeed the party of the wealthiest and most educated groups and is the only party that shows this pattern. However, the PRD-PLR seems to gradually become a merchant right party in the last time periods. In <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span>, the Greens supporters also became bourgeois between 2011-2019, with the difference between the top 10% income and bottom 90% income voting Green becoming positive during this period while the difference between the top 10% and bottom 90% educated was positive since the 80s. The results shown in <a href="#fig-ameparties" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> rather indicate that the Greens was a brahmin left party from 1981 to 2016.</p>
 <p>Third, the results show that the Swiss People’s Part (UDC) was a merchant right party whose social basis became popular both in terms of education and income levels. Before the 90s the party gathered the less educated, but also the wealthiest income groups (hence “merchant” in Piketty’s terms). Here the results contrast with those of <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span> which show that the UDC was already a popular party gathering the less educated and poorest income groups in the 70s. Finally, we can see that popular groups, both in terms of education and income levels, are likely to not support any party relatively to the wealthy and most educated.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-amepolleaning" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="part1_files/figure-html/fig-amepolleaning-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.4: Political leaning in Switzerland: 1981-2016. Average difference in predicted probabilities between the highest and lowest income groups (less than 3000CHF per month vs more than 9000CHF), the second highest ([7’000chf-9’000chf]) and lowest income groups, and between university and vocational training graduates.</figcaption>
+<div id="fig-amepolleaning" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-amepolleaning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="part1_files/figure-html/fig-amepolleaning-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-amepolleaning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Political leaning in Switzerland: 1981-2016. Average difference in predicted probabilities between the highest and lowest income groups (less than 3000CHF per month vs more than 9000CHF), the second highest ([7’000chf-9’000chf]) and lowest income groups, and between university and vocational training graduates.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-amepolleaning">Figure&nbsp;<span>2.4</span></a> show average marginal contrasts for left leaning, right leaning and no leaning. Interestingly, we can see that right leaning used to be bourgeois in the 80s and 90s while left leaning used to be brahmin. Over time, left leaning became bourgeois and right leaning became merchant. In the 80s and 90s, left leaning was positively associated with education, but not with income level while right leaning was positively associated with both. The positive difference between university and vocational training graduates declined for right leaning whereas it stayed rather stable for left leaning, indicating that the most educated support the left for all time periods while their support for the right declined over time. Popular groups tend to not identify with either the left or the right.</p>
+<p><a href="#fig-amepolleaning" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> show average marginal contrasts for left leaning, right leaning and no leaning. Interestingly, we can see that right leaning used to be bourgeois in the 80s and 90s while left leaning used to be brahmin. Over time, left leaning became bourgeois and right leaning became merchant. In the 80s and 90s, left leaning was positively associated with education, but not with income level while right leaning was positively associated with both. The positive difference between university and vocational training graduates declined for right leaning whereas it stayed rather stable for left leaning, indicating that the most educated support the left for all time periods while their support for the right declined over time. Popular groups tend to not identify with either the left or the right.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ameIP" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="part1_files/figure-html/fig-ameIP-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.5: Opinion on several social issues in Switzerland: 1992-2016. Average difference in predicted probabilities between the highest and lowest income groups (less than 3000CHF per month vs more than 9000CHF) and between university and vocational training graduates.</figcaption>
+<div id="fig-ameIP" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ameIP-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="part1_files/figure-html/fig-ameIP-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ameIP-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: Opinion on several social issues in Switzerland: 1992-2016. Average difference in predicted probabilities between the highest and lowest income groups (less than 3000CHF per month vs more than 9000CHF) and between university and vocational training graduates.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Finally, <a href="#fig-ameIP">Figure&nbsp;<span>2.5</span></a> show average marginal contrasts for issue positions regarding equal rights between foreigner and Swiss citizen, redistribution and state intervention. The support for equal rights is positively associated with both education and income levels. However, the positive difference between highest and lowest income groups tend to decrease since the 2000s, indicating a decline of the “progressive attitude” of the wealthiest income groups towards foreigners. The difference between income groups in the support for redistribution is negative for all time periods whereas the difference between education groups was declining from 1992 to 2008, but tend to increase since in 2008-2012, but is not significant in 2012-2016. Regarding support for state intervention, the difference between education groups and income groups are respectively positive and negative: university graduates tend to be relatively more in favor of state intervention and the highest income groups tend to be relatively against for all time periods, indicating a brahmin left vs merchant right divide over state intervention.</p>
-<p>To sum up, the results overall confirm the brahmin left vs merchant right hypotheses, even more than the results of the WPID project. The support for the Swiss Socialist party evolved from a traditional popular support towards a brahmin left support in the 80s. The results confirm the bourgeois composition of the PLR, since the latter seems to be gradually transforming into a merchant right composition since the beginning of the 2010s. The greens belong to the brahmin left since the 80s and there is no clear trend that the party evolved into a bourgeois party. Regarding the UDC, the latter used to be a merchant right party in the 80s, and evolved into a populist or, in Piketty’s terms, a nativist party in the 90s. Thus, unlike <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span> and the classification presented in <a href="#tbl-socialblocs1">Table&nbsp;<span>2.1</span></a>, the social basis of the PLR seems to be transforming into a merchant right, while the Greens have kept their brahmin elements.</p>
+<p>Finally, <a href="#fig-ameIP" class="quarto-xref">Figure&nbsp;<span>2.5</span></a> show average marginal contrasts for issue positions regarding equal rights between foreigner and Swiss citizen, redistribution and state intervention. The support for equal rights is positively associated with both education and income levels. However, the positive difference between highest and lowest income groups tend to decrease since the 2000s, indicating a decline of the “progressive attitude” of the wealthiest income groups towards foreigners. The difference between income groups in the support for redistribution is negative for all time periods whereas the difference between education groups was declining from 1992 to 2008, but tend to increase since in 2008-2012, but is not significant in 2012-2016. Regarding support for state intervention, the difference between education groups and income groups are respectively positive and negative: university graduates tend to be relatively more in favor of state intervention and the highest income groups tend to be relatively against for all time periods, indicating a brahmin left vs merchant right divide over state intervention.</p>
+<p>To sum up, the results overall confirm the brahmin left vs merchant right hypotheses, even more than the results of the WPID project. The support for the Swiss Socialist party evolved from a traditional popular support towards a brahmin left support in the 80s. The results confirm the bourgeois composition of the PLR, since the latter seems to be gradually transforming into a merchant right composition since the beginning of the 2010s. The greens belong to the brahmin left since the 80s and there is no clear trend that the party evolved into a bourgeois party. Regarding the UDC, the latter used to be a merchant right party in the 80s, and evolved into a populist or, in Piketty’s terms, a nativist party in the 90s. Thus, unlike <span class="citation" data-cites="durrer_de_la_sota_party_2021">Durrer de la Sota, Gethin, and Martinez-Toledano (<a href="references.html#ref-durrer_de_la_sota_party_2021" role="doc-biblioref">2021</a>)</span> and the classification presented in <a href="#tbl-socialblocs1" class="quarto-xref">Table&nbsp;<span>2.1</span></a>, the social basis of the PLR seems to be transforming into a merchant right, while the Greens have kept their brahmin elements.</p>
 <p>However, if one looks at political leaning on a left-right axis instead of party support, self-identification to the right used to be rather bourgeois in the 90s, and then went merchant afterwards. Self-identification to the left used to be brahmin in the 90s and even became bourgeois in recent time periods, if one looks at the difference in predicted probabilities between the upper-middle income and lowest income groups.</p>
 <p>Finally, regarding policy preferences, preferences for equal opportunities and rights between foreigners and Swiss citizen for the highest incomes and the most educated seemed to converge until the mid-2000s, and have been diverging ever since. The divide over state intervention shows a brahmin vs merchant opposition in all time periods, with the highest income group being in favor of free market (relatively to the lowest income group) and university graduates being relatively more in favor of state intervention (relatively to vocational training graduates). The divide over income redistribution is less clear-cut than the state vs market divide: the cleavage appears to be brahmin vs merchant for some time periods (mostly 1992-1996 and 2008-20012), solely negatively correlated with income (1996-2004) or show a bourgeois vs anti-bourgeois opposition (2004-2008), with both the most education and wealthy being relatively opposed to redistribution.</p>
-<div id="tbl-socialblocs3" class="anchored">
+<div id="tbl-socialblocs3" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-socialblocs3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.3: The four possible social blocs based on a bi-dimensional political divide and income and education levels. Results from regression analysis of VoxIt data
+</figcaption>
+<div aria-describedby="tbl-socialblocs3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
-<caption>Table&nbsp;2.3: The four possible social blocs based on a bi-dimensional political divide and income and education levels. Results from regression analysis of VoxIt data</caption>
 <colgroup>
 <col style="width: 19%">
 <col style="width: 37%">
@@ -550,13 +623,15 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<p>Overall, the regression analysis conducted in this section, using a different data source from the WPID project offers a new way to describe the evolution of the Swiss version of the brahmin left vs merchant right divide, which is summarized in <a href="#tbl-socialblocs3">Table&nbsp;<span>2.3</span></a>. However, this analysis suffers from several limitations.</p>
+</figure>
+</div>
+<p>Overall, the regression analysis conducted in this section, using a different data source from the WPID project offers a new way to describe the evolution of the Swiss version of the brahmin left vs merchant right divide, which is summarized in <a href="#tbl-socialblocs3" class="quarto-xref">Table&nbsp;<span>2.3</span></a>. However, this analysis suffers from several limitations.</p>
 <p>On the one hand, one possible methodological issue of <em>VoxIt</em> dataset is the clustering structure of the data. Swiss citizen are clustered into several geographical levels, the most important ones being the cantonal and communal (district) levels. Switzerland is a highly decentralized and federalist country: every day political life as well as economic and political institutions can be substantially different across cantons. Every canton has its own party system and some Swiss parties, such as the <em>Lega Ticinessi</em> or <em>Mouvement Citoyen Genevois</em> (<em>Geneva Citizen Movement</em>) exist only at the cantonal level. A possible methodological solution, which would take into account both the time periods and the cantons as levels in which data are clustered, was considered by the author: a series of multilevel logit regressions. However, the results from these multilevel regressions showed that the variations between canton were negligible and thus a more simple model, the one presented in this section, was chosen. Moreover, the results between the multilevel model and the model of this section give overall similar results.</p>
 <p>On the other hand, the perspective adopted in this section is essentially a top-down approach, in which social blocs are derived from the relationships between party support, political leaning or policy preferences taken as dependent variables to be explained by a set of socio-economic characteristics. This is the method which is the most widespread in the literature, but it suffers from having an oversimplified view of social conflict, which is almost always reduced to two dimensions (the so-called cultural and economic divides). One important contribution of the neorealist approach is to underline the fact that social conflict is multidimensional <span class="citation" data-cites="amable_multidimensional_2023">(<a href="references.html#ref-amable_multidimensional_2023" role="doc-biblioref">Amable and Palombarini 2023</a>)</span> and that a bottom-up approach can be more suited to analyze the formation of social blocs. The next section will therefore adopt this bottom-up approach which is specific to the neorealist approach by conducting a latent class analysis for the late 90s.</p>
 </section>
 </section>
 <section id="in-search-of-the-liberal-conservative-and-left-blocs" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="in-search-of-the-liberal-conservative-and-left-blocs"><span class="header-section-number">2.3</span> In search of the liberal-conservative and left blocs</h2>
+<h2 data-number="2.3" class="anchored" data-anchor-id="in-search-of-the-liberal-conservative-and-left-blocs"><span class="header-section-number">2.3</span> In search of the Liberal-Conservative and Left blocs</h2>
 <p>The objective of the present section is to assess empirically the reconfiguration of the Swiss social blocs during the 90s. More specifically, the objective is to analyze how the dominant Swiss social bloc was able to recompose during the crisis using a bottom-up approach different from the previous section, and more aligned with the neorealist approach. One of the main limitations of the regression analysis of the previous section was to consider social groups as pre-defined based on different income and educational levels, or occupation, and only two cleavage dimensions.</p>
 <p>As explained in the introduction, the neorealist approach starts from the diversity of social expectations emanating from the heterogeneity of the social structure. Socio-political groups could be endogenously defined based on the proximity of Swiss citizen’s preferences regarding economic and public policies. A method that allow such procedure is latent class analysis (LCA). LCA is rarely used in the social sciences, but has recently been applied as part of the neorealist approach to infer socio-political groups based on a set of policy preferences variables from post-electoral surveys. It was first used by <span class="citation" data-cites="amable_leconomie_2012">Amable, Guillaud, and Palombarini (<a href="references.html#ref-amable_leconomie_2012" role="doc-biblioref">2012</a>)</span> to identify socio-political groups in France and Italy. The analysis resulted in the identification of twelve groups for France, and seven for Italy. The analysis of France socio-political groups and social blocs was then improved in a subsequent paper by <span class="citation" data-cites="amable_search_2021">Amable (<a href="references.html#ref-amable_search_2021" role="doc-biblioref">2021</a>)</span>.</p>
 <p>This section has for ambition to extend the contribution of <span class="citation" data-cites="amable_leconomie_2012">Amable, Guillaud, and Palombarini (<a href="references.html#ref-amable_leconomie_2012" role="doc-biblioref">2012</a>)</span> and <span class="citation" data-cites="amable_search_2021">Amable (<a href="references.html#ref-amable_search_2021" role="doc-biblioref">2021</a>)</span> to Switzerland by conducting LCA analysis using Swiss election studies data. The methodology and approach used here closely follow the approach taken in <span class="citation" data-cites="amable_search_2021">Amable (<a href="references.html#ref-amable_search_2021" role="doc-biblioref">2021</a>)</span>.</p>
@@ -578,16 +653,20 @@ div.csl-indent {
 <p>Since the break-up of the post-war Keynesian “historical compromise” between the traditional Swiss left and right-wing parties during the so-called “decade of all dangers” of the 90s <span class="citation" data-cites="boschetti_conquete_2007">(<a href="references.html#ref-boschetti_conquete_2007" role="doc-biblioref">Boschetti 2007</a>)</span>, the Liberal-Conservative and Left blocs are undergoing important transformations, that some authors interpreted as various forms of latent political crises. The Swiss political scene is still marked by the rise of the Swiss People’s Party (UDC), one of the most successful and early far-right populist parties in Europe, and the Greens. The electoral success of the UDC is often associated with the destabilization of the Liberal-Conservative bloc, which entered during the 90s into a phase of “cacophonic” crisis <span class="citation" data-cites="meuwly_liberte_2008">(<a href="references.html#ref-meuwly_liberte_2008" role="doc-biblioref">Meuwly 2008</a>)</span> which still persists in the early 2020s.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-partystrength" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="part1_files/figure-html/fig-partystrength-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.6: Party Strength: 1918-2019</figcaption>
+<div id="fig-partystrength" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-partystrength-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="part1_files/figure-html/fig-partystrength-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-partystrength-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.6: Party Strength: 1918-2019
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>In fact, all the Swiss traditional main government parties, the Swiss Socialist Party (PS) The Radical-Liberals (PRD-PLR) and the PDC, are in decline since the post-war period (see <a href="#fig-partystrength">Figure&nbsp;<span>2.6</span></a>), except for the Agrarian party, which became the UDC in 1971. On the right, the crisis can be seen through the fall in vote shares (apart from the UDC); and the increase in party merges and re-configurations. In 2008, the Bourgeois Democratic Party (PBD) was created after a scission from the SVP. One year later, the Radicals, who created the Swiss modern state in 1848 and dominated Swiss politics until the first half of the 20th century, merged with the Liberals to create the PLR. The PBD, whose creation disturbed the composition of a reputed unchangeable federal council, then merged with the PDC to create <em>Le Centre</em> (“The Center”) in 2021. The federal election of 2023 led to major historical change for the Swiss right. The PLR, very far from its former hegemonic domination of Swiss politics, is now in the fourth place in terms of low chamber parliamentary seats.</p>
-<p>The crisis of the 90s marked an important turning point in the history and evolution of the Swiss social blocs described in <a href="#tbl-socialblocs1">Table&nbsp;<span>2.1</span></a>. Analyzing post-electoral survey data for 1999 can thus offer an insightful perspective on the social bases underpinning the political and institutional transformations which happened during and after the 90s. Furthermore, the year 1999 was a turning-point in Swiss politics. For the first time in Swiss history, the Swiss People’s party became the first party in terms of vote shares (22,6%), to the detriment of the PRD which fell to the third place, something which never happened since the creation of the Federal state in 1848.</p>
+<p>In fact, all the Swiss traditional main government parties, the Swiss Socialist Party (PS) The Radical-Liberals (PRD-PLR) and the PDC, are in decline since the post-war period (see <a href="#fig-partystrength" class="quarto-xref">Figure&nbsp;<span>2.6</span></a>), except for the Agrarian party, which became the UDC in 1971. On the right, the crisis can be seen through the fall in vote shares (apart from the UDC); and the increase in party merges and re-configurations. In 2008, the Bourgeois Democratic Party (PBD) was created after a scission from the SVP. One year later, the Radicals, who created the Swiss modern state in 1848 and dominated Swiss politics until the first half of the 20th century, merged with the Liberals to create the PLR. The PBD, whose creation disturbed the composition of a reputed unchangeable federal council, then merged with the PDC to create <em>Le Centre</em> (“The Center”) in 2021. The federal election of 2023 led to major historical change for the Swiss right. The PLR, very far from its former hegemonic domination of Swiss politics, is now in the fourth place in terms of low chamber parliamentary seats.</p>
+<p>The crisis of the 90s marked an important turning point in the history and evolution of the Swiss social blocs described in <a href="#tbl-socialblocs1" class="quarto-xref">Table&nbsp;<span>2.1</span></a>. Analyzing post-electoral survey data for 1999 can thus offer an insightful perspective on the social bases underpinning the political and institutional transformations which happened during and after the 90s. Furthermore, the year 1999 was a turning-point in Swiss politics. For the first time in Swiss history, the Swiss People’s party became the first party in terms of vote shares (22,6%), to the detriment of the PRD which fell to the third place, something which never happened since the creation of the Federal state in 1848.</p>
 <section id="the-contradictions-of-the-liberal-conservative-bloc" class="level5" data-number="2.3.2.1.1">
 <h5 data-number="2.3.2.1.1" class="anchored" data-anchor-id="the-contradictions-of-the-liberal-conservative-bloc"><span class="header-section-number">2.3.2.1.1</span> The contradictions of the Liberal-Conservative bloc</h5>
 <p>The Swiss People’s Party (UDC) was historically the country’s fourth largest party. Its origins dates back to the emergence of various Agrarian parties after the first World War, with the largest ones being founded in Bern in 1918 and Zurich in 1917. Rudolf Minger, the leader of the Bernese Agrarian party, was entered the Federal Council in 1929, and a national Agrarian party was eventually founded later in 1937. The purpose of the Agrarian party was the representation and defense of farmers and artisans’ interests <span class="citation" data-cites="skenderovic_union_2017">(<a href="references.html#ref-skenderovic_union_2017" role="doc-biblioref">Skenderovic 2017</a>)</span>.</p>
@@ -617,12 +696,12 @@ div.csl-indent {
 <section id="choice-of-the-active-indicator-variables" class="level4" data-number="2.3.2.2">
 <h4 data-number="2.3.2.2" class="anchored" data-anchor-id="choice-of-the-active-indicator-variables"><span class="header-section-number">2.3.2.2</span> Choice of the active indicator variables</h4>
 <p>Regarding the choice of the variables that will define the different Swiss socio-political groups in the 90s, the Swiss post-electoral study of 1999 <span class="citation" data-cites="hardmeier_befragung_2022">(<a href="references.html#ref-hardmeier_befragung_2022" role="doc-biblioref">Hardmeier et al. 2022</a>)</span> has the advantage of having enough observation (3258 records) and containing issue position variables with good enough qualities to infer socio-political groups quiet fairly. The ideal data set would be the one containing issue position variables which cover a good range of institutional areas, such as the one considered in <span class="citation" data-cites="amable_diversity_2003">Amable (<a href="references.html#ref-amable_diversity_2003" role="doc-biblioref">2003</a>)</span>: products market, social protection, labour market, the financial system and the education system along with general policy orientations <span class="citation" data-cites="amable_search_2021">(<a href="references.html#ref-amable_search_2021" role="doc-biblioref">Amable 2021</a>)</span>. Although the Swiss post-electoral study of 1999 is the most relevant for the present research, it is still limited by the questions available.</p>
-<p>Nine questions were considered relevant to be taken as indicators. Of the nine questions, three concern economic policy. One question asked the respondent whether they were in favor of increasing or reducing social spending by the confederation, the second one whether taxes on high income should be increased or decreased, and the third one whether the respondent was in favor of more state intervention of for free market. Overall, 66,7% of the sample supported an increase in taxes on high income while 39,4% supported an increase in social spending by the federal state (with 31,8% in favor of cutting expenditures, see <a href="conclusion_appendix.html#fig-lcaindicators">Figure&nbsp;<span>4.7</span></a> to see descriptive statistics of all the indicator variables).</p>
-<p>One interesting question is about the role of the Swiss army. The question asked the respondents whether they preferred a strong army or no army at all. This question is relevant regarding the historical context since the 90s represented a turbulent period for the Swiss army. Switzerland is known for its militia-based army and remains one of the few Western countries to retain this system. Moreover, anti-army activists are an emblematic example of the New Left activists who emerged in the 80s within the Swiss Left. In 1986, the <em>Group for a Switzerland without an army</em> launched a popular initiative called <em>For a Switzerland Without an Army and an Overall Peaceful Political Stance</em> which, three years later, unexpectedly gathered 35.5% positive votes with a majority of yes in two cantons: Jura (55.5%) and Geneva (50.4%). These stunning results (no one would have expected such a high share of yes) greatly disturbed the government and the Swiss army, and the latter underwent a process of important reforms thereafter. Despite the rejection of this initiative, the debate over the role and the future of the Swiss army was still very heated in the late 90s and still frequently comes up in public debates nowadays<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. Descriptive statistics suggest that the share of no army supporters remained rather stable since the ballot, with 35% of the sample being in favor of a Switzerland without an army (with 45% being in favor of a strong army, see <a href="conclusion_appendix.html#fig-lcaindicators">Figure&nbsp;<span>4.7</span></a> in the appendix).</p>
+<p>Nine questions were considered relevant to be taken as indicators. Of the nine questions, three concern economic policy. One question asked the respondent whether they were in favor of increasing or reducing social spending by the confederation, the second one whether taxes on high income should be increased or decreased, and the third one whether the respondent was in favor of more state intervention of for free market. Overall, 66,7% of the sample supported an increase in taxes on high income while 39,4% supported an increase in social spending by the federal state (with 31,8% in favor of cutting expenditures, see <a href="conclusion_appendix.html#fig-lcaindicators" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> to see descriptive statistics of all the indicator variables).</p>
+<p>One interesting question is about the role of the Swiss army. The question asked the respondents whether they preferred a strong army or no army at all. This question is relevant regarding the historical context since the 90s represented a turbulent period for the Swiss army. Switzerland is known for its militia-based army and remains one of the few Western countries to retain this system. Moreover, anti-army activists are an emblematic example of the New Left activists who emerged in the 80s within the Swiss Left. In 1986, the <em>Group for a Switzerland without an army</em> launched a popular initiative called <em>For a Switzerland Without an Army and an Overall Peaceful Political Stance</em> which, three years later, unexpectedly gathered 35.5% positive votes with a majority of yes in two cantons: Jura (55.5%) and Geneva (50.4%). These stunning results (no one would have expected such a high share of yes) greatly disturbed the government and the Swiss army, and the latter underwent a process of important reforms thereafter. Despite the rejection of this initiative, the debate over the role and the future of the Swiss army was still very heated in the late 90s and still frequently comes up in public debates nowadays<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. Descriptive statistics suggest that the share of no army supporters remained rather stable since the ballot, with 35% of the sample being in favor of a Switzerland without an army (with 45% being in favor of a strong army, see <a href="conclusion_appendix.html#fig-lcaindicators" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> in the appendix).</p>
 <p>Another question is about European integration. In surely one of the most important and disputed referendum in Swiss history, Swiss citizen rejected their country’s adhesion to the European Economic Area (EEA) in 1992 by a very short majority of 50,3% (the majority between cantons was far less close, with only 6 cantons in favor out of 26, the referendum requiring the double majority of the voters and the cantons to be accepted). As in other European countries, European integration became an important cleavage which destabilized both the Liberal-Conservative and Left blocs. In the former, the UDC was the only major party to oppose the adhesion, while, in the latter, the Swiss Socialist party and labor unions were strongly in favor, with the exception of the Greens, which then quickly adopted a pro-EU position. This party was however divided over this issue, with a cleavage between the German-speaking cantons which strongly opposed the adhesion while the French-speaking cantons were in favor. The attitude towards European integration was included to assess the extent to which Switzerland displays a similar pattern than France in terms of European integration cleavage and the break-up of the traditional social blocs.</p>
 <p>European integration revived a strong regional-linguistic cleavage. Romandy’s voters supported the adhesion with a large majority (75%) whereas the Swiss-German and Swiss-Italian citizen voted against (respectively 56% and 61.5% of negative votes). Within each region and canton, a urban-rural cleavage also divided the supporters of the adhesion to the EEC, who were mainly urban citizen, against opponents who were more likely to live in rural areas. Social groups in favor of European integration are thus expected to contain above-average representation of French-speaking Swiss citizen living in urban areas <span class="citation" data-cites="schwok_causes_1993">(<a href="references.html#ref-schwok_causes_1993" role="doc-biblioref">Schwok 1993</a>)</span>. The factors behind this linguistic-regional cleavage over European integration are manifold.</p>
 <p>First, the attachment of the Swiss French to European integration can be explained by their subordinate position vis-à-vis the Swiss German, who largely hold the political power in the country. The Swiss French thus tend to be more skeptical about Swiss sovereignty and feel that they do not really have an influence over their country’s future. In their perspective, European integration is, as Schwok puts it a way to “play Brussels against Bern” and can be perceived as “a way out of the ghetto” <span class="citation" data-cites="schwok_causes_1993">(<a href="references.html#ref-schwok_causes_1993" role="doc-biblioref">Schwok 1993, 99</a>)</span>. Second, Swiss Germans are keen to differentiate themselves from Germany, the gap between Swiss Germans and Germans being much wider than that between France and Romandy. Third, Ticinesi feared the economic and cultural consequences of European integration, in addition to being repulsed by the Italian crisis of 1992 <span class="citation" data-cites="schwok_causes_1993">(<a href="references.html#ref-schwok_causes_1993" role="doc-biblioref">Schwok 1993</a>)</span>.</p>
-<p>Moreover, as underlined by <span class="citation" data-cites="amable_illusion_2018">Amable and Palombarini (<a href="references.html#ref-amable_illusion_2018" role="doc-biblioref">2018</a>)</span> and <span class="citation" data-cites="amable_structural_2017">Amable (<a href="references.html#ref-amable_structural_2017" role="doc-biblioref">2017</a>)</span>, European integration played an important role in the break-up of the traditional left and right blocs in France. The popular groups of the two blocs tended to opposed European integration while the most skilled and wealthiest elements were united around the pursuit of EU integration, which is one of the main policy demand of the bloc bourgeois, along with neoliberal reforms and progressive “cultural attitude”. In the sample, 56,7% of the respondents were in favor of European integration and only 33,85 were against, suggesting a large discrepancy with the ballot of 1992. When conducting a simple logistic model regressing support for EU integration on income and education, support for EU integration shows a positive association with both income and education levels (see <a href="conclusion_appendix.html#fig-lcaindicators">Figure&nbsp;<span>4.7</span></a> and <a href="conclusion_appendix.html#tbl-eu">Table&nbsp;<span>4.6</span></a> in the appendix).</p>
+<p>Moreover, as underlined by <span class="citation" data-cites="amable_illusion_2018">Amable and Palombarini (<a href="references.html#ref-amable_illusion_2018" role="doc-biblioref">2018</a>)</span> and <span class="citation" data-cites="amable_structural_2017">Amable (<a href="references.html#ref-amable_structural_2017" role="doc-biblioref">2017</a>)</span>, European integration played an important role in the break-up of the traditional left and right blocs in France. The popular groups of the two blocs tended to opposed European integration while the most skilled and wealthiest elements were united around the pursuit of EU integration, which is one of the main policy demand of the bloc bourgeois, along with neoliberal reforms and progressive “cultural attitude”. In the sample, 56,7% of the respondents were in favor of European integration and only 33,85 were against, suggesting a large discrepancy with the ballot of 1992. When conducting a simple logistic model regressing support for EU integration on income and education, support for EU integration shows a positive association with both income and education levels (see <a href="conclusion_appendix.html#fig-lcaindicators" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> and <a href="conclusion_appendix.html#tbl-eu" class="quarto-xref">Table&nbsp;<span>4.6</span></a> in the appendix).</p>
 <p>Two questions are about environmental issues. One of them was a trade-off question which asked whether the respondent was in favor of environmental protection or economic growth. The other one asked whether the respondent was in favor or against nuclear energy. Overall, respondents rather supported environment protection (53,1%), with a minority supporting economic growth (17,3%). 67% of the sample was against nuclear energy.</p>
 <p>The two last questions concern “cultural” issues: attitude towards Swiss traditions and foreigners. The former asked the respondents whether they preferred Swiss traditions or modernity. The latter asked the respondents whether they were in favor of unequal rights between Swiss citizen and foreigners and better chances for the Swiss or equal rights and chances. Switzerland stands out for its high proportion of foreigners who have less rights than Swiss citizen. During the post-war period, Switzerland became a country of immigration due to high sustained growth and labor shortages. Immigrants were mainly seasonal workers on temporary residence permits, with no right to family reunification and no voting rights. They were expelled as soon as their labor force was no longer needed. It is often said that, in this way, Switzerland maintain full employment by exporting its unemployed foreign labor force. As soon as the Swiss economy overheated in the late 60s, restrictive immigration policies were adopted, while certain rights for foreign residents were improved, under pressure from negotiations with neighboring countries <span class="citation" data-cites="piguet_immigration_2013">(<a href="references.html#ref-piguet_immigration_2013" role="doc-biblioref">Piguet 2013</a>)</span>. Including these two cultural issue positions variables are important to situate the socio-political groups on the so-called “cultural” cleavage, which may be important to assess the transformations of the traditional Swiss social blocs. In the sample, a majority supported the defense of Swiss traditions (59,4%) whereas 42,6% thought that Swiss citizen should have more rights and chances than foreigners (46,54% being in favor of equal rights and chances).</p>
 </section>
@@ -631,15 +710,19 @@ div.csl-indent {
 <p>A series of models were thus estimated, increasing the number of clusters by one until the bootstrap likelihood ratio test indicated a lack of significance of adding a supplementary cluster to the model. By following this approach, the 12 cluster model described below was selected.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-clusters" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="dataclustertable.png" class="img-fluid figure-img" width="960"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.7: Cluster description</figcaption>
+<div id="fig-clusters" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-clusters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="dataclustertable.png" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-clusters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.7: Cluster description
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-clusters">Figure&nbsp;<span>2.7</span></a> gives a description of each cluster’s relative weight, policy preferences and overall socio-economic characteristics<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>. The largest cluster (cluster 1) represents 17.8% of the total sample. This cluster shows ambivalent policy preferences, but can be said have rather center-left preferences since it supports increase in social spending by the Confederation and also in taxes on high income, but remains supportive of free markets rather than state intervention. Cluster 1 is, in majority, in favor of European integration, but with an appreciable minority (around 40%) which is against. This cluster support equal rights and chances between Swiss citizen and foreigner, but is attached to traditions. Finally, it prefers environment protection over growth and is strongly against nuclear energy.</p>
+<p><a href="#fig-clusters" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> gives a description of each cluster’s relative weight, policy preferences and overall socio-economic characteristics<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>. The largest cluster (cluster 1) represents 17.8% of the total sample. This cluster shows ambivalent policy preferences, but can be said have rather center-left preferences since it supports increase in social spending by the Confederation and also in taxes on high income, but remains supportive of free markets rather than state intervention. Cluster 1 is, in majority, in favor of European integration, but with an appreciable minority (around 40%) which is against. This cluster support equal rights and chances between Swiss citizen and foreigner, but is attached to traditions. Finally, it prefers environment protection over growth and is strongly against nuclear energy.</p>
 <p>Cluster 2, the second largest group (13,7%) supports increase in social spending, higher taxes on high income and, conversely to cluster 1, supports more state intervention (it is actually the only cluster that strongly supports state intervention). It is also very much in favor of equal rights and opportunities for foreigners, questioning Swiss traditions, and is also pro-environment and against nuclear energy. Interestingly, cluster 2 contains an important share of no army supporters (88% of the cluster). Cluster 8 is the only cluster which, like cluster 2, is strongly in favor of a Switzerland without an army. Cluster 8 has almost the same preferences as cluster 2, the only slight differences being a lesser support for state intervention and an undecided position vis-à-vis the environment vs growth trade-off. Cluster 4 is also close to clusters 2 and 8, but is more in favor of a strong army and free markets.</p>
 <p>Cluster 3 is similar to cluster 1 regarding higher taxes, but has a higher proportion of members in favor of state intervention, and differs in its preference for cutting social spending, for being more in favor of a strong army and is more skeptical about EU integration. It differs from cluster 1 by being also against foreigners’ equal rights and chances. Cluster 5 members are rather similar to cluster 3, but they are more divided over environmental issues and they strongly support nuclear energy.</p>
 <p>Cluster 6 has no clear opinion on social spending, rather supports higher taxes but not state intervention. It supports EU integration, equal chances and rights for foreigners, rather wants to defend traditions. It has no preferences between environment vs economic growth, but is supportive of nuclear energy. Cluster 7 supports higher taxes on high income, is rather for free markets, supports a strong army, the defense of traditions, better chances and rights for the Swiss and wants to stay out of the EU.</p>
@@ -653,1253 +736,521 @@ div.csl-indent {
 <h4 data-number="2.3.2.4" class="anchored" data-anchor-id="aggregation-into-social-blocs"><span class="header-section-number">2.3.2.4</span> Aggregation into social blocs</h4>
 <p>The political identification of each cluster can be assessed by regressing cluster membership on left-right self-identification recoded into 4 categories; left (0 to 2), center-left (3 and 4), center (5), center-right (6 and 7) and right (8 to 10). To do so, the so-called three-step approach is used <span class="citation" data-cites="vermunt_latent_2017">(<a href="references.html#ref-vermunt_latent_2017" role="doc-biblioref">Jeroen K. Vermunt 2017</a>)</span>. After clusters are defined (step one), each cluster membership posterior probabilities are assigned to every observations (second step). Then, cluster membership can be regressed on a set of independent variables (third step).</p>
 <div class="cell">
+<div id="tbl-3steplr" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-3steplr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.4: Influence of political leaning on cluster membership. Z-values under the coefficients.
+</figcaption>
+<div aria-describedby="tbl-3steplr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-3steplr" class="anchored">
+ 
 
-<div id="duciwgmhhc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#duciwgmhhc table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#duciwgmhhc thead, #duciwgmhhc tbody, #duciwgmhhc tfoot, #duciwgmhhc tr, #duciwgmhhc td, #duciwgmhhc th {
-  border-style: none;
-}
-
-#duciwgmhhc p {
-  margin: 0;
-  padding: 0;
-}
-
-#duciwgmhhc .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#duciwgmhhc .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#duciwgmhhc .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#duciwgmhhc .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#duciwgmhhc .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#duciwgmhhc .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#duciwgmhhc .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#duciwgmhhc .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#duciwgmhhc .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#duciwgmhhc .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#duciwgmhhc .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#duciwgmhhc .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#duciwgmhhc .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#duciwgmhhc .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#duciwgmhhc .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#duciwgmhhc .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#duciwgmhhc .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#duciwgmhhc .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#duciwgmhhc .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#duciwgmhhc .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#duciwgmhhc .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#duciwgmhhc .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#duciwgmhhc .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#duciwgmhhc .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#duciwgmhhc .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#duciwgmhhc .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#duciwgmhhc .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#duciwgmhhc .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#duciwgmhhc .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#duciwgmhhc .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#duciwgmhhc .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#duciwgmhhc .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#duciwgmhhc .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#duciwgmhhc .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#duciwgmhhc .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#duciwgmhhc .gt_left {
-  text-align: left;
-}
-
-#duciwgmhhc .gt_center {
-  text-align: center;
-}
-
-#duciwgmhhc .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#duciwgmhhc .gt_font_normal {
-  font-weight: normal;
-}
-
-#duciwgmhhc .gt_font_bold {
-  font-weight: bold;
-}
-
-#duciwgmhhc .gt_font_italic {
-  font-style: italic;
-}
-
-#duciwgmhhc .gt_super {
-  font-size: 65%;
-}
-
-#duciwgmhhc .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#duciwgmhhc .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#duciwgmhhc .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#duciwgmhhc .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#duciwgmhhc .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#duciwgmhhc .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#duciwgmhhc .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;2.4:  <p>Influence of political leaning on cluster membership. Z-values under
-the coefficients.</p> </caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Cluster">Cluster</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="left">left</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="center-left">center-left</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="center">center</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="center-right">center-right</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="right">right</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="None">None</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster1</td>
-<td headers="left" class="gt_row gt_right">-0.0271</td>
-<td headers="center-left" class="gt_row gt_right">0.4828</td>
-<td headers="center" class="gt_row gt_right">0.2234</td>
-<td headers="center-right" class="gt_row gt_right">-0.2535</td>
-<td headers="right" class="gt_row gt_right">-0.6839</td>
-<td headers="None" class="gt_row gt_right">0.2583</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="left" class="gt_row gt_right">-0.0597</td>
-<td headers="center-left" class="gt_row gt_right">1.4995</td>
-<td headers="center" class="gt_row gt_right">1.3690</td>
-<td headers="center-right" class="gt_row gt_right">-1.1519</td>
-<td headers="right" class="gt_row gt_right">-2.1424</td>
-<td headers="None" class="gt_row gt_right">1.1803</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster2</td>
-<td headers="left" class="gt_row gt_right">3.1214</td>
-<td headers="center-left" class="gt_row gt_right">1.9111</td>
-<td headers="center" class="gt_row gt_right">-0.7612</td>
-<td headers="center-right" class="gt_row gt_right">-1.6362</td>
-<td headers="right" class="gt_row gt_right">-2.3589</td>
-<td headers="None" class="gt_row gt_right">-0.2763</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="left" class="gt_row gt_right">9.1630</td>
-<td headers="center-left" class="gt_row gt_right">5.3302</td>
-<td headers="center" class="gt_row gt_right">-2.3489</td>
-<td headers="center-right" class="gt_row gt_right">-2.9775</td>
-<td headers="right" class="gt_row gt_right">-2.3495</td>
-<td headers="None" class="gt_row gt_right">-0.7574</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster3</td>
-<td headers="left" class="gt_row gt_right">0.2644</td>
-<td headers="center-left" class="gt_row gt_right">-0.7633</td>
-<td headers="center" class="gt_row gt_right">-0.1006</td>
-<td headers="center-right" class="gt_row gt_right">-0.1656</td>
-<td headers="right" class="gt_row gt_right">0.4410</td>
-<td headers="None" class="gt_row gt_right">0.3241</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="left" class="gt_row gt_right">0.7572</td>
-<td headers="center-left" class="gt_row gt_right">-1.8100</td>
-<td headers="center" class="gt_row gt_right">-0.6333</td>
-<td headers="center-right" class="gt_row gt_right">-0.8591</td>
-<td headers="right" class="gt_row gt_right">2.2251</td>
-<td headers="None" class="gt_row gt_right">1.5559</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster4</td>
-<td headers="left" class="gt_row gt_right">0.3272</td>
-<td headers="center-left" class="gt_row gt_right">0.8300</td>
-<td headers="center" class="gt_row gt_right">0.2504</td>
-<td headers="center-right" class="gt_row gt_right">-0.2133</td>
-<td headers="right" class="gt_row gt_right">-0.6826</td>
-<td headers="None" class="gt_row gt_right">-0.5118</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="left" class="gt_row gt_right">0.7231</td>
-<td headers="center-left" class="gt_row gt_right">2.4968</td>
-<td headers="center" class="gt_row gt_right">1.3977</td>
-<td headers="center-right" class="gt_row gt_right">-0.8846</td>
-<td headers="right" class="gt_row gt_right">-1.9357</td>
-<td headers="None" class="gt_row gt_right">-1.5973</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster5</td>
-<td headers="left" class="gt_row gt_right">-0.1359</td>
-<td headers="center-left" class="gt_row gt_right">-2.0355</td>
-<td headers="center" class="gt_row gt_right">0.2906</td>
-<td headers="center-right" class="gt_row gt_right">1.3051</td>
-<td headers="right" class="gt_row gt_right">1.5587</td>
-<td headers="None" class="gt_row gt_right">-0.9829</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="left" class="gt_row gt_right">-0.1728</td>
-<td headers="center-left" class="gt_row gt_right">-1.2100</td>
-<td headers="center" class="gt_row gt_right">0.6547</td>
-<td headers="center-right" class="gt_row gt_right">3.0170</td>
-<td headers="right" class="gt_row gt_right">3.5388</td>
-<td headers="None" class="gt_row gt_right">-1.0007</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster6</td>
-<td headers="left" class="gt_row gt_right">0.2601</td>
-<td headers="center-left" class="gt_row gt_right">0.5912</td>
-<td headers="center" class="gt_row gt_right">-0.4009</td>
-<td headers="center-right" class="gt_row gt_right">0.0860</td>
-<td headers="right" class="gt_row gt_right">-0.4908</td>
-<td headers="None" class="gt_row gt_right">-0.0455</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="left" class="gt_row gt_right">0.6378</td>
-<td headers="center-left" class="gt_row gt_right">1.7593</td>
-<td headers="center" class="gt_row gt_right">-2.0335</td>
-<td headers="center-right" class="gt_row gt_right">0.3902</td>
-<td headers="right" class="gt_row gt_right">-1.5132</td>
-<td headers="None" class="gt_row gt_right">-0.1609</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster7</td>
-<td headers="left" class="gt_row gt_right">-1.6914</td>
-<td headers="center-left" class="gt_row gt_right">-1.0160</td>
-<td headers="center" class="gt_row gt_right">0.3984</td>
-<td headers="center-right" class="gt_row gt_right">0.5314</td>
-<td headers="right" class="gt_row gt_right">0.9229</td>
-<td headers="None" class="gt_row gt_right">0.8547</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="left" class="gt_row gt_right">-1.0123</td>
-<td headers="center-left" class="gt_row gt_right">-1.1901</td>
-<td headers="center" class="gt_row gt_right">0.9976</td>
-<td headers="center-right" class="gt_row gt_right">1.2877</td>
-<td headers="right" class="gt_row gt_right">2.1931</td>
-<td headers="None" class="gt_row gt_right">1.9749</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster8</td>
-<td headers="left" class="gt_row gt_right">2.2133</td>
-<td headers="center-left" class="gt_row gt_right">1.8517</td>
-<td headers="center" class="gt_row gt_right">-0.0838</td>
-<td headers="center-right" class="gt_row gt_right">-1.8001</td>
-<td headers="right" class="gt_row gt_right">-1.9080</td>
-<td headers="None" class="gt_row gt_right">-0.2731</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="left" class="gt_row gt_right">5.4676</td>
-<td headers="center-left" class="gt_row gt_right">4.5680</td>
-<td headers="center" class="gt_row gt_right">-0.2418</td>
-<td headers="center-right" class="gt_row gt_right">-2.0603</td>
-<td headers="right" class="gt_row gt_right">-1.7500</td>
-<td headers="None" class="gt_row gt_right">-0.5442</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster9</td>
-<td headers="left" class="gt_row gt_right">-2.8885</td>
-<td headers="center-left" class="gt_row gt_right">-2.0592</td>
-<td headers="center" class="gt_row gt_right">0.2001</td>
-<td headers="center-right" class="gt_row gt_right">1.7354</td>
-<td headers="right" class="gt_row gt_right">2.4815</td>
-<td headers="None" class="gt_row gt_right">0.5307</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="left" class="gt_row gt_right">-3.3971</td>
-<td headers="center-left" class="gt_row gt_right">-0.9671</td>
-<td headers="center" class="gt_row gt_right">0.3585</td>
-<td headers="center-right" class="gt_row gt_right">3.5232</td>
-<td headers="right" class="gt_row gt_right">5.0548</td>
-<td headers="None" class="gt_row gt_right">0.8262</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster10</td>
-<td headers="left" class="gt_row gt_right">-1.8303</td>
-<td headers="center-left" class="gt_row gt_right">-0.5535</td>
-<td headers="center" class="gt_row gt_right">0.4436</td>
-<td headers="center-right" class="gt_row gt_right">1.3870</td>
-<td headers="right" class="gt_row gt_right">1.2790</td>
-<td headers="None" class="gt_row gt_right">-0.7256</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="left" class="gt_row gt_right">-1.0935</td>
-<td headers="center-left" class="gt_row gt_right">-0.6185</td>
-<td headers="center" class="gt_row gt_right">1.0190</td>
-<td headers="center-right" class="gt_row gt_right">3.2793</td>
-<td headers="right" class="gt_row gt_right">2.8615</td>
-<td headers="None" class="gt_row gt_right">-0.9934</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster11</td>
-<td headers="left" class="gt_row gt_right">-0.5298</td>
-<td headers="center-left" class="gt_row gt_right">0.0617</td>
-<td headers="center" class="gt_row gt_right">0.1817</td>
-<td headers="center-right" class="gt_row gt_right">-0.0119</td>
-<td headers="right" class="gt_row gt_right">0.1514</td>
-<td headers="None" class="gt_row gt_right">0.1468</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="left" class="gt_row gt_right">-0.6618</td>
-<td headers="center-left" class="gt_row gt_right">0.1359</td>
-<td headers="center" class="gt_row gt_right">0.7093</td>
-<td headers="center-right" class="gt_row gt_right">-0.0369</td>
-<td headers="right" class="gt_row gt_right">0.4421</td>
-<td headers="None" class="gt_row gt_right">0.3760</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster12</td>
-<td headers="left" class="gt_row gt_right">0.9167</td>
-<td headers="center-left" class="gt_row gt_right">0.6991</td>
-<td headers="center" class="gt_row gt_right">-0.6416</td>
-<td headers="center-right" class="gt_row gt_right">-0.9643</td>
-<td headers="right" class="gt_row gt_right">-0.7104</td>
-<td headers="None" class="gt_row gt_right">0.7005</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="left" class="gt_row gt_right">2.1249</td>
-<td headers="center-left" class="gt_row gt_right">1.7442</td>
-<td headers="center" class="gt_row gt_right">-1.9228</td>
-<td headers="center-right" class="gt_row gt_right">-1.8149</td>
-<td headers="right" class="gt_row gt_right">-1.2369</td>
-<td headers="None" class="gt_row gt_right">2.2273</td></tr>
-  </tbody>
   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinytable_trcxrcfpf37s7x6b3jfu</title>
+    <style>
+.table td.tinytable_css_2dc2ms3xj1ez9nigpgn7, .table th.tinytable_css_2dc2ms3xj1ez9nigpgn7 {    }
+.table td.tinytable_css_jvcjmwx7u4hfn024kbvd, .table th.tinytable_css_jvcjmwx7u4hfn024kbvd {    font-weight: bold; background-color: yellow; }
+.table td.tinytable_css_1j9o9mtqk3ai8ohfixev, .table th.tinytable_css_1j9o9mtqk3ai8ohfixev {    font-weight: bold; background-color: yellow; }
+.table td.tinytable_css_p695naws2larz7k6pi9f, .table th.tinytable_css_p695naws2larz7k6pi9f {    font-weight: bold; background-color: yellow; }
+.table td.tinytable_css_0ss8grpf0lswoanbyjyc, .table th.tinytable_css_0ss8grpf0lswoanbyjyc {    font-weight: bold; background-color: yellow; }
+.table td.tinytable_css_cahqnn7qfskpev5dpjzs, .table th.tinytable_css_cahqnn7qfskpev5dpjzs {    font-weight: bold; background-color: yellow; }
+.table td.tinytable_css_7w11pazsgswvyu6qjl9k, .table th.tinytable_css_7w11pazsgswvyu6qjl9k {    font-weight: bold; background-color: yellow; }
+.table td.tinytable_css_it79u3jmfkc2qpu4wims, .table th.tinytable_css_it79u3jmfkc2qpu4wims {    font-weight: bold; background-color: yellow; }
+.table td.tinytable_css_1nx58lxam3wvfkvgf544, .table th.tinytable_css_1nx58lxam3wvfkvgf544 {    font-weight: bold; background-color: yellow; }
+.table td.tinytable_css_phzdd4ur6fk1jxc2khjj, .table th.tinytable_css_phzdd4ur6fk1jxc2khjj {    font-weight: bold; background-color: yellow; }
+.table td.tinytable_css_zc4rfur4fwlretm1bgdz, .table th.tinytable_css_zc4rfur4fwlretm1bgdz {    font-weight: bold; background-color: yellow; }
+.table td.tinytable_css_00f23ztyt2pb46fttg90, .table th.tinytable_css_00f23ztyt2pb46fttg90 {    font-weight: bold; background-color: yellow; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
   
-</table>
+
+  
+    <div class="container">
+      <table class="table table-striped" id="tinytable_trcxrcfpf37s7x6b3jfu" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col">Cluster</th>
+                <th scope="col">left</th>
+                <th scope="col">center-left</th>
+                <th scope="col">center</th>
+                <th scope="col">center-right</th>
+                <th scope="col">right</th>
+                <th scope="col">None</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td>Cluster1</td>
+                  <td>-0.0271</td>
+                  <td> 0.4828</td>
+                  <td> 0.2234</td>
+                  <td>-0.2535</td>
+                  <td>-0.6839</td>
+                  <td> 0.2583</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>-0.0597</td>
+                  <td> 1.4995</td>
+                  <td> 1.3690</td>
+                  <td>-1.1519</td>
+                  <td>-2.1424</td>
+                  <td> 1.1803</td>
+                </tr>
+                <tr>
+                  <td>Cluster2</td>
+                  <td> 3.1214</td>
+                  <td> 1.9111</td>
+                  <td>-0.7612</td>
+                  <td>-1.6362</td>
+                  <td>-2.3589</td>
+                  <td>-0.2763</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td> 9.1630</td>
+                  <td> 5.3302</td>
+                  <td>-2.3489</td>
+                  <td>-2.9775</td>
+                  <td>-2.3495</td>
+                  <td>-0.7574</td>
+                </tr>
+                <tr>
+                  <td>Cluster3</td>
+                  <td> 0.2644</td>
+                  <td>-0.7633</td>
+                  <td>-0.1006</td>
+                  <td>-0.1656</td>
+                  <td> 0.4410</td>
+                  <td> 0.3241</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td> 0.7572</td>
+                  <td>-1.8100</td>
+                  <td>-0.6333</td>
+                  <td>-0.8591</td>
+                  <td> 2.2251</td>
+                  <td> 1.5559</td>
+                </tr>
+                <tr>
+                  <td>Cluster4</td>
+                  <td> 0.3272</td>
+                  <td> 0.8300</td>
+                  <td> 0.2504</td>
+                  <td>-0.2133</td>
+                  <td>-0.6826</td>
+                  <td>-0.5118</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td> 0.7231</td>
+                  <td> 2.4968</td>
+                  <td> 1.3977</td>
+                  <td>-0.8846</td>
+                  <td>-1.9357</td>
+                  <td>-1.5973</td>
+                </tr>
+                <tr>
+                  <td>Cluster5</td>
+                  <td>-0.1359</td>
+                  <td>-2.0355</td>
+                  <td> 0.2906</td>
+                  <td> 1.3051</td>
+                  <td> 1.5587</td>
+                  <td>-0.9829</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>-0.1728</td>
+                  <td>-1.2100</td>
+                  <td> 0.6547</td>
+                  <td> 3.0170</td>
+                  <td> 3.5388</td>
+                  <td>-1.0007</td>
+                </tr>
+                <tr>
+                  <td>Cluster6</td>
+                  <td> 0.2601</td>
+                  <td> 0.5912</td>
+                  <td>-0.4009</td>
+                  <td> 0.0860</td>
+                  <td>-0.4908</td>
+                  <td>-0.0455</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td> 0.6378</td>
+                  <td> 1.7593</td>
+                  <td>-2.0335</td>
+                  <td> 0.3902</td>
+                  <td>-1.5132</td>
+                  <td>-0.1609</td>
+                </tr>
+                <tr>
+                  <td>Cluster7</td>
+                  <td>-1.6914</td>
+                  <td>-1.0160</td>
+                  <td> 0.3984</td>
+                  <td> 0.5314</td>
+                  <td> 0.9229</td>
+                  <td> 0.8547</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>-1.0123</td>
+                  <td>-1.1901</td>
+                  <td> 0.9976</td>
+                  <td> 1.2877</td>
+                  <td> 2.1931</td>
+                  <td> 1.9749</td>
+                </tr>
+                <tr>
+                  <td>Cluster8</td>
+                  <td> 2.2133</td>
+                  <td> 1.8517</td>
+                  <td>-0.0838</td>
+                  <td>-1.8001</td>
+                  <td>-1.9080</td>
+                  <td>-0.2731</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td> 5.4676</td>
+                  <td> 4.5680</td>
+                  <td>-0.2418</td>
+                  <td>-2.0603</td>
+                  <td>-1.7500</td>
+                  <td>-0.5442</td>
+                </tr>
+                <tr>
+                  <td>Cluster9</td>
+                  <td>-2.8885</td>
+                  <td>-2.0592</td>
+                  <td> 0.2001</td>
+                  <td> 1.7354</td>
+                  <td> 2.4815</td>
+                  <td> 0.5307</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>-3.3971</td>
+                  <td>-0.9671</td>
+                  <td> 0.3585</td>
+                  <td> 3.5232</td>
+                  <td> 5.0548</td>
+                  <td> 0.8262</td>
+                </tr>
+                <tr>
+                  <td>Cluster10</td>
+                  <td>-1.8303</td>
+                  <td>-0.5535</td>
+                  <td> 0.4436</td>
+                  <td> 1.3870</td>
+                  <td> 1.2790</td>
+                  <td>-0.7256</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>-1.0935</td>
+                  <td>-0.6185</td>
+                  <td> 1.0190</td>
+                  <td> 3.2793</td>
+                  <td> 2.8615</td>
+                  <td>-0.9934</td>
+                </tr>
+                <tr>
+                  <td>Cluster11</td>
+                  <td>-0.5298</td>
+                  <td> 0.0617</td>
+                  <td> 0.1817</td>
+                  <td>-0.0119</td>
+                  <td> 0.1514</td>
+                  <td> 0.1468</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>-0.6618</td>
+                  <td> 0.1359</td>
+                  <td> 0.7093</td>
+                  <td>-0.0369</td>
+                  <td> 0.4421</td>
+                  <td> 0.3760</td>
+                </tr>
+                <tr>
+                  <td>Cluster12</td>
+                  <td> 0.9167</td>
+                  <td> 0.6991</td>
+                  <td>-0.6416</td>
+                  <td>-0.9643</td>
+                  <td>-0.7104</td>
+                  <td> 0.7005</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td> 2.1249</td>
+                  <td> 1.7442</td>
+                  <td>-1.9228</td>
+                  <td>-1.8149</td>
+                  <td>-1.2369</td>
+                  <td> 2.2273</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+    function styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(i, j, css_id) {
+      var table = document.getElementById("tinytable_trcxrcfpf37s7x6b3jfu");
+      table.rows[i].cells[j].classList.add(css_id);
+    }
+    function insertSpanRow(i, colspan, content) {
+      var table = document.getElementById('tinytable_trcxrcfpf37s7x6b3jfu');
+      var newRow = table.insertRow(i);
+      var newCell = newRow.insertCell(0);
+      newCell.setAttribute("colspan", colspan);
+      // newCell.innerText = content;
+      // this may be unsafe, but innerText does not interpret <br>
+      newCell.innerHTML = content;
+    }
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(1, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(2, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(3, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(4, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(5, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(6, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(7, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(8, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(9, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(10, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(11, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(12, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(13, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(14, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(15, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(16, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(17, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(18, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(19, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(20, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(21, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(22, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(23, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(24, 0, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(1, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(2, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(3, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(4, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(5, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(6, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(7, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(8, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(9, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(10, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(11, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(12, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(13, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(14, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(15, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(16, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(17, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(18, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(19, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(20, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(21, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(22, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(23, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(24, 1, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(1, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(2, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(3, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(4, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(5, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(6, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(7, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(8, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(9, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(10, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(11, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(12, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(13, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(14, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(15, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(16, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(17, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(18, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(19, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(20, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(21, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(22, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(23, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(24, 2, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(1, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(2, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(3, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(4, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(5, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(6, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(7, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(8, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(9, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(10, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(11, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(12, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(13, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(14, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(15, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(16, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(17, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(18, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(19, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(20, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(21, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(22, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(23, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(24, 3, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(1, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(2, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(3, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(4, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(5, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(6, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(7, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(8, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(9, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(10, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(11, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(12, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(13, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(14, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(15, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(16, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(17, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(18, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(19, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(20, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(21, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(22, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(23, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(24, 4, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(1, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(2, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(3, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(4, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(5, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(6, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(7, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(8, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(9, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(10, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(11, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(12, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(13, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(14, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(15, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(16, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(17, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(18, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(19, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(20, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(21, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(22, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(23, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(24, 5, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(1, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(2, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(3, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(4, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(5, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(6, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(7, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(8, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(9, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(10, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(11, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(12, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(13, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(14, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(15, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(16, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(17, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(18, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(19, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(20, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(21, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(22, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(23, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(24, 6, 'tinytable_css_2dc2ms3xj1ez9nigpgn7') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(1, 5, 'tinytable_css_jvcjmwx7u4hfn024kbvd') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(3, 1, 'tinytable_css_1j9o9mtqk3ai8ohfixev') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(3, 2, 'tinytable_css_1j9o9mtqk3ai8ohfixev') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(3, 3, 'tinytable_css_1j9o9mtqk3ai8ohfixev') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(3, 4, 'tinytable_css_1j9o9mtqk3ai8ohfixev') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(3, 5, 'tinytable_css_1j9o9mtqk3ai8ohfixev') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(5, 5, 'tinytable_css_p695naws2larz7k6pi9f') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(7, 2, 'tinytable_css_0ss8grpf0lswoanbyjyc') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(9, 4, 'tinytable_css_cahqnn7qfskpev5dpjzs') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(9, 5, 'tinytable_css_cahqnn7qfskpev5dpjzs') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(11, 3, 'tinytable_css_7w11pazsgswvyu6qjl9k') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(13, 5, 'tinytable_css_it79u3jmfkc2qpu4wims') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(13, 6, 'tinytable_css_it79u3jmfkc2qpu4wims') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(15, 1, 'tinytable_css_1nx58lxam3wvfkvgf544') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(15, 2, 'tinytable_css_1nx58lxam3wvfkvgf544') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(15, 4, 'tinytable_css_1nx58lxam3wvfkvgf544') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(17, 1, 'tinytable_css_phzdd4ur6fk1jxc2khjj') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(17, 3, 'tinytable_css_phzdd4ur6fk1jxc2khjj') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(17, 4, 'tinytable_css_phzdd4ur6fk1jxc2khjj') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(17, 5, 'tinytable_css_phzdd4ur6fk1jxc2khjj') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(19, 4, 'tinytable_css_zc4rfur4fwlretm1bgdz') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(19, 5, 'tinytable_css_zc4rfur4fwlretm1bgdz') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(23, 1, 'tinytable_css_00f23ztyt2pb46fttg90') })
+window.addEventListener('load', function () { styleCell_tinytable_f0mkyfizsk2uc8jx7kkc(23, 6, 'tinytable_css_00f23ztyt2pb46fttg90') })
+    </script>
+
+  
+
+
 </div>
 </div>
+</figure>
 </div>
 </div>
-<p>The results are presented in <a href="#tbl-3steplr">Table&nbsp;<span>2.4</span></a> and can be resumed as follows: clusters 2, 8 and 12 lean to the left; clusters 1 and 4 to the center-left; cluster 10 to the center-right and clusters 3, 5, 7 and 9 to the right.</p>
+<p>The results are presented in <a href="#tbl-3steplr" class="quarto-xref">Table&nbsp;<span>2.4</span></a> and can be resumed as follows: clusters 2, 8 and 12 lean to the left; clusters 1 and 4 to the center-left; cluster 10 to the center-right and clusters 3, 5, 7 and 9 to the right.</p>
 <p>Cluster 2 can be said to constitute the core of the left bloc: its members have strong left-wing preferences regarding all issue positions, which broadly correspond to the program of the Swiss Socialist party during the 90s. Cluster 8 could also easily fit into the left bloc since it only differs from cluster 2 by its less pronounced support for environment protection (although it is still against nuclear energy). The members of these two clusters tend to wealthy and well-educated. They also belong to high income groups.</p>
 <p>The left could also include cluster 12, which has however a dissenting position vis-à-vis EU integration and cultural issues (more conservative). Unlike clusters 2 and 8, cluster 12 is constituted by more popular groups with low education and income levels. All these three clusters combined, the left bloc constitutes 22.3% of the sample. An extended left bloc would include cluster 1 (17,8%) and/or 4 (12,36%), which support social expenditure, taxes on high income, environment protection and EU integration, but are more in favor of free markets and of defending traditions.</p>
 <p>The heart of a potential bloc bourgeois could start from cluster 10 since it is the only cluster being strongly in favor of neoliberal policies, European integration, and which has broad “culturally progressive” preferences while being socially composed by the highest income and education groups. This cluster is however rather limited in size (4.9%) and isolated from the other right-wing clusters regarding EU integration and cultural preferences. Cluster 9 is the core of the conservative branch within the Liberal-Conservatives: it is in favor of neoliberal policies while being against EU integration and equal rights and chances for foreigners, and strongly for defending traditions. Its preferences are close to clusters 3 and 5 and these three clusters could easily be aggregated into a neoliberal and conservative bloc that would represent 25.7% of the sample. This bloc could also include cluster 7 (7%), which is however more divided over neoliberal policies (it is for instance strongly in favor of increasing taxes on high income).</p>
-<p>To what extent are the relationships between cluster membership and political leaning similar to the relationships between cluster membership and party support? <a href="#tbl-3stepsymp">Table&nbsp;<span>2.5</span></a> presents the results of another step 3 approach regressing cluster membership on the degree of sympathy (measured on a 0-10 scale) for each main Swiss party and the Greens.</p>
+<p>To what extent are the relationships between cluster membership and political leaning similar to the relationships between cluster membership and party support? <a href="#tbl-3stepsymp" class="quarto-xref">Table&nbsp;<span>2.5</span></a> presents the results of another step 3 approach regressing cluster membership on the degree of sympathy (measured on a 0-10 scale) for each main Swiss party and the Greens.</p>
 <div class="cell">
+<div id="tbl-3stepsymp" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-3stepsymp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.5: Influence of the degree of sympathy for each party on cluster membership. Z-values under the coefficients.
+</figcaption>
+<div aria-describedby="tbl-3stepsymp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-3stepsymp" class="anchored">
-
-<div id="tkmplxhxzi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tkmplxhxzi table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#tkmplxhxzi thead, #tkmplxhxzi tbody, #tkmplxhxzi tfoot, #tkmplxhxzi tr, #tkmplxhxzi td, #tkmplxhxzi th {
-  border-style: none;
-}
-
-#tkmplxhxzi p {
-  margin: 0;
-  padding: 0;
-}
-
-#tkmplxhxzi .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#tkmplxhxzi .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#tkmplxhxzi .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#tkmplxhxzi .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#tkmplxhxzi .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#tkmplxhxzi .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#tkmplxhxzi .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#tkmplxhxzi .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#tkmplxhxzi .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#tkmplxhxzi .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#tkmplxhxzi .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#tkmplxhxzi .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#tkmplxhxzi .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#tkmplxhxzi .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#tkmplxhxzi .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#tkmplxhxzi .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#tkmplxhxzi .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#tkmplxhxzi .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#tkmplxhxzi .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#tkmplxhxzi .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#tkmplxhxzi .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#tkmplxhxzi .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#tkmplxhxzi .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#tkmplxhxzi .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#tkmplxhxzi .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#tkmplxhxzi .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#tkmplxhxzi .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#tkmplxhxzi .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#tkmplxhxzi .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#tkmplxhxzi .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#tkmplxhxzi .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#tkmplxhxzi .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#tkmplxhxzi .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#tkmplxhxzi .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#tkmplxhxzi .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#tkmplxhxzi .gt_left {
-  text-align: left;
-}
-
-#tkmplxhxzi .gt_center {
-  text-align: center;
-}
-
-#tkmplxhxzi .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#tkmplxhxzi .gt_font_normal {
-  font-weight: normal;
-}
-
-#tkmplxhxzi .gt_font_bold {
-  font-weight: bold;
-}
-
-#tkmplxhxzi .gt_font_italic {
-  font-style: italic;
-}
-
-#tkmplxhxzi .gt_super {
-  font-size: 65%;
-}
-
-#tkmplxhxzi .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#tkmplxhxzi .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#tkmplxhxzi .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#tkmplxhxzi .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#tkmplxhxzi .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#tkmplxhxzi .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#tkmplxhxzi .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;2.5:  <p>Influence of the degree of sympathy for each party on cluster
-membership. Z-values under the coefficients.</p> </caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Cluster">Cluster</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="PRD">PRD</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="PDC">PDC</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="PS">PS</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="UDC">UDC</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Greens">Greens</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster1</td>
-<td headers="PRD" class="gt_row gt_right">-0.0188</td>
-<td headers="PDC" class="gt_row gt_right">-0.0978</td>
-<td headers="PS" class="gt_row gt_right">0.0782</td>
-<td headers="UDC" class="gt_row gt_right">-0.0262</td>
-<td headers="Greens" class="gt_row gt_right">0.1009</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="PRD" class="gt_row gt_right">-0.2972</td>
-<td headers="PDC" class="gt_row gt_right">-1.5496</td>
-<td headers="PS" class="gt_row gt_right">1.7549</td>
-<td headers="UDC" class="gt_row gt_right">-0.7838</td>
-<td headers="Greens" class="gt_row gt_right">1.9188</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster2</td>
-<td headers="PRD" class="gt_row gt_right">-0.3611</td>
-<td headers="PDC" class="gt_row gt_right">-0.1181</td>
-<td headers="PS" class="gt_row gt_right">0.3219</td>
-<td headers="UDC" class="gt_row gt_right">-0.4742</td>
-<td headers="Greens" class="gt_row gt_right">0.4654</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="PRD" class="gt_row gt_right">-8.6685</td>
-<td headers="PDC" class="gt_row gt_right">-2.7862</td>
-<td headers="PS" class="gt_row gt_right">7.5808</td>
-<td headers="UDC" class="gt_row gt_right">-10.3962</td>
-<td headers="Greens" class="gt_row gt_right">11.5762</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster3</td>
-<td headers="PRD" class="gt_row gt_right">-0.0484</td>
-<td headers="PDC" class="gt_row gt_right">-0.0536</td>
-<td headers="PS" class="gt_row gt_right">-0.0708</td>
-<td headers="UDC" class="gt_row gt_right">0.2211</td>
-<td headers="Greens" class="gt_row gt_right">-0.1506</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="PRD" class="gt_row gt_right">-0.9344</td>
-<td headers="PDC" class="gt_row gt_right">-0.7907</td>
-<td headers="PS" class="gt_row gt_right">-1.4363</td>
-<td headers="UDC" class="gt_row gt_right">6.6075</td>
-<td headers="Greens" class="gt_row gt_right">-2.5826</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster4</td>
-<td headers="PRD" class="gt_row gt_right">-0.1257</td>
-<td headers="PDC" class="gt_row gt_right">0.0364</td>
-<td headers="PS" class="gt_row gt_right">0.2246</td>
-<td headers="UDC" class="gt_row gt_right">-0.1278</td>
-<td headers="Greens" class="gt_row gt_right">-0.0368</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="PRD" class="gt_row gt_right">-2.6729</td>
-<td headers="PDC" class="gt_row gt_right">0.7903</td>
-<td headers="PS" class="gt_row gt_right">5.3014</td>
-<td headers="UDC" class="gt_row gt_right">-4.1867</td>
-<td headers="Greens" class="gt_row gt_right">-0.8612</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster5</td>
-<td headers="PRD" class="gt_row gt_right">0.1858</td>
-<td headers="PDC" class="gt_row gt_right">0.1262</td>
-<td headers="PS" class="gt_row gt_right">-0.1947</td>
-<td headers="UDC" class="gt_row gt_right">0.3390</td>
-<td headers="Greens" class="gt_row gt_right">-0.3285</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="PRD" class="gt_row gt_right">2.8080</td>
-<td headers="PDC" class="gt_row gt_right">1.9266</td>
-<td headers="PS" class="gt_row gt_right">-3.6676</td>
-<td headers="UDC" class="gt_row gt_right">6.1389</td>
-<td headers="Greens" class="gt_row gt_right">-6.6205</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster6</td>
-<td headers="PRD" class="gt_row gt_right">0.1211</td>
-<td headers="PDC" class="gt_row gt_right">0.0952</td>
-<td headers="PS" class="gt_row gt_right">0.1175</td>
-<td headers="UDC" class="gt_row gt_right">-0.1851</td>
-<td headers="Greens" class="gt_row gt_right">-0.0516</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="PRD" class="gt_row gt_right">1.7541</td>
-<td headers="PDC" class="gt_row gt_right">2.1957</td>
-<td headers="PS" class="gt_row gt_right">2.0519</td>
-<td headers="UDC" class="gt_row gt_right">-3.7249</td>
-<td headers="Greens" class="gt_row gt_right">-1.2598</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster7</td>
-<td headers="PRD" class="gt_row gt_right">0.0454</td>
-<td headers="PDC" class="gt_row gt_right">-0.0563</td>
-<td headers="PS" class="gt_row gt_right">-0.1320</td>
-<td headers="UDC" class="gt_row gt_right">0.3853</td>
-<td headers="Greens" class="gt_row gt_right">-0.2852</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="PRD" class="gt_row gt_right">0.9077</td>
-<td headers="PDC" class="gt_row gt_right">-1.0556</td>
-<td headers="PS" class="gt_row gt_right">-2.3236</td>
-<td headers="UDC" class="gt_row gt_right">6.4918</td>
-<td headers="Greens" class="gt_row gt_right">-4.7146</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster8</td>
-<td headers="PRD" class="gt_row gt_right">-0.2420</td>
-<td headers="PDC" class="gt_row gt_right">-0.0085</td>
-<td headers="PS" class="gt_row gt_right">0.2968</td>
-<td headers="UDC" class="gt_row gt_right">-0.5897</td>
-<td headers="Greens" class="gt_row gt_right">0.2564</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="PRD" class="gt_row gt_right">-5.1232</td>
-<td headers="PDC" class="gt_row gt_right">-0.2077</td>
-<td headers="PS" class="gt_row gt_right">6.5259</td>
-<td headers="UDC" class="gt_row gt_right">-10.4710</td>
-<td headers="Greens" class="gt_row gt_right">6.3431</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster9</td>
-<td headers="PRD" class="gt_row gt_right">0.3279</td>
-<td headers="PDC" class="gt_row gt_right">0.0355</td>
-<td headers="PS" class="gt_row gt_right">-0.4345</td>
-<td headers="UDC" class="gt_row gt_right">0.4045</td>
-<td headers="Greens" class="gt_row gt_right">-0.2655</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="PRD" class="gt_row gt_right">5.2594</td>
-<td headers="PDC" class="gt_row gt_right">0.6392</td>
-<td headers="PS" class="gt_row gt_right">-7.0562</td>
-<td headers="UDC" class="gt_row gt_right">6.6503</td>
-<td headers="Greens" class="gt_row gt_right">-4.8275</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster10</td>
-<td headers="PRD" class="gt_row gt_right">0.4291</td>
-<td headers="PDC" class="gt_row gt_right">0.0230</td>
-<td headers="PS" class="gt_row gt_right">-0.2692</td>
-<td headers="UDC" class="gt_row gt_right">-0.0411</td>
-<td headers="Greens" class="gt_row gt_right">-0.0049</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="PRD" class="gt_row gt_right">8.6849</td>
-<td headers="PDC" class="gt_row gt_right">0.4723</td>
-<td headers="PS" class="gt_row gt_right">-4.6617</td>
-<td headers="UDC" class="gt_row gt_right">-0.8081</td>
-<td headers="Greens" class="gt_row gt_right">-0.0771</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster11</td>
-<td headers="PRD" class="gt_row gt_right">0.0658</td>
-<td headers="PDC" class="gt_row gt_right">-0.0255</td>
-<td headers="PS" class="gt_row gt_right">-0.0630</td>
-<td headers="UDC" class="gt_row gt_right">0.1366</td>
-<td headers="Greens" class="gt_row gt_right">-0.0815</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="PRD" class="gt_row gt_right">1.2859</td>
-<td headers="PDC" class="gt_row gt_right">-0.5788</td>
-<td headers="PS" class="gt_row gt_right">-1.0545</td>
-<td headers="UDC" class="gt_row gt_right">2.3819</td>
-<td headers="Greens" class="gt_row gt_right">-1.3509</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left">Cluster12</td>
-<td headers="PRD" class="gt_row gt_right">-0.3792</td>
-<td headers="PDC" class="gt_row gt_right">0.0435</td>
-<td headers="PS" class="gt_row gt_right">0.1251</td>
-<td headers="UDC" class="gt_row gt_right">-0.0423</td>
-<td headers="Greens" class="gt_row gt_right">0.3819</td></tr>
-    <tr><td headers="Cluster" class="gt_row gt_left"></td>
-<td headers="PRD" class="gt_row gt_right">-4.1611</td>
-<td headers="PDC" class="gt_row gt_right">0.3659</td>
-<td headers="PS" class="gt_row gt_right">1.7192</td>
-<td headers="UDC" class="gt_row gt_right">-0.8077</td>
-<td headers="Greens" class="gt_row gt_right">4.4488</td></tr>
-  </tbody>
-  
-  
-</table>
+<div>
+<figure class="figure">
+<p><img src="3steptable2.png" class="img-fluid figure-img" width="320"></p>
+</figure>
 </div>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <p>As expected, cluster 2 shows a lot of sympathy for the Socialist Party and for the Greens. The other clusters that show significant support for these parties are cluster 8 and 12. Cluster 4 only shows sympathy for the Socialists. Cluster 6 shows sympathy for the Socialists, but also for the Christian Democrats and the PRD. The groups fully supporting the UDC are clusters 3, 7 and 11 (23.95% in total). Clusters 5 (7.12%) and 9 (4.91%) show sympathy for both the UDC and PRD, while cluster 10 (4.9%) is the only cluster fully supporting the PRD.</p>
@@ -1911,21 +1262,25 @@ membership. Z-values under the coefficients.</p> </caption>
 <p>The strategy actually adopted by the Socialists can be assessed with data provided by the <em>Manifesto Project</em>, which allow to situate the position of political parties on various issue positions and cleavages.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-manifesto" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="part1_files/figure-html/fig-manifesto-1.png" class="img-fluid figure-img" width="864"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.8: Positions of the Swiss main political parties on planned economy, the welfare state and on European integration.</figcaption>
+<div id="fig-manifesto" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-manifesto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="part1_files/figure-html/fig-manifesto-1.png" class="img-fluid figure-img" width="864">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-manifesto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.8: Positions of the Swiss main political parties on planned economy, the welfare state and on European integration.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-manifesto">Figure&nbsp;<span>2.8</span></a> shows the evolution of each Swiss main political party’s positions on the Manifesto Project’s index for several cleavages, the degree of economic planning, the size of the welfare state and European integration (with higher values indicating a higher support). Regarding economic planning, the Socialist party seems to have indeed dampened its program throughout the 80s and 90s. Favorable mentions for European integration was very high, the Socialists being the most in favor of integration compared to the other government parties. For the position towards the welfare state, the support for the latter was decreasing during the period studied, before increasing strongly in the 2010s. This shows that the Swiss Socialist party indeed tried to persist in a New Left and Third Way strategy before and a few years after 1999. The recent evolution of the party in the 2010s rather indicate that the party has abandoned or at least dampened this strategy. Overall, <span class="citation" data-cites="figure-manifesto">(<a href="references.html#ref-figure-manifesto" role="doc-biblioref"><strong>figure-manifesto?</strong></a>)</span> indicates that the Third Way strategy had a short term impact on the Socialist Party, due to the attractiveness of a strategy aimed at drawing more support from cluster 1 and 4. This, in return, had an impact on the social basis of the Left bloc, which became more based on the aggregation of middle and wealthy classes: socio-cultural professionals, managers, university graduates and middle to high income groups (which are the social characteristics of cluster 1, 2, 4 and 8), while gradually loosing its popular elements.</p>
+<p><a href="#fig-manifesto" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> shows the evolution of each Swiss main political party’s positions on the Manifesto Project’s index for several cleavages, the degree of economic planning, the size of the welfare state and European integration (with higher values indicating a higher support). Regarding economic planning, the Socialist party seems to have indeed dampened its program throughout the 80s and 90s. Favorable mentions for European integration was very high, the Socialists being the most in favor of integration compared to the other government parties. For the position towards the welfare state, the support for the latter was decreasing during the period studied, before increasing strongly in the 2010s. This shows that the Swiss Socialist party indeed tried to persist in a New Left and Third Way strategy before and a few years after 1999. The recent evolution of the party in the 2010s rather indicate that the party has abandoned or at least dampened this strategy. Overall, <a href="#fig-manifesto" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> indicates that the Third Way strategy had a short term impact on the Socialist Party, due to the attractiveness of a strategy aimed at drawing more support from cluster 1 and 4. This, in return, had an impact on the social basis of the Left bloc, which became more based on the aggregation of middle and wealthy classes: socio-cultural professionals, managers, university graduates and middle to high income groups (which are the social characteristics of cluster 1, 2, 4 and 8), while gradually loosing its popular elements.</p>
 <p>Compared to the Left bloc, the Liberal-Conservative appears to be more divided. As underlined above, the groups the most supportive of a neoliberal program, cluster 9 and 10, are rather small. Together, they represent around 10% of the sample. Cluster 9 is constituted by old, wealthy and well educated individuals, with a strong over-representation of retired and self-employed whereas cluster 10 contains very young wealthy and well-educated individuals who are mostly managers. However, these groups are divided over European integration, equal rights and traditions, cluster 9 being far more conservative on these issues and strongly anti-EU. The progressive and pro-EU stances of cluster 10 isolate the latter from the other clusters which lean to the right and either support the PRD and the UDC: clusters 3, 5, 7 and 9. All these clusters could be united around a culturally conservative and anti-EU strategy since they share common preferences on these issues. This was the strategy adopted by the UDC, while the neoliberal and pro-EU agenda defended by the PRD and PDC would encounter difficulties to gather the support a sufficient social base. Overall, the crisis of the 90s did not result in the break-up of the dominant social bloc, but rather a shift in the balance of power within the bloc: the conservative branch, led by the UDC, taking over the (neo)liberal branch which used to dominate the bloc in the post-war period. This shift could explain why the neoliberal reforms, after a rapid implementation in the 80s and 90s, quickly came to a halt at least in their internationalist and pro-EU forms.</p>
-<p>Regarding other the evolution of right-wing parties’ political supply, <a href="#fig-manifesto">Figure&nbsp;<span>2.8</span></a> suggests that the UDC strengthened its economic program along more neoliberal lines since the 80s. This reflects a contradiction between some of the socio-political groups gathered by the UDC (clusters 3 and 7 for instance), which are rather popular groups whose demands regarding taxation are far from the neoliberal agenda that the UDC hold since the 80s. Hence, the support gathered by the UDC rests on a fundamental contradiction and is stable to the extent in which the popular socio-political groups rank their anti-EU and conservative stances higher in their hierarchy of expectations than economic issues such as progressive taxation.</p>
+<p>Regarding other the evolution of right-wing parties’ political supply, <a href="#fig-manifesto" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> suggests that the UDC strengthened its economic program along more neoliberal lines since the 80s. This reflects a contradiction between some of the socio-political groups gathered by the UDC (clusters 3 and 7 for instance), which are rather popular groups whose demands regarding taxation are far from the neoliberal agenda that the UDC hold since the 80s. Hence, the support gathered by the UDC rests on a fundamental contradiction and is stable to the extent in which the popular socio-political groups rank their anti-EU and conservative stances higher in their hierarchy of expectations than economic issues such as progressive taxation.</p>
 <p>To sum up, the divisions within the liberal-conservative clusters marked a shift in power balance within the bloc: the core of the bourgeois bloc carrying a pro-EU neoliberal strategy was very limited (5%) whereas the neoliberal, conservative and anti-EU clusters (3, 5, 7, 10) became a majority within the bloc. This shows that the political conditions for a neoliberal strategy based on the revitalization program and combined with a pro-EU and culturally progressive agenda was not sustainable as its social base was not large enough. This could explain why Switzerland, under the leadership of the UDC, rapidly adopted some forms of conservative neoliberalism.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-altermatt_conservatism_1979" class="csl-entry" role="listitem">
 Altermatt, Urs. 1979. <span>“Conservatism in Switzerland: A Study in Antimodernism.”</span> <em>Journal of Contemporary History</em> 14 (4): 581–610. <a href="https://doi.org/10.1177/002200947901400402">https://doi.org/10.1177/002200947901400402</a>.
 </div>
@@ -2194,6 +1549,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -2260,13 +1642,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'alternate';
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -2345,10 +1729,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2358,8 +1741,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2372,6 +1764,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2415,6 +1926,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2440,6 +1952,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2501,17 +2039,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link">
+      <a href="./intro.html" class="pagination-link  aria-label=" &lt;span="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./conclusion_appendix.html" class="pagination-link">
+      <a href="./conclusion_appendix.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Conclusion</span>">
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conclusion</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

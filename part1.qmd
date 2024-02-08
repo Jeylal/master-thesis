@@ -42,6 +42,8 @@ library(margins)
 library(cAIC4)
 library(ordinal)
 library(pacman)
+library(modelsummary)
+library(tinytable)
 ```
 
 ## The traditional Swiss bourgeois and left blocs: historical perspectives
@@ -817,10 +819,24 @@ The political identification of each cluster can be assessed by regressing clust
 #| tbl-cap: Influence of political leaning on cluster membership. Z-values under the coefficients.
 step3lr <- read_excel(sheet = 6, "C:/Users/celal/OneDrive/Bureau/master-thesis/lca estimations/selects1999_lcaresults.xlsx")
 step3lr$Cluster[is.na(step3lr$Cluster)] <- ""
-step3lr %>% 
-  gt()
 
+step3lr %>% 
+  tt(theme = "striped") %>% 
+  style_tt(i = 1, j = c(6), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 3, j = c(2:6), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 5, j = c(6), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 7, j = c(3), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 9, j = c(5, 6), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 11, j = c(4), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 13, j = c(6, 7), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 15, j = c(2,3,5), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 17, j = c(2,4,5,6), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 19, j = c(5,6), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 23, j = c(2,7), bold = TRUE, background = "yellow") 
 ```
+
+
+
 
 The results are presented in @tbl-3steplr and can be resumed as follows: clusters 2, 8 and 12 lean to the left; clusters 1 and 4 to the center-left; cluster 10 to the center-right and clusters 3, 5, 7 and 9 to the right.
 
@@ -841,8 +857,8 @@ To what extent are the relationships between cluster membership and political le
 
 step3symp <- read_excel(sheet = 9, "C:/Users/celal/OneDrive/Bureau/master-thesis/lca estimations/selects1999_lcaresults.xlsx")
 step3symp$Cluster[step3symp$Cluster == "z-value"] <- ""
-step3symp %>% 
-  gt()
+
+include_graphics("3steptable2.png")
 ```
 
 As expected, cluster 2 shows a lot of sympathy for the Socialist Party and for the Greens. The other clusters that show significant support for these parties are cluster 8 and 12. Cluster 4 only shows sympathy for the Socialists. Cluster 6 shows sympathy for the Socialists, but also for the Christian Democrats and the PRD. The groups fully supporting the UDC are clusters 3, 7 and 11 (23.95% in total). Clusters 5 (7.12%) and 9 (4.91%) show sympathy for both the UDC and PRD, while cluster 10 (4.9%) is the only cluster fully supporting the PRD.

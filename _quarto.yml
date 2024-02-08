@@ -25,8 +25,18 @@ format:
       dark: darkly
       light: flatly
   pdf:
-    documentclass: scrreprt
-    classoption: nottoc
+    include-in-header: 
+      text: |
+          \usepackage{tabularray}
+          \usepackage{float}
+          \usepackage{codehigh}
+          \usepackage{graphicx}
+          \usepackage[normalem]{ulem}
+          \UseTblrLibrary{booktabs}
+          \NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}}
+          \newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}}
+          \newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
+    documentclass: scrreprt 
     link-citations: TRUE
     toc: true
     toc-depth: 3
