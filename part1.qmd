@@ -48,15 +48,15 @@ library(tinytable)
 
 ## The traditional Swiss bourgeois and left blocs: historical perspectives
 
-A striking feature of the history of Switzerland's social blocs is the persistence and resilience of a Liberal-Conservative bloc since the creation of modern Switzerland in 1848, a bloc that the existing literature on the topic calls the *bourgeois bloc*. Tracing the history of Switzerland's social blocs is therefore essentially a matter of tracing that of the bourgeois bloc. However, we shall see that tracing this history calls into question the extent to which, from a neorealist perspective, this bourgeois bloc can truly be described as bourgeois.
+A striking feature of the history of Switzerland's social blocs is the persistence and resilience of a Liberal-Conservative bloc since the creation of modern Switzerland in 1848, a bloc that the existing literature on the topic generally calls the *bourgeois bloc*. Tracing the history of Switzerland's social blocs is therefore essentially a matter of tracing that of the bourgeois bloc. However, we shall see that tracing this history calls into question the extent to which, from a neorealist perspective, this bourgeois bloc can truly be described as bourgeois.
 
-The history of the Swiss bourgeois bloc goes back to the creation of modern Switzerland in the first half of the 19th century. It is during these crucial decades that Switzerland underwent important institutional changes that laid the foundation of its federalist system which still persists today. The Old Swiss Confederacy (1351-1798), was a loose and strongly decentralized confederation between small states which wanted to protect their independence vis-à-vis the Habsburg empire. The only centralized institution of the Confederation was the federal diet, which were assemblies of deputies from the cantons. After the Napoleonic invasion of 1798, the Swiss state underwent a first and important process of centralization, with the fall of the Old Swiss Confederation and the establishment of the Helvetic Republic, a strong unitary and centralized state inspired by the French system and imposed by Napoleon. The unpopularity of the Helvetic Republic's institutions led to the Mediation Act (1803-1815) and the Restauration (1815-1830) which marked a return to traditional structures. The Regeneration period (1830-1847) saw the growing political power of liberal forces constituted by large industrialists, craftsmen, self-employed farmers and professionals which took power in a majority of cantons. This period was characterized by a growing polarization between liberal and progressive groups in proto-industrialized and protestant cantons and those attached to the traditional models of the Catholic-conservative cantons [@sciarini_politique_2023, p.21-25].
+The history of the Swiss bourgeois bloc goes back to the creation of modern Switzerland in the first half of the 19th century. It is during these crucial decades that Switzerland underwent important institutional changes that laid the foundation of its federalist system which still persists today. The Old Swiss Confederacy (1351-1798), was a loose and strongly decentralized confederation between small states which wanted to protect their independence vis-à-vis the Habsburg empire. The only centralized institution of the Confederation was the federal diet, which were assemblies of deputies from the cantons. After the Napoleonic invasion of 1798, the Swiss state underwent a first and important process of centralization, with the fall of the Old Swiss Confederacy and the establishment of the Helvetic Republic, a strong unitary and centralized state inspired by the French system and imposed by Napoleon. The unpopularity of the Helvetic Republic's institutions led to the Mediation Act (1803-1815) and the Restauration (1815-1830) which marked a return to traditional structures. The Regeneration period (1830-1847) saw the growing political power of liberal forces constituted by large industrialists, craftsmen, self-employed farmers and professionals which took power in a majority of cantons. This period was characterized by a growing polarization between liberal and progressive groups in proto-industrialized and protestant cantons and those attached to the traditional models of the Catholic-conservative cantons [@sciarini_politique_2023, p.21-25].
 
 This religious cleavage between Radicals-Protestants modernizers and Catholic federalists, which was historically one of the most structuring conflicts in Switzerland, led to the Sonderbund civil war (1847) and the foundation of modern Switzerland in 1848. The federal institutions elaborated during and in the decades following the first Swiss constitution of 1848 can be interpreted as a social compromise between the losers of the Sonderbund civil war, the Catholic-Conservative coalition opposed to the centralization and modernization of the Swiss Confederation, and the victorious Radicals who were on average Protestants and bourgeois from urban areas [@sciarini_politique_2023, p.27-28]. However, these two blocs were highly heterogeneous and subject to internal contradictions.
 
 From the outset of their movement, the Radicals were gathered by an unitary illusion: the pretention to transcend cleavages running through Swiss society and unite all its elements thanks to an encompassing goal: the modernization and centralization of the Swiss state. Far from homogeneous, the Radical bloc was a kaleidoscopic mass-movement constituted by the working class through the Grütli Union[^part1-1] and by an elite gathering entrepreneurs, bankers, journalists, lawyers and teachers, who were nonetheless divided over the role of the Swiss state.
 
-[^part1-1]: Founded in Geneva in 1938, the Grütli Union was an important patriotic association that kept a long influence over the Swiss labour movement throughout the 19th century. The agreement between the Grütli and the Radicals stemmed from their convergent interest in a more centralized state. However, the Grütli Union progressively distanced itself from the Radicals, drawing closer to the Swiss Socialist Party as soon as the latter was founded [@muller_grutli_2010].
+[^part1-1]: Founded in Geneva in 1838, the Grütli Union was an important patriotic association that kept a long influence over the Swiss labour movement throughout the 19th century. The agreement between the Grütli and the Radicals stemmed from their convergent interest in a more centralized state. However, the Grütli Union progressively distanced itself from the Radicals, drawing closer to the Swiss Socialist Party as soon as the latter was founded [@muller_grutli_2010].
 
 The political and economic thought of the Radical movement can be difficult to grasp, as its members could substantially differ from one canton to another. Overall, this movement showed a clear intellectual affiliation to the liberal economic and political thought of the 18th and 19th centuries. James Fazy, one of Geneva's leading 19th-century Radical politicians, was strongly influenced by the Physiocrates and Adam Smith. In 1821, the Genevan Radical published *L'homme aux portions*, an essay denouncing the French economic system as too rigid and containing too many barriers to free trade. This book was praised by Jean-Baptiste Say, who considered Fazy to be an intellectual who fully belonged to the liberal school of thought of his time [@mettral_dubois_oeuvre_2015, p.55-56]. The Radical movement of the canton of Vaud, founded and led by Henri Druey (1799-1855), was more influenced by the liberal philosophy of Hegel. The main legacy of Hegel's thought on the radical movement was the need to create a centralized and unitary state, considered in Hegelian philosophy as the means by which liberty and the dialectical movement that drives history are realized [@meuwly_aux_1992].
 
@@ -75,6 +75,8 @@ The creation of the Swiss Socialist Party prompted the Radicals to set up their 
 This polarization of class conflict around a left and right bloc became even more salient after the second general strike of 1918, which was the biggest strike and social protest in Swiss history. The latter was followed by the introduction of the proportional representation system: the Radicals lost their hegemony in the parliament and the Catholic-Conservatives, who meanwhile became the Christian-Democrats, and the Socialists became important political actors in the National Council. The Socialist Party (PS) consolidated a left bloc while the Radical-Democrats (PRD), the Christian-Democrats (PDC) and the Agrarians formed an alliance against the left.
 
 This coalition between the PRD, PDC and Agrarians and its close links with business associations such as the Swiss Union of Commerce and Industry, also called *Vorort* (1870), led many observers to name this dominant coalition the "bourgeois bloc" [@mach_redefinition_2007]. The dominance of this bourgeois bloc is a fundamental feature of the Swiss hybrid model, along with the constrained policy capacity of the state and the tradition of self-regulation by economic actors and associations [@trampusch_switzerland_2011, p.43].
+
+Inspired by Regulation Theory and the neorealist approach, @charles_fast_2024 argue that the dominant social bloc underpinning the main key institutional forms and the economic success of late 19th century's Switzerland was a "bourgeois-peasant" bloc gathering the major business interest associations: the Swiss Federation of Commerce and Industry (USAM, or Vorort) and the Swiss Farmers' Union (USP). During the second half of the 19th century, especially during the Second Industrial Revolution, Switzerland became gradually a form of organized capitalism founded on five key institutional forms: a bank-oriented industry; the nationalization of money and a strongly independent central bank; federalism and direct democracy favoring compromises; a state involved in active infrastructure bulding; and a "combative protectionism" trade policy. On the top of the hierarchy of institutions, international insertion played a crucial role since access to international markets was a matter of survival for a large part of export-oriented large Swiss industries [@charles_fast_2024].
 
 However, the extent to which this dominant bloc can truly be described as bourgeois must be questioned, in addition to the fact that there is no precise definition given in the literature. In the sense given in the latter [@meuwly_liberte_2008; @mach_redefinition_2007; @trampusch_switzerland_2011], the bourgeois bloc refers to a political coalition between the Radical-Democrats, the Christian-Democrats and the Agrarians (now UDC) and its close ties with business interest associations of both the export-oriented industries and domestic-oriented sheltered sectors.
 
@@ -770,8 +772,6 @@ A series of models were thus estimated, increasing the number of clusters by one
 #| echo: false
 #| warning: false
 #| message: false
-#| label: fig-clusters
-#| fig-cap: Cluster description
 
 
 library(webshot2)
@@ -782,10 +782,12 @@ clustertable %>%
   gt() 
 # use gt-save() to save if needed
 #gtsave(clustertable_html, "C:/Users/celal/OneDrive/Bureau/master-thesis/dataclustertable.png")
-include_graphics("C:/Users/celal/OneDrive/Bureau/master-thesis/dataclustertable.png")
 ```
 
-@fig-clusters gives a description of each cluster's relative weight, policy preferences and overall socio-economic characteristics[^part1-6]. The largest cluster (cluster 1) represents 17.8% of the total sample. This cluster shows ambivalent policy preferences, but can be said have rather center-left preferences since it supports increase in social spending by the Confederation and also in taxes on high income, but remains supportive of free markets rather than state intervention. Cluster 1 is, in majority, in favor of European integration, but with an appreciable minority (around 40%) which is against. This cluster support equal rights and chances between Swiss citizen and foreigner, but is attached to traditions. Finally, it prefers environment protection over growth and is strongly against nuclear energy.
+![Cluster description](cltable.png){#tbl-clusters}
+
+
+@tbl-clusters gives a description of each cluster's relative weight, policy preferences and overall socio-economic characteristics[^part1-6]. The largest cluster (cluster 1) represents 17.8% of the total sample. This cluster shows ambivalent policy preferences, but can be said have rather center-left preferences since it supports increase in social spending by the Confederation and also in taxes on high income, but remains supportive of free markets rather than state intervention. Cluster 1 is, in majority, in favor of European integration, but with an appreciable minority (around 40%) which is against. This cluster support equal rights and chances between Swiss citizen and foreigner, but is attached to traditions. Finally, it prefers environment protection over growth and is strongly against nuclear energy.
 
 [^part1-6]: The full results of the 12 clusters model can be consulted [here](https://jeylal.github.io/selects1999results/) (https://jeylal.github.io/selects1999results/)
 
@@ -817,11 +819,12 @@ The political identification of each cluster can be assessed by regressing clust
 #| message: false
 #| label: tbl-3steplr
 #| tbl-cap: Influence of political leaning on cluster membership. Z-values under the coefficients.
+
 step3lr <- read_excel(sheet = 6, "C:/Users/celal/OneDrive/Bureau/master-thesis/lca estimations/selects1999_lcaresults.xlsx")
 step3lr$Cluster[is.na(step3lr$Cluster)] <- ""
 
 step3lr %>% 
-  tt(theme = "striped") %>% 
+  tt(theme = "striped", digits = 1) %>% 
   style_tt(i = 1, j = c(6), bold = TRUE, background = "yellow") %>% 
   style_tt(i = 3, j = c(2:6), bold = TRUE, background = "yellow") %>% 
   style_tt(i = 5, j = c(6), bold = TRUE, background = "yellow") %>% 
@@ -855,10 +858,23 @@ To what extent are the relationships between cluster membership and political le
 #| label: tbl-3stepsymp
 #| tbl-cap: "Influence of the degree of sympathy for each party on cluster membership. Z-values under the coefficients."
 
+
 step3symp <- read_excel(sheet = 9, "C:/Users/celal/OneDrive/Bureau/master-thesis/lca estimations/selects1999_lcaresults.xlsx")
 step3symp$Cluster[step3symp$Cluster == "z-value"] <- ""
 
-include_graphics("3steptable2.png")
+step3symp %>% 
+  tt(theme = "striped", digits = 1) %>%  
+  style_tt(i = 3, j = c(2:6), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 5, j = c(5,6), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 7, j = c(2,4,5), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 9, j = c(2,4,5,6), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 11, j = c(3:5), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 13, j = c(4:6), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 15, j = c(2,4,5,6), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 17, j = c(2,4,5,6), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 19, j = c(2, 4, 5), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 21, j = c(5), bold = TRUE, background = "yellow") %>% 
+  style_tt(i = 23, j = c(2,6), bold = TRUE, background = "yellow") 
 ```
 
 As expected, cluster 2 shows a lot of sympathy for the Socialist Party and for the Greens. The other clusters that show significant support for these parties are cluster 8 and 12. Cluster 4 only shows sympathy for the Socialists. Cluster 6 shows sympathy for the Socialists, but also for the Christian Democrats and the PRD. The groups fully supporting the UDC are clusters 3, 7 and 11 (23.95% in total). Clusters 5 (7.12%) and 9 (4.91%) show sympathy for both the UDC and PRD, while cluster 10 (4.9%) is the only cluster fully supporting the PRD.

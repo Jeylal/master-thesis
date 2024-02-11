@@ -1,0 +1,296 @@
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.8)  9 FEB 2024 09:54
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**ida9wuy3vkm4mtou4r4czk.tex
+(./ida9wuy3vkm4mtou4r4czk.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2022/10/10 v1.3b Class to compile TeX sub-files standalone
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 77.
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+)) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks17
+\XKV@tempa@toks=\toks18
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex))
+\XKV@depth=\count183
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+\sa@internal=\count184
+\c@sapage=\count185
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/standalone/standalone.cfg
+File: standalone.cfg 2022/10/10 v1.3b Default configuration file for 'standalone' class
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+)
+\sa@box=\box51
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tabularray/tabularray.sty (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2024-01-22 L3 programming layer (loader) 
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2024-01-04 L3 backend support: XeTeX
+\g__graphics_track_int=\count194
+\l__pdf_internal_box=\box52
+\g__pdf_backend_object_int=\count195
+\g__pdf_backend_annotation_int=\count196
+\g__pdf_backend_link_int=\count197
+))
+Package: tabularray 2023-03-01 v2023A Typeset tabulars and arrays with LaTeX3
+\l__tblr_a_int=\count198
+\l__tblr_c_int=\count199
+\l__tblr_r_int=\count266
+\l__tblr_d_dim=\dimen141
+\l__tblr_h_dim=\dimen142
+\l__tblr_o_dim=\dimen143
+\l__tblr_p_dim=\dimen144
+\l__tblr_q_dim=\dimen145
+\l__tblr_r_dim=\dimen146
+\l__tblr_s_dim=\dimen147
+\l__tblr_t_dim=\dimen148
+\l__tblr_v_dim=\dimen149
+\l__tblr_w_dim=\dimen150
+\l__tblr_a_box=\box53
+\l__tblr_b_box=\box54
+\l__tblr_c_box=\box55
+\l__tblr_d_box=\box56
+\g__tblr_table_count_int=\count267
+\c@rownum=\count268
+\c@colnum=\count269
+\c@rowcount=\count270
+\c@colcount=\count271
+\abovesep=\dimen151
+\belowsep=\dimen152
+\leftsep=\dimen153
+\rightsep=\dimen154
+\g_tblr_level_int=\count272
+\g__tblr_data_row_key_count_int=\count273
+\g__tblr_data_column_key_count_int=\count274
+\g__tblr_data_cell_key_count_int=\count275
+\g__tblr_array_int=\count276
+\l__tblr_key_count_int=\count277
+\l__tblr_key_quotient_int=\count278
+\l__tblr_key_quotient_two_int=\count279
+\l__tblr_key_remainder_int=\count280
+\g__tblr_data_str_value_count_int=\count281
+\rulewidth=\dimen155
+\l__tblr_strut_dp_dim=\dimen156
+\l__tblr_strut_ht_dim=\dimen157
+\g__tblr_cell_wd_dim=\dimen158
+\g__tblr_cell_ht_dim=\dimen159
+\g__tblr_cell_head_dim=\dimen160
+\g__tblr_cell_foot_dim=\dimen161
+\l__column_target_dim=\dimen162
+\l__tblr_caption_box=\box57
+\l__tblr_caption_left_box=\box58
+\l__tblr_row_head_box=\box59
+\l__tblr_row_foot_box=\box60
+\l__tblr_row_head_foot_dim=\dimen163
+\tablewidth=\dimen164
+\l__tblr_table_firsthead_box=\box61
+\l__tblr_table_middlehead_box=\box62
+\l__tblr_table_lasthead_box=\box63
+\l__tblr_table_firstfoot_box=\box64
+\l__tblr_table_middlefoot_box=\box65
+\l__tblr_table_lastfoot_box=\box66
+\l__tblr_remain_height_dim=\dimen165
+\l__tblr_long_from_int=\count282
+\l__tblr_long_to_int=\count283
+\l__tblr_curr_i_int=\count284
+\l__tblr_prev_i_int=\count285
+\l__tblr_table_page_int=\count286
+\l__tblr_table_head_box=\box67
+\l__tblr_table_foot_box=\box68
+\l__tblr_table_head_foot_dim=\dimen166
+\l__tblr_table_head_body_foot_dim=\dimen167
+\l__tblr_table_box=\box69
+\l__tblr_table_hlines_box=\box70
+\l__tblr_hline_box=\box71
+\l__tblr_row_box=\box72
+\l__tblr_col_o_wd_dim=\dimen168
+\l__tblr_col_b_wd_dim=\dimen169
+\l__tblr_hline_leftskip_dim=\dimen170
+\l__tblr_hline_rightskip_dim=\dimen171
+\l__tblr_row_ht_dim=\dimen172
+\l__tblr_row_dp_dim=\dimen173
+\l__tblr_row_abovesep_dim=\dimen174
+\l__tblr_row_belowsep_dim=\dimen175
+\l__tblr_row_vlines_box=\box73
+\l__tblr_vline_box=\box74
+\l__tblr_cell_box=\box75
+\l__row_upper_dim=\dimen176
+\l__row_lower_dim=\dimen177
+\l__row_vpace_dim=\dimen178
+\l__tblr_vline_aboveskip_dim=\dimen179
+\l__tblr_vline_belowskip_dim=\dimen180
+\l__tblr_cell_wd_dim=\dimen181
+\l__tblr_cell_ht_dim=\dimen182
+\l__tblr_diag_box=\box76
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 107.
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
+))
+\Gin@req@height=\dimen183
+\Gin@req@width=\dimen184
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count287
+\float@exts=\toks19
+\float@box=\box77
+\@float@everytoks=\toks20
+\@floatcapt=\box78
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/codehigh/codehigh.sty
+Package: codehigh 2023-02-11 v2023A Highlight codes and demos with l3regex and lpeg
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/catchfile/catchfile.sty
+Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 274.
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/ninecolors/ninecolors.sty
+Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2023-10-10 L3 Experimental document command parser
+)) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box79
+\sift@deathcycles=\count288
+\@vwid@loff=\dimen185
+\@vwid@roff=\dimen186
+)
+\l__codehigh_a_int=\count289
+\l__codehigh_b_int=\count290
+\l__codehigh_main_boxsep_dim=\dimen187
+\g__codehigh_code_box=\box80
+\g__codehigh_demo_box=\box81
+\l__codehigh_latex_rule_count_int=\count291
+\l__codehigh_latex/math_rule_count_int=\count292
+\l__codehigh_latex/table_rule_count_int=\count293
+\l__codehigh_latex/latex2_rule_count_int=\count294
+\l__codehigh_latex/latex3_rule_count_int=\count295
+\l__codehigh_item_count_int=\count296
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box82
+\UL@hyphenbox=\box83
+\UL@skip=\skip50
+\UL@hook=\toks21
+\UL@height=\dimen188
+\UL@pe=\count297
+\UL@pixel=\dimen189
+\ULC@box=\box84
+Package: ulem 2019/11/18
+\ULdepth=\dimen190
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen191
+\lightrulewidth=\dimen192
+\cmidrulewidth=\dimen193
+\belowrulesep=\dimen194
+\belowbottomsep=\dimen195
+\aboverulesep=\dimen196
+\abovetopsep=\dimen197
+\cmidrulesep=\dimen198
+\cmidrulekern=\dimen199
+\defaultaddspace=\dimen256
+\@cmidla=\count298
+\@cmidlb=\count299
+\@aboverulesep=\dimen257
+\@belowrulesep=\dimen258
+\@thisruleclass=\count300
+\@lastruleclass=\count301
+\@thisrulewidth=\dimen259
+) (c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count302
+)
+No file ida9wuy3vkm4mtou4r4czk.aux.
+\openout1 = `ida9wuy3vkm4mtou4r4czk.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 12.
+(c:/Users/celal/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+! Misplaced \noalign.
+\bottomrule ->\noalign 
+                       {\ifnum 0=`}\fi \@aboverulesep =\aboverulesep \global...
+l.177 \end
+          {tblr} 
+Here is how much of TeX's memory you used:
+ 5622 strings out of 476858
+ 121096 string characters out of 5802531
+ 1929630 words of memory out of 5000000
+ 27518 multiletter control sequences out of 15000+600000
+ 559862 words of font info for 41 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 65i,3n,93p,389b,1208s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+No pages of output.

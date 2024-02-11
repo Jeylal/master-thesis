@@ -1,0 +1,108 @@
+
+\documentclass{standalone}
+\usepackage{tabularray}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{codehigh}
+\usepackage[normalem]{ulem}
+\UseTblrLibrary{booktabs}
+\newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}}
+\newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
+\NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}}
+\begin{document}
+\centering
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]},
+row{even}={bg=black!5!white},
+}                     %% tabularray inner close
+\toprule
+Cluster & Weight & Policy preferences & Characteristics \\ \midrule %% TinyTableHeader
+1 & 17,8% & For increase in taxes on high income (HI) and in social spending, but supports free markets;
+no clear opinion on Swiss army;
+rather pro-EU integration;
+but with an appreciable minority of; anti-EU supporters (40%);
+for equal chances Swiss-foreigners;
+defend traditions;
+pro-environment;
+against nuclear energy. & Rather middle-aged and old; female; low income; middle education; skilled and unskilled workers;
+Protestants; middle/small city ;German and Italian-speaking. \\
+2 & 13,7% & For increase in social spending;
+for higher taxes HI;
+for state intervention;
+for no Swiss army;
+strongly pro-EU integration;
+for equal chances Swiss-CH;
+question traditions;
+pro-environment;
+against nuclear energy. & Young; female;
+high income; high education; managers, socio-cultural specialists;
+French-speaking; big city; Catholics and Atheists. \\
+3 & 13,4% & Against social spending;
+for increase in taxes on HI;
+free-market but with an appreciable minority (40%) in favor of state intervention;
+for a strong Swiss army;
+against EU integration;
+for better chances for the Swiss;
+defend traditions;
+pro-environment;
+against nuclear energy. & Rather old; female; low income; low and middle education; unskilled workers; craft specialists; self-employed; Protestants;
+German and Italian-speaking; countryside; middle/small city \\
+4 & 12,4% & For increase in social spending;
+for increase in taxes on HI;
+rather free-market;
+divided over Swiss army;
+pro-EU integration;
+for equal chances Swiss-foreigners;
+pro-environment;
+against nuclear energy. & Young; female;middle-high income and education; skilled workers and managers; German and French-speaking; Catholics or no religion; big city. \\
+5 & 7,1% & Against social spending;
+for increase in taxes on HI;
+for free markets;
+for strong army;
+against EU-integration;
+for better chances for the Swiss;
+defend traditions;
+divided over environment vs growth;
+pro-nuclear energy. & Rather old; retired; male; middle-low income and education; Protestant; German speaking; farmers, craft specialists, skilled and unskilled workers; countryside, middle/small city. \\
+6 & 6,9% & Pro-EU integration; for equal chances Swiss-foreigners; rather defend traditions; pro-nuclear energy. & Old; high income; high education; vocational training; managers; skilled employees; retired; German-speaking; big city. \\
+7 & 6,9% & For higher taxes on HI; for strong army; pro-EU integration; for equal chances Swiss-foreigners; defend traditions; against nuclear energy. & Old; retired; low income;
+low education; Protestant; craft specialists; skilled and unskilled employees; managers; German-speaking; countryside, middle/small city. \\
+8 & 5,9% & For increase in social spending;
+for higher taxes on HI;
+for no army;
+pro-EU integration;
+for equal chances Swiss-foreigners;
+question traditions;
+pro-environment;
+against nuclear energy. & Rather young; female; high income; high education; skilled workers; managers; socio-cultural specialists; German and French-speaking; big city. \\
+9 & 4,9% & For reducing taxes on HI;
+for reducing social spending;
+strongly for free-markets;
+for strong army;
+against EU-integration;
+rather for better chances for the Swiss;
+defend traditions;
+divided on environment vs growth;
+pro-nuclear energy. & Old; retired; male; high income; rather high education; Protestant; self-employed; German speaking; countryside, middle/small city \\
+10 & 4,9% & For reducing social spending;
+for reducing taxes on HI;
+strongly for free markets;
+for a strong army, but with an appreciable minority of no army supporters (37%);
+for EU-integration;
+for equal chances Swiss-foreigners;
+question traditions;
+rather for economic growth;
+pro-nuclear energy. & Young; male; high income; high education; managers;
+skilled workers; self employed; German-speaking; big city. \\
+11 & 3,3% & Against EU-integration;
+for better chances for the Swiss;
+defend traditions;
+pro-environment;
+against nuclear energy. & Old; female; low income; middle-education; skilled and unskilled workers; Protestant \\
+12 & 2,6% & For increase in social spending; for increase in taxes on HI; Undecided or in favor of state intervention; undecided on EU integration; rather for no army; for better chances for the Swiss; defend traditions; pro-environment; against nuclear energy. & Rather old; female; low income; low education; unskilled workers; socio-cultural specialists. \\
+\bottomrule
+\end{tblr}
+\end{document}
+
