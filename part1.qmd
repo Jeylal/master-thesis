@@ -503,7 +503,7 @@ Regarding political leaning, identification with neither the left nor the right 
 #| warning: false
 #| label: fig-ameparties
 #| fig-cap: "Party support in Switzerland: 1981-2016. Average difference in  predicted probabilities between the highest and lowest income groups and between university and vocational training graduates."
-#| fig-height: 4
+#| fig-height: 6
 ame_IP <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_IP.rds")
 ame_parties <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_parties.rds")
 ame_polleaning <- readRDS("C:/Users/celal/OneDrive/Bureau/master-thesis/data/ame/ame_polleaning.rds")
