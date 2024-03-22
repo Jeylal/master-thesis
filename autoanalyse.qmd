@@ -1,0 +1,65 @@
+## Auto-analyse des dimensions éthiques du mémoire de Master {.unnumbered}
+
+(Ce document restitue les réflexions menées par la mémorante en dialogue avec sa directrice de mémoire)[^autoanalyse]
+
+[^autoanalyse]: Par souci de lisibilité, le féminin en usage dans ce document inclut tous les genres.
+
+
+**Nom et prénom de l'étudiante:** Güney Celâl
+
+**Nom et prénom de la directrice du mémoire:** Amable bruno
+
+**Titre du mémoire de master:** Économie politique du changement institutionnel et blocs sociaux en Suisse: une approche néoréaliste
+
+**Résumé** (maximum 250 mots)
+
+What were the political conditions and social bases for a neoliberal transformation of the Swiss socio-economic model in the last decades? The present master thesis seeks to explore the social bases behind the transformation and stability of the Swiss socio-economic model since the 80s. As a first step, long-run analyses of the socio-economic determinants of party support, political leaning and policy preferences are conducted. The results show evidence that, regarding party support, Switzerland's political landscape appears to be structured by a brahmin left versus merchant right divide, as theorized by @piketty_capital_2019. However, the results for political leaning show that, while right leaning evolved into a merchant pattern, left leaning became gradually endorsed by upper-middle income and high education groups. Finally, the results from a latent class analysis aimed at identifying the recomposition of the Swiss social blocs in the late 90s are presented. The selected model divides the late 90s' Swiss population into twelve socio-political groups, and the different strategies that could have aggregated these clusters into social blocs are assessed. Using the concepts and methods of neorealism [@amable_leconomie_2005; @amable_neorealist_2008], the objective of this master thesis is to provide the first steps into a broader analysis of the political economy of institutional change in Switzerland.
+
+**Partie A** (à remplir avant la réalisation de la partie empirique du mémoire)
+
+**A.1. Les participantes à la recherche**
+
+Sous quelle forme votre projet implique-t-il des participantes (questionnaires, entretiens, observations, expérimentation, etc.) ? Quel est leur profil ? Comment sont-elles recrutées et informées des objectifs et des modalités de la recherche ? Comment leur consentement est-il recueilli ? (maximum 500 mots)
+
+Mon projet n’implique pas des participants.
+
+**A.2. Les données récoltées**
+
+Quels types de données sont récoltés et comment ces dernières sont-elles traitées ? Avec quels moyens technologiques les données sont-elles récoltées, stockées et traitées ? Vos données seront-elle anonymisées et si oui comment ? Si non, expliquez pourquoi. Vos données entrent-elles dans la catégorie « données personnelles » ou « données sensibles » au sens de la loi LIPAD genevoise  ? (maximum 500 mots)
+
+Les données analysés dans le cadre de cette recherche sont des données d’enquêtes post-électorales ou de post-votations, de 1981 à 2016. Les enquêtes post-électorales correspondent aux études SELECTS (Swiss Election Studies), et les études post-votations aux études Vox, qui sont les produits des recherches conduites par le Centre de Compétence Suisse en Sciences Sociales (Fors). Les enquêtes sont choisis selon la méthodologie d’échantillonnage aléatoire propre à SELECTS et à Vox. Les données récoltées sont stockées dans la base de données Swissubase. Elles ont été téléchargées, stockées dans un ordinateur personnel et analysées avec le logiciel statistique R. Les données sont déjà anonymisées par les producteurs de ces données en ne fournissant pas d’information personnelle sur les répondants présents dans les jeux de données. Les données entrent dans la catégorie de données personnelles sensibles.
+
+**Enjeux éthiques et risques identifiés**
+
+Quels sont les éventuels enjeux éthiques ou risques liés à votre projet de recherche, pour les participantes et pour la mémorante ? Quels sont les moyens envisagés pour les prévenir ou en limiter la portée ? (maximum 500 mots)
+
+Ma recherche ne pose pas de problèmes éthiques majeurs, que ce soit pour les enquêtés ou bien pour moi.
+
+**Partie B** (à remplir après la réalisation de la partie empirique)
+
+**B.1. Les participantes à la recherche**
+
+Votre projet a-t-il été modifié quant aux participantes à la recherche ? Si oui, quelles modifications comportent à une dimension éthique ? (maximum 250 mots)
+
+Non.
+
+
+**B.2. Les données récoltées**
+
+La récolte, le stockage et le traitement des données ont-ils été modifiés par rapport à votre intention initiale ? Si oui, quelles modifications comportent une dimension éthique ? (maximum 250 mots)
+
+Non.
+
+Vos données sont-elles conservées après la validation du mémoire ? Si oui, où sont-elles stockées, et pour quelle durée ? (maximum 250 mots) 
+
+Les données sont conservées sur mon ordinateur jusqu’à l’expiration des contrats avec Swissubase.
+
+
+**Partie C (libre)**
+
+Date(s): 5 mars 2024
+
+Partagez ici vos réflexions sur les dimensions éthiques de votre projet qui n’ont pas trouvé de place dans les catégories A et B (maximum 500 mots).
+
+...
+

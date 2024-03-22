@@ -7,13 +7,14 @@ book:
   subtitle: "Master in the Political Economy of Capitalism, University of Geneva"
   author:
     - name: Celâl Güney
-    - name: "Supervisor: professor Bruno Amable"
+    - name: "Supervisor: Professor Bruno Amable"
   downloads: [pdf]
   chapters:
     - index.qmd
     - intro.qmd
     - part1.qmd
     - conclusion_appendix.qmd
+    - autoanalyse.qmd
     - references.qmd
 
 title-block-banner: false
@@ -37,7 +38,7 @@ format:
           \NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}}
           \newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}}
           \newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
-    documentclass: scrreprt 
+    documentclass: scrreport
     link-citations: TRUE
     toc: true
     toc-depth: 3

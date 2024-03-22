@@ -1,0 +1,11 @@
+---
+title: "Phd Proposal"
+subtitle: "The Political Economy of Neoliberalism in Switzerland"
+author: "Celâl Güney"
+format: pdf
+editor: visual
+---
+
+## Motivation
+
+

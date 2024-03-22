@@ -614,3 +614,10 @@ regeu <- glm(data = selects1999, for_eu_int ~ income + education+as_character(se
 modelsummary(list("For EU integration" = regeu), stars = TRUE, coef_omit = "Intercept", output = "gt")
 ```
 
+
+
+
+
+
+
+

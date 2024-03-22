@@ -1,0 +1,79 @@
+---
+title: "Présentation thèse de master"
+subtitle: "The Political Economy of Institutional Change and Social Blocs in Switzerland: a Neorealist Approach"
+author: "Celâl Güney"
+lang: fr
+format: 
+  revealjs:
+    theme: serif
+    logo: logounige.png
+    footer: "[Celâl Güney](https://jeylal.github.io/celalguney/about.html)"
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 3
+    incremental: true
+editor: visual
+bibliography: references.bib
+---
+
+## Motivation derrière ma recherche
+
+::: columns
+::: {.column width="50%"}
+-   Expliquer et analyser le changement institutionnel en utilisant le cadre théorique d'Amable et Palombarini [-@amable_leconomie_2005; -@amable_neorealist_2008; -@amable_multidimensional_2023]
+
+-   Cas d'étude choisi: La Suisse
+:::
+
+::: {.column width="50%"}
+<iframe width="100%" height="600" src="docs/The-Political-Economy-of-Institutional-Change-and-Social-Blocs-in-Switzerland--a-Neorealist-Approach.pdf">
+
+</iframe>
+:::
+:::
+
+## Pourquoi la Suisse?
+
+::: columns
+::: {.column width="50%"}
+- Pays très peu étudié, que ce soit dans les théories du capitalisme comparé ou du changement institutionnel
+- Permet de contraster avec les cas français et italien
+- Pays souvent considéré comme un modèle stable et performant
+- Mais le cas Suisse est-il si stable que cela ?
+:::
+
+::: {.column width="50%"}
+![](docs/intro_files/figure-html/fig-trust1-1.png){width="500" height="250"}
+![](docs/intro_files/figure-html/fig-trust2-1.png){width="485" height="250"}
+:::
+:::
+
+## Changement institutionnel en Suisse
+
+Entre stabilité et périodes de changement accéléré
+
+::: columns
+::: {.column width="50%"}
+![[@fill_political_2019, p.145]](fill_2019_145.png){width="550" height="350"}
+
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+::: notes
+My notes for this slide on the introduction
+:::
+
+
+## Un modèle à 12 clusters
+
+
+<iframe width="100%" height="600" src="/lca%20estimations/selects1999_lcaresults_presentation.htm">
+</iframe>
+
+## Bibliographie
+
+::: {#refs}
+:::
