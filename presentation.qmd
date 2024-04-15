@@ -1,28 +1,35 @@
 ---
-title: "Présentation thèse de master"
+title: "Master Thesis Presentation"
 subtitle: "The Political Economy of Institutional Change and Social Blocs in Switzerland: a Neorealist Approach"
 author: "Celâl Güney"
-lang: fr
+lang: en
 format: 
   revealjs:
-    theme: serif
+    theme: myscsstheme.scss
     logo: logounige.png
     footer: "[Celâl Güney](https://jeylal.github.io/celalguney/about.html)"
+    incremental: true
+    preview-links: false
+    controls: true
+    embed-resources: false
+    pdf-separate-fragments: true
+    gfm:
+    mermaid-format: png
+    mermaid: 
+      theme: neutral
     chalkboard:
       theme: whiteboard
-      boardmarker-width: 3
-    incremental: true
 editor: visual
 bibliography: references.bib
 ---
 
-## Motivation derrière ma recherche
+## Motivation
 
 ::: columns
 ::: {.column width="50%"}
--   Expliquer et analyser le changement institutionnel en utilisant le cadre théorique d'Amable et Palombarini [-@amable_leconomie_2005; -@amable_neorealist_2008; -@amable_multidimensional_2023]
+-   Explain and analyze institutional change using Amable and Palombarini's neorealist approach [@amable_leconomie_2005; @amable_neorealist_2008; @amable_multidimensional_2023]
 
--   Cas d'étude choisi: La Suisse
+-   Switzerland as a case study
 :::
 
 ::: {.column width="50%"}
@@ -32,33 +39,47 @@ bibliography: references.bib
 :::
 :::
 
-## Pourquoi la Suisse?
+## Why Switzerland ?
 
 ::: columns
 ::: {.column width="50%"}
-- Pays très peu étudié, que ce soit dans les théories du capitalisme comparé ou du changement institutionnel
-- Permet de contraster avec les cas français et italien
-- Pays souvent considéré comme un modèle stable et performant
-- Mais le cas Suisse est-il si stable que cela ?
+-   Switzerland is often ignored in the theories of political economy/comparative capitalism
+-   Switzerland allows to study stability instead of crisis (France, Italy)
+-   Switzerland is often considered as a very stable and efficient country
 :::
 
 ::: {.column width="50%"}
-![](docs/intro_files/figure-html/fig-trust1-1.png){width="500" height="250"}
-![](docs/intro_files/figure-html/fig-trust2-1.png){width="485" height="250"}
+![](docs/intro_files/figure-html/fig-trust1-1.png){width="500" height="250"} ![](docs/intro_files/figure-html/fig-trust2-1.png){width="485" height="250"}
 :::
 :::
 
-## Changement institutionnel en Suisse
+## Switzerland and comparative capitalism
 
-Entre stabilité et périodes de changement accéléré
+::: columns
+::: {.column width="70%"}
+-   Coordinated market economy [@hall_varieties_2001]
+-   Organized capitalism [@charles_fast_2024]
+-   Hybrid model [@trampusch_switzerland_2011]
+:::
+
+::: {.column width="30%"}
+![](pw/machtrampusch2011.jpg){fig-align="right" width="217"}
+:::
+:::
+
+## [Institutional change in Switzerland]{.r-fit-text}
 
 ::: columns
 ::: {.column width="50%"}
-![[@fill_political_2019, p.145]](fill_2019_145.png){width="550" height="350"}
-
+![[@fill_political_2019, p.145]](pw/fill_2019_145.png){width="700" height="400"}
 :::
 
-::: {.column width="50%"}
+::: {.column width="25%"}
+![](pw/fill2019.jpg){.absolute width="250" height="300"}
+:::
+
+::: {.column width="25%"}
+![](pw/machetal1999.jpg){width="250" height="300"}
 :::
 :::
 
@@ -66,14 +87,200 @@ Entre stabilité et périodes de changement accéléré
 My notes for this slide on the introduction
 :::
 
+## Research question {.smaller}
 
-## Un modèle à 12 clusters
+> [What social basis for a neoliberal transformation of the Swiss model ?]{style="color:red;"}
 
+Research in three parts
 
-<iframe width="100%" height="600" src="/lca%20estimations/selects1999_lcaresults_presentation.htm">
-</iframe>
+1.  Short history of the Swiss social blocs since 1848, based on the literature
 
-## Bibliographie
+-   Then, two empirical analyses based on two different approach to social blocs
+
+2.  The bi-dimensional "political compass" approach
+    -   Implicit definition of social blocs, which are pre-defined groups based on income and education levels [@piketty_capital_2019] or social classes [@oesch_electoral_2018]
+3.  A multidimensional and bottom-up clustering approach, using latent class analysis [@amable_search_2021]
+
+## Traditional social blocs {.scrollable .smaller}
+
++---------------------------+---------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
+| Social Bloc               | Socio-political Groups                                                                | Policy Preferences                                                                            |
++===========================+=======================================================================================+===============================================================================================+
+| Liberal-conservative bloc | Large industrial, export-oriented and competitive firms, skilled workers and managers | Free-trade, low employment and social protection, low tax level\                              |
+|                           |                                                                                       | \                                                                                             |
+|                           | ------------------------------------------------------------------------              | \                                                                                             |
+|                           |                                                                                       |                                                                                               |
+|                           | Medium and small domestic oriented firms, farmers                                     | ------------------------------------------------------------------------                      |
+|                           |                                                                                       |                                                                                               |
+|                           |                                                                                       | Public transfers, protection from international competition                                   |
++---------------------------+---------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
+| Left bloc                 | Socio-cultural professionals, workers from the public sector                          | State intervention, social protection, increase in real wage\                                 |
+|                           |                                                                                       |                                                                                               |
+|                           | ------------------------------------------------------------------------              | ------------------------------------------------------------------------                      |
+|                           |                                                                                       |                                                                                               |
+|                           | Workers from the private sector                                                       | Real wage increase, social & employment protection, protection from international competition |
++---------------------------+---------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
+
+: Social blocs in Switzerland during the 70s and 80s. Classification based on Rennwald (2014), Tawfiq (2019). {#tbl-socialblocs1}
+
+## Political compass approach
+
+::: {layout-ncol="3"}
+![@oesch_electoral_2018](pw/oeschrennwald_2018.png)
+
+![@sciarini_politique_2023, p.341](pw/sciarini_polcomp_2023.png){height="400"}
+
+![@gethin_brahmin_2022](pw/pikettyetal_2022.png){height="400" width="500"}
+:::
+
+## Political compass approach - WPID
+
+::: r-stack
+![@durrer_de_la_sota_party_2021](pw/wpid_grap_socdem.png){height="500"}
+
+![](pw/wpid_educ.png){.fragment auto-animate="true" height="500"}
+
+![](pw/wpid_inc.png){.fragment height="500"}
+:::
+
+## Hypotheses {.smaller}
+
+1.  *Brahmin left versus merchant right hypotheses*
+
+    -   BvsM1. The support for the left and left-wing parties should be negatively associated with education and income levels in the first time periods. The negative association with education should then decrease and become positive over time.
+    -   BvsM2. The support for the right and right-wing parties should be positively associated with education and income in the first time periods and the positive association with education should decrease over time.
+
+2.  *Bourgeois bloc hypotheses*
+
+    -   BB1. The support for redistribution and state intervention should decrease with education and income. Support for equal rights between Swiss citizen and foreigners should increase with education and income.
+    -   BB2. Support for right-wing parties and the right should increase with both income and education levels.
+
+## Results
+
+::: r-stack
+![](docs/part1_files/figure-html/fig-ameparties-1.png){width="800"}
+
+![](docs/part1_files/figure-html/fig-amepolleaning-1.png){.fragment width="1300"}
+
+![](docs/part1_files/figure-html/fig-ameIP-1.png){.fragment}
+:::
+
+## Latent class analysis
+
+::: {layout-ncol="2"}
+-   8 questions as indicators to endogenously infer clusters (socio-political groups)
+
+-   3 step approach to explore the relationships between clusters and party support/ political leaning
+
+-   Selects data for 1999, a turning point in Swiss politics
+
+![](docs/part1_files/figure-html/fig-partystrength-1.png){width="508"}
+:::
+
+## The 12 clusters model
+
+[![](pw/profile.png){fig-align="center" width="655"}](https://jeylal.github.io/selects1999results2/)
+
+## Aggregation into social blocs {.smaller}
+
+::: columns
+::: {.column width="50%"}
+![](pw/tblclusterparties.png)
+:::
+
+::: {.column width="50%"}
+![](pw/tblclusterpol.png)
+:::
+:::
+
+## Aggregation into blocs {.r-stretch .smaller}
+
+```{mermaid}
+flowchart LR
+
+    subgraph lb["Left bloc (22,2%)"]
+    cl2["Cluster 2 (13,7%)"]
+    cl8["Cluster 8 (5,9%)"]
+    cl12["Cluster 12 (2,6%)"]
+    end
+
+    
+    cl1["Cluster 1 (17,8%)"]
+    cl4["Cluster 4 (12,4%)"]
+    cl6["Cluster 6 (6,9%)"]
+    
+
+    subgraph lcb["Liberal-conservative bloc (40,5%)"]
+    cl3["Cluster 3 (13,4%)"]
+    cl5["Cluster 5 (7,1%)"]
+    cl7["Cluster 7 (6,9%)"]
+    cl9["Cluster 9 (4,9%)"]
+    cl10["Cluster 10 (4,9%)"]
+    cl11["Cluster 11 (3,3%)"]
+    end
+
+    cl4-.-lb
+    cl1-.-lb
+    lb~~~cl6~~~lcb
+    cl2~~~cl8~~~cl12
+    cl3~~~cl5~~~cl7
+    cl9~~~cl10~~~cl11
+    
+```
+
+-   Left bloc: clusters 2 and 8 are composed by wealthy and well-educated individuals, only cluster 12 is composed by popular elements. Potential targets of the left bloc, clusters 4 and 1, are rather composed by middle/lower-middle classes.
+
+-   Liberal conservative bloc: clusters 3 and 7 are the least wealthy and educated; 9 and 10 among the most wealthy and educated.
+
+## Discussion of the results {.smaller}
+
+Regression analysis:
+
+-   Results validate brahmin left vs merchant right hypothesis more than the WPID's own results
+
+-   A few exceptions: difference between second highest and lowest income groups for left leaning
+
+-   Analyses of the WPID extended to abstention and policy preferences
+
+12 clusters model for 1999:
+
+-   Dominant liberal conservative bloc, which is nonetheless divided over European integration and some economic issues (high income taxation)
+
+-   The predominance of anti-EU and popular groups in the liberal conservative bloc could explain the failure of a neoliberal/bourgeois bloc strategy and the slowdown of the reforms after 2003.
+
+-   Left bloc: incentives to attract parts of cluster 1 and 4, which are more moderate
+
+## Limits and further research
+
+Five levels for a theoretical framework for institutional change [@amable_neorealist_2008]:
+
+1.  Ideology
+
+::: {.fragment .highlight-red}
+2.  Demands of social actors
+:::
+
+3.  Political mediation
+4.  [Identification of social groups]{style="color:red;"} and of which benefit/loose from economic dynamics and public policy
+5.  Institutions
+
+## Limits and further research {.smaller}
+
+My master's thesis is only a first step for a neorealist analysis of Switzerland's institutional change. There is still a lot to be done.
+
+In further work, I envisage to do the following:
+
+-   Better assess Switzerland's political stability
+-   Conduct LCA for more recent periods (for instance 2019)
+    -   Other periods such as 2003 or 2007 could also be interesting
+-   Run a more complex and wide regression analysis
+    -   Multilevel models & including 2016-2020 data
+-   Take ideology more into account
+-   Explore institutional and economic dynamics
+-   Identification of Switzerland's demand regime from a post-Keynesian perspective
+-   Better explain how social groups' interests are protected/discarded by economic dynamics and public policy
+
+## References
 
 ::: {#refs}
 :::
