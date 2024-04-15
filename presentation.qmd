@@ -11,14 +11,12 @@ format:
     incremental: true
     preview-links: false
     controls: true
-    embed-resources: false
+    embed-resources: true
     pdf-separate-fragments: true
     gfm:
     mermaid-format: png
     mermaid: 
       theme: neutral
-    chalkboard:
-      theme: whiteboard
 editor: visual
 bibliography: references.bib
 ---
