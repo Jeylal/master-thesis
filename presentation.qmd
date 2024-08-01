@@ -1,5 +1,5 @@
 ---
-title: "Master Thesis Presentation"
+title: "Master's Thesis Presentation"
 subtitle: "The Political Economy of Institutional Change and Social Blocs in Switzerland: a Neorealist Approach"
 author: "Celâl Güney"
 lang: en
@@ -11,12 +11,14 @@ format:
     incremental: true
     preview-links: false
     controls: true
-    embed-resources: true
+    embed-resources: false
     pdf-separate-fragments: true
     gfm:
     mermaid-format: png
     mermaid: 
       theme: neutral
+    chalkboard: 
+      theme: whiteboard
 editor: visual
 bibliography: references.bib
 ---
@@ -37,6 +39,10 @@ bibliography: references.bib
 :::
 :::
 
+::: notes
+Hello and welcome to my master's thesis defense entitled "the political economy of institutional change and social blocs in Switzerland: a neorealist approach". The main motivation behind this thesis was my desire to contribute to the analysis of institutional change and to the neorealist approach to institutional change developed by Amable and Palombarini, whose work is the main source of inspiration behind this work. As the work of this approach has focused mainly on France and Italy, I have attempted to contribute by analyzing a new country: Switzerland.
+:::
+
 ## Why Switzerland ?
 
 ::: columns
@@ -49,6 +55,14 @@ bibliography: references.bib
 ::: {.column width="50%"}
 ![](docs/intro_files/figure-html/fig-trust1-1.png){width="500" height="250"} ![](docs/intro_files/figure-html/fig-trust2-1.png){width="485" height="250"}
 :::
+:::
+
+::: notes
+I therefore chose Switzerland as a case study, which I felt would be interesting for the following reasons. Firstly, the Swiss case allows us to study stability rather than the instability that characterizes the Italian and French cases. While the neorealist approach stresses the irreducibility of social conflict and crisis, the countries vary in the way they regulate this conflict. Unlike France and Italy, Switzerland is often held up as an example of political stability and economic performance. If we make an international comparison of, for example, trust in government (zoom in on graph), Switzerland stands out remarkably from other countries when it comes to stability. The most frequently cited reasons for this performance and stability are often attributed to the country's political institutions, its liberal economy, its education system and so on.
+
+If we look at other data, we can trace political stability in a longer perspective. The second graph shows confidence in government since 1981. It can be seen that Swiss political stability is not so obvious for all periods, and that certain periods of crisis can be suspected, the most apparent of which is the 90s.
+
+Switzerland is therefore an interesting case to study, as it stands in stark contrast to the Italian and French cases. Switzerland is also an interesting case because of the peculiarity of its economic and political institutions, as well as the trajectory of their change.
 :::
 
 ## Switzerland and comparative capitalism
@@ -65,24 +79,10 @@ bibliography: references.bib
 :::
 :::
 
-## [Institutional change in Switzerland]{.r-fit-text}
-
-::: columns
-::: {.column width="50%"}
-![[@fill_political_2019, p.145]](pw/fill_2019_145.png){width="700" height="400"}
-:::
-
-::: {.column width="25%"}
-![](pw/fill2019.jpg){.absolute width="250" height="300"}
-:::
-
-::: {.column width="25%"}
-![](pw/machetal1999.jpg){width="250" height="300"}
-:::
-:::
+-   Insight from the neorealist approach: the stability of the Swiss socio-economic model depends of the country's social blocs, in particular the dominant social bloc.
 
 ::: notes
-My notes for this slide on the introduction
+Switzerland is therefore also an interesting case study, given the peculiarity of its institutions, and theories of comparative capitalism have used a wide variety of terms to classify the Swiss model. In common opinion, Switzerland is regarded as a very liberal economy, but the contributions of comparative capitalism have initially classified the Swiss model among the modele rhenan (Michel Albert) model, coordinated market economies. Other authors describe the Swiss model as organized capitalism. Other contributions emphasize the ambiguities of the Swiss model, preferring the term hybrid model.
 :::
 
 ## Research question {.smaller}
@@ -95,11 +95,18 @@ Research in three parts
 
 -   Then, two empirical analyses based on two different approach to social blocs
 
-2.  The bi-dimensional "political compass" approach
+2.  Series of regressions following the bi-dimensional "political compass" approach
     -   Implicit definition of social blocs, which are pre-defined groups based on income and education levels [@piketty_capital_2019] or social classes [@oesch_electoral_2018]
+    -   Series of logit models regressing party support, political leaning and policy preferences on socio-economic characteristics
 3.  A multidimensional and bottom-up clustering approach, using latent class analysis [@amable_search_2021]
 
-## Traditional social blocs {.scrollable .smaller}
+::: notes
+Switzerland thus went under an important process of institutional change during the last decades, which moved it closer to the neoliberal model, without making the country entirely neoliberal (thus why some authors classified the country as a hybrid model, like france for instance).
+
+In the neorealist approach, the stability and change of a socio-economic model depends on the different social blocs which support or not the model. Thus, the objective of my research is to explore the social basis for a neoliberal transformation of the Swiss model. It is important to note that my thesis provides only the first steps for this analysis. I restrained the research to three main parts:
+:::
+
+## 1. Short history of Swiss social blocs {.scrollable .smaller}
 
 +---------------------------+---------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
 | Social Bloc               | Socio-political Groups                                                                | Policy Preferences                                                                            |
@@ -119,7 +126,7 @@ Research in three parts
 |                           | Workers from the private sector                                                       | Real wage increase, social & employment protection, protection from international competition |
 +---------------------------+---------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
 
-: Social blocs in Switzerland during the 70s and 80s. Classification based on Rennwald (2014), Tawfiq (2019). {#tbl-socialblocs1}
+: Social blocs in Switzerland during the 70s and 80s. Classification based on @rennwald_class_2014 and @tawfik_les_2019. {#tbl-socialblocs1}
 
 ## Political compass approach
 
@@ -191,7 +198,7 @@ Research in three parts
 :::
 :::
 
-## Aggregation into blocs {.r-stretch .smaller}
+## Aggregation into social blocs {.r-stretch .smaller}
 
 ```{mermaid}
 flowchart LR
@@ -247,6 +254,10 @@ Regression analysis:
 -   The predominance of anti-EU and popular groups in the liberal conservative bloc could explain the failure of a neoliberal/bourgeois bloc strategy and the slowdown of the reforms after 2003.
 
 -   Left bloc: incentives to attract parts of cluster 1 and 4, which are more moderate
+
+## Slow-down of the reforms after the 90s
+
+![[@fill_political_2019, p.145]](pw/fill_2019_145.png){width="700" height="400"}
 
 ## Limits and further research
 

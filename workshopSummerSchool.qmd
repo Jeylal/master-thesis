@@ -1,0 +1,442 @@
+---
+title: "Workshop"
+subtitle: "The Political Economy of Institutional Change and Social Blocs: a Neorealist Approach"
+author: "Celâl Güney"
+lang: en
+format: 
+  revealjs:
+    theme: serif
+    footer: "[Celâl Güney](https://jeylal.github.io/celalguney/about.html)"
+    incremental: false
+    preview-links: true
+    controls: true
+    embed-resources: true
+    pdf-separate-fragments: true
+    gfm:
+    mermaid-format: png
+    mermaid: 
+      theme: default
+editor: visual
+bibliography: references.bib
+---
+
+## Introduction
+
+::: columns
+::: {.column width="70%"}
+Objective: present the neorealist approach to institutions, institutional change and social conflict developed by Bruno Amable and Stefano Palombarini
+
+Focus on the theoretical framework (first part), empirics (second part), with example taken from my own applied research on Switzerland
+:::
+
+::: {.column width="30%"}
+![](image_workshop/amable2017.jpeg){width="178"}
+
+![](image_workshop/lastneoliberal.jpg){width="147"}
+:::
+:::
+
+## A new political economy framework
+
+##### Several issues with existing economic, comparative capitalism and political economy frameworks
+
+::: columns
+::: {.column width="60%"}
+-   Tainted by functionalism
+-   Static
+-   Normative
+:::
+
+::: {.column width="40%"}
+::: {#figtest layout-ncol="2"}
+![](image_workshop/Varieties_of_Capitalism.jpg){width="215"}
+
+![](image_workshop/macrososkice.jpg){width="233"}
+:::
+:::
+:::
+
+## Foundation of a neorealist approach {.r-fit-text}
+
+-   Offer a positive approach (avoid normativity)
+-   Link political, economic and social dynamics
+-   Explore the *causes* of institutional change
+-   Fundamental question: in a system tainted by contradictions and crises, why do we observe periods of relative stability ? How is social conflict regulated ?
+
+## Foundations of the neorealist approach: social conflict
+
+-   The social structure being heterogeneous, individuals' interests are varied
+-   This diversity of social expectations leads to contradiction and opposition of interests between actors
+-   There is no "general interest" or "general welfare" as in normative approaches (Marxism, mainstream econ...)
+
+## Regulation of social conflict: Ideology (1) {.smaller}
+
+-   Shapes actors' representation of the world, their position in society and thus their interests
+
+-   Reduces heterogeneity from the structure by making agents converge to same political demands
+
+-   Social expectations are not only shaped by class, stratification and the position in the structure
+
+-   Reduces the space of acceptable political demands and homogenize the diversity of interests to a certain extent, by disregarding some demands deemed as socially unacceptable
+
+## Regulation of social conflict: institutions {.smaller}
+
+-   Defined as rules of the social game
+
+    -   Formal (written, as constitutions and laws in general) or informal (conventions, norms)
+
+-   Are the result of past social compromises
+
+-   Shape the representation of interests and the formation of political supply and strategies, as well as macro dynamics
+
+    ::: callout-important
+    ## What institutions are not
+
+    They are not practice, strategies, rules of thumb and must not be confounded with organizations (the state, political parties, interest groups etc.). Organizations are the *players* and institution the *rules* of the game.
+    :::
+
+## Five institutional areas {.smaller}
+
+1.  Product market competition
+
+    -   Degree of competition, cartels...
+
+2.  Wage-labour nexus and labour market institutions
+
+    -   Labour flexibility, employment protection, minimum wage policy...
+
+3.  Financial sector and corporate governance
+
+    -   Bank-based or market-based finance, power of shareholders...
+
+4.  Social protection and the welfare state
+
+    -   Pension, insurance, invalidity systems, unemployment benefits...
+
+5.  Education system
+
+    -   Vocational or general training, specific or general skills...
+
+## Political mediation
+
+Institutional change is the result of political strategies devised by political actors
+
+-   Political actors mediate a social compromise between the heterogeneous demands
+
+-   They devise a specific strategy of economic policy and institutional design
+
+-   They select which interests to protect and to disregard to aggregate support
+
+-   Idea that the ruling actors cannot govern only by brute force, but need a certain degree of support
+
+## Main concepts {.smaller}
+
+::: columns
+::: column
+-   Socio-economic groups
+
+::: {.fragment .fade-in}
+Groups of agents with common position in the economic structure (income groups, class, education level...)
+:::
+
+-   Socio-political groups
+
+::: {.fragment .fade-in}
+Groups of agents sharing common policy preferences regarding macroeconomic policy and the socio-economic model
+:::
+
+-   Social blocs
+
+::: {.fragment .fade-in}
+Socio-political groups aggregated by a political strategy.
+:::
+:::
+
+::: column
+-   Political equilibrium
+
+::: {.fragment .fade-in}
+Stable institutional configuration supported by a [**dominant social bloc**]{style="color:red;"} aggregated by a winning political strategy
+:::
+
+-   Political crisis
+
+::: {.fragment .fade-in}
+Break-up of the dominant social bloc
+:::
+
+-   Systemic crisis
+
+::: {.fragment .fade-in}
+Situation in which no political strategy is able to aggregate a new dominant social bloc
+:::
+:::
+:::
+
+## Social blocs: some examples
+
+::: {layout-ncol="2"}
+![](image_workshop/italyBlocs.png){width="469"}
+
+![](image_workshop/franceBlocs.png){width="567"}
+:::
+
+## Political economy analysis
+
+Elements to consider:
+
+::: {.fragment .highlight-red}
+-   Socio-economic model (institutions, complementarity, hierarchy)
+:::
+
+-   Macroeconomic policy
+
+::: {.fragment .highlight-red}
+-   Identification of social blocs
+:::
+
+-   Political actors and strategies
+
+-   Ideology
+
+## The Swiss model
+
+A model particularly difficult to grasp, even in the existing literature
+
+-   Liberal corporatism [@katzenstein_small_1985]
+
+-   Liberal capitalism [@blaas_swiss_1992]
+
+-   Coordinated market economies [@hall_varieties_2001]
+
+-   Continental model [@amable_diversity_2003]
+
+-   Organised capitalism [@charles_fast_2024]
+
+-   Hybrid model [@trampusch_switzerland_2011]
+
+## Switzerland's institutional paradox {.smaller}
+
+Presence of institutions very close to the market-based model:
+
+-   Flexible labour market, low employment protection, weak labour unions
+-   Absence of Keynesian-style macroeconomic policies
+-   Weak welfare state, with prominence of private, market-based insurance schemes (health insurance, second and third pillars of pension funds)
+-   Highly competitive and de-regulated exporting sector
+
+But co-existing with non-market, coordinated institutions:
+
+-   Protectionist, insider-oriented and bank-based financial system
+-   Predominance of vocational training
+-   Highly cartelized and protected domestic sector with low degree of competition
+
+::: {.fragment .highlight-red}
+=\> What kind of dominant social bloc made this model possible ?
+:::
+
+## The Swiss dominant social bloc {.smaller}
+
+Bourgeois bloc
+
+:   Coalition between the governing right wing parties (SVP, FDP, CVP) and business interests associations (EconomieSuisse, USAM...)
+
+Several issues with this definition:
+
+-   A social bloc should not be reduced to a political alliance/coalition
+-   No information about socio-political groups, and how the latter are aggregated through political strategy
+
+## Reconstructing the blocs {.smaller .scrollable}
+
++--------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+| Social bloc                          | Social groups                                                            | Political actors                                                          | Main policy demands                                                                                   |
++======================================+==========================================================================+===========================================================================+=======================================================================================================+
+| Liberal-conservative bloc (dominant) | Large internationalized export-oriented industries                       | Liberal-Radical party, Christian-democrats, EconomieSuisse, Avenir Suisse | Labour flexibility, free-trade, weak welfare state, low taxation                                      |
+|                                      |                                                                          |                                                                           |                                                                                                       |
+|                                      | ------------------------------------------------------------------------ | ------------------------------------------------------------------------  | ------------------------------------------------------------------------                              |
+|                                      |                                                                          |                                                                           |                                                                                                       |
+|                                      | Domestic-oriented SMEs, farmers, craftsmen, storekeepers, self-employed  | SVP, USAM, USP                                                            | Public transfers, protection from international competition, labour flexibility, low taxation         |
++--------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+| Left bloc (dominated)                | Production & service workers                                             | Swiss Socialist Party, Union Syndicale Suisse                             | Employment protection, social benefits, real wage increase, protection from international competition |
+|                                      |                                                                          |                                                                           |                                                                                                       |
+|                                      | ------------------------------------------------------------------------ |                                                                           |                                                                                                       |
+|                                      |                                                                          |                                                                           |                                                                                                       |
+|                                      | Socio-cultural professionals                                             |                                                                           |                                                                                                       |
++--------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+
+## In search of social blocs: a general model
+
+::: columns
+::: column
+```{mermaid}
+flowchart TD
+    ES["Position in economic structure"] 
+    ID["Ideology"]
+    Inst["Institutions"]
+    
+    ES --> pol["Econ policy demands/preferences"]
+    ID --> pol
+    Inst --> pol
+
+    pol --> sociopol["Socio-political groups"]
+    sociopol --Political strategies---> blocs["Social blocs"]
+    
+```
+:::
+
+::: column
+
+Socio-political groups
+
+:   Groups of individuals with the same political/social demands
+
+Social blocs
+
+:   Socio-political groups aggregated by a political strategy
+:::
+:::
+
+## In search of social blocs: latent class analysis (LCA)
+
+::: columns
+::: column
+```{mermaid}
+flowchart TB
+    I1["Indicator 1"]
+    I2["Indicator 2"]
+    In["Indicator n"]
+    LC(["Latent classes"])
+    
+
+    
+    LC --> I1
+    LC --> I2
+    LC --> In
+    
+
+    Covariates["Covariates/ Distal outcomes"] <--> LC
+```
+:::
+
+::: column
+Clustering method to identify latent categorical patterns with categorical data
+:::
+:::
+
+**3-steps approach** 1. compute the clusters, 2. assign posterior probabilities to sample individuals, 3. relate posterior probabilities to other variables (party support, socio-economic characteristics...)
+
+## The 90s: a potential political crisis
+
+![](docs/intro_files/figure-html/fig-trust2-1.png){width="492"}
+
+## Results for 1999 post-election data
+
+<https://jeylal.github.io/selects1999results2/>
+
+## Results for 1999 post-election data
+
+::: {layout-ncol="2"}
+![](pw/tblclusterparties.png){width="436"}
+
+![](pw/tblclusterpol.png){width="441"}
+:::
+
+## Political strategies during the 90s
+
+Left bloc strategy (main actor: Swiss Socialist Party)
+
+-   De-cartelization
+
+-   Reform the financial sector (bank secrecy, Vinkulierung...)
+
+-   Social reforms (welfare state)
+
+-   Pro-EU integration
+
+## Left bloc strategy: a Swiss Third Way ?
+
+> > "In the recent past, the Socialist Party has often neglected the interests of the working class, thereby undermining the left-wing value of equality. Of course, the objective of freedom is more easily asserted today, because it can rely on a broader electoral base. The excluded are in fact in the minority, and therefore do not represent an interesting electoral mass."[@rennwald_vive_1998, p.227, author's translation]
+
+## Left bloc strategy: The Gurten Manifesto {.smaller}
+
+> > "The Socialist Party wants an efficient state. It wants to limit the tax burden and reduce public debt. For nothing is more anti-social than living at the expense of future generations. \[...\] The SP does not want a welfare state that paralyzes individual responsibility. It therefore attaches great importance to the balance between rights and duties in social policy."
+
+![](image_workshop/gurtenManifesto.png){width="695"}
+
+## On the right: SVP's winning strategy
+
+::: columns
+::: column
+![](docs/part1_files/figure-html/fig-partystrength-1.png)
+:::
+
+::: column
+-   Divide over EU integration and immigration policies
+-   Divide over degree of protection and liberalization of protected sectors
+:::
+:::
+
+## Results for 1999 post-election data
+
+```{mermaid}
+flowchart LR
+
+    subgraph lb["Left bloc (22,2%)"]
+    cl2["Multiculturalists (13,7%)"]
+    cl8["Moderate multiculturalists (5,9%)"]
+    cl12["Old leftists (2,6%)"]
+    end
+
+    
+    cl1["Centrists (17,8%)"]
+    cl4["Left-centrists (12,4%)"]
+    cl6["Post-materialist centrists (6,9%)"]
+    
+
+    subgraph lcb["Liberal-conservative bloc (40,5%)"]
+    cl3["Conservative workers (13,4%)"]
+    cl5["Conservative productivists (7,1%)"]
+    cl7["Conservative poor workers (6,9%)"]
+    cl9["Neoliberal conservatives (4,9%)"]
+    cl10["Neoliberal progressists (4,9%)"]
+    cl11["Cluster 11 (3,3%)"]
+    end
+
+    cl4-.-lb
+    cl1-.-lb
+    lb~~~cl6~~~lcb
+    cl2~~~cl8~~~cl12
+    cl3~~~cl5~~~cl7
+    cl9~~~cl10~~~cl11
+    
+```
+
+<https://jeylal.github.io/selects1999results2/>
+
+## Evolution of political supply
+
+![](docs/part1_files/figure-html/fig-manifesto-1.png)
+
+## Conclusion
+
+- The Swiss model is supported by liberal-conservative bloc, aggregated by a coalition between liberals (PLR-CVP) and conservatives (SVP)
+
+- This dominant social bloc can explain much of the evolution of Swiss institutions
+
+- The crisis of the 90s mirrors a crisis within the liberal-conservative bloc
+
+## What's the state of play now ?
+
+- Institutional change has slowed down in Switzerland since the 90s
+
+- However, there are still some interesting evolution
+
+- Can we analyze the changes or stability by applying a latent class analysis using more recent data ?
+
+## In search of the new blocs
+
+
+
+## References
+
+::: {#refs}
+:::
