@@ -8,7 +8,7 @@ format:
     theme: serif
     footer: "[Celâl Güney](https://jeylal.github.io/celalguney/about.html)"
     incremental: false
-    preview-links: true
+    preview-links: false
     controls: true
     embed-resources: true
     pdf-separate-fragments: true
@@ -195,7 +195,9 @@ Elements to consider:
 -   Identification of social blocs
 :::
 
+::: {.fragment .highlight-red}
 -   Political actors and strategies
+:::
 
 -   Ideology
 
@@ -328,6 +330,51 @@ Clustering method to identify latent categorical patterns with categorical data
 
 ![](docs/intro_files/figure-html/fig-trust2-1.png){width="492"}
 
+## Political strategies during the 90s
+
+Left bloc strategy (main actor: Swiss Socialist Party)
+
+-   De-cartelization
+
+-   Reform the financial sector (bank secrecy, Vinkulierung...)
+
+-   Social reforms (welfare state, social and employment protection)
+
+-   Pro-EU integration
+
+## Left bloc strategy: a Swiss Third Way ?
+
+> > "In the recent past, the Socialist Party has often neglected the interests of the working class, thereby undermining the left-wing value of equality. Of course, the objective of freedom is more easily asserted today, because it can rely on a broader electoral base. The excluded are in fact in the minority, and therefore do not represent an interesting electoral mass."[@rennwald_vive_1998, p.227, author's translation]
+
+
+## The neoliberal-bourgeois strategy
+
+Promote a neoliberal transformation of the Swiss model through:
+
+::: columns
+::: column
+-   European integration
+-   Liberalization and privatization
+-   Welfare state retrenchment
+-   Competition policy (de-cartelization)
+-   Stopping compensation measures (ex: subsidies to farms)
+:::
+
+::: column
+![](image_workshop/1990-2000_Weissbuch_original_def-GANZ_01.jpg){width="275"}
+:::
+:::
+
+## SVP's "populist" strategy
+
+Promote neoliberal transformation of the Swiss model, but with a certain form of "cultural" compensation
+
+-   anti-European integration
+-   Liberalization and privatization
+-   Welfare state retrenchment
+-   Against immigration
+
+
 ## Results for 1999 post-election data
 
 <https://jeylal.github.io/selects1999results2/>
@@ -340,40 +387,6 @@ Clustering method to identify latent categorical patterns with categorical data
 ![](pw/tblclusterpol.png){width="441"}
 :::
 
-## Political strategies during the 90s
-
-Left bloc strategy (main actor: Swiss Socialist Party)
-
--   De-cartelization
-
--   Reform the financial sector (bank secrecy, Vinkulierung...)
-
--   Social reforms (welfare state)
-
--   Pro-EU integration
-
-## Left bloc strategy: a Swiss Third Way ?
-
-> > "In the recent past, the Socialist Party has often neglected the interests of the working class, thereby undermining the left-wing value of equality. Of course, the objective of freedom is more easily asserted today, because it can rely on a broader electoral base. The excluded are in fact in the minority, and therefore do not represent an interesting electoral mass."[@rennwald_vive_1998, p.227, author's translation]
-
-## Left bloc strategy: The Gurten Manifesto {.smaller}
-
-> > "The Socialist Party wants an efficient state. It wants to limit the tax burden and reduce public debt. For nothing is more anti-social than living at the expense of future generations. \[...\] The SP does not want a welfare state that paralyzes individual responsibility. It therefore attaches great importance to the balance between rights and duties in social policy."
-
-![](image_workshop/gurtenManifesto.png){width="695"}
-
-## On the right: SVP's winning strategy
-
-::: columns
-::: column
-![](docs/part1_files/figure-html/fig-partystrength-1.png)
-:::
-
-::: column
--   Divide over EU integration and immigration policies
--   Divide over degree of protection and liberalization of protected sectors
-:::
-:::
 
 ## Results for 1999 post-election data
 
@@ -412,29 +425,52 @@ flowchart LR
 
 <https://jeylal.github.io/selects1999results2/>
 
+
+## Left bloc strategy: the appeal of center groups {.smaller}
+
+> > "The Socialist Party wants an efficient state. It wants to limit the tax burden and reduce public debt. For nothing is more anti-social than living at the expense of future generations. \[...\] The SP does not want a welfare state that paralyzes individual responsibility. It therefore attaches great importance to the balance between rights and duties in social policy."
+
+![](image_workshop/gurtenManifesto.png){width="695"}
+
+## The impass of the neoliberal-bourgeois strategy
+
+::: columns
+::: column
+-   Clusters fully compatible for a neoliberal-bourgeois strategy barely represent 5%
+-   Strategy deemed to fail, at least in the short run
+-   Explains the controversies around the neoliberal "white books" which were published in the 90s
+:::
+
+::: column
+![](image_workshop/de%20pury.png){width="425"}
+:::
+:::
+
+## SVP's winning strategy
+
+![](docs/part1_files/figure-html/fig-partystrength-1.png){fig-align="center"}
+
 ## Evolution of political supply
 
 ![](docs/part1_files/figure-html/fig-manifesto-1.png)
 
 ## Conclusion
 
-- The Swiss model is supported by liberal-conservative bloc, aggregated by a coalition between liberals (PLR-CVP) and conservatives (SVP)
+-   The Swiss model is supported by liberal-conservative bloc, aggregated by a coalition between liberals (PLR-CVP) and conservatives (SVP)
 
-- This dominant social bloc can explain much of the evolution of Swiss institutions
+-   This dominant social bloc can explain much of the evolution of Swiss institutions
 
-- The crisis of the 90s mirrors a crisis within the liberal-conservative bloc
+-   The crisis of the 90s mirrors a crisis within the liberal-conservative bloc
 
 ## What's the state of play now ?
 
-- Institutional change has slowed down in Switzerland since the 90s
+-   Institutional change has slowed down in Switzerland since the 90s
 
-- However, there are still some interesting evolution
+-   However, there are still some interesting evolution
 
-- Can we analyze the changes or stability by applying a latent class analysis using more recent data ?
+-   Can we analyze the changes or stability by applying a latent class analysis using more recent data ?
 
-## In search of the new blocs
-
-
+## How have things change two decades later ?
 
 ## References
 
