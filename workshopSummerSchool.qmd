@@ -28,7 +28,7 @@ bibliography: references.bib
 
 -   Focus on the theoretical framework (first part), empirics (second part), with example taken from my own applied research on Switzerland.
 
--   Third part: exercise on social blocs
+-   Concluding activity: build you own social bloc
 :::
 
 ::: {.column width="45"}
@@ -57,6 +57,10 @@ bibliography: references.bib
 :::
 :::
 :::
+
+## Example of mainstream normativity: OECD reports
+
+![](image_workshop/oecd2019.png)
 
 ## Foundation of a neorealist approach {.smaller}
 
@@ -87,6 +91,7 @@ flowchart TB
     reg --> Neorealism
     Post-keynesianism --> reg
     Marxism --> reg
+    Machiavel --> Gramsci
 
 ```
 :::
@@ -156,7 +161,6 @@ flowchart TB
 
 ## Five types of capitalism {.smaller}
 
-
 -   Market-based model
 
     -   Competitive product-market, complementary with labour market flexibility, and highly developed financial markets. Weak welfare state. (UK, US, New-Zealand)
@@ -170,9 +174,6 @@ Along with the Mediterranean model (Italy, Spain...), the Social-democratic mode
 ## Five types of capitalism
 
 ![](image_workshop/moderncapitalisms.png)
-
-
-
 
 ## Political mediation
 
@@ -298,6 +299,8 @@ But co-existing with non-market, coordinated institutions:
 Bourgeois bloc
 
 :   Coalition between the governing right wing parties (SVP, FDP, CVP) and business interests associations (EconomieSuisse, USAM...)
+
+- This bloc reconciles the contradictory interests of the dual structure of the economy (protected & regulated domestic sectors vs highly competitive and de-regulated exporting sectors)
 
 Several issues with this definition:
 
@@ -524,6 +527,24 @@ flowchart LR
 -   Can we analyze the changes or stability by applying a latent class analysis using more recent data ?
 
 ## How have things change two decades later ?
+
+- SVP still the dominant party
+
+- The Liberals still in decline and trying to find a new strategy
+
+- The left still a minority
+
+- Some small but important institutional change (pension reform, welfare state)
+
+## Try to aggregate your own social bloc ! {.smaller}
+
+- As a concluding activity, I propose that you have a look to my most recent latent class analysis using Swiss post-election survey data for 2019 (see link below)
+
+<https://github.com/Jeylal/master-thesis/raw/master/lca%20estimations/selects2019_2024_13clusters_results.xlsx>
+
+- Have a look at the profile sheet and the 3stepsprobsvote sheet
+
+- Consider one political strategy you are interested in (Socialist, liberal, conservative, social-ecologist, pro-EU strategy...) ==> can this strategy aggregate large enough socio-political groups (clusters) ?
 
 ## References
 
