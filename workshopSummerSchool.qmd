@@ -20,19 +20,21 @@ editor: visual
 bibliography: references.bib
 ---
 
-## Introduction
+## Introduction {.smaller}
 
 ::: columns
-::: {.column width="70%"}
-Objective: present the neorealist approach to institutions, institutional change and social conflict developed by Bruno Amable and Stefano Palombarini
+::: {.column width="55"}
+-   Objective: present the neorealist approach to institutions, institutional change and social conflict developed by Bruno Amable and Stefano Palombarini
 
-Focus on the theoretical framework (first part), empirics (second part), with example taken from my own applied research on Switzerland
+-   Focus on the theoretical framework (first part), empirics (second part), with example taken from my own applied research on Switzerland.
+
+-   Third part: exercise on social blocs
 :::
 
-::: {.column width="30%"}
-![](image_workshop/amable2017.jpeg){width="178"}
+::: {.column width="45"}
+![](image_workshop/amable.jpg){width="292"}
 
-![](image_workshop/lastneoliberal.jpg){width="147"}
+![](image_workshop/palombarini.jpg){width="295"}
 :::
 :::
 
@@ -56,18 +58,45 @@ Focus on the theoretical framework (first part), empirics (second part), with ex
 :::
 :::
 
-## Foundation of a neorealist approach {.r-fit-text}
+## Foundation of a neorealist approach {.smaller}
 
+::: columns
+::: {.column width="60%"}
 -   Offer a positive approach (avoid normativity)
 -   Link political, economic and social dynamics
 -   Explore the *causes* of institutional change
 -   Fundamental question: in a system tainted by contradictions and crises, why do we observe periods of relative stability ? How is social conflict regulated ?
+:::
+
+::: {.column width="40%"}
+```{mermaid}
+flowchart TB
+    Hobbes
+    Machiavel
+    Marxism
+    Post-keynesianism
+
+    Neorealism
+    Marxism --- Post-keynesianism
+    Hobbes --> Neorealism
+    Machiavel --> Neorealism
+    reg["Regulation Theory"]
+
+    Marxism --> Gramsci
+    Gramsci --> reg
+    reg --> Neorealism
+    Post-keynesianism --> reg
+    Marxism --> reg
+
+```
+:::
+:::
 
 ## Foundations of the neorealist approach: social conflict
 
 -   The social structure being heterogeneous, individuals' interests are varied
 -   This diversity of social expectations leads to contradiction and opposition of interests between actors
--   There is no "general interest" or "general welfare" as in normative approaches (Marxism, mainstream econ...)
+-   There is no "general interest" or "general welfare" as in normative approaches (Marxism, mainstream econ...) ==\> social conflict cannot be abolished, but merely regulated
 
 ## Regulation of social conflict: Ideology (1) {.smaller}
 
@@ -97,9 +126,11 @@ Focus on the theoretical framework (first part), empirics (second part), with ex
 
 ## Five institutional areas {.smaller}
 
+::: columns
+::: {.column width="80%"}
 1.  Product market competition
 
-    -   Degree of competition, cartels...
+    -   Degree of competition, cartels
 
 2.  Wage-labour nexus and labour market institutions
 
@@ -116,6 +147,32 @@ Focus on the theoretical framework (first part), empirics (second part), with ex
 5.  Education system
 
     -   Vocational or general training, specific or general skills...
+:::
+
+::: {.column width="20%"}
+![](image_workshop/amable2003.jpg){width="314"}
+:::
+:::
+
+## Five types of capitalism {.smaller}
+
+
+-   Market-based model
+
+    -   Competitive product-market, complementary with labour market flexibility, and highly developed financial markets. Weak welfare state. (UK, US, New-Zealand)
+
+-   Continental model
+
+    -   Less competitive product-market, more developed employment protection and welfare state, centralized and/or bank-based financial system. Coordinated wage bargaining. (France, Germany, Switzerland...)
+
+Along with the Mediterranean model (Italy, Spain...), the Social-democratic model (Sweden, Norway...) and the Asian model (Japan).
+
+## Five types of capitalism
+
+![](image_workshop/moderncapitalisms.png)
+
+
+
 
 ## Political mediation
 
@@ -346,7 +403,6 @@ Left bloc strategy (main actor: Swiss Socialist Party)
 
 > > "In the recent past, the Socialist Party has often neglected the interests of the working class, thereby undermining the left-wing value of equality. Of course, the objective of freedom is more easily asserted today, because it can rely on a broader electoral base. The excluded are in fact in the minority, and therefore do not represent an interesting electoral mass."[@rennwald_vive_1998, p.227, author's translation]
 
-
 ## The neoliberal-bourgeois strategy
 
 Promote a neoliberal transformation of the Swiss model through:
@@ -374,7 +430,6 @@ Promote neoliberal transformation of the Swiss model, but with a certain form of
 -   Welfare state retrenchment
 -   Against immigration
 
-
 ## Results for 1999 post-election data
 
 <https://jeylal.github.io/selects1999results2/>
@@ -386,7 +441,6 @@ Promote neoliberal transformation of the Swiss model, but with a certain form of
 
 ![](pw/tblclusterpol.png){width="441"}
 :::
-
 
 ## Results for 1999 post-election data
 
@@ -424,7 +478,6 @@ flowchart LR
 ```
 
 <https://jeylal.github.io/selects1999results2/>
-
 
 ## Left bloc strategy: the appeal of center groups {.smaller}
 
