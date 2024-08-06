@@ -28,7 +28,7 @@ bibliography: references.bib
 
 -   Focus on the theoretical framework (first part), empirics (second part), with example taken from my own applied research on Switzerland.
 
--   Concluding activity: build you own social bloc
+-   Concluding activity: build your own social bloc
 :::
 
 ::: {.column width="45"}
