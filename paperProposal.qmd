@@ -10,19 +10,11 @@ editor: visual
 
 ### Celâl Güney
 
-The aim of the present study is to grasp what can be learned from the Selects 2023 post-election and panel studies in terms of the evolution and/or stability of the Swiss political space, its social blocs and the policy preferences and voting choice of Swiss citizen. The main research questions are: what is the state of 2023 Swiss social blocs and how have they evolved in the last decades ? What are the social composition of these blocs, and which political strategies aggregated those blocs ? This paper will be the opportunity to discuss and test several important contributions on the state and composition of the Swiss social blocs which underlie the stability of the Swiss model. The motivation of this research is, on the one hand, to assess the "bourgeois bloc" literature which is widespread in Switzerland, but does not consider the social composition of this dominant bloc. On the other hand, 
+The concept of social blocs is being increasingly used in both political economy and political science approaches to analyze the stability of growth models or of national institutional configurations. However, few studies have explored in detail the specific social blocs which underlie the stability of the Swiss socio-economic model. The aim of the present study is to fill this gap by identifying the different Swiss social blocs using the last Selects post-election and panel studies. Building on the neorealist approach to social blocs elaborated by Amable and Palombarini, the main research questions are: what is the state and the relative size of the different Swiss social blocs and how have they evolved in the last decades ? What are the social composition of these blocs, and which political strategies aggregated those blocs ? This paper will be the opportunity to discuss and test several important contributions on the state and composition of the Swiss social blocs which underlie the stability of the Swiss model. 
 
- Moreover, the objective is also to take into account the multi-dimensionality of social conflict and political clevages, which are too often reduced to a two-axes space (the so-called economic and cultural axes).
+
+The motivation of this research is, on the one hand, to assess the extent to which the Swiss socio-economic model is truly supported by the so-called "bourgeois bloc", and whether the latter can be identified in Selects data using modern clustering methodology. On the other hand, the objective is also to take into account the multi-dimensionality of social conflict and political clevages, which are too often reduced to a two-axes space (the so-called economic and cultural axes).
 
 The empirical analysis, using either the panel or post-election 2023 surveys, will be threefold. First, an innovative way to analyze social blocs, the so-called latent class analysis (LCA), will be conducted to identify what are the latest Swiss socio-political groups, defined as clusters of individuals sharing common policy and cultural preferences. An advantage of LCA is that it allows to take the multi-dimensionality of political cleavages into account, as there are as many axes as active indicators in the model. Next, the so-called "three-steps" approach to LCA will be used to relate cluster membership to socio-economic characteristics (social class, income and education levels...) as well as party preferences and voting. This step allows to explore which clusters support common ideology and parties, but also its social composition and thus the relationship between socio-economic characteristics, policy preferences and party support.
 
 Finally, results will be discussed and compared with the existing litterature on the Swiss tripolar political space (*cite rennwald*), the Swiss social blocs (*cite mach*) and social blocs in other countries (*citer amable palombarini*). The main political strategies during the 2023 electoral campaign will also be assessed in the light of the size and viability of the social blocs that have been aggregated during the election.
-
-
-
-
-
-
-
-
-
