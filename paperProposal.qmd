@@ -1,20 +1,28 @@
 ---
 author: "Celâl Güney"
-format: pdf
+format: 
+   pdf:
+    colorlinks: true
+   html: default
 editor: visual
+bibliography: references.bib
+link-citations: true
 ---
 
 # Paper Proposal
 
 ## Social Blocs, Political space and Party Support in Switzerland: a Cluster analysis
 
-### Celâl Güney
+### Celâl Güney^[Research and teaching assistant, department of History-Economics-Society, University of Geneva]
 
-The concept of social blocs is being increasingly used in both political economy and political science approaches to analyze the stability of growth models or of national institutional configurations. However, few studies have explored in detail the specific social blocs which underlie the stability of the Swiss socio-economic model. The aim of the present study is to fill this gap by identifying the different Swiss social blocs using the last Selects post-election and panel studies. Building on the neorealist approach to social blocs elaborated by Amable and Palombarini, the main research questions are: what is the state and the relative size of the different Swiss social blocs and how have they evolved in the last decades ? What are the social composition of these blocs, and which political strategies aggregated those blocs ? This paper will be the opportunity to discuss and test several important contributions on the state and composition of the Swiss social blocs which underlie the stability of the Swiss model. 
+The concept of social blocs is increasingly used in both political economy and political science approaches to analyze the stability of growth models [@baccaro_social_2019] or of national institutional configurations [@amable_neorealist_2008; @amable_new_2019]. However, few studies have explored in detail the specific social blocs which underlie the stability of the Swiss socio-economic model. The aim of the present study is to fill this gap by identifying the different Swiss social blocs using the last Selects post-election and panel studies. Building on the neorealist approach to social blocs elaborated by Amable and Palombarini [-@amable_neorealist_2008; -@amable_illusion_2018; -@amable_multidimensional_2023], the main research questions are: what is the state and the relative size of the different Swiss social blocs and how have they evolved in the last decades ? What are the social composition of these blocs, and which political strategies aggregated those blocs ? This paper will be the opportunity to discuss and test several important contributions on the state and composition of the Swiss social blocs which underlie the stability of the Swiss model.
+
+The motivation of this research is, on the one hand, to assess the extent to which the Swiss socio-economic model is truly supported by the so-called "bourgeois bloc" [@mach_redefinition_2007], and whether the latter can be identified in Selects data using modern clustering methodology. On the other hand, the objective is also to take into account the multi-dimensionality of social conflict and political cleavages, which are too often reduced to a two-axes space (the so-called economic and cultural axes). The empirical analysis, using either the panel or post-election 2023 surveys, will be threefold. First, an innovative way to analyze social blocs, the so-called latent class analysis (LCA), will be conducted to identify what are the latest Swiss socio-political groups, defined as clusters of individuals sharing common policy and cultural preferences. An advantage of LCA is that it allows to take the multi-dimensionality of political cleavages into account, as there are as many axes as active indicators in the model. Next, the so-called "three-steps" approach to LCA [@vermunt_latent_2017] will be used to relate cluster membership to socio-economic characteristics (social class, income and education levels...) as well as party preferences and voting. This step allows to explore which clusters support common ideology and parties, but also its social composition and thus the relationship between socio-economic characteristics, policy preferences and party support.
+
+Finally, results will be discussed and compared with the existing literature on the Swiss tripolar political space [@oesch_electoral_2018], the Swiss social blocs [@mach_redefinition_2007] and social blocs in other countries [@amable_leconomie_2012; @amable_search_2021]. The main political strategies during the 2023 electoral campaign will also be assessed in the light of the size and viability of the social blocs that have been aggregated during the election.
 
 
-The motivation of this research is, on the one hand, to assess the extent to which the Swiss socio-economic model is truly supported by the so-called "bourgeois bloc", and whether the latter can be identified in Selects data using modern clustering methodology. On the other hand, the objective is also to take into account the multi-dimensionality of social conflict and political clevages, which are too often reduced to a two-axes space (the so-called economic and cultural axes).
+## References
 
-The empirical analysis, using either the panel or post-election 2023 surveys, will be threefold. First, an innovative way to analyze social blocs, the so-called latent class analysis (LCA), will be conducted to identify what are the latest Swiss socio-political groups, defined as clusters of individuals sharing common policy and cultural preferences. An advantage of LCA is that it allows to take the multi-dimensionality of political cleavages into account, as there are as many axes as active indicators in the model. Next, the so-called "three-steps" approach to LCA will be used to relate cluster membership to socio-economic characteristics (social class, income and education levels...) as well as party preferences and voting. This step allows to explore which clusters support common ideology and parties, but also its social composition and thus the relationship between socio-economic characteristics, policy preferences and party support.
-
-Finally, results will be discussed and compared with the existing litterature on the Swiss tripolar political space (*cite rennwald*), the Swiss social blocs (*cite mach*) and social blocs in other countries (*citer amable palombarini*). The main political strategies during the 2023 electoral campaign will also be assessed in the light of the size and viability of the social blocs that have been aggregated during the election.
+::: {#refs}
+:::
