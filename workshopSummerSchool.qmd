@@ -22,7 +22,7 @@ bibliography: references.bib
 
 ## Introduction {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="55"}
 -   Objective: present the neorealist approach to institutions, institutional change and social conflict developed by Bruno Amable and Stefano Palombarini
 
@@ -36,27 +36,27 @@ bibliography: references.bib
 
 ![](image_workshop/palombarini.jpg){width="295"}
 :::
-:::
+:::::
 
 ## A new political economy framework
 
 ##### Several issues with existing economic, comparative capitalism and political economy frameworks
 
-::: columns
+:::::: columns
 ::: {.column width="60%"}
 -   Tainted by functionalism
 -   Static
 -   Normative
 :::
 
-::: {.column width="40%"}
+:::: {.column width="40%"}
 ::: {#figtest layout-ncol="2"}
 ![](image_workshop/Varieties_of_Capitalism.jpg){width="215"}
 
 ![](image_workshop/macrososkice.jpg){width="233"}
 :::
-:::
-:::
+::::
+::::::
 
 ## Example of mainstream normativity: OECD reports
 
@@ -64,7 +64,7 @@ bibliography: references.bib
 
 ## Foundation of a neorealist approach {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="60%"}
 -   Offer a positive approach (avoid normativity)
 -   Link political, economic and social dynamics
@@ -95,7 +95,7 @@ flowchart TB
 
 ```
 :::
-:::
+:::::
 
 ## Foundations of the neorealist approach: social conflict
 
@@ -131,7 +131,7 @@ flowchart TB
 
 ## Five institutional areas {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="80%"}
 1.  Product market competition
 
@@ -157,7 +157,7 @@ flowchart TB
 ::: {.column width="20%"}
 ![](image_workshop/amable2003.jpg){width="314"}
 :::
-:::
+:::::
 
 ## Five types of capitalism {.smaller}
 
@@ -189,8 +189,8 @@ Institutional change is the result of political strategies devised by political 
 
 ## Main concepts {.smaller}
 
-::: columns
-::: column
+::::::::::: columns
+:::::: column
 -   Socio-economic groups
 
 ::: {.fragment .fade-in}
@@ -208,9 +208,9 @@ Groups of agents sharing common policy preferences regarding macroeconomic polic
 ::: {.fragment .fade-in}
 Socio-political groups aggregated by a political strategy.
 :::
-:::
+::::::
 
-::: column
+:::::: column
 -   Political equilibrium
 
 ::: {.fragment .fade-in}
@@ -228,8 +228,8 @@ Break-up of the dominant social bloc
 ::: {.fragment .fade-in}
 Situation in which no political strategy is able to aggregate a new dominant social bloc
 :::
-:::
-:::
+::::::
+:::::::::::
 
 ## Social blocs: some examples
 
@@ -300,7 +300,7 @@ Bourgeois bloc
 
 :   Coalition between the governing right wing parties (SVP, FDP, CVP) and business interests associations (EconomieSuisse, USAM...)
 
-- This bloc reconciles the contradictory interests of the dual structure of the economy (protected & regulated domestic sectors vs highly competitive and de-regulated exporting sectors)
+-   This bloc reconciles the contradictory interests of the dual structure of the economy (protected & regulated domestic sectors vs highly competitive and de-regulated exporting sectors)
 
 Several issues with this definition:
 
@@ -327,7 +327,7 @@ Several issues with this definition:
 
 ## In search of social blocs: a general model
 
-::: columns
+::::: columns
 ::: column
 ```{mermaid}
 flowchart TD
@@ -355,11 +355,11 @@ Social blocs
 
 :   Socio-political groups aggregated by a political strategy
 :::
-:::
+:::::
 
 ## In search of social blocs: latent class analysis (LCA)
 
-::: columns
+::::: columns
 ::: column
 ```{mermaid}
 flowchart TB
@@ -382,7 +382,7 @@ flowchart TB
 ::: column
 Clustering method to identify latent categorical patterns with categorical data
 :::
-:::
+:::::
 
 **3-steps approach** 1. compute the clusters, 2. assign posterior probabilities to sample individuals, 3. relate posterior probabilities to other variables (party support, socio-economic characteristics...)
 
@@ -410,7 +410,7 @@ Left bloc strategy (main actor: Swiss Socialist Party)
 
 Promote a neoliberal transformation of the Swiss model through:
 
-::: columns
+::::: columns
 ::: column
 -   European integration
 -   Liberalization and privatization
@@ -422,7 +422,7 @@ Promote a neoliberal transformation of the Swiss model through:
 ::: column
 ![](image_workshop/1990-2000_Weissbuch_original_def-GANZ_01.jpg){width="275"}
 :::
-:::
+:::::
 
 ## SVP's "populist" strategy
 
@@ -490,7 +490,7 @@ flowchart LR
 
 ## The impass of the neoliberal-bourgeois strategy
 
-::: columns
+::::: columns
 ::: column
 -   Clusters fully compatible for a neoliberal-bourgeois strategy barely represent 5%
 -   Strategy deemed to fail, at least in the short run
@@ -500,7 +500,7 @@ flowchart LR
 ::: column
 ![](image_workshop/de%20pury.png){width="425"}
 :::
-:::
+:::::
 
 ## SVP's winning strategy
 
@@ -528,23 +528,23 @@ flowchart LR
 
 ## How have things change two decades later ?
 
-- SVP still the dominant party
+-   SVP still the dominant party
 
-- The Liberals still in decline and trying to find a new strategy
+-   The Liberals still in decline and trying to find a new strategy
 
-- The left still a minority
+-   The left still a minority
 
-- Some small but important institutional change (pension reform, welfare state)
+-   Some small but important institutional change (pension reform, welfare state)
 
 ## Try to aggregate your own social bloc ! {.smaller}
 
-- As a concluding activity, I propose that you have a look to my most recent latent class analysis using Swiss post-election survey data for 2019 (see link below)
+-   As a concluding activity, I propose that you have a look to my most recent latent class analysis using Swiss post-election survey data for 2019 (see link below)
 
 <https://github.com/Jeylal/master-thesis/raw/master/lca%20estimations/selects2019_2024_13clusters_results.xlsx>
 
-- Have a look at the profile sheet and the 3stepsprobsvote sheet
+-   Have a look at the profile sheet and the 3stepsprobsvote sheet
 
-- Consider one political strategy you are interested in (Socialist, liberal, conservative, social-ecologist, pro-EU strategy...) ==> can this strategy aggregate large enough socio-political groups (clusters) ?
+-   Consider one political strategy you are interested in (Socialist, liberal, conservative, social-ecologist, pro-EU strategy...) ==\> can this strategy aggregate large enough socio-political groups (clusters) ?
 
 ## References
 
